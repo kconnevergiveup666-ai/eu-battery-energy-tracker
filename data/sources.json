@@ -1,0 +1,21 @@
+{
+  "_comment": "Secondary-legislation tracking config per dossier id (ids from curated.js). celex = base acts whose implementing/delegated acts, guidelines and amendments are pulled from EUR-Lex (Cellar SPARQL). hys = Have Your Say keyword search; match = regex an initiative title or legal basis must match. eli = ELI fragments that identify the base act in Have Your Say legal-basis data.",
+  "batteries":        { "celex": ["32023R1542"], "eli": ["reg/2023/1542"], "hys": { "q": ["batteries", "battery"], "match": "batter|REESS|2023/1542" } },
+  "crma":             { "celex": ["32024R1252"], "eli": ["reg/2024/1252"], "hys": { "q": ["critical raw materials", "raw materials", "permanent magnets"], "match": "raw material|2024/1252|strategic project|permanent magnet" } },
+  "elv":              { "celex": ["32026R1738"], "eli": ["reg/2026/1738"], "hys": { "q": ["end-of-life vehicles"], "match": "end-of-life vehicle|ELV|recycled plastic" } },
+  "nzia":             { "celex": ["32024R1735"], "eli": ["reg/2024/1735"], "hys": { "q": ["net-zero industry", "NZIA"], "match": "net-zero|net zero|NZIA|non-price" } },
+  "iaa":              { "celex": [], "eli": [], "hys": { "q": ["Industrial Accelerator Act", "industrial decarbonisation accelerator"], "match": "accelerator" } },
+  "espr":             { "celex": ["32024R1781"], "eli": ["reg/2024/1781"], "hys": { "q": ["ecodesign", "digital product passport"], "match": "product passport|steel|aluminium|working plan|destruction|unsold|ESPR|2024/1781" } },
+  "emd-reg":          { "celex": ["32024R1747", "32024L1711"], "eli": ["reg/2024/1747", "dir/2024/1711"], "hys": { "q": ["electricity market design", "flexibility needs"], "match": "electricity market|flexibilit|2024/1747|2024/1711" } },
+  "remit":            { "celex": ["32024R1106"], "eli": ["reg/2024/1106"], "hys": { "q": ["REMIT"], "match": "REMIT|market manipulation" } },
+  "gas-h2-dir":       { "celex": ["32024L1788", "32024R1789"], "eli": ["dir/2024/1788", "reg/2024/1789"], "hys": { "q": ["hydrogen network", "low-carbon hydrogen"], "match": "hydrogen" } },
+  "grids-tene":       { "celex": [], "eli": [], "hys": { "q": ["trans-European energy infrastructure", "grids package"], "match": "trans-european energy|TEN-E|grid" } },
+  "grids-permitting": { "celex": [], "eli": [], "hys": { "q": ["permit-granting", "permitting energy"], "match": "permit" } },
+  "red3":             { "celex": ["32023L2413", "32018L2001"], "eli": ["dir/2023/2413", "dir/2018/2001"], "hys": { "q": ["renewable energy directive", "renewable acceleration areas"], "match": "renewable" } },
+  "eed":              { "celex": ["32023L1791"], "eli": ["dir/2023/1791"], "hys": { "q": ["energy efficiency directive", "data centres energy"], "match": "energy efficiency|data cent" } },
+  "epbd":             { "celex": ["32024L1275"], "eli": ["dir/2024/1275"], "hys": { "q": ["energy performance of buildings"], "match": "buildings|EPBD" } },
+  "co2-cars":         { "celex": ["32019R0631"], "eli": ["reg/2019/631"], "hys": { "q": ["CO2 emission standards cars vans", "CO2 emission performance standards light"], "match": "CO2|car|van|light-duty|light duty" } },
+  "afir":             { "celex": ["32023R1804"], "eli": ["reg/2023/1804"], "hys": { "q": ["alternative fuels infrastructure", "recharging points"], "match": "AFIR|alternative fuel|recharg|refuel" } },
+  "cbam":             { "celex": ["32023R0956"], "eli": ["reg/2023/956"], "hys": { "q": ["CBAM", "carbon border adjustment"], "match": "CBAM|carbon border" } },
+  "ets":              { "celex": ["32003L0087"], "eli": ["dir/2003/87"], "hys": { "q": ["emissions trading system", "ETS"], "match": "ETS|emissions? trading|allowance|auction|benchmark|free allocation" } }
+}

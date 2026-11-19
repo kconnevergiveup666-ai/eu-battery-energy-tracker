@@ -1,0 +1,891 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>欧盟电池与能源立法追踪</title>
+<style>
+:root{
+  --bg:#f6f7f9; --panel:#ffffff; --panel2:#f1f3f6; --line:#e2e5ea; --text:#1b1f24; --muted:#5f6b7a; --faint:#8a95a3;
+  --accent:#1f5fd6; --accent-weak:#e6eefc;
+  --c-commission:#1f5fd6; --c-epc:#7a3fd1; --c-epp:#c2398a; --c-council:#d9822b; --c-trilogue:#b8860b; --c-final:#18864b; --c-impl:#0e8f8f; --c-future:#8a95a3;
+  --battery:#0e8f8f; --industry:#7a3fd1; --power:#d9822b; --renewable:#18864b; --transport:#1f5fd6; --carbon:#6b7280;
+  --done:#18864b; --current:#d9822b; --pending:#c9ced6;
+  --c-sec:#5b6ee1; --c-other:#8a6d3b;
+  --shadow:0 1px 2px rgba(16,24,40,.06),0 1px 3px rgba(16,24,40,.08);
+}
+:root{--open:#c0392b}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --c-sec:#8fa0ff; --c-other:#c9a46a; --open:#ff7a6b } }
+:root[data-theme="dark"]{ --c-sec:#8fa0ff; --c-other:#c9a46a; --open:#ff7a6b }
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1216; --panel:#171b21; --panel2:#1e232b; --line:#2a313b; --text:#e6e9ed; --muted:#a1abb8; --faint:#7d8896;
+    --accent:#6ea0ff; --accent-weak:#1b2a44;
+    --c-commission:#6ea0ff; --c-epc:#a98bf0; --c-epp:#e879b8; --c-council:#f0a456; --c-trilogue:#e0b84a; --c-final:#4cc08a; --c-impl:#3cc6c6; --c-future:#7d8896;
+    --battery:#3cc6c6; --industry:#a98bf0; --power:#f0a456; --renewable:#4cc08a; --transport:#6ea0ff; --carbon:#9aa3af;
+    --done:#4cc08a; --current:#f0a456; --pending:#3a424d; --shadow:none;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1216; --panel:#171b21; --panel2:#1e232b; --line:#2a313b; --text:#e6e9ed; --muted:#a1abb8; --faint:#7d8896;
+  --accent:#6ea0ff; --accent-weak:#1b2a44;
+  --c-commission:#6ea0ff; --c-epc:#a98bf0; --c-epp:#e879b8; --c-council:#f0a456; --c-trilogue:#e0b84a; --c-final:#4cc08a; --c-impl:#3cc6c6; --c-future:#7d8896;
+  --battery:#3cc6c6; --industry:#a98bf0; --power:#f0a456; --renewable:#4cc08a; --transport:#6ea0ff; --carbon:#9aa3af;
+  --done:#4cc08a; --current:#f0a456; --pending:#3a424d; --shadow:none;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--text);font:14px/1.55 -apple-system,"Segoe UI","PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif}
+a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
+button{font:inherit;color:inherit}
+.mono{font-family:ui-monospace,"Cascadia Mono",Consolas,monospace;font-size:12.5px}
+.muted{color:var(--muted)} .faint{color:var(--faint)}
+
+header{position:sticky;top:0;z-index:20;background:var(--panel);border-bottom:1px solid var(--line)}
+.hwrap{display:flex;align-items:center;gap:16px;padding:10px 20px;flex-wrap:wrap}
+.brand{font-weight:700;font-size:16px;letter-spacing:.2px}
+.brand small{display:block;font-weight:400;font-size:12px;color:var(--muted)}
+nav.tabs{display:flex;gap:4px;margin-left:8px}
+nav.tabs button{border:0;background:none;padding:7px 12px;border-radius:8px;cursor:pointer;color:var(--muted)}
+nav.tabs button.on{background:var(--accent-weak);color:var(--accent);font-weight:600}
+.hright{margin-left:auto;display:flex;align-items:center;gap:10px;font-size:12px;color:var(--muted)}
+.iconbtn{border:1px solid var(--line);background:var(--panel);border-radius:8px;padding:5px 9px;cursor:pointer}
+
+main{max-width:1400px;margin:0 auto;padding:18px 20px 60px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow)}
+.card h3{margin:0;font-size:14px}
+.card .hd{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--line)}
+.card .bd{padding:14px 16px}
+
+/* overview */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+.kpi{padding:14px 16px}
+.kpi .v{font-size:26px;font-weight:700;font-variant-numeric:tabular-nums}
+.kpi .l{color:var(--muted);font-size:12.5px}
+.grid2{display:grid;grid-template-columns:1.4fr 1fr;gap:16px}
+.feed{list-style:none;margin:0;padding:0}
+.feed li{display:grid;grid-template-columns:86px 1fr;gap:10px;padding:9px 0;border-bottom:1px dashed var(--line)}
+.feed li:last-child{border-bottom:0}
+.feed .d{font-variant-numeric:tabular-nums;color:var(--muted);font-size:12.5px}
+.feed .t{font-size:13.5px}
+.feed .s{font-size:12px;color:var(--muted)}
+.lane-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:1px}
+
+/* gantt */
+.gantt-wrap{overflow-x:auto}
+.gantt{min-width:880px}
+.grow{display:grid;grid-template-columns:200px 1fr;align-items:center;min-height:30px;border-bottom:1px solid var(--line)}
+.grow:last-child{border-bottom:0}
+.gname{font-size:12.5px;padding-right:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer}
+.gname:hover{color:var(--accent)}
+.gtrack{position:relative;height:30px}
+.gaxis{position:relative;height:22px;font-size:11px;color:var(--faint)}
+.gaxis span{position:absolute;transform:translateX(-50%);top:3px}
+.gyear{position:absolute;top:0;bottom:0;width:1px;background:var(--line)}
+.gtoday{position:absolute;top:0;bottom:0;width:2px;background:var(--c-epp);opacity:.6}
+.seg{position:absolute;top:9px;height:12px;border-radius:3px}
+.seg.ep{background:var(--c-epc)} .seg.tri{background:var(--c-trilogue)} .seg.fin{background:var(--c-final)}
+.seg.open{background:repeating-linear-gradient(45deg,var(--c-epc) 0 4px,transparent 4px 8px);opacity:.75;border:1px solid var(--c-epc)}
+.mk{position:absolute;top:7px;width:10px;height:16px;transform:translateX(-50%)}
+.mk.prop{border-left:2px solid var(--c-commission);width:2px;top:4px;height:22px}
+.mk.cou{width:10px;height:10px;top:10px;background:var(--c-council);transform:translateX(-50%) rotate(45deg)}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12px;color:var(--muted)}
+.legend i{display:inline-block;width:14px;height:8px;border-radius:2px;margin-right:5px;vertical-align:0}
+
+/* dossiers */
+.layout{display:grid;grid-template-columns:340px 1fr;gap:16px;align-items:start}
+.side{position:sticky;top:70px;max-height:calc(100vh - 90px);display:flex;flex-direction:column}
+.filters{padding:12px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:8px}
+.search{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--panel2);color:var(--text)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:3px 10px;font-size:12px;cursor:pointer;color:var(--muted)}
+.chip.on{border-color:var(--accent);color:var(--accent);background:var(--accent-weak)}
+.list{overflow:auto;padding:6px}
+.item{padding:9px 10px;border-radius:8px;cursor:pointer;border:1px solid transparent}
+.item:hover{background:var(--panel2)}
+.item.on{background:var(--accent-weak);border-color:var(--accent)}
+.item .n{font-weight:600;font-size:13.5px}
+.item .m{font-size:11.5px;color:var(--muted);display:flex;gap:8px;flex-wrap:wrap;margin-top:2px}
+.item.child{margin-left:16px;border-left:2px solid var(--line);border-radius:0 8px 8px 0}
+.cat{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:6px}
+.pill{display:inline-block;font-size:11.5px;padding:1px 8px;border-radius:999px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
+.pill.done{color:var(--done);border-color:color-mix(in srgb,var(--done) 40%,transparent)}
+.pill.live{color:var(--current);border-color:color-mix(in srgb,var(--current) 50%,transparent)}
+.pill.core{color:var(--c-epp);border-color:color-mix(in srgb,var(--c-epp) 40%,transparent)}
+
+.detail{display:flex;flex-direction:column;gap:16px;min-width:0}
+.dhead{padding:18px 20px}
+.dhead h1{font-size:20px;margin:6px 0 4px}
+.dhead .en{color:var(--muted);font-size:13px}
+.meta{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:12px;font-size:12.5px;color:var(--muted)}
+.meta b{color:var(--text);font-weight:600}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.tag{font-size:11.5px;background:var(--panel2);border-radius:6px;padding:2px 8px;color:var(--muted)}
+
+/* stage pipeline */
+.pipe{display:grid;grid-template-columns:repeat(8,1fr);gap:0;padding:18px 14px 14px;overflow-x:auto}
+.stg{position:relative;text-align:center;padding:0 4px;min-width:96px}
+.stg:before{content:"";position:absolute;top:13px;left:-50%;width:100%;height:3px;background:var(--pending);z-index:0}
+.stg:first-child:before{display:none}
+.stg.done:before,.stg.cur:before{background:var(--done)}
+.stg .dot{position:relative;z-index:1;width:28px;height:28px;border-radius:50%;margin:0 auto 6px;display:grid;place-items:center;font-size:12px;font-weight:700;background:var(--panel);border:3px solid var(--pending);color:var(--faint)}
+.stg.done .dot{background:var(--done);border-color:var(--done);color:#fff}
+.stg.cur .dot{border-color:var(--current);color:var(--current);box-shadow:0 0 0 4px color-mix(in srgb,var(--current) 20%,transparent)}
+.stg.skip .dot{border-style:dashed}
+.stg .nm{font-size:12.5px;font-weight:600}
+.stg .who{font-size:11px;color:var(--faint)}
+.stg .dt{font-size:11.5px;color:var(--muted);font-variant-numeric:tabular-nums;margin-top:2px}
+
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.sum p{margin:0 0 10px}
+.sum ul{margin:0;padding-left:18px} .sum li{margin:4px 0}
+
+/* actors */
+.actors table{width:100%;border-collapse:collapse;font-size:13px}
+.actors th,.actors td{text-align:left;padding:7px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+.actors th{font-size:11.5px;color:var(--faint);font-weight:600}
+.cbadge{display:inline-block;font-weight:700;font-size:11.5px;padding:1px 6px;border-radius:5px;background:var(--panel2);margin-right:6px;font-family:ui-monospace,Consolas,monospace}
+.grp{display:inline-block;font-size:11px;padding:0 6px;border-radius:4px;margin-left:4px;color:#fff;vertical-align:1px}
+details summary{cursor:pointer;color:var(--accent);font-size:12.5px}
+.shadows{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.sub{font-size:12px;color:var(--muted)}
+
+/* timeline */
+.tl{position:relative;margin:0;padding:0;list-style:none}
+.tl li{position:relative;display:grid;grid-template-columns:96px 22px 1fr;gap:0 10px;padding:6px 0}
+.tl .d{text-align:right;font-variant-numeric:tabular-nums;font-size:12.5px;color:var(--muted);padding-top:1px}
+.tl .rail{position:relative}
+.tl .rail:before{content:"";position:absolute;left:10px;top:-6px;bottom:-6px;width:2px;background:var(--line)}
+.tl li:first-child .rail:before{top:10px} .tl li:last-child .rail:before{bottom:calc(100% - 10px)}
+.tl .rail i{position:absolute;left:5px;top:5px;width:12px;height:12px;border-radius:50%;border:2px solid var(--panel)}
+.tl .ev{font-size:13.5px}
+.tl .ev .orig{font-size:11.5px;color:var(--faint)}
+.tl .ev .lane{font-size:11px;font-weight:600;margin-right:6px}
+.tl li.future .ev{opacity:.75} .tl li.future .rail i{background:transparent!important;border:2px dashed var(--c-future)}
+.tl li.yr{grid-template-columns:96px 22px 1fr;padding:12px 0 4px}
+.tl li.yr .d{font-weight:700;color:var(--text);font-size:13px}
+.unv{font-size:10.5px;color:var(--current);border:1px solid var(--current);border-radius:4px;padding:0 4px;margin-left:6px}
+.toolbar{display:flex;gap:10px;align-items:center;margin-left:auto;font-size:12px;color:var(--muted)}
+.toolbar label{cursor:pointer;display:flex;gap:4px;align-items:center}
+.lanes{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line)}
+
+.family{display:flex;flex-direction:column;gap:6px}
+.fam-node{display:flex;align-items:center;gap:8px;font-size:13px}
+.fam-node .ln{color:var(--faint)}
+.fam-node.me{font-weight:700}
+.relrow{font-size:12.5px;padding:3px 0}
+
+.empty{padding:40px;text-align:center;color:var(--muted)}
+.pill.open{color:var(--open);border-color:color-mix(in srgb,var(--open) 50%,transparent);font-weight:600}
+.init{padding:9px 0;border-bottom:1px dashed var(--line)} .init:last-child{border-bottom:0}
+.ihd{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.ititle{font-weight:600;font-size:13.5px}
+.steps{display:flex;flex-wrap:wrap;gap:4px;align-items:center;margin:5px 0 2px;font-size:11.5px}
+.step{padding:1px 7px;border-radius:5px;background:var(--panel2);color:var(--faint)}
+.step.on{color:var(--text)}
+.arr{color:var(--faint)}
+.actgrp{margin-bottom:10px} .agh{font-size:12px;font-weight:600;color:var(--muted);margin:6px 0 2px}
+.act{display:flex;flex-wrap:wrap;gap:4px 8px;align-items:baseline;font-size:13px;padding:3px 0 3px 94px;position:relative}
+.act .d{position:absolute;left:0;top:3px;color:var(--muted);font-variant-numeric:tabular-nums;font-size:12.5px}
+.chg li .t{font-size:13px}
+.help code{background:var(--panel2);padding:2px 6px;border-radius:5px;font-size:12.5px}
+.help pre{background:var(--panel2);padding:10px 12px;border-radius:8px;overflow:auto;font-size:12.5px}
+
+@media (max-width: 1000px){
+  .layout,.grid2,.cols{grid-template-columns:1fr}
+  .side{position:static;max-height:none}
+  .list{max-height:320px}
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .pipe{grid-template-columns:repeat(8,110px)}
+}
+@media (max-width: 560px){
+  main{padding:12px 16px 40px} .hwrap{padding:10px 16px}
+  .tl li{grid-template-columns:78px 22px 1fr}
+  nav.tabs{margin-left:0;width:100%}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="hwrap">
+    <div class="brand">欧盟电池与能源立法追踪<small>EU Battery &amp; Energy Industrial Policy Legislative Tracker</small></div>
+    <nav class="tabs" id="tabs">
+      <button data-v="overview">总览</button>
+      <button data-v="dossiers">法规库</button>
+      <button data-v="drafts">草案与二级立法</button>
+      <button data-v="feed">动态时间线</button>
+      <button data-v="help">数据与更新</button>
+    </nav>
+    <div class="hright"><span id="gen"></span><button class="iconbtn" id="themeBtn" title="切换明暗">◐</button></div>
+  </div>
+</header>
+<main id="app"></main>
+
+<script src="data/curated.js"></script>
+<script src="data/oeil-data.js"></script>
+<script src="data/secondary-data.js"></script>
+<script src="data/changes.js"></script>
+<script>
+(function(){
+"use strict";
+const CUR = window.CURATED || [];
+const CATS = window.CATEGORIES || {};
+const OEIL = (window.OEIL_DATA && window.OEIL_DATA.procedures) || {};
+const GEN = window.OEIL_DATA && window.OEIL_DATA.generatedAt;
+const SEC = (window.SECONDARY_DATA && window.SECONDARY_DATA.dossiers) || {};
+const SEC_GEN = window.SECONDARY_DATA && window.SECONDARY_DATA.generatedAt;
+const CHG = (window.CHANGES && window.CHANGES.changes) || [];
+const CHG_RUNS = (window.CHANGES && window.CHANGES.runs) || [];
+const TODAY = new Date().toISOString().slice(0,10);
+
+/* ---------- dictionaries ---------- */
+const LANES = {
+  commission:{zh:"欧委会", color:"var(--c-commission)"},
+  epc:{zh:"议会委员会", color:"var(--c-epc)"},
+  epp:{zh:"议会全会", color:"var(--c-epp)"},
+  council:{zh:"理事会", color:"var(--c-council)"},
+  trilogue:{zh:"三方谈判", color:"var(--c-trilogue)"},
+  final:{zh:"签署/公报", color:"var(--c-final)"},
+  impl:{zh:"实施节点", color:"var(--c-impl)"},
+  secondary:{zh:"二级立法/草案", color:"var(--c-sec)"},
+  other:{zh:"咨询机构/成员国议会", color:"var(--c-other)"}
+};
+const ACTTYPE = {REG_DEL:"授权条例",DEC_DEL:"授权决定",DIR_DEL:"授权指令",REG_IMPL:"实施条例",DEC_IMPL:"实施决定",DIR_IMPL:"实施指令",PROP_REG:"条例提案",PROP_DIR:"指令提案",PROP_DEC:"决定提案",REG:"委员会条例",DEC:"委员会决定",DIR:"指令",COMMUNICATION:"通讯",COM:"通讯",RECOMMENDATION:"建议",REC:"建议",GUIDELINES:"指南",STAFF_WORKING_DOCUMENT:"工作文件",REPORT:"报告",OTHER:"其他"};
+const PUBTYPE = t => {
+  if(!t) return "";
+  if(/_DRAFT$/.test(t)) return "草案征求意见";
+  if(t==="INIT_PLANNED") return "列入规划";
+  if(/INCEP|ROADMAP|CFE|CALL_FOR_EVIDENCE/.test(t)) return "证据征集/初步影响评估";
+  if(/OPC/.test(t)) return "公众咨询";
+  if(t==="ABANDONED") return "已放弃";
+  if(/^PROP_/.test(t)) return "立法提案通过";
+  return "欧委会通过";
+};
+const ACTKIND = {delegated:"授权法案",implementing:"实施法案",standard:"协调标准",guidance:"指南与通知",report:"欧委会报告",amending:"修订法案（立法）",proposal:"立法提案","commission-act":"委员会条例/决定","council-act":"理事会法案",other:"其他相关文件"};
+const DOCTYPE = [
+  [/^Committee draft report/,"委员会报告草案"],[/^Amendments tabled in committee/,"委员会修正案"],[/^Committee opinion/,"意见委员会意见"],
+  [/^Committee report tabled/,"委员会报告（提交全会）"],[/^Text adopted by Parliament, partial vote/,"全会通过文本（部分表决/谈判授权）"],[/^Text adopted by Parliament/,"全会通过文本"],
+  [/^Text agreed during interinstitutional negotiations/,"三方谈判协议文本"],[/^Specific opinion/,"专项意见"],[/^Coreper letter/,"COREPER 确认三方协议函"],[/^Draft final act/,"最终法案草案"],
+  [/^Legislative proposal/,"立法提案"],[/^Document attached to the procedure/,"提案附件（影响评估等）"],[/^Commission response/,"欧委会对议会文本的回应"],
+  [/^Reasoned opinion/,"理由意见（辅助性原则）"],[/^Contribution/,"成员国议会意见"],[/Economic and Social Committee/,"经济和社会委员会意见"],[/Committee of the Regions/,"地区委员会意见"],
+  [/^Council position/,"理事会一读立场"],[/^Commission communication on Council/,"欧委会对理事会立场的通讯"]
+];
+const docZh = t => { for(const [re,z] of DOCTYPE) if(re.test(t)) return z; return t; };
+const INST = {EP:"欧洲议会",CSL:"欧盟理事会",EC:"欧盟委员会",NP:"成员国议会",OTHER:"咨询机构"};
+const EVT = [
+  [/^Legislative proposal published/, "commission", "欧委会发布立法提案"],
+  [/^Committee referral announced in Parliament/, "epc", "议会宣布交由委员会审议（一读）"],
+  [/^Referral to associated committees/, "epc", "议会宣布联合（关联）委员会参与审议"],
+  [/^Committee decision to open interinstitutional negotiations/, "epc", "委员会表决通过报告并决定启动三方谈判"],
+  [/^Vote in committee/, "epc", "委员会表决（一读报告）"],
+  [/^Committee report tabled for plenary/, "epc", "委员会报告提交全会"],
+  [/^Matter referred back to the committee responsible for interinstitutional negotiations/, "epc", "全会将案件发回委员会，授权开展三方谈判"],
+  [/^Approval in committee of the text agreed/, "trilogue", "委员会批准三方谈判达成的协议文本"],
+  [/^Committee decision to enter into interinstitutional negotiations announced in plenary/, "epp", "全会宣布委员会进入三方谈判的决定（第72条）"],
+  [/^Committee decision to enter into interinstitutional negotiations confirmed by plenary/, "epp", "全会确认谈判授权（第72条）"],
+  [/^Urgent procedure requested/, "epp", "党团申请紧急程序"],
+  [/^Debate in Parliament/, "epp", "全会辩论"],
+  [/^Results of vote in Parliament/, "epp", "全会表决结果"],
+  [/^Decision by Parliament/, "epp", "议会全会作出一读决定"],
+  [/^Resumption of business/, "epp", "新一届议会恢复审议"],
+  [/^Act adopted by Council after Parliament's 1st reading/, "council", "理事会在议会一读后正式通过法案"],
+  [/Council/, "council", null],
+  [/^Final act signed/, "final", "议会议长与理事会主席签署法案"],
+  [/^Final act published in Official Journal/, "final", "法案在《欧盟官方公报》发布"],
+  [/Indicative plenary sitting date/, "epp", "全会审议预定日期"]
+];
+const CSTAGE = {wp:"理事会工作组审议", coreper:"COREPER 授权", ga:"理事会总体方针", trilogue:"三方谈判", deal:"三方临时协议", endorse:"COREPER 确认协议"};
+const MKIND = {force:"生效", apply:"开始适用", deadline:"义务期限", transpose:"转化期限", secondary:"二级立法/指南", review:"评估审查"};
+const STATUS = {
+  "Procedure completed":"程序已完成",
+  "Awaiting committee decision":"等待议会委员会表决",
+  "Awaiting Parliament's position in 1st reading":"等待议会一读立场",
+  "Awaiting Parliament 1st reading / single reading / budget 1st stage":"等待议会一读",
+  "Awaiting Council's 1st reading position":"等待理事会一读立场",
+  "Provisional agreement between Parliament and Council on final act":"议会与理事会已达成临时协议",
+  "Awaiting signature of act":"等待签署",
+  "Awaiting final decision":"等待最终决定",
+  "Preparatory phase in Parliament":"议会准备阶段",
+  "Procedure completed, awaiting publication in Official Journal":"已通过，待公报发布"
+};
+const COMM = {ENVI:"环境、公共卫生与食品安全",ITRE:"工业、研究与能源",IMCO:"内部市场与消费者保护",TRAN:"交通与旅游",JURI:"法律事务",INTA:"国际贸易",ECON:"经济与货币事务",BUDG:"预算",AFET:"外交事务",DEVE:"发展",EMPL:"就业与社会事务",REGI:"区域发展",AGRI:"农业与农村发展",LIBE:"公民自由、司法与内政",CONT:"预算控制",AFCO:"宪法事务",PECH:"渔业",CULT:"文化与教育",FEMM:"妇女权利与性别平等",PETI:"请愿"};
+const ROLE = {"Committee responsible":"主审委员会","Joint committee responsible":"联合主审委员会","Committee for opinion":"提供意见委员会","Committee for opinion on the legal basis":"法律依据意见委员会","Committee for opinion on the recast technique":"重订技术意见委员会","Committee for budgetary assessment":"预算评估委员会","Former committee responsible":"原主审委员会","Former committee for opinion":"原意见委员会"};
+const GRP = {"EPP":"#3a7bd5","S&D":"#d6312f","Renew":"#e6b400","Greens/EFA":"#3f9b4c","ECR":"#1d4e89","ID":"#2b3856","PfE":"#2a2e6e","The Left":"#8a1a1a","ESN":"#4b3a26","NI":"#7d7d7d","GUE/NGL":"#8a1a1a"};
+const STAGES = [
+  {k:"prop", nm:"欧委会提案", who:"European Commission"},
+  {k:"epc", nm:"议会委员会", who:"EP Committees"},
+  {k:"epm", nm:"议会立场", who:"EP Plenary"},
+  {k:"cou", nm:"理事会立场", who:"Council"},
+  {k:"tri", nm:"三方协议", who:"Trilogue"},
+  {k:"adopt", nm:"正式通过", who:"EP + Council"},
+  {k:"oj", nm:"签署与公报", who:"Official Journal"},
+  {k:"impl", nm:"实施适用", who:"Application"}
+];
+
+/* ---------- helpers ---------- */
+const esc = s => String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fmt = d => d ? d.replace(/-/g,".") : "";
+const store = { get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v)}catch(e){return d}}, set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}} };
+function classify(ev){
+  for(const [re,lane,zh] of EVT){ if(re.test(ev)) return {lane, zh: zh || ev}; }
+  return {lane:"epp", zh:ev};
+}
+function grpColor(g){ return GRP[g] || "#7d7d7d"; }
+function shortTitle(t){ t = String(t||""); const m = t.match(/^(Commission (?:Delegated|Implementing) (?:Regulation|Decision|Directive) \(EU\) \d{4}\/\d+)/); let rest = t.replace(/^.*? of \d{1,2} \w+ \d{4} /,""); if(m) return m[1].replace(/^Commission /,"") + "：" + rest.slice(0,110) + (rest.length>110?"…":""); return t.slice(0,140)+(t.length>140?"…":""); }
+const oeilUrl = ref =>"https://oeil.europarl.europa.eu/oeil/en/procedure-file?reference=" + encodeURIComponent(ref);
+
+/* ---------- build dossiers ---------- */
+const D = CUR.map(c => {
+  const o = OEIL[c.oeil] || null;
+  const events = [];
+  if(o && o.events){
+    o.events.forEach(e => {
+      const k = classify(e.event);
+      events.push({date:e.date, lane:k.lane, zh:k.zh, orig:e.event, refs:e.refs||[], summary:e.summary||"", src:"oeil"});
+    });
+  }
+  (c.council||[]).forEach(x => events.push({date:x.date, lane: x.stage==="deal"||x.stage==="trilogue" ? "trilogue" : "council", zh: x.label, orig: (CSTAGE[x.stage]||x.stage) + (x.body? " · "+x.body:""), note:x.note, verified: x.verified!==false, src:"curated", cstage:x.stage, planned:!!x.planned}));
+  (c.milestones||[]).forEach(x => events.push({date:x.date, lane:"impl", zh:x.label, orig: MKIND[x.kind]||x.kind, verified:x.verified!==false, src:"milestone", kind:x.kind}));
+  if(o && o.forecasts) o.forecasts.forEach(f => events.push({date:f.date, lane: /committee/i.test(f.event)?"epc":"epp", zh: "排期：" + (/Indicative plenary/.test(f.event)?"全会审议预定日期（一读）":/Vote scheduled in committee/.test(f.event)?"委员会表决排期":f.event), orig:"OEIL Forecast · "+f.event, src:"forecast", planned:true}));
+  if(c.tracking) (c.tracking.items||[]).forEach(t => events.push({date:t.date, lane:t.lane||"other", zh:t.text, orig:(t.src||c.tracking.source)+" · 截至 "+fmt(c.tracking.asOf), src:"tracking", planned:!!t.planned, verified:t.verified!==false, url:c.tracking.url}));
+  // secondary legislation (own entry only; family view aggregates)
+  const s = SEC[c.id];
+  if(s){
+    (s.initiatives||[]).forEach(i => (i.publications||[]).forEach(p => { if(p.date && p.type!=="INIT_PLANNED") events.push({date:p.date, lane:"secondary", zh:`${ACTTYPE[i.actType]||i.actType}「${i.title}」${PUBTYPE(p.type)}`, orig:`Have Your Say · ${p.type}${p.fbEnd?" · 反馈期至 "+fmt(p.fbEnd):""}${p.feedback?" · 反馈 "+p.feedback+" 条":""}`, src:"hys", url:i.url}); }));
+    (s.acts||[]).filter(a=>a.rel!=="cites" || ["standard","delegated","implementing","guidance"].includes(a.kind)).forEach(a => events.push({date:a.date, lane:"secondary", zh:`${ACTKIND[a.kind]||"文件"}发布：${shortTitle(a.title)}`, orig:`EUR-Lex · CELEX ${a.celex}`, src:"eurlex", url:a.url}));
+  }
+  events.forEach(e=>{ if(e.planned && e.date<=TODAY){ e.zh += "（原定日期，结果待确认）"; e.verified=false; e.planned=false; } });
+  events.sort((a,b)=> a.date<b.date?-1:a.date>b.date?1:0);
+  const d = Object.assign({}, c, {o, events});
+  d.stages = computeStages(d);
+  d.completed = o ? /completed/i.test(o.status||"") : false;
+  d.proposal = (events.find(e=>/^Legislative proposal/.test(e.orig))||{}).date || "";
+  d.lastPast = [...events].reverse().find(e=>e.date<=TODAY && e.src!=="milestone");
+  return d;
+});
+/* ---------- secondary legislation helpers ---------- */
+function initStatus(i){
+  const pubs = (i.publications||[]).filter(p=>p.date);
+  const last = pubs[pubs.length-1];
+  if(!last) return {k:"plan", zh:"列入规划", open:false};
+  if(last.type==="ABANDONED") return {k:"abandoned", zh:"已放弃", open:false};
+  const open = !!(last.fbEnd && last.fbEnd >= TODAY && (!last.fbStart || last.fbStart<=TODAY));
+  if(/_DRAFT$/.test(last.type)) return {k:"draft", zh: open?"草案意见征求中":"草案已发布，待通过", open, last};
+  if(last.type==="INIT_PLANNED") return {k:"plan", zh:"列入规划，草案未发布", open:false, last};
+  if(/INCEP|ROADMAP|CFE|CALL_FOR_EVIDENCE|OPC/.test(last.type)) return {k:"consult", zh: open?"咨询进行中":"咨询已结束", open, last};
+  return {k:"adopted", zh: /^PROP_/.test(last.type)?"已提出立法提案":"欧委会已通过", open, last};
+}
+function familyIds(d){ let root=d; while(root.parent && BYID[root.parent]) root=BYID[root.parent]; const ids=[]; const walk=n=>{ids.push(n.id); D.filter(c=>c.parent===n.id).forEach(walk);}; walk(root); return {root, ids}; }
+function secFor(d){
+  const {root, ids} = familyIds(d);
+  const acts=[], inits=[], seen=new Set();
+  ids.forEach(id=>{ const s=SEC[id]; if(!s) return; (s.acts||[]).forEach(a=>{ if(!seen.has(a.celex)){seen.add(a.celex); acts.push(Object.assign({owner:id},a));} }); (s.initiatives||[]).forEach(i=>{ if(!seen.has("h"+i.id)){seen.add("h"+i.id); inits.push(Object.assign({owner:id},i));} }); });
+  return {root, acts, inits};
+}
+function allInits(){
+  const out=[];
+  D.forEach(d=>{ const s=SEC[d.id]; if(!s) return; const prop = familyIds(d).root.proposal || d.proposal || "";
+    (s.initiatives||[]).forEach(i=>{ const st=initStatus(i);
+      if(prop && ["consult","plan"].includes(st.k) && st.last && st.last.date && st.last.date < prop && !/^(REG|DEC|DIR)_(DEL|IMPL)$/.test(i.actType)) st.k="historic";
+      out.push(Object.assign({d, st},i)); }); });
+  return out;
+}
+const BYID = Object.fromEntries(D.map(d=>[d.id,d]));
+const BYREF = Object.fromEntries(D.map(d=>[d.oeil,d]));
+
+function computeStages(d){
+  const ev = d.events, past = e => e.date <= TODAY;
+  const find = re => ev.filter(e=>e.src==="oeil" && re.test(e.orig));
+  const first = a => a.length ? a[0].date : "";
+  const last = a => a.length ? a[a.length-1].date : "";
+  const S = {};
+  S.prop = {date:first(find(/^Legislative proposal/))};
+  const epcEv = find(/^(Committee referral|Vote in committee|Committee report tabled|Committee decision to open)/);
+  const voteC = find(/^(Vote in committee|Committee decision to open)/);
+  S.epc = {date:first(voteC), started: epcEv.length>0, note: voteC.length? "委员会表决" : (epcEv.length? "审议中":"")};
+  const agreeC = find(/^Approval in committee of the text agreed/);
+  const decisions = find(/^Decision by Parliament/);
+  const rule72 = find(/confirmed by plenary/);
+  const cAdopt = find(/^Act adopted by Council/);
+  const agreeDate = first(agreeC);
+  const curDeal = (d.council||[]).filter(x=>x.stage==="deal").map(x=>x.date).sort();
+  const dealDate = curDeal[0] || agreeDate;
+  let mandate = "", finalEp = "";
+  if(dealDate){
+    const before = decisions.filter(e=>e.date < dealDate), after = decisions.filter(e=>e.date >= dealDate);
+    mandate = first(before) || first(rule72) || first(find(/^Matter referred back/));
+    finalEp = first(after);
+  } else if(decisions.length){
+    mandate = first(decisions);
+    if(cAdopt.length) finalEp = last(decisions);
+  } else mandate = first(rule72);
+  S.epm = {date:mandate, note: rule72.length && !decisions.filter(e=>!dealDate||e.date<dealDate).length ? "谈判授权（第72条）" : (mandate?"一读立场/谈判授权":"")};
+  const cpos = (d.council||[]).filter(x=>x.stage==="ga"||x.stage==="coreper").map(x=>x.date).sort();
+  S.cou = {date: cpos[0]||"", note: cpos.length? "总体方针 / 谈判授权" : ""};
+  const noTrilogue = !dealDate && cAdopt.length>0;
+  S.tri = {date: dealDate, skip: noTrilogue, note: noTrilogue? "未经三方谈判" : (dealDate? "达成临时协议":"")};
+  S.adopt = {date: first(cAdopt), note: finalEp? "议会 "+fmt(finalEp)+" · 理事会 "+fmt(first(cAdopt)) : ""};
+  if(!S.cou.date && (S.tri.date||S.adopt.date)) { S.cou.skip = true; S.cou.note = noTrilogue ? "直接通过议会文本" : "OEIL 未载，待补充"; }
+  const oj = find(/^Final act published/);
+  S.oj = {date:first(oj), note: d.o && d.o.mainAct ? d.o.mainAct : ""};
+  const impl = (d.milestones||[]).filter(m=>m.kind==="apply"||m.kind==="force"||m.kind==="transpose").map(m=>m.date).sort();
+  const implPast = impl.filter(x=>x<=TODAY);
+  S.impl = {date: implPast.length? implPast[implPast.length-1] : "", next: impl.find(x=>x>TODAY)||"", note:""};
+  if(S.oj.date && !impl.length) S.impl.note = "见公报";
+  // status per stage
+  let cur = -1;
+  const keys = STAGES.map(s=>s.k);
+  keys.forEach(k => { S[k].done = !!(S[k].date && S[k].date<=TODAY) || (k==="epc" && !!S.epm.date) || (S[k].skip && !!S.adopt.date); });
+  if(S.oj.done && !S.impl.done && S.oj.date) S.impl.done = !S.impl.next;
+  for(let i=0;i<keys.length;i++){ if(!S[keys[i]].done){ cur=i; break; } }
+  // parallel tracks: EP and Council work at the same time — mark whichever is unfinished as current
+  S._cur = cur;
+  return S;
+}
+
+/* ---------- state & routing ---------- */
+let state = { view:"overview", id:null, cat:store.get("cat","all"), st:store.get("st","all"), q:"", showAll:false, lanes: store.get("lanes2", Object.keys(LANES)) };
+function parseHash(){
+  const h = location.hash.replace(/^#\/?/,"").split("/");
+  if(h[0]==="d" && h[1] && BYID[h[1]]){ state.view="dossiers"; state.id=h[1]; }
+  else if(["overview","dossiers","drafts","feed","help"].includes(h[0])){ state.view=h[0]; if(h[0]==="dossiers" && !state.id) state.id = D[0] && D[0].id; }
+  else state.view="overview";
+}
+window.addEventListener("hashchange",()=>{parseHash();render();});
+function nav(view,id){
+  state.view=view; if(id) state.id=id; if(view==="dossiers" && !state.id) state.id=D[0]&&D[0].id;
+  try{ history.replaceState(null,"", view==="dossiers" ? "#/d/"+state.id : "#/"+view); }catch(e){}
+  render(); window.scrollTo(0,0);
+}
+document.getElementById("tabs").addEventListener("click",e=>{
+  const b=e.target.closest("button"); if(!b) return; nav(b.dataset.v);
+});
+document.addEventListener("click",e=>{
+  const a=e.target.closest('a[href^="#/"]'); if(!a) return; e.preventDefault(); nav(a.getAttribute("href").slice(2));
+});
+const themeBtn = document.getElementById("themeBtn");
+const savedTheme = store.get("theme",null); if(savedTheme) document.documentElement.setAttribute("data-theme",savedTheme);
+themeBtn.onclick = ()=>{
+  const cur = document.documentElement.getAttribute("data-theme") || (matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");
+  const nx = cur==="dark"?"light":"dark"; document.documentElement.setAttribute("data-theme",nx); store.set("theme",nx);
+};
+document.getElementById("gen").textContent = GEN ? "OEIL 数据更新于 " + GEN.replace("T"," ").slice(0,16) : "未找到 OEIL 数据（请运行更新脚本）";
+
+/* ---------- render ---------- */
+const app = document.getElementById("app");
+function render(){
+  document.querySelectorAll("#tabs button").forEach(b=>b.classList.toggle("on", b.dataset.v===state.view));
+  if(state.view==="overview") app.innerHTML = vOverview();
+  else if(state.view==="dossiers") { app.innerHTML = vDossiers(); bindDossiers(); }
+  else if(state.view==="feed") { app.innerHTML = vFeed(); bindFeed(); }
+  else if(state.view==="drafts") { app.innerHTML = vDrafts(); bindDrafts(); }
+  else app.innerHTML = vHelp();
+  app.querySelectorAll("[data-go]").forEach(el=>el.addEventListener("click",e=>{ e.preventDefault(); nav("dossiers", el.dataset.go); }));
+}
+
+function catDot(cat){ return `<span class="cat" style="background:var(--${CATS[cat]?CATS[cat].color:"carbon"})"></span>`; }
+function statusPill(d){
+  if(!d.o) return `<span class="pill">无 OEIL 数据</span>`;
+  const z = STATUS[d.o.status] || d.o.status;
+  return `<span class="pill ${d.completed?"done":"live"}">${esc(z)}</span>`;
+}
+function curStageName(d){
+  if(d.completed) return d.stages.impl.done ? "已进入实施" : "已发布，待适用";
+  const i = d.stages._cur; return i>=0 ? STAGES[i].nm : "";
+}
+
+/* ----- overview ----- */
+function vOverview(){
+  const live = D.filter(d=>!d.completed), done = D.filter(d=>d.completed);
+  const y1 = new Date(Date.now()-365*864e5).toISOString().slice(0,10);
+  const recent = allEvents().filter(e=>e.date<=TODAY && e.date>=y1 && !["milestone","hys","eurlex"].includes(e.src) && !/Results of vote|Debate in/.test(e.orig||"")).slice(-14).reverse();
+  const upcoming = allEvents().filter(e=>e.date>TODAY && e.src!=="milestone").slice(0,12);
+  const inits = allInits();
+  const openI = inits.filter(i=>i.st.open).sort((a,b)=>a.st.last.fbEnd<b.st.last.fbEnd?-1:1);
+  const draftI = inits.filter(i=>i.st.k==="draft" && !i.st.open);
+  const lastRun = CHG_RUNS[0];
+  const newest = CHG.slice(0,12);
+  return `
+  <div class="kpis">
+    <div class="card kpi"><div class="v">${D.length}</div><div class="l">监测立法程序</div></div>
+    <div class="card kpi"><div class="v" style="color:var(--current)">${live.length}</div><div class="l">审议中</div></div>
+    <div class="card kpi"><div class="v" style="color:var(--done)">${done.length}</div><div class="l">已通过并发布</div></div>
+    <div class="card kpi"><div class="v" style="color:var(--open)">${openI.length}</div><div class="l">正在征求意见的草案</div></div>
+  </div>
+  <div class="grid2" style="margin-bottom:16px">
+    <div class="card"><div class="hd"><h3>意见征求日历</h3><a href="#/drafts" style="margin-left:auto;font-size:12px">全部草案 →</a></div><div class="bd">
+      ${openI.length?openI.map(i=>`<div class="act"><span class="d" style="color:var(--open)">截止 ${fmt(i.st.last.fbEnd).slice(5)}</span><span class="pill">${esc(ACTTYPE[i.actType]||i.actType)}</span> <a href="${esc(i.url)}" target="_blank" rel="noopener">${esc(i.title)}</a> <span class="sub">· <a data-go="${i.d.id}" href="javascript:void 0">${esc(i.d.shortZh)}</a></span></div>`).join(""):'<div class="muted" style="font-size:13px">当前没有开放的反馈期</div>'}
+      <div class="sub" style="margin-top:10px">另有 ${draftI.length} 件草案已结束征求意见、等待欧委会通过；${inits.filter(i=>i.st.k==="plan").length} 件列入规划。</div>
+    </div></div>
+    <div class="card chg"><div class="hd"><h3>最近一次更新的新增动态</h3><span class="muted" style="margin-left:auto;font-size:12px">${lastRun?(lastRun.baseline?"首次运行：已建立基线":`${esc(lastRun.date.replace("T"," ").slice(0,16))} · 新增 ${lastRun.newItems} 项`):"尚未运行变更追踪"}</span></div><div class="bd">
+      ${newest.length?`<ul class="feed">${newest.map(c=>{const d=BYID[c.dossier]; return `<li><div class="d">${fmt(c.detected)}</div><div><div class="t">${esc(c.text)}</div><div class="s">${d?`<a data-go="${d.id}" href="javascript:void 0">${esc(d.shortZh)}</a> · `:""}${esc(c.source)}${c.url?` · <a href="${esc(c.url)}" target="_blank" rel="noopener">原文</a>`:""}</div></div></li>`}).join("")}</ul>`:'<div class="muted" style="font-size:13px">之后每次运行 <code>tools\\update-all.ps1</code>，这里会列出与上次相比新出现的事件、文件、投票排期、草案与二级立法。</div>'}
+    </div></div>
+  </div>
+  <div class="card" style="margin-bottom:16px">
+    <div class="hd"><h3>立法进程总图</h3><span class="muted" style="font-size:12px">从欧委会提案到公报发布 · 点击法规名称查看详情</span></div>
+    <div class="bd">
+      <div class="legend" style="margin-bottom:10px">
+        <span><i style="background:var(--c-commission);width:3px"></i>欧委会提案</span>
+        <span><i style="background:var(--c-epc)"></i>提案 → 议会立场</span>
+        <span><i style="background:var(--c-council);width:8px;transform:rotate(45deg)"></i>理事会立场</span>
+        <span><i style="background:var(--c-trilogue)"></i>三方谈判 → 临时协议</span>
+        <span><i style="background:var(--c-final)"></i>协议 → 公报发布</span>
+        <span><i style="background:repeating-linear-gradient(45deg,var(--c-epc) 0 3px,transparent 3px 6px)"></i>仍在审议</span>
+        <span><i style="background:var(--c-epp);width:2px"></i>今天</span>
+      </div>
+      ${gantt()}
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="card"><div class="hd"><h3>近 12 个月主要动态</h3><a href="#/feed" style="margin-left:auto;font-size:12px">全部 →</a></div><div class="bd"><ul class="feed">${recent.map(feedLi).join("")||'<li class="muted">暂无</li>'}</ul></div></div>
+    <div class="card"><div class="hd"><h3>即将到来的节点</h3></div><div class="bd"><ul class="feed">${upcoming.map(feedLi).join("")||'<li class="muted">暂无</li>'}</ul></div></div>
+  </div>`;
+}
+function feedLi(e){
+  const L = LANES[e.lane];
+  return `<li><div class="d">${fmt(e.date)}</div><div><div class="t"><span class="lane-dot" style="background:${L.color}"></span>${esc(e.zh)}${e.verified===false?'<span class="unv">待核实</span>':''}</div><div class="s"><a data-go="${e.d.id}" href="javascript:void 0">${esc(e.d.shortZh||e.d.nameZh)}</a> · ${L.zh} · <span class="mono">${esc(e.d.oeil)}</span></div></div></li>`;
+}
+function allEvents(){
+  const out=[]; D.forEach(d=>d.events.forEach(e=>out.push(Object.assign({d},e))));
+  return out.sort((a,b)=>a.date<b.date?-1:a.date>b.date?1:0);
+}
+function gantt(){
+  const order = Object.keys(CATS);
+  const rows = [...D].filter(d=>d.proposal).sort((a,b)=> order.indexOf(a.category)-order.indexOf(b.category) || (a.proposal<b.proposal?-1:1));
+  const minY = Math.min(...rows.map(d=>+d.proposal.slice(0,4))), maxY = new Date().getFullYear()+1;
+  const t0 = Date.parse(minY+"-01-01"), t1 = Date.parse(maxY+"-01-01");
+  const x = d => ((Date.parse(d)-t0)/(t1-t0)*100).toFixed(2)+"%";
+  const w = (a,b) => ((Date.parse(b)-Date.parse(a))/(t1-t0)*100).toFixed(2)+"%";
+  let years=""; for(let y=minY;y<=maxY;y++){ years += `<span style="left:${x(y+"-01-01")}">${y}</span>`; }
+  let grid=""; for(let y=minY;y<=maxY;y++){ grid += `<div class="gyear" style="left:${x(y+"-01-01")}"></div>`; }
+  const today = `<div class="gtoday" style="left:${x(TODAY)}"></div>`;
+  return `<div class="gantt-wrap"><div class="gantt">
+    <div class="grow" style="border-bottom:1px solid var(--line)"><div></div><div class="gaxis">${years}</div></div>
+    ${rows.map(d=>{
+      const S=d.stages, p=d.proposal, m=S.epm.date, deal=S.tri.date, oj=S.oj.date;
+      let segs="";
+      if(d.completed && oj){
+        const mid = deal || m || p;
+        if(m && m>p) segs += `<div class="seg ep" style="left:${x(p)};width:${w(p, deal && deal<m?deal:m)}" title="提案 → 议会立场"></div>`;
+        if(deal){ const s = m && m<deal ? m : p; segs += `<div class="seg tri" style="left:${x(s)};width:${w(s,deal)}" title="三方谈判"></div>`; }
+        else if(!m) segs += `<div class="seg ep" style="left:${x(p)};width:${w(p,mid)}"></div>`;
+        segs += `<div class="seg fin" style="left:${x(deal||m||p)};width:${w(deal||m||p,oj)}" title="协议 → 公报"></div>`;
+      } else {
+        if(m) segs += `<div class="seg ep" style="left:${x(p)};width:${w(p,m)}" title="提案 → 议会立场"></div>`;
+        const s = m||p;
+        if(deal) segs += `<div class="seg tri" style="left:${x(s)};width:${w(s,deal)}"></div><div class="seg open" style="left:${x(deal)};width:${w(deal,TODAY)}"></div>`;
+        else segs += `<div class="seg open" style="left:${x(s)};width:${w(s,TODAY)}" title="审议中"></div>`;
+      }
+      const cous = (d.council||[]).filter(c=>c.stage==="ga"||c.stage==="coreper").map(c=>`<div class="mk cou" style="left:${x(c.date)}" title="${esc(c.label)} ${fmt(c.date)}"></div>`).join("");
+      const tip = `${d.nameZh} | 提案 ${fmt(p)}${m?" | 议会立场 "+fmt(m):""}${deal?" | 协议 "+fmt(deal):""}${oj?" | 公报 "+fmt(oj):""}`;
+      return `<div class="grow"><div class="gname" data-go="${d.id}" title="${esc(tip)}">${catDot(d.category)}${esc(d.shortZh||d.nameZh)}</div>
+        <div class="gtrack" title="${esc(tip)}">${grid}${segs}<div class="mk prop" style="left:${x(p)}"></div>${cous}${today}</div></div>`;
+    }).join("")}
+  </div></div>`;
+}
+
+/* ----- dossiers ----- */
+function filtered(){
+  const q = state.q.trim().toLowerCase();
+  return D.filter(d=>{
+    if(state.cat!=="all" && d.category!==state.cat) return false;
+    if(state.st==="live" && d.completed) return false;
+    if(state.st==="done" && !d.completed) return false;
+    if(state.st==="core" && d.relevance!=="core") return false;
+    if(q){
+      const hay = [d.nameZh,d.shortZh,d.oeil,d.o&&d.o.title,d.o&&d.o.mainAct,(d.tags||[]).join(" "),d.summaryZh].join(" ").toLowerCase();
+      if(!hay.includes(q)) return false;
+    }
+    return true;
+  });
+}
+function vDossiers(){
+  const list = filtered();
+  // group children under parents when parent is visible
+  const ids = new Set(list.map(d=>d.id));
+  const roots = list.filter(d=>!d.parent || !ids.has(d.parent));
+  const rows=[];
+  const push=(d,depth)=>{ rows.push([d,depth]); list.filter(c=>c.parent===d.id).forEach(c=>push(c,depth+1)); };
+  roots.forEach(r=>push(r,0));
+  const sel = BYID[state.id] || D[0];
+  return `<div class="layout">
+    <aside class="card side">
+      <div class="filters">
+        <input class="search" id="q" placeholder="搜索：名称 / 程序编号 / 法案号 / 关键词" value="${esc(state.q)}">
+        <div class="chips" id="cats"><span class="chip ${state.cat==="all"?"on":""}" data-c="all">全部领域</span>${Object.entries(CATS).map(([k,v])=>`<span class="chip ${state.cat===k?"on":""}" data-c="${k}">${catDot(k)}${v.zh}</span>`).join("")}</div>
+        <div class="chips" id="sts">${[["all","全部"],["live","审议中"],["done","已通过"],["core","核心法规"]].map(([k,z])=>`<span class="chip ${state.st===k?"on":""}" data-s="${k}">${z}</span>`).join("")}</div>
+      </div>
+      <div class="list">${rows.map(([d,dep])=>`
+        <div class="item ${dep?"child":""} ${d.id===sel.id?"on":""}" data-go="${d.id}" style="${dep>1?"margin-left:"+(16*dep)+"px":""}">
+          <div class="n">${catDot(d.category)}${esc(d.shortZh||d.nameZh)}</div>
+          <div class="m"><span class="mono">${esc(d.oeil)}</span>${d.o&&d.o.mainAct?`<span>${esc(d.o.mainAct)}</span>`:""}<span style="color:${d.completed?"var(--done)":"var(--current)"}">● ${esc(curStageName(d))}</span></div>
+        </div>`).join("") || '<div class="empty">没有匹配的法规</div>'}
+      </div>
+    </aside>
+    <section class="detail">${sel ? vDetail(sel) : ""}</section>
+  </div>`;
+}
+function bindDossiers(){
+  const q = document.getElementById("q");
+  q.addEventListener("input",()=>{ state.q=q.value; const pos=q.selectionStart; render(); const n=document.getElementById("q"); n.focus(); n.setSelectionRange(pos,pos); });
+  document.getElementById("cats").addEventListener("click",e=>{const c=e.target.closest("[data-c]"); if(!c) return; state.cat=c.dataset.c; store.set("cat",state.cat); render();});
+  document.getElementById("sts").addEventListener("click",e=>{const c=e.target.closest("[data-s]"); if(!c) return; state.st=c.dataset.s; store.set("st",state.st); render();});
+  const sa = document.getElementById("showAll"); if(sa) sa.addEventListener("change",()=>{state.showAll=sa.checked; render();});
+  document.querySelectorAll("[data-lane]").forEach(cb=>cb.addEventListener("change",()=>{
+    state.lanes = [...document.querySelectorAll("[data-lane]")].filter(x=>x.checked).map(x=>x.dataset.lane); store.set("lanes2",state.lanes); render();
+  }));
+}
+
+function vDetail(d){
+  const o = d.o || {};
+  const S = d.stages;
+  const pipe = STAGES.map((s,i)=>{
+    const st = S[s.k]; const cls = st.done ? "done" : (i===S._cur ? "cur" : "");
+    let dt = st.date ? (st.date>TODAY?"预计 ":"") + fmt(st.date) :(s.k==="impl" && st.next ? "下一节点 "+fmt(st.next) : (i===S._cur? "进行中" : "—"));
+    if(s.k==="epc" && !st.date && st.started) dt = st.done ? "未经委员会表决" : "审议中";
+    const note = (s.k==="epc" && st.done && !st.date) ? "紧急程序/直接提交全会" : st.note;
+    return `<div class="stg ${cls} ${st.skip?"skip":""}"><div class="dot">${st.done?"✓":i+1}</div><div class="nm">${s.nm}</div><div class="who">${s.who}</div><div class="dt">${dt}</div>${note?`<div class="who">${esc(note)}</div>`:""}</div>`;
+  }).join("");
+  return `
+  <div class="card dhead">
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">${catDot(d.category)}<span class="muted" style="font-size:12px">${esc(CATS[d.category]?CATS[d.category].zh:"")}</span>${statusPill(d)}${d.relevance==="core"?'<span class="pill core">核心</span>':""}</div>
+    <h1>${esc(d.nameZh)}</h1>
+    <div class="en">${esc(o.title||"")}</div>
+    <div class="meta">
+      <span>程序编号 <b class="mono"><a href="${oeilUrl(d.oeil)}" target="_blank" rel="noopener">${esc(d.oeil)}</a></b></span>
+      ${o.procedureType?`<span>程序 <b>${esc(o.procedureType.replace(/ \(ex-codecision procedure\)/,""))}</b></span>`:""}
+      ${o.instrument?`<span>文件类型 <b>${esc(o.instrument)}</b></span>`:""}
+      ${o.mainAct?`<span>最终法案 <b>${o.mainActHref?`<a href="${esc(o.mainActHref)}" target="_blank" rel="noopener">${esc(o.mainAct)}</a>`:esc(o.mainAct)}</b> <span class="faint">${esc(o.mainActOj||"")}</span></span>`:""}
+      ${o.fetchedAt?`<span class="faint">抓取于 ${esc(o.fetchedAt.replace("T"," ").slice(0,16))}</span>`:""}
+    </div>
+    <div class="tags">${(d.tags||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div>
+  </div>
+
+  <div class="card"><div class="hd"><h3>立法阶段进程</h3><span class="muted" style="font-size:12px">当前：${esc(curStageName(d))}</span></div><div class="pipe">${pipe}</div></div>
+
+  <div class="cols">
+    <div class="card sum"><div class="hd"><h3>法规要点</h3></div><div class="bd"><p>${esc(d.summaryZh||"")}</p>
+      ${(d.impactZh&&d.impactZh.length)?`<div class="sub" style="margin:6px 0 4px;font-weight:600">对电池/能源产业的影响</div><ul>${d.impactZh.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:""}
+    </div></div>
+    <div class="card"><div class="hd"><h3>法规谱系与关联</h3></div><div class="bd">${vFamily(d)}</div></div>
+  </div>
+  ${vTracking(d)}
+  ${vSecondary(d)}
+
+  <div class="card actors"><div class="hd"><h3>主要参与方</h3><span class="muted" style="font-size:12px">来源：OEIL Key players</span></div><div class="bd">${vActors(d)}</div></div>
+  ${vDocs(d)}
+
+  <div class="card"><div class="hd"><h3>完整进程时间线</h3>
+      <div class="toolbar"><label><input type="checkbox" id="showAll" ${state.showAll?"checked":""}>显示全会表决/辩论明细</label></div></div>
+    <div class="lanes">${Object.entries(LANES).map(([k,v])=>`<label><input type="checkbox" data-lane="${k}" ${state.lanes.includes(k)?"checked":""}> <span class="lane-dot" style="background:${v.color}"></span>${v.zh}</label>`).join("")}</div>
+    <div class="bd">${vTimeline(d)}</div>
+  </div>
+  ${o.delegatedActs && o.delegatedActs.length ? `<div class="card"><div class="hd"><h3>授权法案审查（议会）</h3></div><div class="bd">${o.delegatedActs.map(a=>`<div class="relrow"><a class="mono" href="${oeilUrl(a.ref)}" target="_blank" rel="noopener">${esc(a.ref)}</a> <span class="muted">${esc(a.subject)}</span></div>`).join("")}</div></div>`:""}
+  `;
+}
+
+function vFamily(d){
+  // root of family
+  let root = d; while(root.parent && BYID[root.parent]) root = BYID[root.parent];
+  const nodes=[]; const walk=(n,dep)=>{ nodes.push([n,dep]); D.filter(c=>c.parent===n.id).forEach(c=>walk(c,dep+1)); }; walk(root,0);
+  let html = "";
+  if(nodes.length>1){
+    html += `<div class="sub" style="margin-bottom:6px">原始法规 → 后续修订</div><div class="family">` + nodes.map(([n,dep])=>`<div class="fam-node ${n.id===d.id?"me":""}" style="padding-left:${dep*18}px">${dep?'<span class="ln">└</span>':""}${catDot(n.category)}<a data-go="${n.id}" href="javascript:void 0">${esc(n.shortZh||n.nameZh)}</a><span class="mono faint">${esc(n.o&&n.o.mainAct||n.oeil)}</span>${n.completed?"":'<span class="pill live">审议中</span>'}</div>`).join("") + `</div>`;
+  }
+  const rel = (d.o && d.o.relations) || [];
+  if(rel.length){
+    html += `<div class="sub" style="margin:${nodes.length>1?"12px":"0"} 0 4px">OEIL 记录的法律关系</div>` + rel.map(r=>{
+      const inDb = BYREF[r.ref];
+      const lab = r.label.replace(/^Amending act/,"修订法案").replace(/^Amending/,"修订").replace(/^Repealing/,"废止").replace(/^Amended by/,"被修订于").replace(/^Repealed by/,"被废止于").replace(/^See also/,"另见").replace(/^Supplementing/,"补充");
+      return `<div class="relrow">${esc(lab)} · ${inDb?`<a data-go="${inDb.id}" href="javascript:void 0">${esc(inDb.shortZh)}</a> <span class="mono faint">${esc(r.ref)}</span>`:`<a class="mono" href="${oeilUrl(r.ref)}" target="_blank" rel="noopener">${esc(r.ref)}</a>`}</div>`;
+    }).join("");
+  }
+  return html || '<span class="muted">暂无关联记录</span>';
+}
+
+function people(list){ return (list||[]).map(p=>`${esc(p.name)}${p.group?`<span class="grp" style="background:${grpColor(p.group)}">${esc(p.group)}</span>`:""}`).join("、"); }
+function vActors(d){
+  const o=d.o; if(!o) return '<span class="muted">尚无 OEIL 数据。</span>';
+  const cm = o.committees||[];
+  const rows = cm.map(c=>`<tr>
+      <td style="width:34%"><span class="cbadge">${esc(c.abbr)}</span>${esc(COMM[c.abbr]||c.name)}${c.associated?' <span class="pill" style="font-size:10.5px">关联委员会 Rule 58</span>':""}<div class="faint" style="font-size:11.5px">${esc(c.name)}</div></td>
+      <td style="width:18%">${esc(ROLE[c.role]||c.role)}</td>
+      <td>${c.rapporteurs&&c.rapporteurs.length?people(c.rapporteurs):`<span class="muted">${esc(c.note==="The committee decided not to give an opinion."?"委员会决定不出具意见":c.note||"尚未任命")}</span>`}
+        ${c.shadows&&c.shadows.length?`<details><summary>影子报告员（${c.shadows.length}）</summary><div class="shadows">${c.shadows.map(p=>`<span>${esc(p.name)}<span class="grp" style="background:${grpColor(p.group)}">${esc(p.group)}</span></span>`).join("")}</div></details>`:""}</td>
+      <td style="width:92px" class="faint">${esc(c.appointed?c.appointed.split("/").reverse().join("."):"")}</td></tr>`).join("");
+  const comm = (o.commission||[]).filter(r=>r[0]!=="Commission DG");
+  const cou = (o.council||[]).filter(r=>r.join("").trim());
+  const curCou = (d.council||[]);
+  return `
+  <div class="sub" style="font-weight:600;margin-bottom:4px">欧洲议会 European Parliament</div>
+  <table><thead><tr><th>委员会</th><th>角色</th><th>报告员（Rapporteur）</th><th>任命日期</th></tr></thead><tbody>${rows||'<tr><td colspan="4" class="muted">暂无</td></tr>'}</tbody></table>
+  <div class="cols" style="margin-top:14px">
+    <div><div class="sub" style="font-weight:600;margin-bottom:4px">欧盟委员会 European Commission</div>
+      ${comm.length?comm.map(r=>`<div class="relrow">总司 DG：<b>${esc(r[0])}</b>${r[1]?`<br>负责委员：<b>${esc(r[1])}</b>`:""}</div>`).join(""):'<span class="muted">—</span>'}</div>
+    <div><div class="sub" style="font-weight:600;margin-bottom:4px">欧盟理事会 Council of the EU</div>
+      ${cou.length?cou.map(r=>`<div class="relrow">${esc(r.join(" · "))}</div>`).join(""):""}
+      ${curCou.length?curCou.map(x=>`<div class="relrow">${fmt(x.date)} · ${esc(CSTAGE[x.stage]||x.stage)} · ${esc(x.body||"")}${x.verified===false?'<span class="unv">待核实</span>':""}</div>`).join(""):(cou.length?"":'<span class="muted">OEIL 未记载理事会内部节点；可在 data/curated.js 的 council 字段补充。</span>')}
+    </div>
+  </div>`;
+}
+
+function vTimeline(d){
+  let ev = d.events.filter(e=>state.lanes.includes(e.lane));
+  if(!state.showAll) ev = ev.filter(e=>!(e.src==="oeil" && /^(Results of vote|Debate in Parliament)/.test(e.orig)));
+  if(!ev.length) return '<div class="empty">无事件（检查上方的分类开关）</div>';
+  let out = '<ul class="tl">', yr = "";
+  ev.forEach(e=>{
+    const y = e.date.slice(0,4);
+    if(y!==yr){ yr=y; out += `<li class="yr"><div class="d">${y}</div><div class="rail"></div><div></div></li>`; }
+    const L = LANES[e.lane], fut = e.date>TODAY;
+    const refs = (e.refs||[]).map(r=> r.href ? `<a class="mono" href="${esc(r.href.startsWith("http")?r.href:"https://oeil.europarl.europa.eu"+r.href)}" target="_blank" rel="noopener">${esc(r.text)}</a>` : `<span class="mono">${esc(r.text)}</span>`).join(" ");
+    out += `<li class="${fut?"future":""}"><div class="d">${fmt(e.date.slice(5)).replace(/^/, "")}</div><div class="rail"><i style="background:${L.color}"></i></div>
+      <div class="ev"><span class="lane" style="color:${L.color}">${L.zh}</span>${esc(e.zh)}${e.verified===false?'<span class="unv">待核实</span>':""}${fut?'<span class="unv" style="color:var(--faint);border-color:var(--faint)">未来</span>':""}
+        <div class="orig">${e.url?`<a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.orig)}</a>`:esc(e.orig)}${refs?" · "+refs:""}${e.summary?` · <a href="${esc(e.summary)}" target="_blank" rel="noopener">摘要</a>`:""}${e.note?" · "+esc(e.note):""}</div></div></li>`;
+  });
+  return out + "</ul>";
+}
+
+/* ----- pending-file tracking ----- */
+function vTracking(d){
+  const fut = d.events.filter(e=>e.date>TODAY && e.src!=="milestone" && e.src!=="hys" && e.src!=="eurlex");
+  const t = d.tracking;
+  if(!t && !fut.length) return "";
+  const items = d.events.filter(e=>e.date<=TODAY && (e.src==="tracking"||e.src==="curated")).slice(-8).reverse().map(e=>({date:e.date, lane:e.lane, text:e.zh + (e.verified===false?" ⚠":""), }));
+  return `<div class="card"><div class="hd"><h3>${d.completed?"后续排期":"在审动态跟进"}</h3>${t?`<span class="muted" style="font-size:12px">来源：<a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.source)}</a> · 截至 ${fmt(t.asOf)}</span>`:""}</div>
+    <div class="bd">
+      ${fut.length?`<div class="sub" style="font-weight:600;margin-bottom:6px">已排期 / 预计节点</div><ul class="feed">${fut.map(e=>`<li><div class="d">${fmt(e.date)}</div><div><div class="t"><span class="lane-dot" style="background:${LANES[e.lane].color}"></span>${esc(e.zh)}${e.verified===false?'<span class="unv">待核实</span>':""}</div><div class="s">${LANES[e.lane].zh} · ${esc(e.orig)}</div></div></li>`).join("")}</ul>`:""}
+      ${items.length?`<div class="sub" style="font-weight:600;margin:12px 0 6px">最近进展</div><ul class="feed">${items.map(x=>`<li><div class="d">${fmt(x.date)}</div><div><div class="t"><span class="lane-dot" style="background:${(LANES[x.lane]||LANES.other).color}"></span>${esc(x.text)}</div><div class="s">${(LANES[x.lane]||LANES.other).zh}</div></div></li>`).join("")}</ul>`:""}
+      ${t&&t.outlook?`<div class="relrow" style="margin-top:10px"><b>展望：</b>${esc(t.outlook)}</div>`:""}
+    </div></div>`;
+}
+
+/* ----- secondary legislation ----- */
+function initRow(i, showOwner){
+  const st = i.st || initStatus(i);
+  const pubs = (i.publications||[]);
+  const steps = pubs.filter(p=>p.type!=="ABANDONED").map(p=>`<span class="step ${p.date?"on":""}" title="${esc(p.type)}">${esc(PUBTYPE(p.type))}${p.date?" "+fmt(p.date):""}${p.feedback?` · ${p.feedback}条反馈`:""}</span>`).join('<span class="arr">→</span>');
+  const fb = st.last && st.last.fbEnd ? `反馈期 ${fmt(st.last.fbStart||"")} – ${fmt(st.last.fbEnd)}` : "";
+  return `<div class="init">
+    <div class="ihd"><span class="pill ${st.open?"open":st.k==="adopted"?"done":st.k==="draft"?"live":""}">${esc(st.zh)}</span><span class="pill">${esc(ACTTYPE[i.actType]||i.actType||"")}</span>
+      <a href="${esc(i.url)}" target="_blank" rel="noopener" class="ititle">${esc(i.title)}</a>
+      ${showOwner&&i.d?`<span class="sub">· <a data-go="${i.d.id}" href="javascript:void 0">${esc(i.d.shortZh)}</a></span>`:""}</div>
+    <div class="steps">${steps}</div>
+    ${fb?`<div class="sub" style="${st.open?"color:var(--open);font-weight:600":""}">${fb}${st.open?" · 正在开放":""}</div>`:""}
+    ${i.matchedBy==="title"?`<div class="faint" style="font-size:11px">按标题关键词匹配</div>`:""}
+  </div>`;
+}
+function vSecondary(d){
+  let {root, acts, inits} = secFor(d);
+  if(!acts.length && !inits.length) return "";
+  const famProp = root.proposal || d.proposal || "";
+  const isHistoric = i => { const st=initStatus(i); return famProp && ["consult","plan"].includes(st.k) && st.last && st.last.date && st.last.date < famProp && !/^(REG|DEC|DIR)_(DEL|IMPL)$/.test(i.actType); };
+  const historic = inits.filter(isHistoric);
+  inits = inits.filter(i=>!isHistoric(i));
+  const pending = inits.filter(i=>!["adopted","abandoned"].includes(initStatus(i).k)).sort((a,b)=>{const A=initStatus(a),B=initStatus(b); return (B.open-A.open) || ((B.last&&B.last.date||"")>(A.last&&A.last.date||"")?1:-1);});
+  const adoptedInits = inits.filter(i=>initStatus(i).k==="adopted");
+  const groups = {};
+  acts.forEach(a=>{ (groups[a.kind]=groups[a.kind]||[]).push(a); });
+  const order = ["delegated","implementing","standard","guidance","report","amending","proposal","commission-act","council-act","other"];
+  const via = root.id!==d.id ? `<span class="muted" style="font-size:12px">按法规族汇总（母法：${esc(root.shortZh)}）</span>` : `<span class="muted" style="font-size:12px">来源：Have Your Say · EUR-Lex</span>`;
+  return `<div class="card"><div class="hd"><h3>二级立法、草案与意见征求</h3>${via}</div><div class="bd">
+    <div class="sub" style="font-weight:600;margin-bottom:6px">在途草案与规划（${pending.length}）</div>
+    ${pending.length?pending.map(i=>initRow(i)).join(""):'<div class="muted" style="font-size:13px">暂无在途草案</div>'}
+    ${adoptedInits.length?`<details style="margin-top:8px"><summary>欧委会已通过的举措（${adoptedInits.length}）</summary>${adoptedInits.map(i=>initRow(i)).join("")}</details>`:""}
+    ${historic.length?`<details style="margin-top:6px"><summary>立法提案之前的历史举措（${historic.length}）</summary>${historic.map(i=>initRow(i)).join("")}</details>`:""}
+    <div class="sub" style="font-weight:600;margin:16px 0 6px">已发布的二级立法与相关文件（EUR-Lex，${acts.length}）</div>
+    ${order.filter(k=>groups[k]).map(k=>`<div class="actgrp"><div class="agh">${ACTKIND[k]}（${groups[k].length}）</div>${groups[k].sort((a,b)=>a.date<b.date?1:-1).slice(0,40).map(a=>`<div class="act"><span class="d">${fmt(a.date)}</span><a href="${esc(a.url)}" target="_blank" rel="noopener">${esc(shortTitle(a.title))}</a>${a.rel==="cites"?'<span class="faint" style="font-size:11px"> · 引用</span>':""}</div>`).join("")}${groups[k].length>40?`<div class="faint" style="font-size:12px">…另有 ${groups[k].length-40} 件</div>`:""}</div>`).join("")}
+  </div></div>`;
+}
+
+/* ----- OEIL documentation gateway ----- */
+function vDocs(d){
+  const docs = d.o && d.o.documents; if(!docs || !docs.length) return "";
+  const grouped = {};
+  docs.forEach(x=>{ const k=x.inst+"|"+x.date+"|"+x.type+"|"+x.extra; if(grouped[k]) grouped[k].more.push(x); else grouped[k]=Object.assign({more:[]},x); });
+  const by = {}; Object.values(grouped).forEach(x=>{ if(x.more.length){ const all=[x].concat(x.more); x.refsHtml = all.map(y=>y.href?`<a class="mono" href="${esc(y.href)}" target="_blank" rel="noopener">${esc(y.ref)}</a>`:`<span class="mono">${esc(y.ref)}</span>`).join(" "); x.type += ` ×${all.length}`; } (by[x.inst]=by[x.inst]||[]).push(x); });
+  return `<div class="card"><div class="hd"><h3>立法文件库</h3><span class="muted" style="font-size:12px">报告草案 · 修正案 · 委员会意见 · 成员国议会 · 咨询机构 · 来源：OEIL</span></div><div class="bd">
+    ${["EP","CSL","EC","NP","OTHER"].filter(k=>by[k]).map(k=>`<div class="actgrp"><div class="agh">${INST[k]}（${by[k].length}）</div>${by[k].sort((a,b)=>a.date<b.date?1:-1).map(x=>`<div class="act"><span class="d">${fmt(x.date)}</span><span>${esc(docZh(x.type))}${x.extra?` <span class="cbadge">${esc(x.extra.replace(/_/g," "))}</span>`:""}</span> ${x.refsHtml ? x.refsHtml : x.href?`<a class="mono" href="${esc(x.href)}" target="_blank" rel="noopener">${esc(x.ref)}</a>`:`<span class="mono">${esc(x.ref)}</span>`}</div>`).join("")}</div>`).join("")}
+  </div></div>`;
+}
+
+/* ----- drafts & secondary legislation (all dossiers) ----- */
+let draftFilter = {st: store.get("dst2","auto"), cat:"all", q:""};
+function vDrafts(){
+  let list = allInits();
+  const full = list.slice();
+  const cnt = k => full.filter(i=> k==="open"? i.st.open : k==="all"? true : i.st.k===k).length;
+  if(draftFilter.st==="auto") draftFilter.st = cnt("open") ? "open" : "draft";
+  if(draftFilter.cat!=="all") list = list.filter(i=>i.d.category===draftFilter.cat);
+  if(draftFilter.st==="open") list = list.filter(i=>i.st.open);
+  else if(draftFilter.st!=="all") list = list.filter(i=>i.st.k===draftFilter.st);
+  const q = draftFilter.q.trim().toLowerCase(); if(q) list = list.filter(i=>(i.title+" "+(i.summary||"")+" "+i.d.nameZh).toLowerCase().includes(q));
+  list.sort((a,b)=>{ const ad=(a.st.last&&(a.st.open?a.st.last.fbEnd:a.st.last.date))||"", bd=(b.st.last&&(b.st.open?b.st.last.fbEnd:b.st.last.date))||""; return draftFilter.st==="open" ? (ad<bd?-1:1) : (ad<bd?1:-1); });
+  const acts=[]; D.forEach(d=>{ const s=SEC[d.id]; if(s) (s.acts||[]).forEach(a=>acts.push(Object.assign({d},a))); });
+  acts.sort((a,b)=>a.date<b.date?1:-1);
+  const recentActs = acts.filter(a=>a.rel!=="cites"||["standard","delegated","implementing"].includes(a.kind)).slice(0,30);
+  const tabs=[["open","意见征求中"],["draft","草案已发布待通过"],["plan","规划中"],["consult","咨询/证据征集"],["adopted","已通过"],["all","全部"]];
+  return `<div class="card" style="margin-bottom:16px"><div class="hd" style="flex-wrap:wrap"><h3>授权法案 / 实施法案 / 立法草案 · 意见征求</h3><span class="muted" style="font-size:12px">来源：欧委会 Have Your Say${SEC_GEN?" · 更新于 "+esc(SEC_GEN.replace("T"," ").slice(0,16)):""}</span></div>
+    <div class="filters" style="border-bottom:1px solid var(--line)">
+      <div class="chips" id="dst">${tabs.map(([k,z])=>`<span class="chip ${draftFilter.st===k?"on":""}" data-s="${k}">${z}（${cnt(k)}）</span>`).join("")}</div>
+      <div class="chips" id="dcat"><span class="chip ${draftFilter.cat==="all"?"on":""}" data-c="all">全部领域</span>${Object.entries(CATS).map(([k,v])=>`<span class="chip ${draftFilter.cat===k?"on":""}" data-c="${k}">${catDot(k)}${v.zh}</span>`).join("")}</div>
+      <input class="search" id="dq" placeholder="搜索草案标题 / 法规" value="${esc(draftFilter.q)}">
+    </div>
+    <div class="bd">${list.map(i=>initRow(i,true)).join("")||'<div class="empty">没有符合条件的草案</div>'}</div></div>
+  <div class="card"><div class="hd"><h3>最新发布的二级立法（EUR-Lex）</h3></div><div class="bd">${recentActs.map(a=>`<div class="act"><span class="d">${fmt(a.date)}</span><span class="pill">${esc(ACTKIND[a.kind]||"")}</span> <a href="${esc(a.url)}" target="_blank" rel="noopener">${esc(shortTitle(a.title))}</a> <span class="sub">· <a data-go="${a.d.id}" href="javascript:void 0">${esc(a.d.shortZh)}</a></span></div>`).join("")||'<div class="muted">尚无数据，请运行更新脚本</div>'}</div></div>`;
+}
+function bindDrafts(){
+  document.getElementById("dst").addEventListener("click",e=>{const c=e.target.closest("[data-s]"); if(!c) return; draftFilter.st=c.dataset.s; store.set("dst2",draftFilter.st); render();});
+  document.getElementById("dcat").addEventListener("click",e=>{const c=e.target.closest("[data-c]"); if(!c) return; draftFilter.cat=c.dataset.c; render();});
+  const q=document.getElementById("dq"); q.addEventListener("input",()=>{draftFilter.q=q.value; const p=q.selectionStart; render(); const n=document.getElementById("dq"); n.focus(); n.setSelectionRange(p,p);});
+}
+
+/* ----- feed ----- */
+let feedFilter = {cat:"all", lane:"all", range:"past"};
+function vFeed(){
+  let ev = allEvents().filter(e=>!(e.src==="oeil" && /^(Results of vote|Debate in Parliament)/.test(e.orig)));
+  if(feedFilter.cat!=="all") ev = ev.filter(e=>e.d.category===feedFilter.cat);
+  if(feedFilter.lane!=="all") ev = ev.filter(e=>e.lane===feedFilter.lane);
+  if(feedFilter.range==="future") ev = ev.filter(e=>e.date>TODAY);
+  else if(feedFilter.range==="past") ev = ev.filter(e=>e.date<=TODAY);
+  ev = ev.reverse();
+  let html = "", ym="";
+  ev.forEach(e=>{ const m=e.date.slice(0,7); if(m!==ym){ ym=m; html += `<li style="display:block;border:0;padding:14px 0 4px;font-weight:700">${m.replace("-"," 年 ")} 月</li>`; } html += feedLi(e); });
+  return `<div class="card"><div class="hd" style="flex-wrap:wrap"><h3>全部立法动态</h3>
+    <div class="chips" id="fcat" style="margin-left:auto"><span class="chip ${feedFilter.cat==="all"?"on":""}" data-c="all">全部领域</span>${Object.entries(CATS).map(([k,v])=>`<span class="chip ${feedFilter.cat===k?"on":""}" data-c="${k}">${catDot(k)}${v.zh}</span>`).join("")}</div></div>
+    <div class="lanes"><span class="chips" id="flane"><span class="chip ${feedFilter.lane==="all"?"on":""}" data-l="all">全部机构</span>${Object.entries(LANES).map(([k,v])=>`<span class="chip ${feedFilter.lane===k?"on":""}" data-l="${k}"><span class="lane-dot" style="background:${v.color}"></span>${v.zh}</span>`).join("")}</span>
+      <span class="chips" id="frange" style="margin-left:auto">${[["all","全部"],["past","已发生"],["future","未来节点"]].map(([k,z])=>`<span class="chip ${feedFilter.range===k?"on":""}" data-r="${k}">${z}</span>`).join("")}</span></div>
+    <div class="bd"><ul class="feed">${html||'<li class="muted">无</li>'}</ul></div></div>`;
+}
+function bindFeed(){
+  const on=(id,attr,key)=>document.getElementById(id).addEventListener("click",e=>{const c=e.target.closest("["+attr+"]"); if(!c) return; feedFilter[key]=c.getAttribute(attr); render();});
+  on("fcat","data-c","cat"); on("flane","data-l","lane"); on("frange","data-r","range");
+}
+
+/* ----- help ----- */
+function vHelp(){
+  return `<div class="card help"><div class="hd"><h3>数据来源与更新方式</h3></div><div class="bd">
+  <p><b>两层数据结构</b></p>
+  <ul>
+    <li><b>自动层</b> <code>data/oeil-data.js</code>：由 <code>tools/update-oeil.ps1</code> 从欧洲议会立法观察站（OEIL）抓取。包括欧委会提案、议会各委员会（主审 / 联合 / 关联 / 意见委员会）、报告员与影子报告员、委员会表决、全会决定、三方谈判授权与协议批准、理事会通过、签署与公报发布、最终法案编号、授权法案审查。</li>
+    <li><b>人工层</b> <code>data/curated.js</code>：监测清单、中文名称与要点解读、产业影响、法规谱系（parent 字段），以及 OEIL 不记录的<b>理事会内部节点</b>（工作组 / COREPER 授权 / 总体方针 / 三方临时协议）和<b>实施适用节点</b>。标注“待核实”的条目需要对照理事会新闻稿或 EUR-Lex 再确认。</li>
+  </ul>
+  <ul>
+    <li><b>二级立法层</b> <code>data/secondary-data.js</code>：由 <code>tools/update-secondary.ps1</code> 自动抓取。① EUR-Lex（Cellar SPARQL）：依据母法制定、修订母法或引用母法的授权法案、实施法案、协调标准、指南通知、欧委会报告；② 欧委会 Have Your Say：规划中的授权/实施法案、证据征集与公众咨询、<b>草案意见征求</b>（含反馈期与反馈数量）、通过阶段。配置（母法 CELEX、关键词）见 <code>data/sources.json</code>。</li>
+    <li><b>在审动态层</b> <code>curated.js</code> 中的 <code>tracking</code>：Legislative Train 等站点禁止脚本抓取，由人工阅读后整理，每条注明来源与“截至”日期；OEIL 的委员会表决排期、全会预定日期、报告草案、修正案、意见等则自动抓取。</li>
+    <li><b>变更追踪</b> <code>data/changes.js</code>：每次更新与上次快照对比，新增的事件、排期、文件、草案阶段、二级立法都会出现在总览“新增动态”中。</li>
+  </ul>
+  <p><b>一键更新全部数据</b>（在项目文件夹中打开 PowerShell）：</p>
+  <pre>powershell -ExecutionPolicy Bypass -File tools\\update-all.ps1</pre>
+  <p>分步运行：<code>update-oeil.ps1</code>（立法程序）→ <code>update-secondary.ps1</code>（二级立法与草案）→ <code>build.ps1</code>（变更追踪 + 生成 tracker.html）。只更新某一个程序：<code>update-oeil.ps1 -Only "2026/0068(COD)"</code>；只更新某部法规的二级立法：<code>update-secondary.ps1 -Only batteries</code>。</p>
+  <p><b>新增一部法规</b>：在 <code>data/curated.js</code> 中复制一条记录，修改 <code>id</code>、<code>oeil</code>（程序编号，可在 OEIL 或 Legislative Train 上查到）、中文名称与分类，运行更新脚本后刷新页面即可。若是对已有法规的修订，填写 <code>parent</code> 指向原始法规的 id，就会自动出现在“法规谱系”中。</p>
+  <p><b>阶段判定规则</b>：议会立场 = 达成协议前的第一次全会决定或第72条谈判授权；三方协议 = 理事会与议会临时协议日期（人工层）或委员会批准协议文本日期（OEIL）；正式通过 = 理事会在议会一读后通过法案；无三方谈判的紧急程序标记为“未经三方谈判”。</p>
+  <p class="muted">官方来源：<a href="https://oeil.europarl.europa.eu/" target="_blank" rel="noopener">OEIL 立法观察站</a> · <a href="https://www.europarl.europa.eu/legislative-train/" target="_blank" rel="noopener">Legislative Train</a> · <a href="https://www.consilium.europa.eu/en/press/press-releases/" target="_blank" rel="noopener">理事会新闻稿</a> · <a href="https://eur-lex.europa.eu/" target="_blank" rel="noopener">EUR-Lex</a></p>
+  </div></div>`;
+}
+
+parseHash(); render();
+})();
+</script>
+</body>
+</html>
