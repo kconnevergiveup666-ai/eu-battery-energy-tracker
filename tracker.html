@@ -201,7 +201,8 @@ details summary{cursor:pointer;color:var(--accent);font-size:12.5px}
 @media (max-width: 560px){
   main{padding:12px 16px 40px} .hwrap{padding:10px 16px}
   .tl li{grid-template-columns:78px 22px 1fr}
-  nav.tabs{margin-left:0;width:100%}
+  nav.tabs{margin-left:0;width:100%;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch}
+  nav.tabs button{white-space:nowrap;flex:0 0 auto}
 }
 </style>
 </head>
@@ -821,7 +822,7 @@ window.SECONDARY_DATA = {"generatedAt":"2026-11-20T00:34:04","dossiers":{"batter
 
 </script>
 <script>
-window.CHANGES = {"changes":[],"runs":[{"date":"2026-11-19T17:03:17","newItems":0,"baseline":false},{"date":"2026-11-20T00:34:21","newItems":0,"baseline":false},{"date":"2026-11-20T00:34:05","newItems":0,"baseline":true}]};
+window.CHANGES = {"changes":[],"runs":[{"date":"2026-11-19T17:12:40Z","newItems":0,"baseline":false},{"date":"2026-11-19T17:03:17","newItems":0,"baseline":false},{"date":"2026-11-20T00:34:21","newItems":0,"baseline":false},{"date":"2026-11-20T00:34:05","newItems":0,"baseline":true}]};
 
 </script>
 <script>
@@ -924,6 +925,7 @@ const STAGES = [
 /* ---------- helpers ---------- */
 const esc = s => String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const fmt = d => d ? d.replace(/-/g,".") : "";
+const tsFmt = s => { if(!s) return ""; if(/Z$/.test(s)){ const x=new Date(s); if(!isNaN(x)){ const p=n=>String(n).padStart(2,"0"); return x.getFullYear()+"-"+p(x.getMonth()+1)+"-"+p(x.getDate())+" "+p(x.getHours())+":"+p(x.getMinutes()); } } return s.replace("T"," ").slice(0,16); };
 const store = { get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v)}catch(e){return d}}, set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}} };
 function classify(ev){
   for(const [re,lane,zh] of EVT){ if(re.test(ev)) return {lane, zh: zh || ev}; }
@@ -1068,7 +1070,7 @@ themeBtn.onclick = ()=>{
   const cur = document.documentElement.getAttribute("data-theme") || (matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");
   const nx = cur==="dark"?"light":"dark"; document.documentElement.setAttribute("data-theme",nx); store.set("theme",nx);
 };
-document.getElementById("gen").textContent = GEN ? "OEIL 数据更新于 " + GEN.replace("T"," ").slice(0,16) : "未找到 OEIL 数据（请运行更新脚本）";
+document.getElementById("gen").textContent = GEN ? "OEIL 数据更新于 " + tsFmt(GEN) : "未找到 OEIL 数据（请运行更新脚本）";
 
 /* ---------- render ---------- */
 const app = document.getElementById("app");
@@ -1116,8 +1118,8 @@ function vOverview(){
       ${openI.length?openI.map(i=>`<div class="act"><span class="d" style="color:var(--open)">截止 ${fmt(i.st.last.fbEnd).slice(5)}</span><span class="pill">${esc(ACTTYPE[i.actType]||i.actType)}</span> <a href="${esc(i.url)}" target="_blank" rel="noopener">${esc(i.title)}</a> <span class="sub">· <a data-go="${i.d.id}" href="javascript:void 0">${esc(i.d.shortZh)}</a></span></div>`).join(""):'<div class="muted" style="font-size:13px">当前没有开放的反馈期</div>'}
       <div class="sub" style="margin-top:10px">另有 ${draftI.length} 件草案已结束征求意见、等待欧委会通过；${inits.filter(i=>i.st.k==="plan").length} 件列入规划。</div>
     </div></div>
-    <div class="card chg"><div class="hd"><h3>最近一次更新的新增动态</h3><span class="muted" style="margin-left:auto;font-size:12px">${lastRun?(lastRun.baseline?"首次运行：已建立基线":`${esc(lastRun.date.replace("T"," ").slice(0,16))} · 新增 ${lastRun.newItems} 项`):"尚未运行变更追踪"}</span></div><div class="bd">
-      ${newest.length?`<ul class="feed">${newest.map(c=>{const d=BYID[c.dossier]; return `<li><div class="d">${fmt(c.detected)}</div><div><div class="t">${esc(c.text)}</div><div class="s">${d?`<a data-go="${d.id}" href="javascript:void 0">${esc(d.shortZh)}</a> · `:""}${esc(c.source)}${c.url?` · <a href="${esc(c.url)}" target="_blank" rel="noopener">原文</a>`:""}</div></div></li>`}).join("")}</ul>`:'<div class="muted" style="font-size:13px">之后每次运行 <code>tools\\update-all.ps1</code>，这里会列出与上次相比新出现的事件、文件、投票排期、草案与二级立法。</div>'}
+    <div class="card chg"><div class="hd"><h3>最近一次更新的新增动态</h3><span class="muted" style="margin-left:auto;font-size:12px">${lastRun?(lastRun.baseline?"首次运行：已建立基线":`${esc(tsFmt(lastRun.date))} · 新增 ${lastRun.newItems} 项`):"尚未运行变更追踪"}</span></div><div class="bd">
+      ${newest.length?`<ul class="feed">${newest.map(c=>{const d=BYID[c.dossier]; return `<li><div class="d">${fmt(c.detected)}</div><div><div class="t">${esc(c.text)}</div><div class="s">${d?`<a data-go="${d.id}" href="javascript:void 0">${esc(d.shortZh)}</a> · `:""}${esc(c.source)}${c.url?` · <a href="${esc(c.url)}" target="_blank" rel="noopener">原文</a>`:""}</div></div></li>`}).join("")}</ul>`:'<div class="muted" style="font-size:13px">数据每天北京时间 06:00 自动更新（也可在本地运行 <code>tools\\update-all.ps1</code>）。与上次相比新出现的事件、文件、投票排期、草案与二级立法会列在这里。</div>'}
     </div></div>
   </div>
   <div class="card" style="margin-bottom:16px">
@@ -1255,7 +1257,7 @@ function vDetail(d){
       ${o.procedureType?`<span>程序 <b>${esc(o.procedureType.replace(/ \(ex-codecision procedure\)/,""))}</b></span>`:""}
       ${o.instrument?`<span>文件类型 <b>${esc(o.instrument)}</b></span>`:""}
       ${o.mainAct?`<span>最终法案 <b>${o.mainActHref?`<a href="${esc(o.mainActHref)}" target="_blank" rel="noopener">${esc(o.mainAct)}</a>`:esc(o.mainAct)}</b> <span class="faint">${esc(o.mainActOj||"")}</span></span>`:""}
-      ${o.fetchedAt?`<span class="faint">抓取于 ${esc(o.fetchedAt.replace("T"," ").slice(0,16))}</span>`:""}
+      ${o.fetchedAt?`<span class="faint">抓取于 ${esc(tsFmt(o.fetchedAt))}</span>`:""}
     </div>
     <div class="tags">${(d.tags||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div>
   </div>
@@ -1424,7 +1426,7 @@ function vDrafts(){
   acts.sort((a,b)=>a.date<b.date?1:-1);
   const recentActs = acts.filter(a=>a.rel!=="cites"||["standard","delegated","implementing"].includes(a.kind)).slice(0,30);
   const tabs=[["open","意见征求中"],["draft","草案已发布待通过"],["plan","规划中"],["consult","咨询/证据征集"],["adopted","已通过"],["all","全部"]];
-  return `<div class="card" style="margin-bottom:16px"><div class="hd" style="flex-wrap:wrap"><h3>授权法案 / 实施法案 / 立法草案 · 意见征求</h3><span class="muted" style="font-size:12px">来源：欧委会 Have Your Say${SEC_GEN?" · 更新于 "+esc(SEC_GEN.replace("T"," ").slice(0,16)):""}</span></div>
+  return `<div class="card" style="margin-bottom:16px"><div class="hd" style="flex-wrap:wrap"><h3>授权法案 / 实施法案 / 立法草案 · 意见征求</h3><span class="muted" style="font-size:12px">来源：欧委会 Have Your Say${SEC_GEN?" · 更新于 "+esc(SEC_tsFmt(GEN)):""}</span></div>
     <div class="filters" style="border-bottom:1px solid var(--line)">
       <div class="chips" id="dst">${tabs.map(([k,z])=>`<span class="chip ${draftFilter.st===k?"on":""}" data-s="${k}">${z}（${cnt(k)}）</span>`).join("")}</div>
       <div class="chips" id="dcat"><span class="chip ${draftFilter.cat==="all"?"on":""}" data-c="all">全部领域</span>${Object.entries(CATS).map(([k,v])=>`<span class="chip ${draftFilter.cat===k?"on":""}" data-c="${k}">${catDot(k)}${v.zh}</span>`).join("")}</div>
