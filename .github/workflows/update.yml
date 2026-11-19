@@ -31,6 +31,8 @@ jobs:
     timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main   # always start from the latest data, not the commit that queued the run
 
       - name: Fetch OEIL procedures
         if: github.event_name != 'push'
@@ -56,7 +58,8 @@ jobs:
             echo "No data changes"
           else
             git commit -m "Data update $(date -u +%Y-%m-%d)"
-            git pull --rebase --autostash origin main
+            # generated files: if another run committed meanwhile, keep this run's (newer) output
+            git pull --rebase --autostash -X theirs origin main
             git push origin HEAD:main
           fi
 

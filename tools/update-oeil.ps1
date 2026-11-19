@@ -235,7 +235,7 @@ function Parse-Procedure([string]$ref) {
     events = $events; finalActs = $finalActs
     mainAct = $mainAct; mainActOj = $mainOj; mainActHref = $mainHref
     delegatedActs = $delegated
-    fetchedAt = (Get-Date).ToString('yyyy-MM-ddTHH:mm:ss')
+    fetchedAt = (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ')
   }
 }
 
@@ -269,7 +269,7 @@ foreach ($r in $refs) {
   Start-Sleep -Milliseconds $DelayMs
 }
 
-$out = [ordered]@{ generatedAt = (Get-Date).ToString('yyyy-MM-ddTHH:mm:ss'); source = $base; procedures = $data }
+$out = [ordered]@{ generatedAt = (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ'); source = $base; procedures = $data }
 $json = $out | ConvertTo-Json -Depth 12 -Compress
 $utf8 = New-Object System.Text.UTF8Encoding($false)
 [IO.File]::WriteAllText($outJson, $json, $utf8)

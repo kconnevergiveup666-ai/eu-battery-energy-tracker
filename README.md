@@ -7,7 +7,14 @@
 - **在审法规的动态**：排期中的委员会表决和全会日期、理事会政策辩论、三方谈判轮次；
 - **变更追踪**：每次更新和上次相比的新增内容。
 
-## 打开方式
+## 在线访问（手机 / 电脑）
+**https://kconnevergiveup666-ai.github.io/eu-battery-energy-tracker/**
+
+GitHub Actions 每天北京时间 06:00（22:00 UTC）自动抓取并重新发布，配置在 `.github/workflows/update.yml`。
+- 想立即更新：打开仓库的 Actions 页面 → "Update EU tracker" → "Run workflow"。
+- 修改 `data/curated.js`、`data/sources.json`、`index.html` 或 `tools/` 并推送后，会自动重建网页，几分钟后生效；这种情况不重新抓取数据。
+
+## 本地打开
 - `tracker.html`：单文件版本，数据全部内嵌，双击打开，可以直接分享。
 - `index.html`：开发版，从 `data/` 读取数据。
 

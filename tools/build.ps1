@@ -1,4 +1,4 @@
-<#
+﻿<#
   build.ps1
   1. Change tracking: compares current OEIL + secondary data against data/snapshot.json and appends every new
      item (new procedural event, scheduled vote, document, status change, EUR-Lex act, Have Your Say stage /
@@ -68,7 +68,7 @@ if ($snap) {
 }
 $history = @($new) + @($history) | Select-Object -First 3000
 $runs = @(); if ($h -and $h.runs) { $runs = @($h.runs) }
-$runs = @([ordered]@{ date = (Get-Date).ToString('yyyy-MM-ddTHH:mm:ss'); newItems = $new.Count; baseline = (-not $snap) }) + $runs | Select-Object -First 200
+$runs = @([ordered]@{ date = (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ'); newItems = $new.Count; baseline = (-not $snap) }) + $runs | Select-Object -First 200
 $chg = [ordered]@{ changes = @($history); runs = @($runs) }
 $cj = $chg | ConvertTo-Json -Depth 6 -Compress
 [IO.File]::WriteAllText($chgPath, $cj, $utf8)

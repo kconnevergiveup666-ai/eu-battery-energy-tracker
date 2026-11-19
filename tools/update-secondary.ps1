@@ -1,4 +1,4 @@
-<#
+﻿<#
   update-secondary.ps1
   Secondary legislation & pre-legislative drafts for every dossier configured in data/sources.json:
     1. EUR-Lex / Cellar SPARQL: acts based on, amending, or (filtered) citing each base act
@@ -98,7 +98,7 @@ $hysSeen = @{}   # initiative id -> dossier id (first match wins)
 
 foreach ($id in $ids) {
   $c = $cfg.$id
-  $entry = [ordered]@{ id = $id; acts = @(); initiatives = @(); fetchedAt = (Get-Date).ToString('yyyy-MM-ddTHH:mm:ss') }
+  $entry = [ordered]@{ id = $id; acts = @(); initiatives = @(); fetchedAt = (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ') }
   if ($data.Contains($id)) {
     $prev = $data[$id]
     if ($prev.acts) { $entry.acts = @($prev.acts) }
@@ -199,7 +199,7 @@ foreach ($id in $ids) {
   $data[$id] = $entry
 }
 
-$out = [ordered]@{ generatedAt = (Get-Date).ToString('yyyy-MM-ddTHH:mm:ss'); dossiers = $data }
+$out = [ordered]@{ generatedAt = (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ'); dossiers = $data }
 $json = $out | ConvertTo-Json -Depth 10 -Compress
 [IO.File]::WriteAllText($outJson, $json, $utf8)
 [IO.File]::WriteAllText($outJs, "window.SECONDARY_DATA = $json;`n", $utf8)
