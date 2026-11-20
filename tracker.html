@@ -186,6 +186,16 @@ details summary{cursor:pointer;color:var(--accent);font-size:12.5px}
 .stk-actor .pos{margin:6px 0 0;padding-left:18px}
 .stk-actor .pos li{margin:3px 0}
 .stk-eff{font-size:12.5px;color:var(--muted);margin-top:3px}
+.bi3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+.bi3>div{border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.bi3 h4{margin:0 0 6px;font-size:13.5px;display:flex;align-items:center;gap:6px}
+.bi3 h4 i{width:8px;height:8px;border-radius:2px;display:inline-block}
+.bi3 ul,.bi-act{margin:0;padding-left:18px}
+.bi3 li,.bi-act li{margin:4px 0;font-size:13.5px}
+.pill.lv-high{color:var(--open);border-color:color-mix(in srgb,var(--open) 45%,transparent);font-weight:600}
+.pill.lv-medium{color:var(--current);border-color:color-mix(in srgb,var(--current) 50%,transparent);font-weight:600}
+.pill.lv-low{color:var(--muted)}
+@media (max-width:820px){ .bi3{grid-template-columns:1fr} }
 .pill.open{color:var(--open);border-color:color-mix(in srgb,var(--open) 50%,transparent);font-weight:600}
 .init{padding:9px 0;border-bottom:1px dashed var(--line)} .init:last-child{border-bottom:0}
 .ihd{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
@@ -253,6 +263,11 @@ details summary{cursor:pointer;color:var(--accent);font-size:12.5px}
  *   secondary 授权法案/实施法案/指南 / review 评估审查
  * council[].planned:true / tracking.items[].planned:true 表示“已排期/预计”的未来节点。
  *
+ * batteryImpact —— 对电池生产企业的主要影响（视角：对欧出口或在欧设厂的电池企业）
+ *   { level: high|medium|low, levelNote, segments: [受影响业务环节],
+ *     compliance: [合规义务], access: [市场准入影响], support: [政策支持与机会], actions: [建议行动] }
+ *   “待核实”写在文本中；关键时间点取自 milestones，无需重复填写。
+ *
  * tracking —— 在审法规的动态跟进（Legislative Train 等来源，人工阅读后整理；脚本无法自动抓取这些站点）
  *   { asOf: 来源版本日期, source, url,
  *     items: [{ date, lane: commission|epc|epp|council|trilogue|other, text, planned?, src? }],
@@ -276,6 +291,41 @@ window.CURATED = [
       "2027 年 2 月起 EV、LMT 及 >2kWh 工业电池须配备数字电池护照",
       "供应链尽职调查义务经 Omnibus IV 推迟至 2027 年 8 月 18 日"
     ],
+    batteryImpact: {
+      level: "high",
+      levelNote: "直接规制电池产品本身，是对欧销售电池必须满足的基础法规",
+      segments: [
+        "电芯/模组制造",
+        "储能系统集成",
+        "材料采购",
+        "对欧出口",
+        "在欧设厂",
+        "回收"
+      ],
+      compliance: [
+        "自 2024-08-18 起电池须通过合格评定、加贴 CE 标志并出具欧盟符合性声明；欧盟境外制造商须有在欧盟设立的经济经营者（进口商或授权代表）承担责任",
+        "生产者责任延伸（EPR）：须在每个销售国登记为生产者，承担回收处理费用；非欧盟生产者须指定 EPR 授权代表",
+        "碳足迹声明：EV、>2kWh 可充电工业电池、LMT 电池按类别分阶段适用，并以相关授权法案生效后 12 个月为准；EV 电池的计算方法授权法案截至 2026 年仍未通过，需持续跟踪",
+        "固定式储能系统（SBESS）须满足第 12 条安全要求并提供测试文件；工业电池须提供电化学性能与耐久性参数",
+        "2026-08-18 起标签要求适用，2027-02-18 起电池护照与 QR 码适用（EV、LMT、>2kWh 工业电池）",
+        "2027-08-18 起须建立供应链尽职调查体系（钴、天然石墨、锂、镍及其化合物），并经公告机构核查"
+      ],
+      access: [
+        "不满足 CE、EPR 登记或护照要求的电池不得投放欧盟市场，属于硬性准入门槛",
+        "碳足迹后续将引入性能等级和最大限值——电网结构以煤电为主的生产基地将处于劣势，可能被挡在限值之外",
+        "2031 年起再生料最低含量（钴 16%、锂 6%、镍 6%）要求企业具备可追溯的再生材料来源"
+      ],
+      support: [
+        "第 85 条要求公共采购考虑电池的可持续性标准，低碳、高再生料产品在公共项目中更具优势",
+        "统一的欧盟规则取代各国规定，合规一次即可进入全部 27 国市场"
+      ],
+      actions: [
+        "核对每个销售国的 EPR 登记和授权代表安排",
+        "按产品类别建立碳足迹核算数据（含上游材料与生产用电），评估绿电采购或欧洲本地生产的必要性",
+        "启动电池护照数据架构与 QR 码方案，2027-02 前完成",
+        "按 OECD 指南搭建关键矿产尽调体系，选定公告机构"
+      ]
+    },
     council: [
       { date: "2022-03-17", stage: "ga", label: "环境理事会达成总体方针", body: "环境理事会 (ENVI Council)" },
       { date: "2022-12-09", stage: "deal", label: "理事会与议会达成临时协议", body: "捷克轮值主席国" },
@@ -307,6 +357,29 @@ window.CURATED = [
       "电池企业尽调体系建设窗口延长两年",
       "委员会尽调指南发布期限顺延至 2026 年 7 月 26 日"
     ],
+    batteryImpact: {
+      level: "medium",
+      levelNote: "在新电池法基础上把尽调义务推迟两年，不改变实质要求",
+      segments: [
+        "材料采购",
+        "电芯/模组制造",
+        "对欧出口"
+      ],
+      compliance: [
+        "供应链尽职调查义务适用日推迟至 2027-08-18；尽调政策的审查与报告周期据报道从每年改为每三年一次（待核实）",
+        "豁免门槛扩大到更多中型企业（据报道，待核实）"
+      ],
+      access: [
+        "2027-08-18 后未建立并经核查尽调体系的企业，电池不得投放欧盟市场"
+      ],
+      support: [
+        "企业多出两年时间建设体系；欧委会尽调指南原定 2026-07-26 前发布，可作为体系设计依据"
+      ],
+      actions: [
+        "利用缓冲期完成上游矿产溯源与第三方审核",
+        "跟踪欧委会尽调指南是否按期发布并据此调整体系"
+      ]
+    },
     council: [],
     milestones: [
       { date: "2025-07-31", kind: "force", label: "修订条例生效" },
@@ -328,6 +401,30 @@ window.CURATED = [
       "“65% 单一来源上限”对电池材料进口结构形成政策导向",
       "大型企业须对战略原材料供应链开展风险评估"
     ],
+    batteryImpact: {
+      level: "high",
+      levelNote: "锂、镍、钴、石墨、锰均为战略原材料，影响原料采购结构",
+      segments: [
+        "材料采购",
+        "在欧设厂",
+        "回收"
+      ],
+      compliance: [
+        "生产电池等战略技术的大型企业须定期（每三年）开展战略原材料供应链风险评估，结果报送董事会"
+      ],
+      access: [
+        "“单一第三国供应不超过 65%”的基准是政策导向而非硬性限制，但会影响补贴、采购和项目审批中对供应链的评价，高度依赖中国石墨、前驱体的供应链面临压力"
+      ],
+      support: [
+        "正负极材料、前驱体、回收项目可申请“战略项目”：加速许可（加工/回收 15 个月）、优先融资对接",
+        "第三国战略项目同样可申请，海外矿产与材料项目可借此进入欧盟供应链",
+        "欧盟原材料联合采购平台为下游企业提供采购渠道"
+      ],
+      actions: [
+        "梳理关键材料来源国集中度，准备供应链风险评估",
+        "评估在欧材料或回收项目申请战略项目的可行性"
+      ]
+    },
     council: [
       { date: "2023-06-30", stage: "coreper", label: "COREPER 通过理事会谈判授权", body: "COREPER I" },
       { date: "2023-11-13", stage: "deal", label: "理事会与议会达成临时协议", body: "西班牙轮值主席国" }
@@ -352,6 +449,27 @@ window.CURATED = [
       "报废车辆中 EV 电池须在处理前拆除，与新电池法回收体系衔接",
       "新车再生塑料含量要求将影响整车与零部件供应链"
     ],
+    batteryImpact: {
+      level: "medium",
+      levelNote: "通过整车厂传导要求，影响动力电池设计与回收",
+      segments: [
+        "电芯/模组制造",
+        "回收"
+      ],
+      compliance: [
+        "整车须设计为动力电池可被拆除，报废车辆在处理前须拆下动力电池；整车厂会要求电池供应商提供拆解信息和配合设计"
+      ],
+      access: [
+        "不满足整车厂循环设计要求的电池包，难以进入欧洲车型供应链"
+      ],
+      support: [
+        "报废车辆电池集中拆除，为梯次利用和回收业务提供稳定原料"
+      ],
+      actions: [
+        "在电池包设计中预留可拆卸结构并准备拆解说明",
+        "评估在欧回收或梯次利用布局"
+      ]
+    },
     council: [
       { date: "2025-06-17", stage: "ga", label: "环境理事会达成总体方针", body: "环境理事会", verified: false }
     ],
@@ -373,6 +491,31 @@ window.CURATED = [
       "可再生能源拍卖至少 30% 容量（或每年 6GW）须适用韧性等非价格标准——若某国在某技术上供应占比超过 50%，将受到不利评分",
       "公共采购中引入可持续性和韧性评价"
     ],
+    batteryImpact: {
+      level: "high",
+      levelNote: "电池与储能被列为净零技术，同时影响公共项目准入",
+      segments: [
+        "电芯/模组制造",
+        "储能系统集成",
+        "在欧设厂",
+        "对欧出口"
+      ],
+      compliance: [
+        "参与公共采购和可再生能源拍卖时，须提供可持续性、网络安全和供应链韧性方面的证明"
+      ],
+      access: [
+        "可再生能源拍卖至少 30%（或每年 6GW）须适用非价格标准；若某技术来自单一第三国的供应超过 50%，该国产品会被扣分——中国储能和逆变器产品在这类招标中竞争力下降",
+        "公共采购同样引入韧性评价"
+      ],
+      support: [
+        "在欧电池厂可申请“净零战略项目”，许可时限缩短至 12 或 18 个月，并有优先行政处理",
+        "可设立净零工业加速区和监管沙盒"
+      ],
+      actions: [
+        "评估目标国家拍卖和采购中非价格标准的具体规则",
+        "在欧建厂项目尽早申请战略项目认定"
+      ]
+    },
     council: [
       { date: "2023-12-07", stage: "ga", label: "竞争力理事会达成总体方针", body: "竞争力理事会 (COMPET)" },
       { date: "2024-02-06", stage: "deal", label: "理事会与议会达成临时协议", body: "比利时轮值主席国" }
@@ -399,6 +542,33 @@ window.CURATED = [
       "公共采购/补贴中的“欧盟制造”及低碳要求影响电池与电动车供应链布局",
       "议会报告员草案提出：战略行业“欧洲制造”与低碳产品门槛 2036 年提高至 50%，并收紧第三国成分视为欧盟原产的七项条件"
     ],
+    batteryImpact: {
+      level: "high",
+      levelNote: "“欧盟制造”与外资条件直接决定中国电池企业在欧盟的市场空间",
+      segments: [
+        "电芯/模组制造",
+        "储能系统集成",
+        "BMS/EMS",
+        "在欧设厂",
+        "对欧出口"
+      ],
+      compliance: [
+        "进入公共采购或补贴项目须证明电池及关键部件的欧盟原产地（提案按阶段扩展到电芯、BMS、正极材料等部件）"
+      ],
+      access: [
+        "公共采购和补贴将倾向“欧盟制造”：提案要求储能电池系统源自欧盟，>1MWh 系统须使用欧盟制造的 BMS；电动车补贴分阶段要求电池部件在欧盟生产",
+        "战略行业的大额外国直接投资可能被附加合资、技术转让、本地雇员等条件，影响中国企业在欧新建或扩建电池厂",
+        "法德协议提出的电芯欧洲制造比例（10%→20%→70%）仍在谈判中，最终门槛决定进口电芯的空间"
+      ],
+      support: [
+        "在欧生产的电池可享受“欧盟制造”带来的采购和补贴优势——已在欧设厂的企业受益"
+      ],
+      actions: [
+        "测算不同“欧盟制造”比例下现有产品的合规差距",
+        "评估欧洲工厂的本地化部件（BMS、正极材料）方案",
+        "跟踪外资审查条件的最终文本，提前规划合资或技术合作结构"
+      ]
+    },
     council: [
       { date: "2026-09-09", stage: "wp", label: "竞争力与增长工作组审议主席国妥协文本（9–10 日）", body: "竞争力与增长工作组", note: "主要改动：以贸易协定与产品特定市场准入体系取代宽泛的“欧洲制造”概念" },
       { date: "2026-09-24", stage: "wp", label: "竞争力理事会：爱尔兰主席国通报谈判进展", body: "竞争力理事会 (COMPET)" }
@@ -432,6 +602,23 @@ window.CURATED = [
       "数字产品护照基础设施与电池护照互通",
       "首个工作计划优先涵盖钢铁、铝等电池与能源装备上游材料"
     ],
+    batteryImpact: {
+      level: "low",
+      levelNote: "电池的产品要求由新电池法单独规定，ESPR 主要通过数字产品护照体系间接影响",
+      segments: [
+        "材料采购"
+      ],
+      compliance: [
+        "电池不直接适用 ESPR 产品要求；但数字产品护照的技术标准与电池护照共用，数据系统需兼容"
+      ],
+      access: [
+        "钢、铝等上游材料未来的生态设计要求会传导到电池壳体和结构件采购"
+      ],
+      support: [],
+      actions: [
+        "电池护照系统按 ESPR 数字产品护照的通用标准设计，避免重复建设"
+      ]
+    },
     council: [
       { date: "2023-05-22", stage: "ga", label: "竞争力理事会达成总体方针", body: "竞争力理事会" },
       { date: "2023-12-04", stage: "deal", label: "理事会与议会达成临时协议", body: "西班牙轮值主席国" }
@@ -456,6 +643,22 @@ window.CURATED = [
       "成员国须评估灵活性需求，可设立针对储能/需求响应的支持计划",
       "PPA 推广与担保机制利好电池储能项目的收益锁定"
     ],
+    batteryImpact: {
+      level: "medium",
+      levelNote: "为储能创造收益机制，主要影响储能业务的市场需求",
+      segments: [
+        "储能系统集成"
+      ],
+      compliance: [],
+      access: [],
+      support: [
+        "成员国须评估灵活性需求，可设立针对储能和需求响应的非化石灵活性支持计划，直接拉动储能需求",
+        "长期购电协议（PPA）和双向差价合约推广，有利于储能项目锁定收益、提高融资能力"
+      ],
+      actions: [
+        "跟踪重点国家的灵活性需求评估和储能支持计划，提前准备投标"
+      ]
+    },
     council: [
       { date: "2023-10-17", stage: "ga", label: "能源理事会达成总体方针", body: "能源理事会 (TTE Energy)" },
       { date: "2023-12-14", stage: "deal", label: "理事会与议会达成临时协议", body: "西班牙轮值主席国" }
@@ -475,6 +678,21 @@ window.CURATED = [
     tags: ["消费者保护", "能源共享"],
     summaryZh: "修订电力指令 2019/944 与可再生能源指令：强化消费者权利、固定价格合同、能源共享（含储能共享）、供应商风险对冲义务。",
     impactZh: ["分布式储能与能源共享获得明确法律地位"],
+    batteryImpact: {
+      level: "low",
+      levelNote: "主要利好户用和分布式储能市场",
+      segments: [
+        "储能系统集成"
+      ],
+      compliance: [],
+      access: [],
+      support: [
+        "能源共享（含储能共享）获得法律地位，带动户用、社区储能需求"
+      ],
+      actions: [
+        "关注各国转化情况，评估户用储能产品机会"
+      ]
+    },
     council: [
       { date: "2023-10-17", stage: "ga", label: "能源理事会达成总体方针", body: "能源理事会" },
       { date: "2023-12-14", stage: "deal", label: "理事会与议会达成临时协议", body: "西班牙轮值主席国" }
@@ -494,6 +712,21 @@ window.CURATED = [
     tags: ["市场监管", "ACER"],
     summaryZh: "与电力市场改革同步提出，强化 ACER 对跨境市场操纵案件的调查权，扩大报告义务（含 LNG 与算法交易）。",
     impactZh: ["参与批发电力市场的储能运营商面临更完整的交易报告义务"],
+    batteryImpact: {
+      level: "low",
+      levelNote: "只影响自营参与批发电力交易的储能电站",
+      segments: [
+        "储能系统集成"
+      ],
+      compliance: [
+        "如企业自营储能电站并参与欧盟批发电力市场，须履行交易报告义务"
+      ],
+      access: [],
+      support: [],
+      actions: [
+        "自营电站业务须确认是否落入报告范围"
+      ]
+    },
     council: [],
     milestones: [{ date: "2024-05-07", kind: "force", label: "条例生效" }]
   },
@@ -507,6 +740,17 @@ window.CURATED = [
     tags: ["氢能", "天然气"],
     summaryZh: "建立氢气网络与市场的共同规则，设立氢网络运营商、拆分与第三方准入规则，推动可再生与低碳气体市场化。",
     impactZh: ["为氢能与储能互补的长时储能路径提供市场框架"],
+    batteryImpact: {
+      level: "low",
+      levelNote: "对电池企业几乎无直接影响",
+      segments: [],
+      compliance: [],
+      access: [],
+      support: [
+        "氢能与电池在长时储能领域既互补又竞争，可作为市场研判参考"
+      ],
+      actions: []
+    },
     council: [
       { date: "2023-03-28", stage: "ga", label: "能源理事会达成总体方针", body: "能源理事会" },
       { date: "2023-11-27", stage: "deal", label: "理事会与议会达成临时协议", body: "西班牙轮值主席国" }
@@ -524,6 +768,15 @@ window.CURATED = [
     tags: ["氢能", "ENNOH"],
     summaryZh: "与指令配套，设立欧洲氢网络运营商网络（ENNOH），规定跨境氢基础设施规划与关税规则。",
     impactZh: [],
+    batteryImpact: {
+      level: "low",
+      levelNote: "对电池企业几乎无直接影响",
+      segments: [],
+      compliance: [],
+      access: [],
+      support: [],
+      actions: []
+    },
     council: [
       { date: "2023-03-28", stage: "ga", label: "能源理事会达成总体方针", body: "能源理事会" },
       { date: "2023-12-08", stage: "deal", label: "理事会与议会达成临时协议", body: "西班牙轮值主席国" }
@@ -540,6 +793,21 @@ window.CURATED = [
     tags: ["电网", "跨境互联", "PCI/PMI"],
     summaryZh: "“欧洲电网一揽子”核心立法之一，重构跨欧洲能源基础设施规划方式，引入欧盟层面集中式跨境基础设施规划，扩展至储能与配电网项目。",
     impactZh: ["储能与配电网有望更多纳入共同利益项目（PCI）清单获得资金与快速许可"],
+    batteryImpact: {
+      level: "medium",
+      levelNote: "储能有望纳入跨境基础设施规划和资金",
+      segments: [
+        "储能系统集成"
+      ],
+      compliance: [],
+      access: [],
+      support: [
+        "储能项目有望更多纳入共同利益项目（PCI）清单，获得欧盟资金（CEF）与快速许可"
+      ],
+      actions: [
+        "关注共同利益项目清单评选，寻找大型储能项目合作机会"
+      ]
+    },
     council: [
       { date: "2026-06-26", stage: "ga", label: "能源理事会通过电网一揽子（TEN-E + 许可指令）谈判立场", body: "能源理事会 (TTE Energy)", note: "要求就中央情景制定实施法案；阻塞收入未用部分 10%（逐步升至 25%）用于跨境基础设施" },
       { date: "2026-09-30", stage: "trilogue", label: "首轮（介绍性）三方谈判", body: "爱尔兰轮值主席国" },
@@ -569,6 +837,22 @@ window.CURATED = [
     tags: ["许可", "储能", "电网接入"],
     summaryZh: "“欧洲电网一揽子”的许可加速部分，修订电力指令、可再生能源指令及气体指令，缩短电网、可再生能源、储能与充电设施项目的许可时限，改进电网接入排队规则。",
     impactZh: ["电池储能项目的许可与并网时限有望缩短", "电网接入“先到先得”规则可能调整为基于成熟度的排序", "议会与理事会均支持“压倒性公共利益”推定与默示批准机制"],
+    batteryImpact: {
+      level: "medium",
+      levelNote: "缩短储能项目许可与并网时间，加快需求释放",
+      segments: [
+        "储能系统集成"
+      ],
+      compliance: [],
+      access: [],
+      support: [
+        "电池储能项目许可和并网时限缩短，“压倒性公共利益”推定和默示批准机制加快项目落地",
+        "并网排队规则可能从先到先得改为按项目成熟度排序，有利于成熟项目"
+      ],
+      actions: [
+        "跟踪三方谈判结果，据此调整重点国家储能项目开发节奏"
+      ]
+    },
     council: [
       { date: "2026-06-26", stage: "ga", label: "能源理事会通过谈判立场（与 TEN-E 一并）", body: "能源理事会 (TTE Energy)", note: "数字化申请门户；电力与可再生项目推定为压倒性公共利益；成员国可规定中间步骤默示批准；社区利益分享" },
       { date: "2026-07-14", stage: "trilogue", label: "首轮三方谈判", body: "爱尔兰轮值主席国" },
@@ -599,6 +883,28 @@ window.CURATED = [
     tags: ["42.5% 目标", "加速区", "储能"],
     summaryZh: "将 2030 年可再生能源占比目标提高至 42.5%（力争 45%），设立可再生能源加速区与许可时限，明确同址储能纳入快速许可，并强化交通、工业、建筑分领域目标。",
     impactZh: ["与可再生能源同址的储能设施适用同样的加速许可", "交通领域可再生电力计入目标，利好电动车充电"],
+    batteryImpact: {
+      level: "medium",
+      levelNote: "含对电池管理系统数据访问的直接义务，并利好储能部署",
+      segments: [
+        "BMS/EMS",
+        "储能系统集成",
+        "电芯/模组制造"
+      ],
+      compliance: [
+        "第 20a 条要求户用和工业电池以及电动车的制造商实时开放电池管理系统（BMS）基本数据（健康状态、充电状态、功率设定等），供用户和第三方使用；各国转化后执行"
+      ],
+      access: [
+        "BMS 不开放数据接口的产品在部分国家可能无法满足要求"
+      ],
+      support: [
+        "与可再生能源同址的储能设施适用加速许可",
+        "交通领域可再生电力计入目标，利好电动车与充电需求"
+      ],
+      actions: [
+        "检查 BMS 数据接口与访问权限设计，跟踪重点国家的转化细则"
+      ]
+    },
     council: [
       { date: "2022-06-27", stage: "ga", label: "能源理事会达成总体方针", body: "能源理事会" },
       { date: "2023-03-30", stage: "deal", label: "理事会与议会达成临时协议", body: "瑞典轮值主席国" }
@@ -619,6 +925,21 @@ window.CURATED = [
     tags: ["能效优先", "数据中心"],
     summaryZh: "将 2030 年最终能源消费较 2020 参考情景降低 11.7% 列为约束性目标，确立“能效优先”原则，强化公共部门与企业能源审计义务。",
     impactZh: ["大型工业用户能源管理体系义务影响电池制造厂运营"],
+    batteryImpact: {
+      level: "low",
+      levelNote: "只影响在欧盟运营的工厂",
+      segments: [
+        "在欧设厂"
+      ],
+      compliance: [
+        "在欧工厂按能耗规模承担义务：较高能耗企业须实施能源管理体系，其余须定期开展能源审计（据第 11 条，具体门槛待核实）"
+      ],
+      access: [],
+      support: [],
+      actions: [
+        "在欧工厂评估能耗水平，提前建立能源管理体系（如 ISO 50001）"
+      ]
+    },
     council: [
       { date: "2022-06-27", stage: "ga", label: "能源理事会达成总体方针", body: "能源理事会" },
       { date: "2023-03-10", stage: "deal", label: "理事会与议会达成临时协议", body: "瑞典轮值主席国" }
@@ -635,6 +956,21 @@ window.CURATED = [
     tags: ["零排放建筑", "充电桩预布线", "太阳能"],
     summaryZh: "新建筑 2030 年起须为零排放建筑，逐步引入建筑太阳能义务，并对新建与大修建筑设定电动车充电点与预布线要求。",
     impactZh: ["建筑充电基础设施要求带动家用/商用充电与户用储能需求"],
+    batteryImpact: {
+      level: "low",
+      levelNote: "间接带动户用储能和充电需求",
+      segments: [
+        "储能系统集成"
+      ],
+      compliance: [],
+      access: [],
+      support: [
+        "新建和大修建筑须配置充电点和预布线，并逐步引入屋顶光伏义务，带动户用储能需求"
+      ],
+      actions: [
+        "关注各国转化进度，评估户用光储一体产品机会"
+      ]
+    },
     council: [
       { date: "2022-10-25", stage: "ga", label: "能源理事会达成总体方针", body: "能源理事会" },
       { date: "2023-12-07", stage: "deal", label: "理事会与议会达成临时协议", body: "西班牙轮值主席国" }
@@ -653,6 +989,25 @@ window.CURATED = [
     tags: ["2035", "电动车", "需求侧"],
     summaryZh: "修订条例 2019/631：2030 年新乘用车 CO2 较 2021 年减 55%、轻型商用车减 50%，2035 年均减 100%，即事实上禁售新燃油车。是欧盟动力电池需求最核心的政策驱动。",
     impactZh: ["决定欧盟动力电池需求曲线", "后续经 2025/1214（三年平均合规）及 2025/0420(COD)（2035 目标调整）修订"],
+    batteryImpact: {
+      level: "high",
+      levelNote: "欧盟动力电池需求的核心驱动",
+      segments: [
+        "电芯/模组制造",
+        "对欧出口",
+        "在欧设厂"
+      ],
+      compliance: [],
+      access: [
+        "车企的电动化节奏决定动力电池订单，目标调整（见 2035 修订）会直接改变需求曲线"
+      ],
+      support: [
+        "2030 年 -55%、2035 年大幅减排的目标保证了欧洲电动车和动力电池的长期需求"
+      ],
+      actions: [
+        "按目标调整情况更新欧洲动力电池需求预测和产能规划"
+      ]
+    },
     council: [
       { date: "2022-06-29", stage: "ga", label: "环境理事会达成总体方针", body: "环境理事会" },
       { date: "2022-10-27", stage: "deal", label: "理事会与议会达成临时协议", body: "捷克轮值主席国" }
@@ -674,6 +1029,22 @@ window.CURATED = [
     tags: ["汽车行动计划", "紧急程序"],
     summaryZh: "允许车企以 2025–2027 三年平均排放评估合规，而非逐年考核，缓解 2025 年目标下的罚款压力。议会采用紧急程序快速通过。",
     impactZh: ["短期内减缓车企为合规而压价推广电动车的压力，影响 2025–2026 年电池需求节奏"],
+    batteryImpact: {
+      level: "medium",
+      levelNote: "改变 2025–2027 年动力电池需求节奏",
+      segments: [
+        "电芯/模组制造",
+        "对欧出口"
+      ],
+      compliance: [],
+      access: [
+        "三年平均合规缓解车企短期压力，2025–2026 年的电动车推广节奏可能放缓，订单预期需下调"
+      ],
+      support: [],
+      actions: [
+        "与欧洲车企客户核对 2025–2027 年订单节奏"
+      ]
+    },
     council: [],
     milestones: [{ date: "2025-06-20", kind: "force", label: "修订条例生效", verified: false }]
   },
@@ -688,6 +1059,29 @@ window.CURATED = [
     tags: ["汽车一揽子", "2035", "欧盟制造低碳钢"],
     summaryZh: "2025 年 12 月“汽车一揽子”的核心提案：将 2035 年 100% 减排调整为 90%，剩余 10% 可通过欧盟生产的低碳钢与可持续燃料抵扣；轻型商用车 2030 年目标由 50% 降至 40%；为小型欧盟制造电动车设超级积分；并以新车辆标签规定取代 1999/94/EC。同一一揽子还包括“电池助推器（Battery Booster）”战略。",
     impactZh: ["2035 年后保留部分插混/增程空间，长期电池需求预期下调", "“欧盟制造”小型电动车超级积分利好本土电池供应链", "2030–2032 年引入多年平均合规"],
+    batteryImpact: {
+      level: "high",
+      levelNote: "决定 2035 年后欧洲动力电池需求规模，并与“欧洲制造”挂钩",
+      segments: [
+        "电芯/模组制造",
+        "对欧出口",
+        "在欧设厂"
+      ],
+      compliance: [],
+      access: [
+        "2035 年目标从 100% 降至 90%（议会讨论中的方案更低），保留插混和增程空间，纯电车占比与电池需求预期下调",
+        "欧盟制造的小型电动车可获超级积分，使用欧洲生产电池的车型更有优势",
+        "法德协议提出购车补贴和公共采购仅限欧洲制造车辆，并逐步提高电池欧洲制造比例"
+      ],
+      support: [
+        "“汽车一揽子”同时推出“电池助推器”战略，支持欧洲电池生产（在欧工厂可关注）"
+      ],
+      actions: [
+        "分情景（90%、87.5% 等）测算欧洲动力电池需求",
+        "评估插混和增程电池产品线的机会",
+        "跟踪电池助推器的资金和申请条件"
+      ]
+    },
     council: [
       { date: "2026-01-13", stage: "wp", label: "环境工作组非正式会议首次交换意见", body: "环境工作组" },
       { date: "2026-03-17", stage: "wp", label: "环境理事会政策辩论", body: "环境理事会" },
@@ -724,6 +1118,25 @@ window.CURATED = [
       "数据开放与智能充电、V2G 相关技术要求为车网互动和储能参与灵活性市场奠定基础",
       "2026 年审查可能调整目标（成员国要求更多灵活性，行业呼吁维持目标），关注重卡充电和岸电目标的变化"
     ],
+    batteryImpact: {
+      level: "medium",
+      levelNote: "通过充电网络建设带动需求，充电桩配储受益",
+      segments: [
+        "储能系统集成"
+      ],
+      compliance: [
+        "如企业生产充电设备：新建 ≥50kW 公共充电桩须支持刷卡支付，并满足数据和智能充电要求"
+      ],
+      access: [],
+      support: [
+        "快充和重卡兆瓦级充电网络建设，带动站端储能（削峰、缓解电网容量不足）需求",
+        "2026 年审查结果将决定目标是维持还是放松"
+      ],
+      actions: [
+        "开发充电站配储方案",
+        "跟踪 2026 年底的 AFIR 审查结果"
+      ]
+    },
     council: [
       { date: "2022-06-02", stage: "ga", label: "交通理事会达成总体方针", body: "交通理事会" },
       { date: "2023-03-28", stage: "deal", label: "理事会与议会达成临时协议", body: "瑞典轮值主席国" }
@@ -759,6 +1172,25 @@ window.CURATED = [
     tags: ["碳关税", "钢铝", "电力"],
     summaryZh: "对进口钢铁、铝、水泥、化肥、电力和氢征收与欧盟碳价挂钩的 CBAM 证书费用。2023-10 起过渡期仅申报，2026-01-01 起进入正式征收期。",
     impactZh: ["电池壳体、结构件所用铝/钢及进口电力受影响", "委员会评估将范围扩展至下游产品（可能涉及电池相关产品）"],
+    batteryImpact: {
+      level: "medium",
+      levelNote: "电池本身不在征收范围内，但在欧工厂的钢铝原料成本上升",
+      segments: [
+        "在欧设厂",
+        "材料采购"
+      ],
+      compliance: [
+        "在欧工厂进口钢、铝（壳体、结构件、箔材）须通过授权申报人申报并购买 CBAM 证书（2026 年起正式征收）"
+      ],
+      access: [
+        "电池目前不是 CBAM 产品；欧委会正在评估把范围扩展到下游产品，需关注是否涉及电池或电池部件（待核实）"
+      ],
+      support: [],
+      actions: [
+        "测算在欧工厂进口钢铝的 CBAM 成本，评估改为欧盟内采购或采购低碳铝",
+        "跟踪下游产品扩围进展"
+      ]
+    },
     council: [
       { date: "2022-03-15", stage: "ga", label: "经济与财政理事会达成总体方针", body: "ECOFIN" },
       { date: "2022-12-13", stage: "deal", label: "理事会与议会达成临时协议", body: "捷克轮值主席国" }
@@ -779,6 +1211,22 @@ window.CURATED = [
     tags: ["Omnibus 简化", "50 吨豁免"],
     summaryZh: "引入每年 50 吨的进口量豁免门槛，免除约 90% 小进口商义务；简化排放计算与核查规则，推迟证书出售至 2027 年。",
     impactZh: ["中小进口商合规负担降低"],
+    batteryImpact: {
+      level: "low",
+      levelNote: "降低小批量进口的合规负担",
+      segments: [
+        "在欧设厂",
+        "材料采购"
+      ],
+      compliance: [
+        "每年进口量 50 吨以下的进口商免除 CBAM 义务；证书出售推迟到 2027 年"
+      ],
+      access: [],
+      support: [],
+      actions: [
+        "小批量进口钢铝的在欧工厂可评估是否适用豁免"
+      ]
+    },
     council: [],
     milestones: []
   },
@@ -792,6 +1240,25 @@ window.CURATED = [
     tags: ["碳价", "免费配额退出", "ETS2"],
     summaryZh: "将 ETS 覆盖行业 2030 年减排目标提高至较 2005 年 -62%，随 CBAM 引入逐步退出免费配额（2026–2034），设立覆盖建筑与道路交通燃料的 ETS2。",
     impactZh: ["碳价上行提高电力成本，影响电池制造的能源成本", "ETS2 推高燃油成本，间接利好电动车"],
+    batteryImpact: {
+      level: "medium",
+      levelNote: "碳价推高在欧工厂电价，同时为欧盟电池补贴提供资金来源",
+      segments: [
+        "在欧设厂"
+      ],
+      compliance: [
+        "电池制造一般不直接纳入 ETS（除非厂内有大型燃烧装置），主要通过电价间接承担碳成本"
+      ],
+      access: [],
+      support: [
+        "ETS 收入资助的创新基金曾设立电动车电池制造专项招标，是在欧电池项目的重要资金来源",
+        "ETS2 推高燃油成本，间接利好电动车需求"
+      ],
+      actions: [
+        "在欧工厂签订长期绿电 PPA 对冲碳价风险",
+        "跟踪创新基金电池相关招标"
+      ]
+    },
     council: [
       { date: "2022-06-29", stage: "ga", label: "环境理事会达成总体方针", body: "环境理事会" },
       { date: "2022-12-18", stage: "deal", label: "理事会与议会达成临时协议", body: "捷克轮值主席国" }
@@ -812,6 +1279,23 @@ window.CURATED = [
     tags: ["ETS 审查", "工业竞争力"],
     summaryZh: "2026 年 7 月 17 日提出，使 ETS 与 2040 年净减排 90% 目标衔接：线性减排因子由 4.4% 降至 3.7%（2031–2035）与 1.7%（2036–2040）；2036–2040 年允许最多 2% 高质量国际信用；拍卖 2.5 亿配额支持 BioCCS/DACCS 碳移除；扩展至航空、海运小型船舶与城市垃圾焚烧；保留免费配额、CBAM 与间接成本补偿；获免费配额企业须自 2029-09-30 起制定脱碳投资计划；新设工业脱碳银行（2031–2040，约 1000 亿欧元），之前以 ETS 投资助推器过渡。",
     impactZh: ["减排因子放缓与国际信用引入将压低 2030 年后碳价预期，影响工业电价", "间接成本补偿延续，利好电池等高耗电制造业", "工业脱碳银行可能成为电池与清洁技术项目的新资金来源"],
+    batteryImpact: {
+      level: "medium",
+      levelNote: "影响 2030 年后的碳价与工业电价，并新增资金工具",
+      segments: [
+        "在欧设厂"
+      ],
+      compliance: [],
+      access: [],
+      support: [
+        "新设工业脱碳银行（2031–2040，约 1000 亿欧元），之前以 ETS 投资助推器过渡，可能成为电池项目的新资金来源",
+        "间接成本补偿延续，需确认电池制造是否在补偿行业名单内（待核实）",
+        "减排因子放缓有助于抑制 2030 年后碳价，降低在欧工厂电价风险"
+      ],
+      actions: [
+        "跟踪工业脱碳银行的设计和申请条件"
+      ]
+    },
     council: [
       { date: "2026-10-12", stage: "wp", label: "环境理事会政策辩论", body: "环境理事会" },
       { date: "2026-12-11", stage: "ga", label: "环境理事会目标达成总体方针", body: "环境理事会", planned: true }
@@ -846,6 +1330,31 @@ window.CURATED = [
       "需建立产品全生命周期漏洞管理、SBOM 和安全更新机制，支援期内持续承担义务",
       "部分产品类别（“重要产品”“关键产品”）需第三方合格评定；协调标准由 CEN/CENELEC/ETSI 制定中"
     ],
+    batteryImpact: {
+      level: "high",
+      levelNote: "联网储能、BMS/EMS 软件属于“含数字元素的产品”，是 CE 标志的新前提",
+      segments: [
+        "储能系统集成",
+        "BMS/EMS",
+        "对欧出口"
+      ],
+      compliance: [
+        "2026-09-11 起须向 ENISA 平台报告被积极利用的漏洞和严重安全事件（24 小时预警、72 小时报告），已在售的联网产品同样适用",
+        "2027-12-11 起新上市产品须满足基本网络安全要求：安全设计、漏洞处理、SBOM、支援期内免费安全更新（原则上不少于 5 年）"
+      ],
+      access: [
+        "不满足 CRA 的联网储能系统、带通信功能的 BMS/EMS 无法加贴 CE 标志，不能在欧盟销售",
+        "专家组建议把光伏逆变器列为 II 类重要产品（须第三方合格评定），储能变流器和 EMS 是否被类似归类值得关注"
+      ],
+      support: [
+        "满足 CRA 可作为产品安全卖点，应对欧洲客户对中国设备的网络安全疑虑"
+      ],
+      actions: [
+        "梳理所有联网产品，确定是否属于重要或关键产品类别",
+        "建立漏洞报告流程和 PSIRT 团队，2026-09 前就位",
+        "建立 SBOM 和安全更新机制，确定支援期"
+      ]
+    },
     council: [
       { date: "2023-07-19", stage: "coreper", label: "COREPER 通过理事会谈判授权", body: "COREPER I" },
       { date: "2023-11-30", stage: "deal", label: "理事会与议会达成临时协议", body: "西班牙轮值主席国" }
@@ -872,6 +1381,26 @@ window.CURATED = [
       "供应链安全要求向上游传导：客户（电网、能源企业）将在采购中要求设备供应商提供安全保证",
       "电力行业网络安全网络规范（NCCS）对跨境电力流相关实体提出额外风险评估要求"
     ],
+    batteryImpact: {
+      level: "high",
+      levelNote: "中大型电池制造商在欧子公司属于“重要实体”，储能客户则是“基本实体”",
+      segments: [
+        "在欧设厂",
+        "储能系统集成",
+        "对欧出口"
+      ],
+      compliance: [
+        "中大型电池/电气设备制造商（附件二）的在欧实体属于“重要实体”：须向所在国主管机关登记，落实网络安全风险管理（含供应链安全），并履行 24 小时预警、72 小时通报、1 个月最终报告的事件报告义务；管理层承担个人责任"
+      ],
+      access: [
+        "储能电站运营商、聚合商、充电运营商属于能源行业“基本实体”，会在采购中要求设备供应商提供网络安全保证——直接影响储能产品的中标"
+      ],
+      support: [],
+      actions: [
+        "确认在欧子公司在各国的登记义务",
+        "建立网络安全管理体系（如 ISO 27001），准备面向客户的供应链安全问卷答复材料"
+      ]
+    },
     council: [
       { date: "2021-12-03", stage: "ga", label: "电信理事会达成总体方针", body: "电信理事会" },
       { date: "2022-05-13", stage: "deal", label: "理事会与议会达成临时协议", body: "法国轮值主席国" }
@@ -897,6 +1426,21 @@ window.CURATED = [
       "欧盟网络安全认证可作为 CRA 合规的证明手段之一",
       "将被 2026/0011(COD) 新条例取代，关注过渡安排"
     ],
+    batteryImpact: {
+      level: "low",
+      levelNote: "自愿性认证框架，可作为合规证明手段",
+      segments: [
+        "BMS/EMS"
+      ],
+      compliance: [],
+      access: [],
+      support: [
+        "获得欧盟网络安全认证可用于证明符合 CRA 等法规"
+      ],
+      actions: [
+        "关注将被网络安全法 2.0 取代后的认证过渡安排"
+      ]
+    },
     council: [],
     milestones: [
       { date: "2019-06-27", kind: "force", label: "法规生效" },
@@ -918,6 +1462,28 @@ window.CURATED = [
       "可能影响中国电池/储能企业参与欧盟能源项目、获得欧盟资金和认证",
       "高风险供应商的认定与关键资产清单将通过实施法案确定，需持续跟踪二级立法"
     ],
+    batteryImpact: {
+      level: "high",
+      levelNote: "“高风险供应商”机制可能把中国能源设备排除在关键项目之外",
+      segments: [
+        "储能系统集成",
+        "BMS/EMS",
+        "对欧出口",
+        "在欧设厂"
+      ],
+      compliance: [],
+      access: [
+        "若储能 EMS、变流器、逆变器等被列为 NIS2 实体使用的“关键 ICT 资产”，来自被认定国家的供应商可能被排除在采购、欧盟资助项目和网络安全认证之外，并面临逐步替换",
+        "欧委会已于 2026-04 限制使用高风险供应商逆变器的光伏项目获得欧盟资金，类似做法可能延伸到储能",
+        "专家组建议限制范围延伸到户用市场"
+      ],
+      support: [],
+      actions: [
+        "跟踪三方谈判中“高风险供应商”认定标准和关键资产清单",
+        "评估本地化方案：欧洲数据存储、欧洲本地运维和软件控制权",
+        "准备向客户和监管机构证明产品安全的材料"
+      ]
+    },
     council: [
       { date: "2026-02-02", stage: "wp", label: "网络问题横向工作组开始审议", body: "理事会网络问题横向工作组" },
       { date: "2026-05-22", stage: "wp", label: "轮值主席国提交进展报告", body: "理事会网络问题横向工作组", verified: false }
@@ -938,6 +1504,27 @@ window.CURATED = [
       "工厂中用于质检、设备控制的 AI 若构成机械等附件一产品的安全组件，适用附件一高风险义务（2028 年 8 月起）",
       "2025 年 2 月起企业须确保员工具备 AI 素养；使用通用 AI 模型的企业需关注上游提供者的合规信息"
     ],
+    batteryImpact: {
+      level: "medium",
+      levelNote: "主要影响储能 EMS 中的 AI 功能和在欧工厂使用的 AI",
+      segments: [
+        "BMS/EMS",
+        "在欧设厂"
+      ],
+      compliance: [
+        "2025-02-02 起，在欧实体须确保使用 AI 的员工具备 AI 素养",
+        "用作电力供应关键基础设施安全组件的 AI 属于附件三高风险（2027-12-02 起适用）：储能 EMS 中承担安全功能的 AI 需评估",
+        "工厂中作为机械安全组件的 AI（质检、设备控制）适用附件一高风险义务（2028-08-02 起）；在欧招聘使用 AI 筛选简历同样属于高风险"
+      ],
+      access: [
+        "被认定为高风险的 AI 功能须完成合格评定，否则相关产品不能在欧盟投放"
+      ],
+      support: [],
+      actions: [
+        "盘点产品和工厂中的 AI 应用，判断是否属于高风险",
+        "在欧实体开展 AI 素养培训"
+      ]
+    },
     council: [
       { date: "2022-12-06", stage: "ga", label: "电信理事会达成总体方针", body: "电信理事会" },
       { date: "2023-12-08", stage: "deal", label: "理事会与议会达成临时协议", body: "西班牙轮值主席国" }
@@ -965,6 +1552,24 @@ window.CURATED = [
       "高风险 AI 合规准备窗口延长 12–16 个月",
       "关注配套协调标准和欧委会高风险分类指南的发布进度"
     ],
+    batteryImpact: {
+      level: "low",
+      levelNote: "在 AI 法基础上推迟高风险义务",
+      segments: [
+        "BMS/EMS",
+        "在欧设厂"
+      ],
+      compliance: [
+        "附件三高风险义务推迟至 2027-12-02，附件一推迟至 2028-08-02"
+      ],
+      access: [],
+      support: [
+        "合规准备时间延长 12–16 个月"
+      ],
+      actions: [
+        "按新日期调整 AI 合规计划，关注高风险分类指南和协调标准"
+      ]
+    },
     council: [
       { date: "2026-05-07", stage: "deal", label: "理事会与议会达成临时协议", body: "塞浦路斯轮值主席国" }
     ],
@@ -2205,7 +2810,26 @@ function vDetail(d){
     <div class="bd">${vTimeline(d)}</div>
   </div>
   ${o.delegatedActs && o.delegatedActs.length ? `<div class="card"><div class="hd"><h3>授权法案审查（议会）</h3></div><div class="bd">${o.delegatedActs.map(a=>`<div class="relrow"><a class="mono" href="${oeilUrl(a.ref)}" target="_blank" rel="noopener">${esc(a.ref)}</a> <span class="muted">${esc(a.subject)}</span></div>`).join("")}</div></div>`:""}
+  ${vBatteryImpact(d)}
   `;
+}
+
+const LEVEL = {high:"影响程度：高", medium:"影响程度：中", low:"影响程度：低"};
+function vBatteryImpact(d){
+  const b = d.batteryImpact; if(!b) return "";
+  const col = (title, color, list) => `<div><h4><i style="background:${color}"></i>${title}</h4>${(list&&list.length)?`<ul>${list.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:'<div class="muted" style="font-size:13px">无直接影响</div>'}</div>`;
+  const next = (d.milestones||[]).filter(m=>m.date>=TODAY).sort((a,b)=>a.date<b.date?-1:1).slice(0,5);
+  return `<div class="card"><div class="hd" style="flex-wrap:wrap"><h3>对电池生产企业的主要影响</h3><span class="pill lv-${esc(b.level)}">${LEVEL[b.level]||""}</span><span class="muted" style="font-size:12px;margin-left:auto">视角：对欧出口或在欧设厂的电池企业</span></div><div class="bd">
+    ${b.levelNote?`<p style="margin:0 0 8px">${esc(b.levelNote)}</p>`:""}
+    ${(b.segments||[]).length?`<div class="tags">${b.segments.map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div>`:""}
+    <div class="bi3">
+      ${col("合规","var(--c-commission)",b.compliance)}
+      ${col("准入","var(--open)",b.access)}
+      ${col("政策支持","var(--done)",b.support)}
+    </div>
+    ${next.length?`<div class="sub" style="font-weight:600;margin:14px 0 6px">接下来的关键时间点</div><ul class="feed">${next.map(m=>`<li><div class="d">${fmt(m.date)}</div><div><div class="t">${esc(m.label)}${m.verified===false?'<span class="unv">待核实</span>':""}</div><div class="s">${esc(MKIND[m.kind]||m.kind)}</div></div></li>`).join("")}</ul>`:""}
+    ${(b.actions||[]).length?`<div class="sub" style="font-weight:600;margin:14px 0 6px">建议行动</div><ol class="bi-act">${b.actions.map(x=>`<li>${esc(x)}</li>`).join("")}</ol>`:""}
+  </div></div>`;
 }
 
 function vFamily(d){
@@ -2455,6 +3079,7 @@ function vHelp(){
   <ul>
     <li><b>二级立法层</b> <code>data/secondary-data.js</code>：由 <code>tools/update-secondary.ps1</code> 自动抓取。① EUR-Lex（Cellar SPARQL）：依据母法制定、修订母法或引用母法的授权法案、实施法案、协调标准、指南通知、欧委会报告；② 欧委会 Have Your Say：规划中的授权/实施法案、证据征集与公众咨询、<b>草案意见征求</b>（含反馈期与反馈数量）、通过阶段。配置（母法 CELEX、关键词）见 <code>data/sources.json</code>。</li>
     <li><b>在审动态层</b> <code>curated.js</code> 中的 <code>tracking</code>：Legislative Train 等站点禁止脚本抓取，由人工阅读后整理，每条注明来源与“截至”日期；OEIL 的委员会表决排期、全会预定日期、报告草案、修正案、意见等则自动抓取。</li>
+    <li><b>对电池生产企业的影响</b> <code>curated.js</code> 中的 <code>batteryImpact</code>：每部法规的影响程度、受影响业务环节，以及按“合规”“准入”“政策支持”分类的影响和建议行动，显示在法规详情页最下方。视角为对欧出口或在欧设厂的电池企业；关键时间点取自实施节点。</li>
     <li><b>利益相关方层</b> <code>data/stakeholders.js</code>：人工整理的行业协会、NGO、智库、企业联盟、关键人物、成员国政府对各法规的立场与有日期的影响动态（公开信、立场文件、研究报告、政治协议），每条附原文链接；“日期（约）”表示仅精确到月，“待核实”表示仅有单一二手来源。新增条目后，变更追踪会把它列入“新增动态”。</li>
     <li><b>变更追踪</b> <code>data/changes.js</code>：每次更新与上次快照对比，新增的事件、排期、文件、草案阶段、二级立法都会出现在总览“新增动态”中。</li>
   </ul>
