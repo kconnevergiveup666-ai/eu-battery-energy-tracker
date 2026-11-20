@@ -950,6 +950,25 @@ langBtn.textContent = LANG==="en" ? "中" : "EN"; langBtn.title = Z("切换语�
 langBtn.onclick = ()=>{ store.set("lang", LANG==="en" ? "zh" : "en"); location.reload(); };
 document.getElementById("gen").textContent = GEN ? Z("OEIL 数据更新于 ") + tsFmt(GEN) : Z("未找到 OEIL 数据（请运行更新脚本）");
 
+/* ---------- live search: keep the input element, refresh only the results; wait for IME composition to finish ---------- */
+function liveSearch(id, setQ, view, sels){
+  const q = document.getElementById(id); if(!q) return;
+  let composing = false, timer = null;
+  const run = () => {
+    setQ(q.value);
+    const tmp = document.createElement("div"); tmp.innerHTML = view();
+    sels.forEach(sel => {
+      const cur = document.querySelector(sel), nu = tmp.querySelector(sel);
+      if(!cur || !nu) return;
+      cur.innerHTML = nu.innerHTML;
+      cur.querySelectorAll("[data-go]").forEach(el=>el.addEventListener("click",e=>{ e.preventDefault(); nav("dossiers", el.dataset.go); }));
+    });
+  };
+  q.addEventListener("compositionstart", ()=>{ composing = true; });
+  q.addEventListener("compositionend", ()=>{ composing = false; clearTimeout(timer); timer = setTimeout(run, 0); });
+  q.addEventListener("input", e=>{ if(composing || e.isComposing) return; clearTimeout(timer); timer = setTimeout(run, 120); });
+}
+
 /* ---------- render ---------- */
 const app = document.getElementById("app");
 function render(){
@@ -1152,8 +1171,7 @@ function vDossiers(){
   </div>`;
 }
 function bindDossiers(){
-  const q = document.getElementById("q");
-  q.addEventListener("input",()=>{ state.q=q.value; const pos=q.selectionStart; render(); const n=document.getElementById("q"); n.focus(); n.setSelectionRange(pos,pos); });
+  liveSearch("q", v=>{ state.q=v; }, vDossiers, [".side .list"]);
   document.getElementById("cats").addEventListener("click",e=>{const c=e.target.closest("[data-c]"); if(!c) return; state.cat=c.dataset.c; store.set("cat",state.cat); render();});
   document.getElementById("sts").addEventListener("click",e=>{const c=e.target.closest("[data-s]"); if(!c) return; state.st=c.dataset.s; store.set("st",state.st); render();});
   const sa = document.getElementById("showAll"); if(sa) sa.addEventListener("change",()=>{state.showAll=sa.checked; render();});
@@ -1391,13 +1409,13 @@ function vDrafts(){
       <div class="chips" id="dcat"><span class="chip ${draftFilter.cat==="all"?"on":""}" data-c="all">${Z("全部领域")}</span>${Object.entries(CATS).map(([k,v])=>`<span class="chip ${draftFilter.cat===k?"on":""}" data-c="${k}">${catDot(k)}${v.zh}</span>`).join("")}</div>
       <input class="search" id="dq" placeholder="${Z("搜索草案标题 / 法规")}" value="${esc(draftFilter.q)}">
     </div>
-    <div class="bd">${list.map(i=>initRow(i,true)).join("")||Z("<div class=\"empty\">没有符合条件的草案</div>")}</div></div>
+    <div class="bd" id="dres">${list.map(i=>initRow(i,true)).join("")||Z("<div class=\"empty\">没有符合条件的草案</div>")}</div></div>
   <div class="card"><div class="hd"><h3>${Z("最新发布的二级立法（EUR-Lex）")}</h3></div><div class="bd">${recentActs.map(a=>`<div class="act"><span class="d">${fmt(a.date)}</span><span class="pill">${esc(ACTKIND[a.kind]||"")}</span> <a href="${esc(a.url)}" target="_blank" rel="noopener">${esc(shortTitle(a.title))}</a> <span class="sub">· <a data-go="${a.d.id}" href="javascript:void 0">${esc(a.d.shortZh)}</a></span></div>`).join("")||Z("<div class=\"muted\">尚无数据，请运行更新脚本</div>")}</div></div>`;
 }
 function bindDrafts(){
   document.getElementById("dst").addEventListener("click",e=>{const c=e.target.closest("[data-s]"); if(!c) return; draftFilter.st=c.dataset.s; store.set("dst2",draftFilter.st); render();});
   document.getElementById("dcat").addEventListener("click",e=>{const c=e.target.closest("[data-c]"); if(!c) return; draftFilter.cat=c.dataset.c; render();});
-  const q=document.getElementById("dq"); q.addEventListener("input",()=>{draftFilter.q=q.value; const p=q.selectionStart; render(); const n=document.getElementById("dq"); n.focus(); n.setSelectionRange(p,p);});
+  liveSearch("dq", v=>{ draftFilter.q=v; }, vDrafts, ["#dres"]);
 }
 
 /* ----- feed ----- */
@@ -1468,7 +1486,7 @@ function vActorsView(){
       <div class="chips" id="stype"><span class="chip ${stkFilter.type==="all"?"on":""}" data-t="all">${Z("全部类型")}</span>${Object.entries(T).map(([k,v])=>`<span class="chip ${stkFilter.type===k?"on":""}" data-t="${k}">${esc(v)}</span>`).join("")}</div>
       <div class="chips" id="scat" style="margin-top:8px"><span class="chip ${stkFilter.cat==="all"?"on":""}" data-c="all">${Z("全部领域")}</span>${Object.entries(CATS).map(([k,v])=>`<span class="chip ${stkFilter.cat===k?"on":""}" data-c="${k}">${catDot(k)}${v.zh}</span>`).join("")}</div>
     </div></div>
-  <div class="grid2">
+  <div class="grid2" id="stkres">
     <div class="card"><div class="hd"><h3>${Z("影响动态")}</h3><span class="muted" style="font-size:12px">${Z("按时间倒序")}</span></div><div class="bd"><ul class="feed">${ev.length?ev.map(x=>stkEvLi(x,true)).join(""):Z("<li class=\"muted\">无</li>")}</ul></div></div>
     <div class="card"><div class="hd"><h3>${Z("主体与立场")}</h3><span class="muted" style="font-size:12px">${actors.length} ${Z("个")}</span></div><div class="bd">${actors.length?actors.map(card).join(""):Z("<div class=\"muted\">无匹配</div>")}</div></div>
   </div>`;
@@ -1476,8 +1494,7 @@ function vActorsView(){
 function bindActorsView(){
   const on=(id,attr,key)=>document.getElementById(id).addEventListener("click",e=>{const c=e.target.closest("["+attr+"]"); if(!c) return; stkFilter[key]=c.getAttribute(attr); render();});
   on("stype","data-t","type"); on("scat","data-c","cat");
-  const q=document.getElementById("stkq");
-  q.addEventListener("input",()=>{ stkFilter.q=q.value; const pos=q.selectionStart; render(); const n=document.getElementById("stkq"); n.focus(); try{n.setSelectionRange(pos,pos);}catch(e){} });
+  liveSearch("stkq", v=>{ stkFilter.q=v; }, vActorsView, ["#stkres"]);
 }
 
 /* ----- help ----- */
