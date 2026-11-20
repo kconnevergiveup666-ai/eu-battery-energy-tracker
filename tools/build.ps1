@@ -103,7 +103,7 @@ $snapObj = [ordered]@{ date = $today; dossiers = @($dosSeen.Keys | Sort-Object);
 
 # ---- standalone tracker.html ----
 $page = [IO.File]::ReadAllText((Join-Path $root 'index.html'), [Text.Encoding]::UTF8)
-foreach ($f in 'curated.js', 'oeil-data.js', 'secondary-data.js', 'changes.js', 'stakeholders.js', 'curated.en.js', 'stakeholders.en.js') {
+foreach ($f in 'curated.js', 'oeil-data.js', 'secondary-data.js', 'changes.js', 'stakeholders.js', 'impacts.js', 'markets.js', 'curated.en.js', 'stakeholders.en.js', 'impacts.en.js', 'markets.en.js') {
   $p = Join-Path $d $f
   $content = if (Test-Path $p) { [IO.File]::ReadAllText($p, [Text.Encoding]::UTF8) } else { '' }
   $page = $page.Replace("<script src=`"data/$f`"></script>", "<script>`n" + $content.Replace('</script', '<\/script') + "`n</script>")
