@@ -223,6 +223,18 @@ details summary{cursor:pointer;color:var(--accent);font-size:12.5px}
 .cal-m{font-weight:700;margin:14px 0 4px}
 .ctx{font-size:12.5px;color:var(--muted);margin:0 0 10px}
 @media (max-width:560px){ .hright{flex-wrap:wrap;gap:6px} .hsel{max-width:8.5em} }
+.you{border-left:4px solid var(--accent)}
+.you.lv-high{border-left-color:var(--open)}.you.lv-medium{border-left-color:var(--current)}.you.lv-low{border-left-color:var(--done)}.you.lv-none{border-left-color:var(--line)}
+.you-h{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin-bottom:6px}
+.you-n{font-size:14px;margin:2px 0 6px}
+.you-a{margin:4px 0 6px;padding-left:18px;font-size:13.5px}
+.you-d,.you-m{font-size:13px;color:var(--muted);margin:4px 0}
+.you-more{font-size:12.5px}
+.wb-row{border-top:1px solid var(--line);padding:9px 0}
+.wb-row:first-child{border-top:0;padding-top:0}
+.wb-row .t{font-weight:600;display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.wb-row .s{font-size:12.5px;color:var(--muted);margin-top:2px}
+.days{font-size:11.5px;color:var(--faint);white-space:nowrap}
 .pill.open{color:var(--open);border-color:color-mix(in srgb,var(--open) 50%,transparent);font-weight:600}
 .init{padding:9px 0;border-bottom:1px dashed var(--line)} .init:last-child{border-bottom:0}
 .ihd{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
@@ -13645,7 +13657,33 @@ window.EN_UI = {
 "共": "Total",
 "个节点；欧盟层面的节点来自各法规的实施节点，本国节点来自成员国落实数据。": "dates. EU-level dates come from each file's milestones; national dates from the member-state data.",
 "待核实": "to verify",
-"仍在立法程序中，通过后再跟踪成员国落实。": "Still in the legislative process; member-state implementation will be tracked once adopted."
+"仍在立法程序中，通过后再跟踪成员国落实。": "Still in the legislative process; member-state implementation will be tracked once adopted.",
+"仅看与当前视角相关": "Only relevant to my perspective",
+"全部法规": "All files",
+"对你的影响": "What this means for you",
+"对当前视角无直接影响，可在页眉切换视角。": "No direct impact for the current perspective; switch perspective in the header.",
+"下一节点：": "Next: ",
+"查看完整分析 ↓": "Full analysis ↓",
+"我的工作台": "My workbench",
+"对我影响高的法规": "High-impact files for me",
+"未来 90 天义务节点": "Obligation dates in the next 90 days",
+"转化滞后的相关指令": "Relevant directives with late transposition",
+"本国转化风险": "National transposition risks",
+"正在征求意见（相关）": "Open consultations (relevant)",
+"对我影响较大的法规": "Files with the biggest impact on me",
+"只看影响高的 →": "High impact only →",
+"暂无": "None",
+"部影响高或中的法规，": "files with high or medium impact; ",
+"在法规库查看": "see the dossier list",
+"接下来的义务节点": "Upcoming obligation dates",
+"合规日历 →": "Compliance calendar →",
+"还有": "in",
+"天": "days",
+"暂无即将到来的义务节点": "No upcoming obligation dates",
+"成员国转化风险提醒": "Member-state transposition alerts",
+"本国转化风险提醒：": "National transposition alerts: ",
+"指令转化滞后时，本国规则尚未确定，但欧盟层面的要求仍然有效": "When transposition is late, national rules are not yet settled, but EU-level requirements still apply",
+"国未完成": "countries not done"
 };
 (function(){
   /* search text in both languages, so Chinese and English queries work in either mode */
@@ -13710,6 +13748,10 @@ const MK = window.MARKETS || {countries:[], dossiers:{}, profiles:{}, dates:[], 
 const ROLES = [["auto",Z("车企")],["battery",Z("电池企业")],["storage",Z("储能企业")],["upstream",Z("上游供应链")]];
 const ROLEZH = Object.fromEntries(ROLES);
 const roleImpact = (d,r) => r==="battery" ? d.batteryImpact : ((IMP[d.id]||{})[r]);
+const lvOfD = d => { const x = d && roleImpact(d, (typeof state!=="undefined"?state.role:"battery")); return x ? x.level : "none"; };
+const isRel = d => ["high","medium"].includes(lvOfD(d));
+const relevant = d => !state.rel || !d || isRel(d);
+function relChip(){ return `<span class="chips"><span class="chip ${state.rel?"on":""}" data-rel="1">${Z("仅看与当前视角相关")}</span><span class="chip ${!state.rel?"on":""}" data-rel="0">${Z("全部法规")}</span></span>`; }
 const mktName = c => c==="eu" ? Z("欧盟全境") : ((MK.countries.find(x=>x.id===c)||{}).zh || c);
 const TODAY = new Date().toISOString().slice(0,10);
 
@@ -13927,7 +13969,7 @@ function computeStages(d){
 }
 
 /* ---------- state & routing ---------- */
-let state = { view:"overview", id:null, cat:store.get("cat","all"), st:store.get("st","all"), q:"", showAll:false, lanes: store.get("lanes3", Object.keys(LANES)), role: store.get("role","battery"), mkt: store.get("mkt","eu") };
+let state = { view:"overview", id:null, cat:store.get("cat","all"), st:store.get("st","all"), q:"", showAll:false, lanes: store.get("lanes3", Object.keys(LANES)), role: store.get("role","battery"), mkt: store.get("mkt","eu"), rel: store.get("rel", true) };
 if(!ROLEZH[state.role]) state.role="battery";
 if(state.mkt!=="eu" && !MK.countries.some(c=>c.id===state.mkt)) state.mkt="eu";
 function hashParams(){ const p=[]; if(state.role!=="battery") p.push("r="+state.role); if(state.mkt!=="eu") p.push("m="+state.mkt); return p.length?"?"+p.join("&"):""; }
@@ -13941,13 +13983,20 @@ function parseHash(){
   else state.view="overview";
 }
 window.addEventListener("hashchange",()=>{parseHash();render();});
+const isNarrow = () => window.matchMedia("(max-width: 1000px)").matches;
+function scrollToDetail(){ const t=document.querySelector(".detail"); if(!t) return; const hd=document.querySelector("header"); const off=(hd && getComputedStyle(hd).position!=="static") ? hd.offsetHeight : 0; window.scrollTo(0, t.getBoundingClientRect().top + window.scrollY - off - 8); }
 function nav(view,id){
   state.view=view; if(id) state.id=id; if(view==="dossiers" && !state.id) state.id=D[0]&&D[0].id;
   try{ history.replaceState(null,"", curHash()); }catch(e){}
-  render(); window.scrollTo(0,0);
+  render(); if(view==="dossiers" && id && isNarrow()) scrollToDetail(); else window.scrollTo(0,0);
 }
 document.getElementById("tabs").addEventListener("click",e=>{
   const b=e.target.closest("button"); if(!b) return; nav(b.dataset.v);
+});
+document.addEventListener("click",e=>{
+  const r=e.target.closest("[data-rel]"); if(r){ state.rel = r.dataset.rel==="1"; store.set("rel",state.rel); const y=window.scrollY; render(); window.scrollTo(0,y); return; }
+  const sc=e.target.closest("[data-scroll]"); if(sc){ e.preventDefault(); const t=document.getElementById(sc.dataset.scroll); if(t){ const hd=document.querySelector("header"); const off=(hd && getComputedStyle(hd).position!=="static") ? hd.offsetHeight : 0; window.scrollTo(0, t.getBoundingClientRect().top + window.scrollY - off - 8); } return; }
+  const hi=e.target.closest("[data-sthi]"); if(hi){ e.preventDefault(); state.st="hi"; store.set("st","hi"); nav("dossiers"); return; }
 });
 document.addEventListener("click",e=>{
   const a=e.target.closest('a[href^="#/"]'); if(!a) return; e.preventDefault(); nav(a.getAttribute("href").slice(2));
@@ -14028,26 +14077,50 @@ function curStageName(d){
 function vOverview(){
   const live = D.filter(d=>!d.completed), done = D.filter(d=>d.completed);
   const y1 = new Date(Date.now()-365*864e5).toISOString().slice(0,10);
-  const recent = allEvents().filter(e=>e.date<=TODAY && e.date>=y1 && !["milestone","hys","eurlex"].includes(e.src) && !/Results of vote|Debate in/.test(e.orig||"")).slice(-14).reverse();
-  const upcoming = allEvents().filter(e=>e.date>TODAY && e.src!=="milestone").slice(0,12);
+  const recent = allEvents().filter(e=>relevant(e.d) && e.date<=TODAY && e.date>=y1 && !["milestone","hys","eurlex"].includes(e.src) && !/Results of vote|Debate in/.test(e.orig||"")).slice(-14).reverse();
+  const upcoming = allEvents().filter(e=>relevant(e.d) && e.date>TODAY && e.src!=="milestone").slice(0,12);
   const inits = allInits();
   const openI = inits.filter(i=>i.st.open).sort((a,b)=>a.st.last.fbEnd<b.st.last.fbEnd?-1:1);
   const draftI = inits.filter(i=>i.st.k==="draft" && !i.st.open);
   const lastRun = CHG_RUNS[0];
   const planN = inits.filter(i=>i.st.k==="plan").length;
+  const mine = D.map(d=>({d,x:roleImpact(d,state.role)})).filter(o=>o.x && (o.x.level==="high"||o.x.level==="medium"))
+    .map(o=>Object.assign(o,{nd:nextDates(o.d)[0]}))
+    .sort((a,b)=> (a.x.level===b.x.level?0:(a.x.level==="high"?-1:1)) || ((a.nd||{}).date||"9999").localeCompare((b.nd||{}).date||"9999"));
+  const hiN = mine.filter(o=>o.x.level==="high").length;
+  const obl = upcomingObligations(), obl90 = obl.filter(o=>o.date<=new Date(Date.now()+90*864e5).toISOString().slice(0,10));
+  const risks = riskItems();
+  const openRel = openI.filter(i=>relevant(i.d));
+  const daysTo = dt => Math.round((Date.parse(dt)-Date.parse(TODAY))/864e5);
   return `
+  <div class="ctx" style="display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center">${Z("我的工作台")} · ${Z("视角：")}<b>${esc(ROLEZH[state.role])}</b> · ${Z("市场：")}<b>${esc(mktName(state.mkt))}</b><span style="margin-left:auto">${relChip()}</span></div>
   <div class="kpis">
-    <div class="card kpi"><div class="v">${D.length}</div><div class="l">${Z("监测立法程序")}</div></div>
-    <div class="card kpi"><div class="v" style="color:var(--current)">${live.length}</div><div class="l">${Z("审议中")}</div></div>
-    <div class="card kpi"><div class="v" style="color:var(--done)">${done.length}</div><div class="l">${Z("已通过并发布")}</div></div>
-    <div class="card kpi"><div class="v" style="color:var(--open)">${openI.length}</div><div class="l">${Z("正在征求意见的草案")}</div></div>
+    <div class="card kpi"><div class="v" style="color:var(--open)">${hiN}</div><div class="l">${Z("对我影响高的法规")}</div></div>
+    <div class="card kpi"><div class="v" style="color:var(--current)">${obl90.length}</div><div class="l">${Z("未来 90 天义务节点")}</div></div>
+    <div class="card kpi"><div class="v" style="color:var(--c-sec)">${risks.length}</div><div class="l">${state.mkt==="eu"?Z("转化滞后的相关指令"):Z("本国转化风险")}</div></div>
+    <div class="card kpi"><div class="v" style="color:var(--done)">${openRel.length}</div><div class="l">${Z("正在征求意见（相关）")}</div></div>
   </div>
+  <div class="grid2" style="margin-bottom:16px">
+    <div class="card"><div class="hd"><h3>${Z("对我影响较大的法规")}</h3><a href="javascript:void 0" data-sthi style="margin-left:auto;font-size:12px">${Z("只看影响高的 →")}</a></div><div class="bd">
+      ${mine.slice(0,8).map(o=>`<div class="wb-row"><div class="t">${catDot(o.d.category)}<a data-go="${o.d.id}" href="javascript:void 0">${esc(o.d.shortZh||o.d.nameZh)}</a><span class="lvtag ${o.x.level}">${esc(LVSHORT[o.x.level])}</span></div>
+        <div class="s">${esc(o.x.levelNote||"")}</div>${o.nd?`<div class="s">${Z("下一节点：")}${fmt(o.nd.date)} ${esc(o.nd.label)}</div>`:""}</div>`).join("") || `<div class="muted">${Z("暂无")}</div>`}
+      ${mine.length>8?`<div class="sub" style="margin-top:8px">${Z("共")} ${mine.length} ${Z("部影响高或中的法规，")}<a href="#/dossiers">${Z("在法规库查看")}</a></div>`:""}
+    </div></div>
+    <div class="card"><div class="hd"><h3>${Z("接下来的义务节点")}</h3><a href="#/calendar" style="margin-left:auto;font-size:12px">${Z("合规日历 →")}</a></div><div class="bd">
+      ${obl.slice(0,8).map(o=>`<div class="wb-row"><div class="t"><span class="mono" style="font-weight:400">${fmt(o.date)}</span><span class="days">${Z("还有")} ${daysTo(o.date)} ${Z("天")}</span><span class="lvtag ${o.lv}">${esc(LVSHORT[o.lv])}</span></div>
+        <div class="s">${esc(o.label)}${o.verified?"":Z("<span class=\"unv\">待核实</span>")}</div><div class="s"><a data-go="${o.d.id}" href="javascript:void 0">${esc(o.d.shortZh||o.d.nameZh)}</a> · ${esc(o.kind)}</div></div>`).join("") || `<div class="muted">${Z("暂无即将到来的义务节点")}</div>`}
+    </div></div>
+  </div>
+  ${risks.length?`<div class="card" style="margin-bottom:16px"><div class="hd" style="flex-wrap:wrap"><h3>${state.mkt==="eu"?Z("成员国转化风险提醒"):Z("本国转化风险提醒：")+esc(mktName(state.mkt))}</h3><span class="muted" style="font-size:12px;margin-left:auto">${Z("指令转化滞后时，本国规则尚未确定，但欧盟层面的要求仍然有效")}</span></div><div class="bd">
+    ${risks.map(r=>`<div class="wb-row"><div class="t">${catDot(r.d.category)}<a data-go="${r.d.id}" href="javascript:void 0">${esc(r.d.shortZh||r.d.nameZh)}</a>${r.x?msPill(r.x):`<span class="pill ms-late">${r.n}/${MK.countries.length} ${Z("国未完成")}</span>`}</div>
+      <div class="s">${r.x?esc((r.x.law||"")+(r.x.note?" · "+r.x.note:"")):esc(r.names)}</div></div>`).join("")}
+  </div></div>`:""}
   ${vMarketProfile()}
   <div class="card chg" style="margin-bottom:16px"><div class="hd" style="flex-wrap:wrap"><h3>${Z("最近一次更新的新增动态")}</h3><span class="muted" style="margin-left:auto;font-size:12px">${lastRun?(lastRun.baseline?Z("首次运行：已建立基线"):`${esc(tsFmt(lastRun.date))} ${Z("· 新增")} ${lastRun.newItems} ${Z("项")}`):Z("尚未运行变更追踪")}</span></div><div class="bd">
       ${vChanges()}
     </div></div>
-  ${openI.length ? `<div class="card" style="margin-bottom:16px"><div class="hd"><h3>${Z("意见征求日历")}</h3><span class="muted" style="font-size:12px">${openI.length} ${Z("件正在征求意见")}</span><a href="#/drafts" style="margin-left:auto;font-size:12px">${Z("全部草案 →")}</a></div><div class="bd">
-      ${openI.map(i=>`<div class="act"><span class="d" style="color:var(--open)">${Z("截止")} ${fmt(i.st.last.fbEnd).slice(5)}</span><span class="pill">${esc(ACTTYPE[i.actType]||i.actType)}</span> <a href="${esc(i.url)}" target="_blank" rel="noopener">${esc(i.title)}</a> <span class="sub">· <a data-go="${i.d.id}" href="javascript:void 0">${esc(i.d.shortZh)}</a></span></div>`).join("")}
+  ${openRel.length ? `<div class="card" style="margin-bottom:16px"><div class="hd"><h3>${Z("意见征求日历")}</h3><span class="muted" style="font-size:12px">${openRel.length} ${Z("件正在征求意见")}</span><a href="#/drafts" style="margin-left:auto;font-size:12px">${Z("全部草案 →")}</a></div><div class="bd">
+      ${openRel.map(i=>`<div class="act"><span class="d" style="color:var(--open)">${Z("截止")} ${fmt(i.st.last.fbEnd).slice(5)}</span><span class="pill">${esc(ACTTYPE[i.actType]||i.actType)}</span> <a href="${esc(i.url)}" target="_blank" rel="noopener">${esc(i.title)}</a> <span class="sub">· <a data-go="${i.d.id}" href="javascript:void 0">${esc(i.d.shortZh)}</a></span></div>`).join("")}
       <div class="sub" style="margin-top:10px">${Z("另有")} ${draftI.length} ${Z("件草案已结束征求意见、等待欧委会通过；")}${planN} ${Z("件列入规划。")}</div>
     </div></div>` : ""}
   <div class="card" style="margin-bottom:16px">
@@ -14069,7 +14142,23 @@ function vOverview(){
     <div class="card"><div class="hd"><h3>${Z("近 12 个月主要动态")}</h3><a href="#/feed" style="margin-left:auto;font-size:12px">${Z("全部 →")}</a></div><div class="bd"><ul class="feed">${recent.map(feedLi).join("")||Z("<li class=\"muted\">暂无</li>")}</ul></div></div>
     <div class="card"><div class="hd"><h3>${Z("即将到来的节点")}</h3></div><div class="bd"><ul class="feed">${upcoming.map(feedLi).join("")||Z("<li class=\"muted\">暂无</li>")}</ul></div></div>
   </div>
-  ${openI.length ? "" : `<div class="card consult-mini" style="margin-top:16px"><div class="bd"><b>${Z("意见征求日历")}</b><span class="muted">${Z("当前没有开放的反馈期 ·")} ${draftI.length} ${Z("件草案已结束征求意见、等待欧委会通过 ·")} ${planN} ${Z("件列入规划")}</span><a href="#/drafts">${Z("全部草案 →")}</a></div></div>`}`;
+  ${openRel.length ? "" : `<div class="card consult-mini" style="margin-top:16px"><div class="bd"><b>${Z("意见征求日历")}</b><span class="muted">${Z("当前没有开放的反馈期 ·")} ${draftI.length} ${Z("件草案已结束征求意见、等待欧委会通过 ·")} ${planN} ${Z("件列入规划")}</span><a href="#/drafts">${Z("全部草案 →")}</a></div></div>`}`;
+}
+
+function upcomingObligations(){
+  const out=[];
+  D.forEach(d=>{ const lv=lvOfD(d); if(!["high","medium"].includes(lv)) return;
+    (d.milestones||[]).forEach(m=>{ if(m.date>=TODAY) out.push({date:m.date,label:m.label,d,lv,kind:MKIND[m.kind]||m.kind,verified:m.verified!==false}); }); });
+  (MK.dates||[]).forEach(x=>{ if(x.date<TODAY) return; if(state.mkt!=="eu" && x.c!==state.mkt) return; const d=BYID[x.d]; const lv=lvOfD(d); if(!["high","medium"].includes(lv)) return;
+    out.push({date:x.date,label:x.label,d,lv,kind:mktName(x.c),verified:x.v!==false}); });
+  return out.sort((a,b)=>a.date<b.date?-1:1);
+}
+function riskItems(){
+  const out=[]; const BAD=["late","court","partial"];
+  Object.entries(MK.dossiers||{}).forEach(([id,cs])=>{ const d=BYID[id]; if(!d || !relevant(d)) return;
+    if(state.mkt==="eu"){ const bad=MK.countries.filter(c=>cs[c.id] && BAD.includes(cs[c.id].status)); if(bad.length) out.push({d, n:bad.length, names:bad.map(c=>c.zh).join(Z("、"))}); }
+    else { const x=cs[state.mkt]; if(x && BAD.includes(x.status)) out.push({d,x}); } });
+  return out.sort((a,b)=> (b.n||0)-(a.n||0));
 }
 
 /* ----- grouped change list (overview) ----- */
@@ -14078,7 +14167,7 @@ let chgAll = false;
 function vChanges(){
   if(!CHG.length) return Z("<div class=\"muted\" style=\"font-size:13px\">数据每天北京时间 06:00 自动更新（也可在本地运行 <code>tools\\update-all.ps1</code>）。与上次相比新出现的事件、文件、投票排期、草案与二级立法会列在这里。</div>");
   const map = new Map();
-  CHG.forEach(c=>{ const k=c.detected+"|"+c.dossier; if(!map.has(k)) map.set(k,{detected:c.detected, dossier:c.dossier, items:[]}); map.get(k).items.push(c); });
+  CHG.filter(c=>relevant(BYID[c.dossier])).forEach(c=>{ const k=c.detected+"|"+c.dossier; if(!map.has(k)) map.set(k,{detected:c.detected, dossier:c.dossier, items:[]}); map.get(k).items.push(c); });
   // newest first: items by event date, groups by detection date, then by their latest event
   const evDate = c => String(c.date||"").slice(0,10);
   const groups = [...map.values()];
@@ -14235,6 +14324,7 @@ function vDetail(d){
     <div class="tags">${(d.tags||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div>
   </div>
 
+  ${vYou(d)}
   ${d.oeil ? `<div class="card"><div class="hd"><h3>${Z("立法阶段进程")}</h3><span class="muted" style="font-size:12px">${Z("当前：")}${esc(curStageName(d))}</span></div><div class="pipe">${pipe}</div></div>` : vActInfo(d)}
 
   <div class="cols">
@@ -14320,6 +14410,21 @@ function vMarketProfile(){
   return `<div class="card" style="margin-bottom:16px"><div class="hd" style="flex-wrap:wrap"><h3>${Z("市场概况：")}${esc(mktName(state.mkt))}</h3><a href="#/calendar" style="margin-left:auto;font-size:12px">${Z("本国合规日历 →")}</a></div><div class="bd">
     <p style="margin:0 0 8px">${esc(p.summary||"")}</p>
     <ul class="feed">${(p.items||[]).map(i=>`<li><div class="d"><span class="pill">${esc(i.t)}</span></div><div><div class="t">${esc(i.x)}${i.v===false?Z("<span class=\"unv\">待核实</span>"):""}</div>${i.u?`<div class="s"><a href="${esc(i.u)}" target="_blank" rel="noopener">${Z("来源")}</a></div>`:""}</div></li>`).join("")}</ul>
+  </div></div>`;
+}
+
+function vYou(d){
+  const x = roleImpact(d,state.role); const lv = x ? x.level : "none";
+  const nd = nextDates(d)[0];
+  const acts = (x && x.actions || []).slice(0,2);
+  const rec = state.mkt!=="eu" && (MK.dossiers||{})[d.id] && MK.dossiers[d.id][state.mkt];
+  return `<div class="card you lv-${lv}"><div class="bd">
+    <div class="you-h"><b>${Z("对你的影响")}</b><span class="muted" style="font-size:12.5px">${esc(ROLEZH[state.role])} · ${esc(mktName(state.mkt))}</span><span class="pill lv-${lv}">${LEVEL[lv]||""}</span></div>
+    ${x && x.levelNote ? `<div class="you-n">${esc(x.levelNote)}</div>` : (lv==="none" ? `<div class="you-n muted">${Z("对当前视角无直接影响，可在页眉切换视角。")}</div>` : "")}
+    ${acts.length ? `<ul class="you-a">${acts.map(a=>`<li>${esc(a)}</li>`).join("")}</ul>` : ""}
+    ${nd ? `<div class="you-d">${Z("下一节点：")}<b>${fmt(nd.date)}</b> ${esc(nd.label)} <span class="faint">· ${esc(nd.kind)}</span></div>` : ""}
+    ${rec ? `<div class="you-m">${esc(mktName(state.mkt))}${Z("：")}${msPill(rec)} ${esc(rec.law||"")}</div>` : ""}
+    ${lv!=="none" ? `<a href="javascript:void 0" class="you-more" data-scroll="impcard">${Z("查看完整分析 ↓")}</a>` : ""}
   </div></div>`;
 }
 
@@ -14465,7 +14570,7 @@ function vDocs(d){
 /* ----- drafts & secondary legislation (all dossiers) ----- */
 let draftFilter = {st: store.get("dst2","auto"), cat:"all", q:""};
 function vDrafts(){
-  let list = allInits();
+  let list = allInits().filter(i=>relevant(i.d));
   const full = list.slice();
   const cnt = k => full.filter(i=> k==="open"? i.st.open : k==="all"? true : i.st.k===k).length;
   if(draftFilter.st==="auto") draftFilter.st = cnt("open") ? "open" : "draft";
@@ -14474,7 +14579,7 @@ function vDrafts(){
   else if(draftFilter.st!=="all") list = list.filter(i=>i.st.k===draftFilter.st);
   const q = draftFilter.q.trim().toLowerCase(); if(q) list = list.filter(i=>(i.title+" "+(i.summary||"")+" "+i.d.nameZh+" "+(i.d._names||"")).toLowerCase().includes(q));
   list.sort((a,b)=>{ const ad=(a.st.last&&(a.st.open?a.st.last.fbEnd:a.st.last.date))||"", bd=(b.st.last&&(b.st.open?b.st.last.fbEnd:b.st.last.date))||""; return draftFilter.st==="open" ? (ad<bd?-1:1) : (ad<bd?1:-1); });
-  const acts=[]; D.forEach(d=>{ const s=SEC[d.id]; if(s) (s.acts||[]).forEach(a=>acts.push(Object.assign({d},a))); });
+  const acts=[]; D.forEach(d=>{ if(!relevant(d)) return; const s=SEC[d.id]; if(s) (s.acts||[]).forEach(a=>acts.push(Object.assign({d},a))); });
   acts.sort((a,b)=>a.date<b.date?1:-1);
   const recentActs = acts.filter(a=>a.rel!=="cites"||["standard","delegated","implementing"].includes(a.kind)).slice(0,30);
   const tabs=[["open",Z("意见征求中")],["draft",Z("草案已发布待通过")],["plan",Z("规划中")],["consult",Z("咨询/证据征集")],["adopted",Z("已通过")],["all",Z("全部")]];
@@ -14482,6 +14587,7 @@ function vDrafts(){
     <div class="filters" style="border-bottom:1px solid var(--line)">
       <div class="chips" id="dst">${tabs.map(([k,z])=>`<span class="chip ${draftFilter.st===k?"on":""}" data-s="${k}">${z}${Z("（")}${cnt(k)}${Z("）")}</span>`).join("")}</div>
       <div class="chips" id="dcat"><span class="chip ${draftFilter.cat==="all"?"on":""}" data-c="all">${Z("全部领域")}</span>${Object.entries(CATS).map(([k,v])=>`<span class="chip ${draftFilter.cat===k?"on":""}" data-c="${k}">${catDot(k)}${v.zh}</span>`).join("")}</div>
+      <div style="margin:2px 0 8px">${relChip()}</div>
       <input class="search" id="dq" placeholder="${Z("搜索草案标题 / 法规")}" value="${esc(draftFilter.q)}">
     </div>
     <div class="bd" id="dres">${list.map(i=>initRow(i,true)).join("")||Z("<div class=\"empty\">没有符合条件的草案</div>")}</div></div>
@@ -14496,7 +14602,7 @@ function bindDrafts(){
 /* ----- feed ----- */
 let feedFilter = {cat:"all", lane:"all", range:"past"};
 function vFeed(){
-  let ev = allEvents().filter(e=>!(e.src==="oeil" && /^(Results of vote|Debate in Parliament)/.test(e.orig)));
+  let ev = allEvents().filter(e=>relevant(e.d) && !(e.src==="oeil" && /^(Results of vote|Debate in Parliament)/.test(e.orig)));
   if(feedFilter.cat!=="all") ev = ev.filter(e=>e.d.category===feedFilter.cat);
   if(feedFilter.lane!=="all") ev = ev.filter(e=>e.lane===feedFilter.lane);
   if(feedFilter.range==="future") ev = ev.filter(e=>e.date>TODAY);
@@ -14504,7 +14610,7 @@ function vFeed(){
   ev = ev.reverse();
   let html = "", ym="";
   ev.forEach(e=>{ const m=e.date.slice(0,7); if(m!==ym){ ym=m; html += `<li style="display:block;border:0;padding:14px 0 4px;font-weight:700">${m.replace("-",Z(" 年 "))} ${Z("月")}</li>`; } html += feedLi(e); });
-  return `<div class="card"><div class="hd" style="flex-wrap:wrap"><h3>${Z("全部立法动态")}</h3>
+  return `<div class="ctx" style="display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center">${Z("视角：")}<b>${esc(ROLEZH[state.role])}</b><span style="margin-left:auto">${relChip()}</span></div><div class="card"><div class="hd" style="flex-wrap:wrap"><h3>${Z("全部立法动态")}</h3>
     <div class="chips" id="fcat" style="margin-left:auto"><span class="chip ${feedFilter.cat==="all"?"on":""}" data-c="all">${Z("全部领域")}</span>${Object.entries(CATS).map(([k,v])=>`<span class="chip ${feedFilter.cat===k?"on":""}" data-c="${k}">${catDot(k)}${v.zh}</span>`).join("")}</div></div>
     <div class="lanes"><span class="chips" id="flane"><span class="chip ${feedFilter.lane==="all"?"on":""}" data-l="all">${Z("全部机构")}</span>${Object.entries(LANES).map(([k,v])=>`<span class="chip ${feedFilter.lane===k?"on":""}" data-l="${k}"><span class="lane-dot" style="background:${v.color}"></span>${v.zh}</span>`).join("")}</span>
       <span class="chips" id="frange" style="margin-left:auto">${[["all",Z("全部")],["past",Z("已发生")],["future",Z("未来节点")]].map(([k,z])=>`<span class="chip ${feedFilter.range===k?"on":""}" data-r="${k}">${z}</span>`).join("")}</span></div>
@@ -14669,6 +14775,7 @@ function vHelp(){
 }
 
 parseHash(); render();
+if(state.view==="dossiers" && /^#\/?d\//.test(location.hash) && isNarrow()) setTimeout(scrollToDetail, 0);
 })();
 </script>
 </body>
