@@ -141,6 +141,7 @@ main{max-width:1400px;margin:0 auto;padding:18px 20px 60px}
 .sum ul{margin:0;padding-left:18px} .sum li{margin:4px 0}
 
 /* actors */
+.actors .bd{overflow-x:auto;-webkit-overflow-scrolling:touch}
 .actors table{width:100%;border-collapse:collapse;font-size:13px}
 .actors th,.actors td{text-align:left;padding:7px 6px;border-bottom:1px solid var(--line);vertical-align:top}
 .actors th{font-size:11.5px;color:var(--faint);font-weight:600}
@@ -223,6 +224,8 @@ details summary{cursor:pointer;color:var(--accent);font-size:12.5px}
   .tl li{grid-template-columns:78px 22px 1fr}
   nav.tabs{margin-left:0;width:100%;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch}
   nav.tabs button{white-space:nowrap;flex:0 0 auto}
+  .actors table{min-width:600px}
+  .actors td:nth-child(2){white-space:nowrap}
 }
 </style>
 </head>
@@ -2973,7 +2976,7 @@ function vDrafts(){
   acts.sort((a,b)=>a.date<b.date?1:-1);
   const recentActs = acts.filter(a=>a.rel!=="cites"||["standard","delegated","implementing"].includes(a.kind)).slice(0,30);
   const tabs=[["open","意见征求中"],["draft","草案已发布待通过"],["plan","规划中"],["consult","咨询/证据征集"],["adopted","已通过"],["all","全部"]];
-  return `<div class="card" style="margin-bottom:16px"><div class="hd" style="flex-wrap:wrap"><h3>授权法案 / 实施法案 / 立法草案 · 意见征求</h3><span class="muted" style="font-size:12px">来源：欧委会 Have Your Say${SEC_GEN?" · 更新于 "+esc(SEC_tsFmt(GEN)):""}</span></div>
+  return `<div class="card" style="margin-bottom:16px"><div class="hd" style="flex-wrap:wrap"><h3>授权法案 / 实施法案 / 立法草案 · 意见征求</h3><span class="muted" style="font-size:12px">来源：欧委会 Have Your Say${SEC_GEN?" · 更新于 "+esc(tsFmt(SEC_GEN)):""}</span></div>
     <div class="filters" style="border-bottom:1px solid var(--line)">
       <div class="chips" id="dst">${tabs.map(([k,z])=>`<span class="chip ${draftFilter.st===k?"on":""}" data-s="${k}">${z}（${cnt(k)}）</span>`).join("")}</div>
       <div class="chips" id="dcat"><span class="chip ${draftFilter.cat==="all"?"on":""}" data-c="all">全部领域</span>${Object.entries(CATS).map(([k,v])=>`<span class="chip ${draftFilter.cat===k?"on":""}" data-c="${k}">${catDot(k)}${v.zh}</span>`).join("")}</div>
