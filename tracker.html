@@ -211,6 +211,19 @@ details summary{cursor:pointer;color:var(--accent);font-size:12.5px}
 .act{display:flex;flex-wrap:wrap;gap:4px 8px;align-items:baseline;font-size:13px;padding:3px 0 3px 94px;position:relative}
 .act .d{position:absolute;left:0;top:3px;color:var(--muted);font-variant-numeric:tabular-nums;font-size:12.5px}
 .chg li .t{font-size:13px}
+.chg-grp{border-top:1px solid var(--line);padding:10px 0}
+.chg-grp:first-child{border-top:0;padding-top:0}
+.chg-h{display:flex;align-items:center;flex-wrap:wrap;gap:6px 8px;font-weight:600;font-size:14px}
+.chg-src{font-weight:400;font-size:12px}
+.chg-d{margin-left:auto;font-weight:400;font-size:12px}
+.chg-items{list-style:none;margin:6px 0 0;padding:0 0 0 14px}
+.chg-items li{margin:5px 0}
+.chg-items .s{font-size:12px;color:var(--faint)}
+.chg details summary{cursor:pointer;font-size:12.5px;color:var(--accent);margin:4px 0 0 14px}
+.chg-date{font-size:12px;font-weight:700;color:var(--muted);margin:12px 0 4px}
+.chg-more{display:block;width:100%;margin-top:10px;padding:9px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--accent);font-size:13px;cursor:pointer}
+.consult-mini .bd{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;font-size:13px}
+.consult-mini a{margin-left:auto}
 .help code{background:var(--panel2);padding:2px 6px;border-radius:5px;font-size:12.5px}
 .help pre{background:var(--panel2);padding:10px 12px;border-radius:8px;overflow:auto;font-size:12.5px}
 
@@ -4139,7 +4152,7 @@ document.getElementById("gen").textContent = GEN ? "OEIL 数据更新于 " + tsF
 const app = document.getElementById("app");
 function render(){
   document.querySelectorAll("#tabs button").forEach(b=>b.classList.toggle("on", b.dataset.v===state.view));
-  if(state.view==="overview") app.innerHTML = vOverview();
+  if(state.view==="overview") { app.innerHTML = vOverview(); bindOverview(); }
   else if(state.view==="dossiers") { app.innerHTML = vDossiers(); bindDossiers(); }
   else if(state.view==="feed") { app.innerHTML = vFeed(); bindFeed(); }
   else if(state.view==="drafts") { app.innerHTML = vDrafts(); bindDrafts(); }
@@ -4174,7 +4187,7 @@ function vOverview(){
   const openI = inits.filter(i=>i.st.open).sort((a,b)=>a.st.last.fbEnd<b.st.last.fbEnd?-1:1);
   const draftI = inits.filter(i=>i.st.k==="draft" && !i.st.open);
   const lastRun = CHG_RUNS[0];
-  const newest = CHG.slice(0,12);
+  const planN = inits.filter(i=>i.st.k==="plan").length;
   return `
   <div class="kpis">
     <div class="card kpi"><div class="v">${D.length}</div><div class="l">监测立法程序</div></div>
@@ -4182,15 +4195,13 @@ function vOverview(){
     <div class="card kpi"><div class="v" style="color:var(--done)">${done.length}</div><div class="l">已通过并发布</div></div>
     <div class="card kpi"><div class="v" style="color:var(--open)">${openI.length}</div><div class="l">正在征求意见的草案</div></div>
   </div>
-  <div class="grid2" style="margin-bottom:16px">
-    <div class="card"><div class="hd"><h3>意见征求日历</h3><a href="#/drafts" style="margin-left:auto;font-size:12px">全部草案 →</a></div><div class="bd">
-      ${openI.length?openI.map(i=>`<div class="act"><span class="d" style="color:var(--open)">截止 ${fmt(i.st.last.fbEnd).slice(5)}</span><span class="pill">${esc(ACTTYPE[i.actType]||i.actType)}</span> <a href="${esc(i.url)}" target="_blank" rel="noopener">${esc(i.title)}</a> <span class="sub">· <a data-go="${i.d.id}" href="javascript:void 0">${esc(i.d.shortZh)}</a></span></div>`).join(""):'<div class="muted" style="font-size:13px">当前没有开放的反馈期</div>'}
-      <div class="sub" style="margin-top:10px">另有 ${draftI.length} 件草案已结束征求意见、等待欧委会通过；${inits.filter(i=>i.st.k==="plan").length} 件列入规划。</div>
+  <div class="card chg" style="margin-bottom:16px"><div class="hd" style="flex-wrap:wrap"><h3>最近一次更新的新增动态</h3><span class="muted" style="margin-left:auto;font-size:12px">${lastRun?(lastRun.baseline?"首次运行：已建立基线":`${esc(tsFmt(lastRun.date))} · 新增 ${lastRun.newItems} 项`):"尚未运行变更追踪"}</span></div><div class="bd">
+      ${vChanges()}
     </div></div>
-    <div class="card chg"><div class="hd"><h3>最近一次更新的新增动态</h3><span class="muted" style="margin-left:auto;font-size:12px">${lastRun?(lastRun.baseline?"首次运行：已建立基线":`${esc(tsFmt(lastRun.date))} · 新增 ${lastRun.newItems} 项`):"尚未运行变更追踪"}</span></div><div class="bd">
-      ${newest.length?`<ul class="feed">${newest.map(c=>{const d=BYID[c.dossier]; return `<li><div class="d">${fmt(c.detected)}</div><div><div class="t">${esc(c.text)}</div><div class="s">${d?`<a data-go="${d.id}" href="javascript:void 0">${esc(d.shortZh)}</a> · `:""}${esc(c.source)}${c.url?` · <a href="${esc(c.url)}" target="_blank" rel="noopener">原文</a>`:""}</div></div></li>`}).join("")}</ul>`:'<div class="muted" style="font-size:13px">数据每天北京时间 06:00 自动更新（也可在本地运行 <code>tools\\update-all.ps1</code>）。与上次相比新出现的事件、文件、投票排期、草案与二级立法会列在这里。</div>'}
-    </div></div>
-  </div>
+  ${openI.length ? `<div class="card" style="margin-bottom:16px"><div class="hd"><h3>意见征求日历</h3><span class="muted" style="font-size:12px">${openI.length} 件正在征求意见</span><a href="#/drafts" style="margin-left:auto;font-size:12px">全部草案 →</a></div><div class="bd">
+      ${openI.map(i=>`<div class="act"><span class="d" style="color:var(--open)">截止 ${fmt(i.st.last.fbEnd).slice(5)}</span><span class="pill">${esc(ACTTYPE[i.actType]||i.actType)}</span> <a href="${esc(i.url)}" target="_blank" rel="noopener">${esc(i.title)}</a> <span class="sub">· <a data-go="${i.d.id}" href="javascript:void 0">${esc(i.d.shortZh)}</a></span></div>`).join("")}
+      <div class="sub" style="margin-top:10px">另有 ${draftI.length} 件草案已结束征求意见、等待欧委会通过；${planN} 件列入规划。</div>
+    </div></div>` : ""}
   <div class="card" style="margin-bottom:16px">
     <div class="hd"><h3>立法进程总图</h3><span class="muted" style="font-size:12px">从欧委会提案到公报发布 · 点击法规名称查看详情</span></div>
     <div class="bd">
@@ -4209,7 +4220,39 @@ function vOverview(){
   <div class="grid2">
     <div class="card"><div class="hd"><h3>近 12 个月主要动态</h3><a href="#/feed" style="margin-left:auto;font-size:12px">全部 →</a></div><div class="bd"><ul class="feed">${recent.map(feedLi).join("")||'<li class="muted">暂无</li>'}</ul></div></div>
     <div class="card"><div class="hd"><h3>即将到来的节点</h3></div><div class="bd"><ul class="feed">${upcoming.map(feedLi).join("")||'<li class="muted">暂无</li>'}</ul></div></div>
-  </div>`;
+  </div>
+  ${openI.length ? "" : `<div class="card consult-mini" style="margin-top:16px"><div class="bd"><b>意见征求日历</b><span class="muted">当前没有开放的反馈期 · ${draftI.length} 件草案已结束征求意见、等待欧委会通过 · ${planN} 件列入规划</span><a href="#/drafts">全部草案 →</a></div></div>`}`;
+}
+
+/* ----- grouped change list (overview) ----- */
+const CHG_SRC = {OEIL:"立法进程", "EUR-Lex":"EUR-Lex 法案", HaveYourSay:"意见征求", Stakeholder:"利益相关方"};
+let chgAll = false;
+function vChanges(){
+  if(!CHG.length) return '<div class="muted" style="font-size:13px">数据每天北京时间 06:00 自动更新（也可在本地运行 <code>tools\\update-all.ps1</code>）。与上次相比新出现的事件、文件、投票排期、草案与二级立法会列在这里。</div>';
+  const map = new Map();
+  CHG.forEach(c=>{ const k=c.detected+"|"+c.dossier; if(!map.has(k)) map.set(k,{detected:c.detected, dossier:c.dossier, items:[]}); map.get(k).items.push(c); });
+  const groups = [...map.values()].sort((a,b)=> a.detected<b.detected?1:a.detected>b.detected?-1:(b.items.length-a.items.length));
+  const SHOW = 5, shown = chgAll ? groups : groups.slice(0,SHOW);
+  const itemLi = c => `<li><div class="t">${esc(c.text)}</div><div class="s">${esc(CHG_SRC[c.source]||c.source)}${c.date?` · ${fmt(String(c.date).slice(0,10))}`:""}${c.url?` · <a href="${esc(c.url)}" target="_blank" rel="noopener">原文</a>`:""}</div></li>`;
+  let html = "", lastDate = "";
+  shown.forEach(g=>{
+    if(chgAll && g.detected!==lastDate){ lastDate=g.detected; html += `<div class="chg-date">${fmt(g.detected)} 检测到</div>`; }
+    const d = BYID[g.dossier];
+    const bySrc = {}; g.items.forEach(c=>bySrc[c.source]=(bySrc[c.source]||0)+1);
+    const head = g.items.slice(0,2), rest = g.items.slice(2);
+    html += `<div class="chg-grp">
+      <div class="chg-h">${d?catDot(d.category):""}${d?`<a data-go="${d.id}" href="javascript:void 0">${esc(d.shortZh||d.nameZh)}</a>`:esc(g.dossier)}<span class="pill">${g.items.length} 项</span><span class="muted chg-src">${Object.entries(bySrc).map(([k,v])=>`${esc(CHG_SRC[k]||k)} ${v}`).join(" · ")}</span>${chgAll?"":`<span class="faint chg-d">${fmt(g.detected)}</span>`}</div>
+      <ul class="chg-items">${head.map(itemLi).join("")}</ul>
+      ${rest.length?`<details><summary>展开其余 ${rest.length} 项</summary><ul class="chg-items">${rest.map(itemLi).join("")}</ul></details>`:""}
+    </div>`;
+  });
+  const more = groups.length - SHOW;
+  if(groups.length > SHOW) html += `<button class="chg-more" id="chgMore">${chgAll?"收起":`查看更多（还有 ${more} 个法规，共 ${CHG.length} 项）`}</button>`;
+  return html;
+}
+function bindOverview(){
+  const b = document.getElementById("chgMore");
+  if(b) b.addEventListener("click",()=>{ chgAll=!chgAll; const y=window.scrollY; render(); if(!chgAll){ const c=document.querySelector(".chg"); if(c) c.scrollIntoView({block:"start"}); } else window.scrollTo(0,y); });
 }
 function feedLi(e){
   const L = LANES[e.lane];
