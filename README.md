@@ -6,6 +6,7 @@
 - **未发布的草案**：规划中的法案、证据征集、公众咨询、草案意见征求（含反馈期）；
 - **在审法规的动态**：排期中的委员会表决和全会日期、理事会政策辩论、三方谈判轮次；
 - **利益相关方**：行业协会、NGO、智库、关键人物、成员国政府对各法规的立场与影响动态（公开信、立场文件、研究报告、政治协议），附原文链接；
+- **产业链影响与成员国落实**：按车企、电池企业、储能企业、上游供应链四个视角分析影响；页眉选择市场（欧盟全境或 7 个成员国）查看各国转化与执行情况；合规日历按视角和市场筛选并可导出；
 - **变更追踪**：每次更新和上次相比的新增内容。
 
 ## 在线访问（手机 / 电脑）
@@ -38,7 +39,9 @@ powershell -ExecutionPolicy Bypass -File tools\update-all.ps1
 |---|---|
 | `data/curated.js` | 人工层：监测清单（10 个分类，`window.CATEGORIES`）、中文解读、法规谱系（`parent`）、理事会内部节点（`council`）、实施节点（`milestones`）、在审动态（`tracking`）、对电池生产企业的影响（`batteryImpact`）。二级法案和尚未提出的立法 `oeil` 留空、`secondary:true`，在 `act` 字段记录类型、编号和状态 |
 | `data/stakeholders.js` | 人工层：利益相关方（`actors`，含对各法规的立场 `positions`）与有日期的影响动态（`events`）。须保持为合法 JSON，`build.ps1` 读取它做变更追踪 |
-| `data/curated.en.js`、`data/stakeholders.en.js` | 英文版内容，按 id 对应中文条目（页面右上角“中 / EN”切换）。缺少英文的条目会显示中文；新增或修改中文内容后请同步更新 |
+| `data/impacts.js` | 人工层：车企、储能企业、上游供应链三个视角的影响分析和“影响传导”（电池企业视角在 `curated.js` 的 `batteryImpact`） |
+| `data/markets.js` | 人工层：成员国落实（第一批 7 国）：指令转化状态、本国法律、主管与登记机构、本国补贴与时间节点、国家概况，附来源 |
+| `data/curated.en.js`、`data/stakeholders.en.js`、`data/impacts.en.js`、`data/markets.en.js` | 英文版内容，按 id 对应中文条目（页面右上角“中 / EN”切换）。缺少英文的条目会显示中文；新增或修改中文内容后请同步更新 |
 | `data/sources.json` | 二级立法配置：母法 CELEX、Have Your Say 关键词与匹配规则 |
 | `data/oeil-data.*`、`data/secondary-data.*`、`data/changes.*`、`data/snapshot.json` | 脚本生成 |
 

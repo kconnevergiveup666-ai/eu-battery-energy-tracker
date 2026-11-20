@@ -16,6 +16,10 @@ on:
       - "data/stakeholders.js"
       - "data/curated.en.js"
       - "data/stakeholders.en.js"
+      - "data/impacts.js"
+      - "data/impacts.en.js"
+      - "data/markets.js"
+      - "data/markets.en.js"
       - "index.html"
       - "tools/**"
 

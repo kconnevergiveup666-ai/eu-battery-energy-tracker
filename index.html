@@ -199,6 +199,30 @@ details summary{cursor:pointer;color:var(--accent);font-size:12.5px}
 .pill.lv-low{color:var(--muted)}
 @media (max-width:820px){ .bi3{grid-template-columns:1fr} }
 .pill.sec{color:var(--c-sec);border-color:color-mix(in srgb,var(--c-sec) 45%,transparent)}
+.hsel{font:inherit;font-size:12.5px;padding:5px 6px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--text);max-width:9.5em}
+.role-tabs{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
+.role-tabs button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--panel);color:var(--muted);border-radius:999px;padding:5px 12px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.role-tabs button.on{border-color:var(--accent);color:var(--accent);background:var(--accent-weak);font-weight:600}
+.lvdot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--faint)}
+.lvdot.high{background:var(--open)}.lvdot.medium{background:var(--current)}.lvdot.low{background:var(--done)}.lvdot.none{background:var(--line)}
+.chain{border-left:3px solid var(--accent);background:var(--accent-weak);padding:8px 12px;border-radius:0 8px 8px 0;font-size:13.5px;margin:0 0 12px}
+.chain b{color:var(--accent)}
+.pill.lv-none{color:var(--faint)}
+.mk-tbl{width:100%;border-collapse:collapse;font-size:13px;min-width:560px}
+.mk-tbl th,.mk-tbl td{text-align:left;padding:7px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+.mk-tbl th{font-size:11.5px;color:var(--faint);font-weight:600}
+.mk-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.mk-tbl td:first-child,.mk-tbl th:first-child,.mk-tbl .pill{white-space:nowrap}
+.mk-tbl td:nth-child(3){min-width:240px}
+.pill.ms-done{color:var(--done);border-color:color-mix(in srgb,var(--done) 45%,transparent)}
+.pill.ms-partial,.pill.ms-pending,.pill.ms-info{color:var(--c-sec);border-color:color-mix(in srgb,var(--c-sec) 45%,transparent)}
+.pill.ms-late,.pill.ms-court{color:var(--open);border-color:color-mix(in srgb,var(--open) 45%,transparent)}
+.lvtag{font-size:11px;padding:0 6px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.lvtag.high{color:var(--open);border-color:color-mix(in srgb,var(--open) 45%,transparent)}
+.lvtag.medium{color:var(--current);border-color:color-mix(in srgb,var(--current) 50%,transparent)}
+.cal-m{font-weight:700;margin:14px 0 4px}
+.ctx{font-size:12.5px;color:var(--muted);margin:0 0 10px}
+@media (max-width:560px){ .hright{flex-wrap:wrap;gap:6px} .hsel{max-width:8.5em} }
 .pill.open{color:var(--open);border-color:color-mix(in srgb,var(--open) 50%,transparent);font-weight:600}
 .init{padding:9px 0;border-bottom:1px dashed var(--line)} .init:last-child{border-bottom:0}
 .ihd{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
@@ -255,10 +279,11 @@ details summary{cursor:pointer;color:var(--accent);font-size:12.5px}
       <button data-v="dossiers">法规库</button>
       <button data-v="drafts">草案与二级立法</button>
       <button data-v="feed">动态时间线</button>
+      <button data-v="calendar">合规日历</button>
       <button data-v="actors">利益相关方</button>
       <button data-v="help">数据与更新</button>
     </nav>
-    <div class="hright"><span id="gen"></span><button class="iconbtn" id="langBtn" title="切换语言">EN</button><button class="iconbtn" id="themeBtn" title="切换明暗">◐</button></div>
+    <div class="hright"><span id="gen"></span><select class="hsel" id="roleSel" aria-label="视角"></select><select class="hsel" id="mktSel" aria-label="市场"></select><button class="iconbtn" id="langBtn" title="切换语言">EN</button><button class="iconbtn" id="themeBtn" title="切换明暗">◐</button></div>
   </div>
 </header>
 <main id="app"></main>
@@ -268,8 +293,12 @@ details summary{cursor:pointer;color:var(--accent);font-size:12.5px}
 <script src="data/secondary-data.js"></script>
 <script src="data/changes.js"></script>
 <script src="data/stakeholders.js"></script>
+<script src="data/impacts.js"></script>
+<script src="data/markets.js"></script>
 <script src="data/curated.en.js"></script>
 <script src="data/stakeholders.en.js"></script>
+<script src="data/impacts.en.js"></script>
+<script src="data/markets.en.js"></script>
 <script>
 /* UI language: 中文 (default) or English. English content overlays the Chinese fields by id; anything without a translation falls back to Chinese. */
 window.LANG = (function(){ try{ var v=localStorage.getItem("lang"); return v ? JSON.parse(v) : "zh"; }catch(e){ return "zh"; } })();
@@ -661,7 +690,56 @@ window.EN_UI = {
 "动态时间线": "Timeline",
 "数据与更新": "Data & updates",
 "切换明暗": "Toggle light/dark",
-"切换语言": "Switch language"
+"切换语言": "Switch language",
+"合规日历": "Compliance calendar",
+"车企": "Carmakers",
+"电池企业": "Battery makers",
+"储能企业": "Energy storage",
+"上游供应链": "Upstream supply chain",
+"欧盟全境": "EU-wide",
+"视角": "Perspective",
+"市场": "Market",
+"无直接影响": "No direct impact",
+"高": "High",
+"中": "Medium",
+"低": "Low",
+"无": "None",
+"对产业链的主要影响": "Main impacts along the value chain",
+"视角：对欧出口或在欧设厂的中国企业": "Perspective: Chinese companies exporting to or producing in the EU",
+"影响传导": "Impact chain",
+"成员国落实": "Member-state implementation",
+"市场：": "Market: ",
+"截至": "as of",
+"该指令的成员国转化信息暂未收录。": "Member-state transposition data for this directive is not yet included. ",
+"条例在各成员国直接适用，内容一致；成员国层面主要涉及主管机关、处罚和登记，暂未收录。": "Regulations apply directly and identically in all member states; national aspects (authorities, penalties, registration) are not yet included. ",
+"可在页眉选择具体国家。": "Select a country in the header.",
+"暂未收录": "Not yet included",
+"各国对比 · 在页眉选择具体国家可查看单国详情": "Country comparison · select a country in the header for details",
+"国家": "Country",
+"本国法律 / 要点": "National law / notes",
+"日期": "Date",
+"该指令在本国的转化信息暂未收录。": "Transposition data for this directive in this country is not yet included.",
+"条例在各成员国直接适用，内容一致；暂未收录本国的执行信息。": "Regulations apply directly and identically in all member states; national implementation details for this country are not yet included.",
+"本国法律": "National law",
+"生效日期": "In force",
+"主管/登记": "Authority / registry",
+"要点": "Notes",
+"本国时间节点": "National dates",
+"市场概况：": "Market profile: ",
+"本国合规日历 →": "National compliance calendar →",
+"对当前视角影响高": "High impact for my perspective",
+"导出到日历（.ics）": "Export to calendar (.ics)",
+"视角：": "Perspective: ",
+"在页眉切换视角和市场": "switch perspective and market in the header",
+"即将到来": "Upcoming",
+"过去 12 个月": "Past 12 months",
+"影响高、中": "High & medium impact",
+"含低影响": "Include low impact",
+"<div class=\"empty\">没有符合条件的节点</div>": "<div class=\"empty\">No matching dates</div>",
+"共": "Total",
+"个节点；欧盟层面的节点来自各法规的实施节点，本国节点来自成员国落实数据。": "dates. EU-level dates come from each file's milestones; national dates from the member-state data.",
+"待核实": "to verify",
+"仍在立法程序中，通过后再跟踪成员国落实。": "Still in the legislative process; member-state implementation will be tracked once adopted."
 };
 (function(){
   /* search text in both languages, so Chinese and English queries work in either mode */
@@ -685,6 +763,17 @@ window.EN_UI = {
     if(e.tracking && c.tracking){ if(e.tracking.source) c.tracking.source=e.tracking.source; if(e.tracking.outlook) c.tracking.outlook=e.tracking.outlook; (e.tracking.items||[]).forEach(function(x,i){ var t=c.tracking.items[i]; if(t&&x){ t.text=x; } }); (e.tracking.src||[]).forEach(function(x,i){ var t=c.tracking.items[i]; if(t&&x) t.src=x; }); }
     if(e.act && c.act) ["ref","statusNote","basis"].forEach(function(k){ if(e.act[k]) c.act[k]=e.act[k]; });
   });
+  var I = window.IMPACTS, IE = window.IMPACTS_EN || {};
+  if(I) Object.keys(I).forEach(function(id){ var e=IE[id]; if(!e) return; if(e.chain) I[id].chain=e.chain;
+    ["auto","storage","upstream"].forEach(function(r){ var t=I[id][r], x=e[r]; if(t&&x) ["levelNote","segments","compliance","access","support","actions"].forEach(function(k){ if(x[k]) t[k]=x[k]; }); }); });
+  var MKz = window.MARKETS, MKe = window.MARKETS_EN;
+  if(MKz && MKe){
+    (MKz.countries||[]).forEach(function(c){ if(MKe.countries&&MKe.countries[c.id]) c.zh=MKe.countries[c.id]; });
+    if(MKe.statusLabels) MKz.statusLabels=MKe.statusLabels;
+    Object.keys(MKz.dossiers||{}).forEach(function(d){ Object.keys(MKz.dossiers[d]).forEach(function(c){ var x=((MKe.dossiers||{})[d]||{})[c]; var t=MKz.dossiers[d][c]; if(x&&t) ["law","authority","note"].forEach(function(k){ if(x[k]) t[k]=x[k]; }); }); });
+    Object.keys(MKz.profiles||{}).forEach(function(c){ var x=(MKe.profiles||{})[c], t=MKz.profiles[c]; if(!x) return; if(x.summary) t.summary=x.summary; (x.items||[]).forEach(function(it,i){ if(t.items[i]){ t.items[i].t=it.t; t.items[i].x=it.x; } }); });
+    (MKz.dates||[]).forEach(function(t,i){ if(MKe.dates&&MKe.dates[i]) t.label=MKe.dates[i]; });
+  }
   var S = window.STAKEHOLDERS, SE = window.STAKEHOLDERS_EN;
   if(S && SE){
     ["types","stances","kinds"].forEach(function(k){ if(SE[k]) S[k]=SE[k]; });
@@ -710,6 +799,12 @@ const CHG = (window.CHANGES && window.CHANGES.changes) || [];
 const CHG_RUNS = (window.CHANGES && window.CHANGES.runs) || [];
 const STK = window.STAKEHOLDERS || {actors:[], events:[], types:{}, stances:{}, kinds:{}};
 const ACT = Object.fromEntries((STK.actors||[]).map(a=>[a.id,a]));
+const IMP = window.IMPACTS || {};
+const MK = window.MARKETS || {countries:[], dossiers:{}, profiles:{}, dates:[], statusLabels:{}};
+const ROLES = [["auto",Z("车企")],["battery",Z("电池企业")],["storage",Z("储能企业")],["upstream",Z("上游供应链")]];
+const ROLEZH = Object.fromEntries(ROLES);
+const roleImpact = (d,r) => r==="battery" ? d.batteryImpact : ((IMP[d.id]||{})[r]);
+const mktName = c => c==="eu" ? Z("欧盟全境") : ((MK.countries.find(x=>x.id===c)||{}).zh || c);
 const TODAY = new Date().toISOString().slice(0,10);
 
 /* ---------- dictionaries ---------- */
@@ -926,17 +1021,23 @@ function computeStages(d){
 }
 
 /* ---------- state & routing ---------- */
-let state = { view:"overview", id:null, cat:store.get("cat","all"), st:store.get("st","all"), q:"", showAll:false, lanes: store.get("lanes3", Object.keys(LANES)) };
+let state = { view:"overview", id:null, cat:store.get("cat","all"), st:store.get("st","all"), q:"", showAll:false, lanes: store.get("lanes3", Object.keys(LANES)), role: store.get("role","battery"), mkt: store.get("mkt","eu") };
+if(!ROLEZH[state.role]) state.role="battery";
+if(state.mkt!=="eu" && !MK.countries.some(c=>c.id===state.mkt)) state.mkt="eu";
+function hashParams(){ const p=[]; if(state.role!=="battery") p.push("r="+state.role); if(state.mkt!=="eu") p.push("m="+state.mkt); return p.length?"?"+p.join("&"):""; }
+function curHash(){ return (state.view==="dossiers" ? "#/d/"+state.id : "#/"+state.view) + hashParams(); }
 function parseHash(){
-  const h = location.hash.replace(/^#\/?/,"").split("/");
+  const raw = location.hash.replace(/^#\/?/,""); const qi = raw.indexOf("?");
+  if(qi>=0){ new URLSearchParams(raw.slice(qi+1)).forEach((v,k)=>{ if(k==="r" && ROLEZH[v]){ state.role=v; store.set("role",v); } if(k==="m" && (v==="eu"||MK.countries.some(c=>c.id===v))){ state.mkt=v; store.set("mkt",v); } }); }
+  const h = (qi>=0 ? raw.slice(0,qi) : raw).split("/");
   if(h[0]==="d" && h[1] && BYID[h[1]]){ state.view="dossiers"; state.id=h[1]; }
-  else if(["overview","dossiers","drafts","feed","actors","help"].includes(h[0])){ state.view=h[0]; if(h[0]==="dossiers" && !state.id) state.id = D[0] && D[0].id; }
+  else if(["overview","dossiers","drafts","feed","calendar","actors","help"].includes(h[0])){ state.view=h[0]; if(h[0]==="dossiers" && !state.id) state.id = D[0] && D[0].id; }
   else state.view="overview";
 }
 window.addEventListener("hashchange",()=>{parseHash();render();});
 function nav(view,id){
   state.view=view; if(id) state.id=id; if(view==="dossiers" && !state.id) state.id=D[0]&&D[0].id;
-  try{ history.replaceState(null,"", view==="dossiers" ? "#/d/"+state.id : "#/"+view); }catch(e){}
+  try{ history.replaceState(null,"", curHash()); }catch(e){}
   render(); window.scrollTo(0,0);
 }
 document.getElementById("tabs").addEventListener("click",e=>{
@@ -955,6 +1056,13 @@ document.querySelectorAll("#tabs button").forEach(b=>{ b.textContent = Z(b.textC
 (function(){ const br=document.querySelector(".brand"); if(LANG==="en" && br) br.innerHTML = Z("欧盟电池与能源立法追踪")+"<small>EU battery & energy industrial-policy legislation</small>"; if(LANG==="en") document.title = Z("欧盟电池与能源立法追踪"); })();
 const langBtn = document.getElementById("langBtn");
 langBtn.textContent = LANG==="en" ? "中" : "EN"; langBtn.title = Z("切换语言"); themeBtn.title = Z("切换明暗");
+const roleSel = document.getElementById("roleSel"), mktSel = document.getElementById("mktSel");
+roleSel.title = Z("视角"); mktSel.title = Z("市场");
+roleSel.innerHTML = ROLES.map(([k,z])=>`<option value="${k}">${esc(z)}</option>`).join("");
+mktSel.innerHTML = [["eu",Z("欧盟全境")]].concat(MK.countries.map(c=>[c.id,c.zh])).map(([k,z])=>`<option value="${k}">${esc(z)}</option>`).join("");
+const syncSel = ()=>{ roleSel.value = state.role; mktSel.value = state.mkt; };
+roleSel.onchange = ()=>{ state.role = roleSel.value; store.set("role",state.role); try{ history.replaceState(null,"",curHash()); }catch(e){} render(); };
+mktSel.onchange = ()=>{ state.mkt = mktSel.value; store.set("mkt",state.mkt); try{ history.replaceState(null,"",curHash()); }catch(e){} render(); };
 langBtn.onclick = ()=>{ store.set("lang", LANG==="en" ? "zh" : "en"); location.reload(); };
 document.getElementById("gen").textContent = GEN ? Z("OEIL 数据更新于 ") + tsFmt(GEN) : Z("未找到 OEIL 数据（请运行更新脚本）");
 
@@ -983,11 +1091,13 @@ function liveSearch(id, setQ, view, sels){
 const app = document.getElementById("app");
 function render(){
   document.querySelectorAll("#tabs button").forEach(b=>b.classList.toggle("on", b.dataset.v===state.view));
+  syncSel();
   if(state.view==="overview") { app.innerHTML = vOverview(); bindOverview(); }
   else if(state.view==="dossiers") { app.innerHTML = vDossiers(); bindDossiers(); }
   else if(state.view==="feed") { app.innerHTML = vFeed(); bindFeed(); }
   else if(state.view==="drafts") { app.innerHTML = vDrafts(); bindDrafts(); }
   else if(state.view==="actors") { app.innerHTML = vActorsView(); bindActorsView(); }
+  else if(state.view==="calendar") { app.innerHTML = vCalendar(); bindCalendar(); }
   else app.innerHTML = vHelp();
   app.querySelectorAll("[data-go]").forEach(el=>el.addEventListener("click",e=>{ e.preventDefault(); nav("dossiers", el.dataset.go); }));
 }
@@ -1026,6 +1136,7 @@ function vOverview(){
     <div class="card kpi"><div class="v" style="color:var(--done)">${done.length}</div><div class="l">${Z("已通过并发布")}</div></div>
     <div class="card kpi"><div class="v" style="color:var(--open)">${openI.length}</div><div class="l">${Z("正在征求意见的草案")}</div></div>
   </div>
+  ${vMarketProfile()}
   <div class="card chg" style="margin-bottom:16px"><div class="hd" style="flex-wrap:wrap"><h3>${Z("最近一次更新的新增动态")}</h3><span class="muted" style="margin-left:auto;font-size:12px">${lastRun?(lastRun.baseline?Z("首次运行：已建立基线"):`${esc(tsFmt(lastRun.date))} ${Z("· 新增")} ${lastRun.newItems} ${Z("项")}`):Z("尚未运行变更追踪")}</span></div><div class="bd">
       ${vChanges()}
     </div></div>
@@ -1146,6 +1257,7 @@ function filtered(){
     if(state.st==="done" && !d.completed) return false;
     if(state.st==="core" && d.relevance!=="core") return false;
     if(state.st==="sec" && !d.secondary) return false;
+    if(state.st==="hi"){ const x=roleImpact(d,state.role); if(!x || x.level!=="high") return false; }
     if(q){
       const hay = [d._q,d.nameZh,d.shortZh,d.oeil,d.act&&d.act.ref,d.o&&d.o.title,d.o&&d.o.mainAct,(d.tags||[]).join(" "),d.summaryZh].join(" ").toLowerCase();
       if(!hay.includes(q)) return false;
@@ -1168,12 +1280,12 @@ function vDossiers(){
       <div class="filters">
         <input class="search" id="q" placeholder="${Z("搜索：名称 / 程序编号 / 法案号 / 关键词")}" value="${esc(state.q)}">
         <div class="chips" id="cats"><span class="chip ${state.cat==="all"?"on":""}" data-c="all">${Z("全部领域")}</span>${Object.entries(CATS).map(([k,v])=>`<span class="chip ${state.cat===k?"on":""}" data-c="${k}">${catDot(k)}${v.zh}</span>`).join("")}</div>
-        <div class="chips" id="sts">${[["all",Z("全部")],["live",Z("审议中")],["done",Z("已通过")],["core",Z("核心法规")],["sec",Z("二级法案")]].map(([k,z])=>`<span class="chip ${state.st===k?"on":""}" data-s="${k}">${z}</span>`).join("")}</div>
+        <div class="chips" id="sts">${[["all",Z("全部")],["live",Z("审议中")],["done",Z("已通过")],["core",Z("核心法规")],["sec",Z("二级法案")],["hi",Z("对当前视角影响高")]].map(([k,z])=>`<span class="chip ${state.st===k?"on":""}" data-s="${k}">${z}</span>`).join("")}</div>
       </div>
       <div class="list">${rows.map(([d,dep])=>`
         <div class="item ${dep?"child":""} ${d.id===sel.id?"on":""}" data-go="${d.id}" style="${dep>1?"margin-left:"+(16*dep)+"px":""}">
           <div class="n">${catDot(d.category)}${esc(d.shortZh||d.nameZh)}</div>
-          <div class="m">${d.secondary?Z("<span class=\"pill sec\">二级法案</span>"):""}<span class="mono">${esc(d.refLabel)}</span>${d.o&&d.o.mainAct?`<span>${esc(d.o.mainAct)}</span>`:""}<span style="color:${d.completed?"var(--done)":"var(--current)"}">● ${esc(curStageName(d))}</span></div>
+          <div class="m">${(()=>{ const x=roleImpact(d,state.role); return x&&x.level!=="none"?`<span class="lvtag ${x.level}">${esc(LVSHORT[x.level])}</span>`:""; })()}${d.secondary?Z("<span class=\"pill sec\">二级法案</span>"):""}<span class="mono">${esc(d.refLabel)}</span>${d.o&&d.o.mainAct?`<span>${esc(d.o.mainAct)}</span>`:""}<span style="color:${d.completed?"var(--done)":"var(--current)"}">● ${esc(curStageName(d))}</span></div>
         </div>`).join("") || Z("<div class=\"empty\">没有匹配的法规</div>")}
       </div>
     </aside>
@@ -1184,6 +1296,8 @@ function bindDossiers(){
   liveSearch("q", v=>{ state.q=v; }, vDossiers, [".side .list"]);
   document.getElementById("cats").addEventListener("click",e=>{const c=e.target.closest("[data-c]"); if(!c) return; state.cat=c.dataset.c; store.set("cat",state.cat); render();});
   document.getElementById("sts").addEventListener("click",e=>{const c=e.target.closest("[data-s]"); if(!c) return; state.st=c.dataset.s; store.set("st",state.st); render();});
+  const ic = document.getElementById("impcard");
+  if(ic) ic.addEventListener("click",e=>{ const b=e.target.closest("[data-role]"); if(!b) return; state.role=b.dataset.role; store.set("role",state.role); try{ history.replaceState(null,"",curHash()); }catch(_){} const y=window.scrollY; render(); window.scrollTo(0,y); });
   const sa = document.getElementById("showAll"); if(sa) sa.addEventListener("change",()=>{state.showAll=sa.checked; render();});
   document.querySelectorAll("[data-lane]").forEach(cb=>cb.addEventListener("change",()=>{
     state.lanes = [...document.querySelectorAll("[data-lane]")].filter(x=>x.checked).map(x=>x.dataset.lane); store.set("lanes3",state.lanes); render();
@@ -1236,25 +1350,70 @@ function vDetail(d){
     <div class="bd">${vTimeline(d)}</div>
   </div>
   ${o.delegatedActs && o.delegatedActs.length ? `<div class="card"><div class="hd"><h3>${Z("授权法案审查（议会）")}</h3></div><div class="bd">${o.delegatedActs.map(a=>`<div class="relrow"><a class="mono" href="${oeilUrl(a.ref)}" target="_blank" rel="noopener">${esc(a.ref)}</a> <span class="muted">${esc(a.subject)}</span></div>`).join("")}</div></div>`:""}
-  ${vBatteryImpact(d)}
+  ${vMarket(d)}
+  ${vImpacts(d)}
   `;
 }
 
-const LEVEL = {high:Z("影响程度：高"), medium:Z("影响程度：中"), low:Z("影响程度：低")};
-function vBatteryImpact(d){
-  const b = d.batteryImpact; if(!b) return "";
+const LEVEL = {high:Z("影响程度：高"), medium:Z("影响程度：中"), low:Z("影响程度：低"), none:Z("无直接影响")};
+const LVSHORT = {high:Z("高"), medium:Z("中"), low:Z("低"), none:Z("无")};
+function nextDates(d){
+  const ms = (d.milestones||[]).filter(m=>m.date>=TODAY).map(m=>({date:m.date,label:m.label,kind:MKIND[m.kind]||m.kind,verified:m.verified!==false}));
+  const nat = (MK.dates||[]).filter(x=>x.d===d.id && x.date>=TODAY && (state.mkt==="eu"||x.c===state.mkt)).map(x=>({date:x.date,label:x.label,kind:mktName(x.c),verified:x.v!==false}));
+  return ms.concat(nat).sort((a,b)=>a.date<b.date?-1:1).slice(0,6);
+}
+function vImpacts(d){
+  if(!ROLES.some(([k])=>roleImpact(d,k))) return "";
+  const r = roleImpact(d,state.role) ? state.role : "battery";
+  const b = roleImpact(d,r) || {level:"none", levelNote:Z("无直接影响")};
   const col = (title, color, list) => `<div><h4><i style="background:${color}"></i>${title}</h4>${(list&&list.length)?`<ul>${list.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:Z("<div class=\"muted\" style=\"font-size:13px\">无直接影响</div>")}</div>`;
-  const next = (d.milestones||[]).filter(m=>m.date>=TODAY).sort((a,b)=>a.date<b.date?-1:1).slice(0,5);
-  return `<div class="card"><div class="hd" style="flex-wrap:wrap"><h3>${Z("对电池生产企业的主要影响")}</h3><span class="pill lv-${esc(b.level)}">${LEVEL[b.level]||""}</span><span class="muted" style="font-size:12px;margin-left:auto">${Z("视角：对欧出口或在欧设厂的电池企业")}</span></div><div class="bd">
-    ${b.levelNote?`<p style="margin:0 0 8px">${esc(b.levelNote)}</p>`:""}
+  const chain = (IMP[d.id]||{}).chain;
+  const next = nextDates(d);
+  const tabs = ROLES.map(([k,z])=>{ const x=roleImpact(d,k); const lv=x?x.level:"none"; return `<button data-role="${k}" class="${k===r?"on":""}"><span class="lvdot ${lv}"></span>${esc(z)}<span class="faint" style="font-size:11.5px">${esc(LVSHORT[lv]||"")}</span></button>`; }).join("");
+  return `<div class="card" id="impcard"><div class="hd" style="flex-wrap:wrap"><h3>${Z("对产业链的主要影响")}</h3><span class="muted" style="font-size:12px;margin-left:auto">${Z("视角：对欧出口或在欧设厂的中国企业")}</span></div><div class="bd">
+    ${chain?`<div class="chain"><b style="margin-right:8px">${Z("影响传导")}</b>${esc(chain)}</div>`:""}
+    <div class="role-tabs">${tabs}</div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:8px"><span class="pill lv-${esc(b.level)}">${esc(ROLEZH[r])} · ${LEVEL[b.level]||""}</span>${b.levelNote?`<span>${esc(b.levelNote)}</span>`:""}</div>
     ${(b.segments||[]).length?`<div class="tags">${b.segments.map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div>`:""}
-    <div class="bi3">
+    ${b.level==="none" ? "" : `<div class="bi3">
       ${col(Z("合规"),"var(--c-commission)",b.compliance)}
       ${col(Z("准入"),"var(--open)",b.access)}
       ${col(Z("政策支持"),"var(--done)",b.support)}
-    </div>
-    ${next.length?`<div class="sub" style="font-weight:600;margin:14px 0 6px">${Z("接下来的关键时间点")}</div><ul class="feed">${next.map(m=>`<li><div class="d">${fmt(m.date)}</div><div><div class="t">${esc(m.label)}${m.verified===false?Z("<span class=\"unv\">待核实</span>"):""}</div><div class="s">${esc(MKIND[m.kind]||m.kind)}</div></div></li>`).join("")}</ul>`:""}
+    </div>`}
+    ${next.length?`<div class="sub" style="font-weight:600;margin:14px 0 6px">${Z("接下来的关键时间点")}</div><ul class="feed">${next.map(m=>`<li><div class="d">${fmt(m.date)}</div><div><div class="t">${esc(m.label)}${m.verified?"":Z("<span class=\"unv\">待核实</span>")}</div><div class="s">${esc(m.kind)}</div></div></li>`).join("")}</ul>`:""}
     ${(b.actions||[]).length?`<div class="sub" style="font-weight:600;margin:14px 0 6px">${Z("建议行动")}</div><ol class="bi-act">${b.actions.map(x=>`<li>${esc(x)}</li>`).join("")}</ol>`:""}
+  </div></div>`;
+}
+const MSTATUS = s => (MK.statusLabels||{})[s] || s;
+function msPill(x){ return `<span class="pill ms-${esc(x.status)}">${esc(MSTATUS(x.status))}</span>${x.verified===false?Z("<span class=\"unv\">待核实</span>"):""}`; }
+function vMarket(d){
+  const rec = (MK.dossiers||{})[d.id];
+  const isDir = /directive/i.test((d.o&&d.o.instrument)||"") || /指令/.test(d.nameZh||"") || /Directive/.test(d.nameZh||"");
+  const pendingLaw = !rec && d.oeil && !d.completed;
+  if(pendingLaw) return `<div class="card"><div class="hd"><h3>${Z("成员国落实")}</h3></div><div class="bd"><div class="muted" style="font-size:13px">${Z("仍在立法程序中，通过后再跟踪成员国落实。")}</div></div></div>`;
+  if(!rec && !d.oeil && !d.secondary) return "";
+  const head = `<div class="hd" style="flex-wrap:wrap"><h3>${Z("成员国落实")}</h3><span class="muted" style="font-size:12px;margin-left:auto">${Z("市场：")}${esc(mktName(state.mkt))} · ${Z("截至")} ${fmt(MK.asOf||"")}</span></div>`;
+  if(state.mkt==="eu"){
+    if(!rec) return `<div class="card">${head}<div class="bd"><div class="muted" style="font-size:13px">${isDir?Z("该指令的成员国转化信息暂未收录。"):Z("条例在各成员国直接适用，内容一致；成员国层面主要涉及主管机关、处罚和登记，暂未收录。")}${Z("可在页眉选择具体国家。")}</div></div></div>`;
+    const rows = MK.countries.map(c=>{ const x=rec[c.id]; if(!x) return `<tr><td><b>${esc(c.zh)}</b></td><td colspan="3" class="muted">${Z("暂未收录")}</td></tr>`;
+      return `<tr><td><b>${esc(c.zh)}</b></td><td>${msPill(x)}</td><td>${esc(x.law||"")}${x.authority?`<div class="faint" style="font-size:12px">${esc(x.authority)}</div>`:""}${x.note?`<div class="faint" style="font-size:12px">${esc(x.note)}</div>`:""}</td><td class="faint" style="white-space:nowrap">${x.date?fmt(x.date):""}${x.url?` <a href="${esc(x.url)}" target="_blank" rel="noopener">${Z("来源")}</a>`:""}</td></tr>`; }).join("");
+    return `<div class="card">${head}<div class="bd"><div class="ctx">${Z("各国对比 · 在页眉选择具体国家可查看单国详情")}</div><div class="mk-wrap"><table class="mk-tbl"><thead><tr><th>${Z("国家")}</th><th>${Z("状态")}</th><th>${Z("本国法律 / 要点")}</th><th>${Z("日期")}</th></tr></thead><tbody>${rows}</tbody></table></div></div></div>`;
+  }
+  const x = rec && rec[state.mkt];
+  const dates = (MK.dates||[]).filter(t=>t.d===d.id && t.c===state.mkt).sort((a,b)=>a.date<b.date?1:-1);
+  if(!x && !dates.length) return `<div class="card">${head}<div class="bd"><div class="muted" style="font-size:13px">${isDir?Z("该指令在本国的转化信息暂未收录。"):Z("条例在各成员国直接适用，内容一致；暂未收录本国的执行信息。")}</div></div></div>`;
+  const row = (k,v) => v ? `<div class="relrow"><span class="muted" style="display:inline-block;min-width:84px">${k}</span>${v}</div>` : "";
+  return `<div class="card">${head}<div class="bd">
+    ${x?`${row(Z("状态"),msPill(x))}${row(Z("本国法律"),esc(x.law||""))}${row(Z("生效日期"),x.date?fmt(x.date):"")}${row(Z("主管/登记"),esc(x.authority||""))}${row(Z("要点"),esc(x.note||""))}${row(Z("来源"),x.url?`<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.url.replace(/^https?:\/\//,"").split("/")[0])}</a>`:"")}`:""}
+    ${dates.length?`<div class="sub" style="font-weight:600;margin:12px 0 6px">${Z("本国时间节点")}</div><ul class="feed">${dates.map(t=>`<li><div class="d">${fmt(t.date)}</div><div><div class="t">${esc(t.label)}${t.v===false?Z("<span class=\"unv\">待核实</span>"):""}</div></div></li>`).join("")}</ul>`:""}
+  </div></div>`;
+}
+function vMarketProfile(){
+  if(state.mkt==="eu") return "";
+  const p = (MK.profiles||{})[state.mkt]; if(!p) return "";
+  return `<div class="card" style="margin-bottom:16px"><div class="hd" style="flex-wrap:wrap"><h3>${Z("市场概况：")}${esc(mktName(state.mkt))}</h3><a href="#/calendar" style="margin-left:auto;font-size:12px">${Z("本国合规日历 →")}</a></div><div class="bd">
+    <p style="margin:0 0 8px">${esc(p.summary||"")}</p>
+    <ul class="feed">${(p.items||[]).map(i=>`<li><div class="d"><span class="pill">${esc(i.t)}</span></div><div><div class="t">${esc(i.x)}${i.v===false?Z("<span class=\"unv\">待核实</span>"):""}</div>${i.u?`<div class="s"><a href="${esc(i.u)}" target="_blank" rel="noopener">${Z("来源")}</a></div>`:""}</div></li>`).join("")}</ul>
   </div></div>`;
 }
 
@@ -1450,6 +1609,52 @@ function bindFeed(){
   on("fcat","data-c","cat"); on("flane","data-l","lane"); on("frange","data-r","range");
 }
 
+/* ----- compliance calendar ----- */
+let calFilter = {range:"future", low:false};
+function calItems(){
+  const allow = calFilter.low ? ["high","medium","low"] : ["high","medium"];
+  const lvOf = d => { const x=d && roleImpact(d,state.role); return x ? x.level : "none"; };
+  const out = [];
+  D.forEach(d=>{ const lv=lvOf(d); if(!allow.includes(lv)) return;
+    (d.milestones||[]).forEach(m=>out.push({date:m.date, label:m.label, kind:MKIND[m.kind]||m.kind, d, lv, verified:m.verified!==false})); });
+  (MK.dates||[]).forEach(x=>{ if(state.mkt!=="eu" && x.c!==state.mkt) return; const d=BYID[x.d]; const lv=lvOf(d); if(!allow.includes(lv)) return;
+    out.push({date:x.date, label:x.label, kind:mktName(x.c), d, lv, c:x.c, verified:x.v!==false}); });
+  const y1 = new Date(Date.now()-365*864e5).toISOString().slice(0,10);
+  let list = out.filter(e=> calFilter.range==="future" ? e.date>=TODAY : calFilter.range==="past12" ? (e.date<TODAY && e.date>=y1) : true);
+  list.sort((a,b)=> calFilter.range==="past12" ? (a.date<b.date?1:-1) : (a.date<b.date?-1:1));
+  return list;
+}
+function vCalendar(){
+  const list = calItems();
+  let html="", ym="";
+  list.forEach(e=>{ const m=e.date.slice(0,7); if(m!==ym){ ym=m; html+=`<div class="cal-m">${m.replace("-",Z(" 年 "))}${Z("月")}</div>`; }
+    html += `<div class="act"><span class="d">${fmt(e.date)}</span><span class="lvtag ${e.lv}">${esc(LVSHORT[e.lv]||"")}</span> ${esc(e.label)}${e.verified?"":Z("<span class=\"unv\">待核实</span>")} <span class="sub">· ${e.d?`<a data-go="${e.d.id}" href="javascript:void 0">${esc(e.d.shortZh||e.d.nameZh)}</a> · `:""}${esc(e.kind)}</span></div>`; });
+  const chip=(k,z,cur,attr)=>`<span class="chip ${cur===k?"on":""}" data-${attr}="${k}">${z}</span>`;
+  return `<div class="card"><div class="hd" style="flex-wrap:wrap"><h3>${Z("合规日历")}</h3><button class="chg-more" id="icsBtn" style="width:auto;margin:0 0 0 auto;padding:6px 12px">${Z("导出到日历（.ics）")}</button></div>
+    <div class="bd">
+      <div class="ctx">${Z("视角：")}<b>${esc(ROLEZH[state.role])}</b> · ${Z("市场：")}<b>${esc(mktName(state.mkt))}</b> · ${Z("在页眉切换视角和市场")}</div>
+      <div class="chips" id="calr">${chip("future",Z("即将到来"),calFilter.range,"r")}${chip("past12",Z("过去 12 个月"),calFilter.range,"r")}${chip("all",Z("全部"),calFilter.range,"r")}</div>
+      <div class="chips" id="call" style="margin-top:8px">${chip("0",Z("影响高、中"),calFilter.low?"1":"0","l")}${chip("1",Z("含低影响"),calFilter.low?"1":"0","l")}</div>
+      <div style="margin-top:6px">${html || Z("<div class=\"empty\">没有符合条件的节点</div>")}</div>
+      <div class="sub" style="margin-top:12px">${Z("共")} ${list.length} ${Z("个节点；欧盟层面的节点来自各法规的实施节点，本国节点来自成员国落实数据。")}</div>
+    </div></div>`;
+}
+function bindCalendar(){
+  document.getElementById("calr").addEventListener("click",e=>{ const c=e.target.closest("[data-r]"); if(!c) return; calFilter.range=c.dataset.r; render(); });
+  document.getElementById("call").addEventListener("click",e=>{ const c=e.target.closest("[data-l]"); if(!c) return; calFilter.low=c.dataset.l==="1"; render(); });
+  document.getElementById("icsBtn").addEventListener("click",()=>{
+    const pad=n=>String(n).padStart(2,"0"); const dt=s=>s.replace(/-/g,"");
+    const next=s=>{ const x=new Date(s+"T00:00:00Z"); x.setUTCDate(x.getUTCDate()+1); return x.getUTCFullYear()+pad(x.getUTCMonth()+1)+pad(x.getUTCDate()); };
+    const escI=s=>String(s||"").replace(/\\/g,"\\\\").replace(/;/g,"\;").replace(/,/g,"\\,").replace(/\n/g,"\\n");
+    const now=new Date().toISOString().replace(/[-:]/g,"").slice(0,15)+"Z";
+    const lines=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//EU Battery Tracker//Compliance//"+LANG.toUpperCase(),"CALSCALE:GREGORIAN"];
+    calItems().forEach((e,i)=>{ lines.push("BEGIN:VEVENT","UID:"+dt(e.date)+"-"+i+"-"+(e.d?e.d.id:"x")+"@eu-battery-tracker","DTSTAMP:"+now,"DTSTART;VALUE=DATE:"+dt(e.date),"DTEND;VALUE=DATE:"+next(e.date),"SUMMARY:"+escI((e.d?(e.d.shortZh||e.d.nameZh)+": ":"")+e.label),"DESCRIPTION:"+escI(e.kind+(e.verified?"":" ("+Z("待核实")+")")),"END:VEVENT"); });
+    lines.push("END:VCALENDAR");
+    const blob=new Blob([lines.join("\r\n")],{type:"text/calendar"}); const a=document.createElement("a");
+    a.href=URL.createObjectURL(blob); a.download="eu-compliance-"+state.role+"-"+state.mkt+".ics"; document.body.appendChild(a); a.click(); setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); },500);
+  });
+}
+
 /* ----- stakeholders ----- */
 function stkEvLi(x, showDossiers){
   const ds = showDossiers ? (x.dossiers||[]).filter(id=>BYID[id]).map(id=>`<a data-go="${id}" href="javascript:void 0">${esc(BYID[id].shortZh)}</a>`).join(Z("、")) : "";
@@ -1516,7 +1721,8 @@ function vHelpEn(){
     <li><b>Curated layer</b> <code>data/curated.js</code>: the watch list (10 areas), Chinese names and summaries, industry impact, file families (<code>parent</code>), internal Council steps not recorded by OEIL (working party / COREPER mandate / general approach / provisional agreement) and application milestones. Items marked “to verify” should be checked against Council press releases or EUR-Lex.</li>
     <li><b>Secondary legislation layer</b> <code>data/secondary-data.js</code>: fetched by <code>tools/update-secondary.ps1</code> from ① EUR-Lex (Cellar SPARQL): delegated and implementing acts, harmonised standards, guidance, Commission reports and amendments based on or citing the base act; ② Commission Have Your Say: planned acts, calls for evidence, public consultations, <b>draft acts open for feedback</b> (feedback windows and response counts) and adoption. Configuration (base-act CELEX numbers, keywords) is in <code>data/sources.json</code>.</li>
     <li><b>Secondary acts and planned legislation</b>: key delegated and implementing acts, Commission guidelines, REACH restrictions, CLP classifications and trade-defence measures are listed as their own entries (filter “Secondary acts”) under their base act. They have no EP procedure number, so <code>oeil</code> is left empty and the <code>act</code> field records type, reference and status. Legislation not yet proposed (e.g. the Circular Economy Act) also has an empty procedure number until it is proposed.</li>
-    <li><b>Impact on battery manufacturers</b> <code>batteryImpact</code> in <code>curated.js</code>: impact level, affected business segments, impacts split into compliance / market access / policy support, and recommended actions, written for battery makers exporting to or producing in the EU.</li>
+    <li><b>Value-chain impacts</b>: the battery-maker view is <code>batteryImpact</code> in <code>curated.js</code>; carmaker, energy-storage and upstream views plus the impact chain are in <code>data/impacts.js</code>. Each view has an impact level, affected segments, compliance / market access / policy support and recommended actions. The perspective chosen in the header is remembered and written into the URL. Written for Chinese companies exporting to or producing in the EU.</li>
+    <li><b>Member-state implementation</b> <code>data/markets.js</code>: for the first seven countries (DE, FR, IT, ES, NL, PL, HU) — directive transposition status, national laws, authorities and registries, national incentives and dates, and country profiles, curated with sources. Choosing a market in the header shows single-country details on each file page; “EU-wide” shows a country comparison. The compliance calendar filters by perspective and market and exports to .ics.</li>
     <li><b>Stakeholder layer</b> <code>data/stakeholders.js</code>: curated positions of industry associations, NGOs, think tanks, coalitions, key people, governments and EP groups, plus dated influence events (letters, position papers, studies, political deals), each with a source link. “(approx.)” means the date is known only to the month; “to verify” means a single secondary source.</li>
     <li><b>Ongoing developments</b> <code>tracking</code> in <code>curated.js</code>: Legislative Train and similar sites block automated access, so these items are read and summarised manually, each with its source and “as of” date.</li>
     <li><b>Change tracking</b> <code>data/changes.js</code>: each run is compared with the previous snapshot; new events, scheduled votes, documents, draft stages and secondary acts appear under “New since the last update”. The first fetch of a newly added file is treated as a baseline.</li>
@@ -1542,7 +1748,8 @@ function vHelp(){
     <li><b>二级立法层</b> <code>data/secondary-data.js</code>：由 <code>tools/update-secondary.ps1</code> 自动抓取。① EUR-Lex（Cellar SPARQL）：依据母法制定、修订母法或引用母法的授权法案、实施法案、协调标准、指南通知、欧委会报告；② 欧委会 Have Your Say：规划中的授权/实施法案、证据征集与公众咨询、<b>草案意见征求</b>（含反馈期与反馈数量）、通过阶段。配置（母法 CELEX、关键词）见 <code>data/sources.json</code>。</li>
     <li><b>在审动态层</b> <code>curated.js</code> 中的 <code>tracking</code>：Legislative Train 等站点禁止脚本抓取，由人工阅读后整理，每条注明来源与“截至”日期；OEIL 的委员会表决排期、全会预定日期、报告草案、修正案、意见等则自动抓取。</li>
     <li><b>二级法案与尚未提出的立法</b>：授权法案、实施法案、欧委会指南、REACH 限制、CLP 分类、贸易救济措施等单独列为条目（法规库筛选“二级法案”），挂在母法下面；它们没有欧洲议会程序编号，<code>oeil</code> 留空，在 <code>act</code> 字段记录类型、编号和状态，进展通过 Have Your Say 与 EUR-Lex 自动跟踪。尚未提出的立法（如循环经济法）同样留空程序编号，提出后填入即可自动抓取立法进程。</li>
-    <li><b>对电池生产企业的影响</b> <code>curated.js</code> 中的 <code>batteryImpact</code>：每部法规的影响程度、受影响业务环节，以及按“合规”“准入”“政策支持”分类的影响和建议行动，显示在法规详情页最下方。视角为对欧出口或在欧设厂的电池企业；关键时间点取自实施节点。</li>
+    <li><b>产业链影响</b>：电池企业视角在 <code>curated.js</code> 的 <code>batteryImpact</code>，车企、储能企业、上游供应链视角和“影响传导”在 <code>data/impacts.js</code>。每个视角都有影响程度、受影响环节、按“合规”“准入”“政策支持”分类的影响和建议行动；页眉的“视角”选择会被记住，并写进网址。视角立场为对欧出口或在欧设厂的中国企业。</li>
+    <li><b>成员国落实</b> <code>data/markets.js</code>：第一批 7 国（德、法、意、西、荷、波、匈）的指令转化状态、本国法律、主管与登记机构、本国补贴与时间节点及国家概况，人工整理并附来源。页眉选择“市场”后，法规详情页显示单国信息，选择“欧盟全境”时显示各国对比；合规日历按视角和市场筛选，可导出 .ics。</li>
     <li><b>利益相关方层</b> <code>data/stakeholders.js</code>：人工整理的行业协会、NGO、智库、企业联盟、关键人物、成员国政府对各法规的立场与有日期的影响动态（公开信、立场文件、研究报告、政治协议），每条附原文链接；“日期（约）”表示仅精确到月，“待核实”表示仅有单一二手来源。新增条目后，变更追踪会把它列入“新增动态”。</li>
     <li><b>变更追踪</b> <code>data/changes.js</code>：每次更新与上次快照对比，新增的事件、排期、文件、草案阶段、二级立法都会出现在总览“新增动态”中。</li>
   </ul>
