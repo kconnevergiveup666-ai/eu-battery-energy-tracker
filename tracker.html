@@ -7150,6 +7150,14 @@ window.EN_UI = {
 "切换语言": "Switch language"
 };
 (function(){
+  /* search text in both languages, so Chinese and English queries work in either mode */
+  var E0 = window.CURATED_EN || {}, S0 = window.STAKEHOLDERS, SE0 = window.STAKEHOLDERS_EN || {};
+  (window.CURATED||[]).forEach(function(c){ var e=E0[c.id]||{};
+    c._names = [c.nameZh, c.shortZh, e.name, e.short].filter(Boolean).join(" ");
+    c._q = [c._names, (c.tags||[]).join(" "), (e.tags||[]).join(" "), c.summaryZh, e.summary].filter(Boolean).join(" "); });
+  if(S0) (S0.actors||[]).forEach(function(a){ var e=(SE0.actors||{})[a.id]||{}; a._q=[a.nameZh,a.name,a.roleZh,e.name,e.role].filter(Boolean).join(" "); });
+})();
+(function(){
   if(window.LANG!=="en") return;
   var E = window.CURATED_EN || {}, cats = (E._categories)||{};
   Object.keys(window.CATEGORIES||{}).forEach(function(k){ if(cats[k]) window.CATEGORIES[k].zh = cats[k]; });
@@ -7450,9 +7458,11 @@ function liveSearch(id, setQ, view, sels){
       cur.querySelectorAll("[data-go]").forEach(el=>el.addEventListener("click",e=>{ e.preventDefault(); nav("dossiers", el.dataset.go); }));
     });
   };
+  // The input element is never replaced, so filtering while an IME is composing is harmless; wait a little longer then.
   q.addEventListener("compositionstart", ()=>{ composing = true; });
   q.addEventListener("compositionend", ()=>{ composing = false; clearTimeout(timer); timer = setTimeout(run, 0); });
-  q.addEventListener("input", e=>{ if(composing || e.isComposing) return; clearTimeout(timer); timer = setTimeout(run, 120); });
+  q.addEventListener("input", e=>{ clearTimeout(timer); timer = setTimeout(run, (composing || e.isComposing) ? 400 : 150); });
+  q.addEventListener("change", ()=>{ clearTimeout(timer); run(); });
 }
 
 /* ---------- render ---------- */
@@ -7623,7 +7633,7 @@ function filtered(){
     if(state.st==="core" && d.relevance!=="core") return false;
     if(state.st==="sec" && !d.secondary) return false;
     if(q){
-      const hay = [d.nameZh,d.shortZh,d.oeil,d.act&&d.act.ref,d.o&&d.o.title,d.o&&d.o.mainAct,(d.tags||[]).join(" "),d.summaryZh].join(" ").toLowerCase();
+      const hay = [d._q,d.nameZh,d.shortZh,d.oeil,d.act&&d.act.ref,d.o&&d.o.title,d.o&&d.o.mainAct,(d.tags||[]).join(" "),d.summaryZh].join(" ").toLowerCase();
       if(!hay.includes(q)) return false;
     }
     return true;
@@ -7883,7 +7893,7 @@ function vDrafts(){
   if(draftFilter.cat!=="all") list = list.filter(i=>i.d.category===draftFilter.cat);
   if(draftFilter.st==="open") list = list.filter(i=>i.st.open);
   else if(draftFilter.st!=="all") list = list.filter(i=>i.st.k===draftFilter.st);
-  const q = draftFilter.q.trim().toLowerCase(); if(q) list = list.filter(i=>(i.title+" "+(i.summary||"")+" "+i.d.nameZh).toLowerCase().includes(q));
+  const q = draftFilter.q.trim().toLowerCase(); if(q) list = list.filter(i=>(i.title+" "+(i.summary||"")+" "+i.d.nameZh+" "+(i.d._names||"")).toLowerCase().includes(q));
   list.sort((a,b)=>{ const ad=(a.st.last&&(a.st.open?a.st.last.fbEnd:a.st.last.date))||"", bd=(b.st.last&&(b.st.open?b.st.last.fbEnd:b.st.last.date))||""; return draftFilter.st==="open" ? (ad<bd?-1:1) : (ad<bd?1:-1); });
   const acts=[]; D.forEach(d=>{ const s=SEC[d.id]; if(s) (s.acts||[]).forEach(a=>acts.push(Object.assign({d},a))); });
   acts.sort((a,b)=>a.date<b.date?1:-1);
@@ -7952,7 +7962,7 @@ function vActorsView(){
   const actors = (STK.actors||[]).filter(a=>{
     if(stkFilter.type!=="all" && a.type!==stkFilter.type) return false;
     if(stkFilter.cat!=="all" && !actorCats(a).has(stkFilter.cat)) return false;
-    if(q && !(a.nameZh+" "+a.name+" "+a.roleZh).toLowerCase().includes(q)) return false;
+    if(q && !(a._q||(a.nameZh+" "+a.name+" "+a.roleZh)).toLowerCase().includes(q)) return false;
     return true;
   });
   const shown = new Set(actors.map(a=>a.id));
