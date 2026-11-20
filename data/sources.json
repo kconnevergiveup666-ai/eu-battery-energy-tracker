@@ -17,5 +17,11 @@
   "co2-cars":         { "celex": ["32019R0631"], "eli": ["reg/2019/631"], "hys": { "q": ["CO2 emission standards cars vans", "CO2 emission performance standards light"], "match": "CO2|car|van|light-duty|light duty" } },
   "afir":             { "celex": ["32023R1804"], "eli": ["reg/2023/1804"], "hys": { "q": ["alternative fuels infrastructure", "recharging points"], "match": "AFIR|alternative fuel|recharg|refuel" } },
   "cbam":             { "celex": ["32023R0956"], "eli": ["reg/2023/956"], "hys": { "q": ["CBAM", "carbon border adjustment"], "match": "CBAM|carbon border" } },
-  "ets":              { "celex": ["32003L0087"], "eli": ["dir/2003/87"], "hys": { "q": ["emissions trading system", "ETS"], "match": "ETS|emissions? trading|allowance|auction|benchmark|free allocation" } }
+  "ets":              { "celex": ["32003L0087"], "eli": ["dir/2003/87"], "hys": { "q": ["emissions trading system", "ETS"], "match": "ETS|emissions? trading|allowance|auction|benchmark|free allocation" } },
+  "cra":              { "celex": ["32024R2847"], "eli": ["reg/2024/2847"], "hys": { "q": ["cyber resilience act", "products with digital elements"], "match": "cyber resilience|products with digital elements|2024/2847" } },
+  "nis2":             { "celex": ["32022L2555"], "eli": ["dir/2022/2555"], "hys": { "q": ["NIS2", "network and information security", "cybersecurity network code"], "match": "NIS ?2|network and information|2022/2555|cybersecurity" } },
+  "csa":              { "celex": ["32019R0881"], "eli": ["reg/2019/881"], "hys": { "q": ["cybersecurity certification scheme", "ENISA"], "match": "certification scheme|cybersecurity act|ENISA|2019/881" } },
+  "csa2":             { "celex": [], "eli": [], "hys": { "q": ["Cybersecurity Act", "ICT supply chain security"], "match": "cybersecurity act|ICT supply chain|ENISA" } },
+  "ai-act":           { "celex": ["32024R1689"], "eli": ["reg/2024/1689"], "hys": { "q": ["artificial intelligence", "AI Act", "general-purpose AI"], "match": "artificial intelligence|AI Act|AI system|general-purpose AI|2024/1689" } },
+  "ai-omnibus":       { "celex": [], "eli": [], "hys": { "q": ["digital omnibus"], "match": "omnibus" } }
 }
