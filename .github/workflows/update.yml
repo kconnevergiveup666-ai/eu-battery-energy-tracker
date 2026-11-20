@@ -14,6 +14,8 @@ on:
       - "data/curated.js"
       - "data/sources.json"
       - "data/stakeholders.js"
+      - "data/curated.en.js"
+      - "data/stakeholders.en.js"
       - "index.html"
       - "tools/**"
 

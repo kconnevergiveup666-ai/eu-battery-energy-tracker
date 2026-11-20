@@ -15,6 +15,9 @@ GitHub Actions 每天北京时间 06:00（22:00 UTC）自动抓取并重新发�
 - 想立即更新：打开仓库的 Actions 页面 → "Update EU tracker" → "Run workflow"。
 - 修改 `data/curated.js`、`data/sources.json`、`data/stakeholders.js`、`index.html` 或 `tools/` 并推送后，会自动重建网页，几分钟后生效；这种情况不重新抓取数据。
 
+## 中英文切换
+页面右上角的“EN / 中”按钮可在中文和英文之间切换，选择会被记住。界面文字的英文在 `index.html` 的 `EN_UI` 中：新增界面文字时用 `Z("中文")` 包裹，并在 `EN_UI` 中加上对应英文。
+
 ## 本地打开
 - `tracker.html`：单文件版本，数据全部内嵌，双击打开，可以直接分享。
 - `index.html`：开发版，从 `data/` 读取数据。
@@ -35,6 +38,7 @@ powershell -ExecutionPolicy Bypass -File tools\update-all.ps1
 |---|---|
 | `data/curated.js` | 人工层：监测清单（10 个分类，`window.CATEGORIES`）、中文解读、法规谱系（`parent`）、理事会内部节点（`council`）、实施节点（`milestones`）、在审动态（`tracking`）、对电池生产企业的影响（`batteryImpact`）。二级法案和尚未提出的立法 `oeil` 留空、`secondary:true`，在 `act` 字段记录类型、编号和状态 |
 | `data/stakeholders.js` | 人工层：利益相关方（`actors`，含对各法规的立场 `positions`）与有日期的影响动态（`events`）。须保持为合法 JSON，`build.ps1` 读取它做变更追踪 |
+| `data/curated.en.js`、`data/stakeholders.en.js` | 英文版内容，按 id 对应中文条目（页面右上角“中 / EN”切换）。缺少英文的条目会显示中文；新增或修改中文内容后请同步更新 |
 | `data/sources.json` | 二级立法配置：母法 CELEX、Have Your Say 关键词与匹配规则 |
 | `data/oeil-data.*`、`data/secondary-data.*`、`data/changes.*`、`data/snapshot.json` | 脚本生成 |
 
