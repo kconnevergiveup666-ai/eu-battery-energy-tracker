@@ -9,7 +9,7 @@
   --bg:#f6f7f9; --panel:#ffffff; --panel2:#f1f3f6; --line:#e2e5ea; --text:#1b1f24; --muted:#5f6b7a; --faint:#8a95a3;
   --accent:#1f5fd6; --accent-weak:#e6eefc;
   --c-commission:#1f5fd6; --c-epc:#7a3fd1; --c-epp:#c2398a; --c-council:#d9822b; --c-trilogue:#b8860b; --c-final:#18864b; --c-impl:#0e8f8f; --c-future:#8a95a3;
-  --battery:#0e8f8f; --industry:#7a3fd1; --power:#d9822b; --renewable:#18864b; --transport:#1f5fd6; --carbon:#6b7280; --digital:#c0396b;
+  --battery:#0e8f8f; --industry:#7a3fd1; --power:#d9822b; --renewable:#18864b; --transport:#1f5fd6; --carbon:#6b7280; --digital:#c0396b; --circular:#6d8a1f; --supply:#a0522d; --safety:#0f7c9c;
   --done:#18864b; --current:#d9822b; --pending:#c9ced6;
   --c-sec:#5b6ee1; --c-other:#8a6d3b; --c-stake:#b4338a;
   --shadow:0 1px 2px rgba(16,24,40,.06),0 1px 3px rgba(16,24,40,.08);
@@ -22,7 +22,7 @@
     --bg:#0f1216; --panel:#171b21; --panel2:#1e232b; --line:#2a313b; --text:#e6e9ed; --muted:#a1abb8; --faint:#7d8896;
     --accent:#6ea0ff; --accent-weak:#1b2a44;
     --c-commission:#6ea0ff; --c-epc:#a98bf0; --c-epp:#e879b8; --c-council:#f0a456; --c-trilogue:#e0b84a; --c-final:#4cc08a; --c-impl:#3cc6c6; --c-future:#7d8896;
-    --battery:#3cc6c6; --industry:#a98bf0; --power:#f0a456; --renewable:#4cc08a; --transport:#6ea0ff; --carbon:#9aa3af; --digital:#f07aa6;
+    --battery:#3cc6c6; --industry:#a98bf0; --power:#f0a456; --renewable:#4cc08a; --transport:#6ea0ff; --carbon:#9aa3af; --digital:#f07aa6; --circular:#a9c95a; --supply:#e0a07a; --safety:#5cc3e0;
     --done:#4cc08a; --current:#f0a456; --pending:#3a424d; --shadow:none;
   }
 }
@@ -30,7 +30,7 @@
   --bg:#0f1216; --panel:#171b21; --panel2:#1e232b; --line:#2a313b; --text:#e6e9ed; --muted:#a1abb8; --faint:#7d8896;
   --accent:#6ea0ff; --accent-weak:#1b2a44;
   --c-commission:#6ea0ff; --c-epc:#a98bf0; --c-epp:#e879b8; --c-council:#f0a456; --c-trilogue:#e0b84a; --c-final:#4cc08a; --c-impl:#3cc6c6; --c-future:#7d8896;
-  --battery:#3cc6c6; --industry:#a98bf0; --power:#f0a456; --renewable:#4cc08a; --transport:#6ea0ff; --carbon:#9aa3af; --digital:#f07aa6;
+  --battery:#3cc6c6; --industry:#a98bf0; --power:#f0a456; --renewable:#4cc08a; --transport:#6ea0ff; --carbon:#9aa3af; --digital:#f07aa6; --circular:#a9c95a; --supply:#e0a07a; --safety:#5cc3e0;
   --done:#4cc08a; --current:#f0a456; --pending:#3a424d; --shadow:none;
 }
 *{box-sizing:border-box}
@@ -137,6 +137,7 @@ main{max-width:1400px;margin:0 auto;padding:18px 20px 60px}
 .stg .dt{font-size:11.5px;color:var(--muted);font-variant-numeric:tabular-nums;margin-top:2px}
 
 .cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.cols>*,.grid2>*{min-width:0}
 .sum p{margin:0 0 10px}
 .sum ul{margin:0;padding-left:18px} .sum li{margin:4px 0}
 
@@ -171,7 +172,7 @@ details summary{cursor:pointer;color:var(--accent);font-size:12.5px}
 .lanes{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line)}
 
 .family{display:flex;flex-direction:column;gap:6px}
-.fam-node{display:flex;align-items:center;gap:8px;font-size:13px}
+.fam-node{display:flex;align-items:center;flex-wrap:wrap;gap:4px 8px;font-size:13px}
 .fam-node .ln{color:var(--faint)}
 .fam-node.me{font-weight:700}
 .relrow{font-size:12.5px;padding:3px 0}
@@ -197,6 +198,7 @@ details summary{cursor:pointer;color:var(--accent);font-size:12.5px}
 .pill.lv-medium{color:var(--current);border-color:color-mix(in srgb,var(--current) 50%,transparent);font-weight:600}
 .pill.lv-low{color:var(--muted)}
 @media (max-width:820px){ .bi3{grid-template-columns:1fr} }
+.pill.sec{color:var(--c-sec);border-color:color-mix(in srgb,var(--c-sec) 45%,transparent)}
 .pill.open{color:var(--open);border-color:color-mix(in srgb,var(--open) 50%,transparent);font-weight:600}
 .init{padding:9px 0;border-bottom:1px dashed var(--line)} .init:last-child{border-bottom:0}
 .ihd{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
@@ -270,6 +272,10 @@ details summary{cursor:pointer;color:var(--accent);font-size:12.5px}
  *   { level: high|medium|low, levelNote, segments: [受影响业务环节],
  *     compliance: [合规义务], access: [市场准入影响], support: [政策支持与机会], actions: [建议行动] }
  *   “待核实”写在文本中；关键时间点取自 milestones，无需重复填写。
+ *
+ * 二级法案 / 尚未提出的立法：oeil 留空，secondary:true 表示二级法案，
+ *   act: { kind: delegated|implementing|guideline|decision|restriction|clp|trade|planned,
+ *          ref: 编号, status: adopted|draft|planned, url, statusNote, basis: 法律依据 }
  *
  * tracking —— 在审法规的动态跟进（Legislative Train 等来源，人工阅读后整理；脚本无法自动抓取这些站点）
  *   { asOf: 来源版本日期, source, url,
@@ -391,6 +397,265 @@ window.CURATED = [
     ]
   },
   {
+    id: "bat-cfb",
+    oeil: "",
+    parent: "batteries",
+    secondary: true,
+    act: {
+      kind: "delegated",
+      ref: "草案 Ares(2024)3131389（未通过）",
+      status: "draft",
+      url: "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=PI_COM:Ares(2024)3131389",
+      statusNote: "2024 年 4 月发布草案征求意见；截至 2026 年 10 月仍未通过",
+      basis: "新电池法第 7 条"
+    },
+    nameZh: "电动车电池碳足迹计算与核查方法（CFB-EV 授权法案）",
+    shortZh: "电池碳足迹方法（CFB）",
+    category: "battery",
+    relevance: "core",
+    tags: [
+      "碳足迹",
+      "CFB",
+      "授权法案",
+      "电池护照"
+    ],
+    summaryZh: "依据新电池法第 7 条，规定电动车电池全生命周期碳足迹的计算与核查规则（功能单位、系统边界、电力建模、数据质量等），并配套一项规定碳足迹声明格式的实施法案。新电池法原定 2025-02-18 前通过，草案已于 2024 年 4 月征求意见，但截至 2026 年 10 月仍未在公报发布。碳足迹声明义务以该授权法案生效后 12 个月为准，因此 EV 电池的碳足迹声明实际上尚未开始。轻型交通工具电池（CFB-LMT）的规则由 JRC 另行研究。",
+    impactZh: [
+      "碳足迹声明、后续性能等级和最大限值均以此方法为基础——电力建模规则（是否认可绿电合同）直接决定以煤电为主的生产基地的碳足迹数值",
+      "通过时间推迟使声明义务顺延，但最终规则一旦生效 12 个月即须申报"
+    ],
+    batteryImpact: {
+      level: "high",
+      levelNote: "碳足迹声明、分级和限值的计算基础，决定企业碳足迹数值高低",
+      segments: [
+        "电芯/模组制造",
+        "材料采购",
+        "对欧出口",
+        "在欧设厂"
+      ],
+      compliance: [
+        "授权法案生效 12 个月后，EV 电池须随产品提供按该方法计算、经公告机构核查的碳足迹声明",
+        "须按规定的数据质量要求收集上游材料和生产环节的一手数据"
+      ],
+      access: [
+        "电力建模规则若只认可电网平均排放因子、不认可绿电购电协议，中国生产基地的碳足迹将明显偏高，未来面临限值淘汰风险"
+      ],
+      support: [],
+      actions: [
+        "按草案方法先行测算主力产品碳足迹",
+        "跟踪电力建模条款的最终文本，评估绿电采购和欧洲生产的必要性",
+        "提前选定碳足迹核查的公告机构"
+      ]
+    },
+    council: [],
+    milestones: [
+      {
+        date: "2024-04-15",
+        kind: "secondary",
+        label: "草案发布征求意见",
+        verified: false
+      },
+      {
+        date: "2025-02-18",
+        kind: "deadline",
+        label: "新电池法规定的通过期限（已错过）"
+      }
+    ]
+  },
+  {
+    id: "bat-recycled",
+    oeil: "",
+    parent: "batteries",
+    secondary: true,
+    act: {
+      kind: "delegated",
+      ref: "草案（2026 年 8 月征求意见，尚未通过）",
+      status: "draft",
+      statusNote: "征求意见期 2026-08-12 至 09-09；法定通过期限 2026-08-18",
+      basis: "新电池法第 8 条"
+    },
+    nameZh: "电池再生料含量计算与核查方法（授权法案）",
+    shortZh: "再生料含量方法",
+    category: "battery",
+    relevance: "core",
+    tags: [
+      "再生料",
+      "质量平衡",
+      "授权法案"
+    ],
+    summaryZh: "依据新电池法第 8 条，规定钴、锂、镍、铅再生料含量的计算与核查方法及文件格式。草案采用按工厂、按电池型号、按年度的质量平衡法，并据报道对在欧盟境内回收的材料设 1.3 的修正系数。草案于 2026-08-12 至 09-09 征求意见，尚未正式通过。",
+    impactZh: [
+      "决定 2031 年再生料最低含量（钴 16%、锂 6%、镍 6%）如何计算和证明",
+      "对欧盟境内回收材料的修正系数将使在欧回收的再生料更“值钱”"
+    ],
+    batteryImpact: {
+      level: "high",
+      levelNote: "决定再生料目标如何计算，以及境外再生料是否吃亏",
+      segments: [
+        "材料采购",
+        "电芯/模组制造",
+        "回收",
+        "在欧设厂"
+      ],
+      compliance: [
+        "须按质量平衡法逐工厂、逐型号记录再生料投入和产出，并在合格评定中由公告机构核查数据"
+      ],
+      access: [
+        "若欧盟境内回收材料享有 1.3 修正系数（据报道，待核实），使用中国或其他地区再生料的产品更难达到 2031 年目标"
+      ],
+      support: [
+        "在欧回收或与欧洲回收企业合作，可利用修正系数更容易满足目标"
+      ],
+      actions: [
+        "建立再生料采购的溯源与质量平衡记账体系",
+        "评估与欧洲回收企业签订再生料长期供应协议"
+      ]
+    },
+    council: [],
+    milestones: [
+      {
+        date: "2026-08-12",
+        kind: "secondary",
+        label: "草案开始征求意见（至 09-09）"
+      },
+      {
+        date: "2026-08-18",
+        kind: "deadline",
+        label: "新电池法规定的通过期限"
+      },
+      {
+        date: "2028-08-18",
+        kind: "deadline",
+        label: "再生料含量文件要求开始适用（或授权法案生效后 24 个月）",
+        verified: false
+      },
+      {
+        date: "2031-08-18",
+        kind: "deadline",
+        label: "再生料最低含量第一阶段"
+      }
+    ]
+  },
+  {
+    id: "bat-recycling-eff",
+    oeil: "",
+    parent: "batteries",
+    secondary: true,
+    act: {
+      kind: "delegated",
+      ref: "条例 (EU) 2025/606",
+      status: "adopted",
+      url: "https://eur-lex.europa.eu/eli/reg_del/2025/606/oj/eng",
+      basis: "新电池法第 71 条"
+    },
+    nameZh: "废电池回收效率与材料回收率计算和核查方法",
+    shortZh: "回收效率计算方法",
+    category: "battery",
+    relevance: "high",
+    tags: [
+      "回收效率",
+      "材料回收率",
+      "授权法案"
+    ],
+    summaryZh: "授权条例 (EU) 2025/606，2025-03-21 通过，2025-07-04 公报发布，2025-07-24 生效。规定回收企业计算回收效率（废电池总质量中被回收的比例）和材料回收率（钴、铜、锂、镍等）的输入、输出口径和核查方式，覆盖铅酸、镍镉、锂及其他电池。2026 年欧委会评估是否调整附件十二的目标。",
+    impactZh: [
+      "锂电池回收效率 2025 年底须达 65%（2030 年 70%），锂材料回收率 2027 年底 50%"
+    ],
+    batteryImpact: {
+      level: "medium",
+      levelNote: "主要约束回收企业，电池企业的回收合作方须达标",
+      segments: [
+        "回收",
+        "在欧设厂"
+      ],
+      compliance: [
+        "自建或合作的回收设施须按该方法计算并报告回收效率和材料回收率"
+      ],
+      access: [
+        "回收合作伙伴达不到目标会影响生产者责任延伸（EPR）义务的履行"
+      ],
+      support: [],
+      actions: [
+        "核查回收合作方的回收效率数据是否按新方法计算"
+      ]
+    },
+    council: [],
+    milestones: [
+      {
+        date: "2025-07-24",
+        kind: "force",
+        label: "授权条例生效"
+      },
+      {
+        date: "2025-12-31",
+        kind: "deadline",
+        label: "锂电池回收效率 ≥65%"
+      },
+      {
+        date: "2027-12-31",
+        kind: "deadline",
+        label: "材料回收率：锂 50%，钴/镍/铜 90%"
+      }
+    ]
+  },
+  {
+    id: "bat-dd-guidelines",
+    oeil: "",
+    parent: "batteries",
+    secondary: true,
+    act: {
+      kind: "guideline",
+      ref: "欧委会指南（第 48–50 条）",
+      status: "planned",
+      statusNote: "法定发布期限 2026-07-26，截至目前未见发布",
+      basis: "新电池法第 48–50 条"
+    },
+    nameZh: "电池尽职调查义务指南",
+    shortZh: "电池尽调指南",
+    category: "battery",
+    relevance: "high",
+    tags: [
+      "尽职调查",
+      "指南",
+      "供应链"
+    ],
+    summaryZh: "新电池法要求欧委会就第 48–50 条的尽职调查义务（附件十所列社会和环境风险）发布指南，并与企业可持续发展尽职调查指令（CSDDD）的指南协调。原定 2025-02-18 发布，经条例 (EU) 2025/1561 推迟至 2026-07-26；截至目前未见正式发布。",
+    impactZh: [
+      "是企业设计电池尽调体系、准备公告机构核查的主要依据"
+    ],
+    batteryImpact: {
+      level: "high",
+      levelNote: "尽调体系设计的直接依据",
+      segments: [
+        "材料采购",
+        "电芯/模组制造"
+      ],
+      compliance: [
+        "指南将明确风险识别、第三方核查和信息披露的具体做法"
+      ],
+      access: [
+        "2027-08-18 起未按要求建立尽调体系的电池不得投放欧盟市场"
+      ],
+      support: [],
+      actions: [
+        "跟踪指南发布，据此对照修正现有尽调体系"
+      ]
+    },
+    council: [],
+    milestones: [
+      {
+        date: "2026-07-26",
+        kind: "secondary",
+        label: "指南法定发布期限"
+      },
+      {
+        date: "2027-08-18",
+        kind: "deadline",
+        label: "尽职调查义务适用"
+      }
+    ]
+  },
+  {
     id: "crma",
     oeil: "2023/0079(COD)",
     nameZh: "关键原材料法案（CRMA）",
@@ -440,11 +705,415 @@ window.CURATED = [
     ]
   },
   {
+    id: "crma-strategic",
+    oeil: "",
+    parent: "crma",
+    secondary: true,
+    act: {
+      kind: "decision",
+      ref: "欧委会决定（2025-03-25、2025-06-04）",
+      status: "adopted",
+      basis: "关键原材料法第 6–7 条"
+    },
+    nameZh: "关键原材料战略项目认定",
+    shortZh: "战略项目认定",
+    category: "battery",
+    relevance: "high",
+    tags: [
+      "战略项目",
+      "锂",
+      "石墨",
+      "加工",
+      "回收"
+    ],
+    summaryZh: "欧委会依据关键原材料法认定战略项目：2025-03-25 公布首批 47 个欧盟境内项目，2025-06-04 公布 13 个第三国项目，涵盖锂、镍、钴、石墨、锰等电池材料的开采、加工和回收。战略项目享有加速许可、融资对接和优先行政处理。",
+    impactZh: [
+      "获认定项目可更快获得许可和融资，形成欧洲本土电池材料供应链"
+    ],
+    batteryImpact: {
+      level: "medium",
+      levelNote: "为在欧材料与回收项目提供加速通道",
+      segments: [
+        "材料采购",
+        "在欧设厂",
+        "回收"
+      ],
+      compliance: [],
+      access: [
+        "战略项目的产品更容易进入欧洲电池供应链，非战略项目来源的材料在采购评价中可能处于劣势"
+      ],
+      support: [
+        "正负极材料、前驱体、回收项目（含第三国项目）可申请认定，享受加速许可和融资对接"
+      ],
+      actions: [
+        "评估在欧或海外材料项目申请下一轮战略项目的可行性",
+        "关注已认定项目作为潜在供应商"
+      ]
+    },
+    council: [],
+    milestones: [
+      {
+        date: "2025-03-25",
+        kind: "secondary",
+        label: "首批 47 个欧盟境内战略项目"
+      },
+      {
+        date: "2025-06-04",
+        kind: "secondary",
+        label: "13 个第三国战略项目"
+      }
+    ]
+  },
+  {
+    id: "cea",
+    oeil: "",
+    act: {
+      kind: "planned",
+      status: "planned",
+      statusNote: "欧委会计划 2026 年内通过"
+    },
+    nameZh: "循环经济法（Circular Economy Act）",
+    shortZh: "循环经济法",
+    category: "circular",
+    relevance: "high",
+    tags: [
+      "二次原材料",
+      "WEEE 修订",
+      "黑粉",
+      "单一市场"
+    ],
+    summaryZh: "《清洁工业协议》提出的旗舰立法，欧委会计划 2026 年内通过，目标是建立二次原材料和循环产品的欧盟单一市场。欧委会已完成 WEEE 指令评估（近一半电子废物未被收集），计划借此修订 WEEE。电池回收行业呼吁在其中统一黑粉的定义和技术规格、设立单一海关编码，并修订废物运输条例。",
+    impactZh: [
+      "可能统一黑粉、再生材料的废物终止标准，影响电池回收与再生料供应",
+      "WEEE 修订可能并入，影响储能、逆变器等电气设备的回收责任"
+    ],
+    batteryImpact: {
+      level: "medium",
+      levelNote: "尚未提出，但将重塑电池回收与再生料市场规则",
+      segments: [
+        "回收",
+        "材料采购",
+        "在欧设厂"
+      ],
+      compliance: [
+        "若纳入 WEEE 修订，储能系统等电气设备的生产者责任可能调整"
+      ],
+      access: [
+        "黑粉和再生材料的统一定义与海关编码将决定其能否在欧盟内自由流通、能否出口"
+      ],
+      support: [
+        "二次原材料单一市场有利于在欧回收和再生料采购"
+      ],
+      actions: [
+        "跟踪欧委会提案发布",
+        "评估在欧回收布局"
+      ]
+    },
+    council: [],
+    milestones: []
+  },
+  {
+    id: "wsr",
+    oeil: "2021/0367(COD)",
+    nameZh: "废物运输条例（WSR）",
+    shortZh: "废物运输条例",
+    category: "circular",
+    relevance: "high",
+    tags: [
+      "废电池运输",
+      "黑粉",
+      "出口限制",
+      "电子申报"
+    ],
+    summaryZh: "条例 (EU) 2024/1157，取代 2006 年废物运输条例。欧盟内废物运输全面电子化申报，强化“事先书面通知与同意”程序；禁止向非 OECD 国家出口危险废物，非危险废物只能出口到申请并获准、证明能环境无害化处理的国家；向 OECD 国家出口受更严格监控。",
+    impactZh: [
+      "废锂电池（16 06 07*）及黑粉被列为危险废物后，不能出口到非 OECD 国家（含中国）",
+      "欧盟内跨境运输废电池须走电子化事先通知与同意程序"
+    ],
+    batteryImpact: {
+      level: "high",
+      levelNote: "决定废电池和黑粉能否跨境运输、能否运出欧盟",
+      segments: [
+        "回收",
+        "在欧设厂",
+        "材料采购"
+      ],
+      compliance: [
+        "2026-05-21 起欧盟内废物运输须通过电子系统申报，并取得事先书面同意",
+        "在欧工厂的生产废料（含锂电池生产废料 16 06 24*）跨境运输同样受约束"
+      ],
+      access: [
+        "黑粉 2026 年 12 月起按危险废物管理后，不能出口到中国等非 OECD 国家——把在欧回收的黑粉运回国内提炼的路径基本被切断"
+      ],
+      support: [
+        "推动在欧盟境内形成回收—提炼—再生料闭环，在欧建设湿法冶金产能的企业受益"
+      ],
+      actions: [
+        "梳理现有废料和黑粉的跨境流向，2026 年 12 月前调整",
+        "评估在欧建设或合作湿法冶金产能"
+      ]
+    },
+    council: [
+      {
+        date: "2023-11-17",
+        stage: "deal",
+        label: "理事会与议会达成临时协议",
+        body: "西班牙轮值主席国",
+        verified: false
+      }
+    ],
+    milestones: [
+      {
+        date: "2024-05-20",
+        kind: "force",
+        label: "条例生效"
+      },
+      {
+        date: "2026-05-21",
+        kind: "apply",
+        label: "条例开始适用；电子化申报强制实施"
+      },
+      {
+        date: "2026-12-09",
+        kind: "deadline",
+        label: "黑粉等按危险废物分类开始适用（见废物清单授权决定）",
+        verified: false
+      }
+    ]
+  },
+  {
+    id: "black-mass",
+    oeil: "",
+    parent: "wsr",
+    secondary: true,
+    act: {
+      kind: "decision",
+      ref: "授权决定 (EU) 2025/934",
+      status: "adopted",
+      url: "https://eur-lex.europa.eu/eli/dec_del/2025/934/oj/eng",
+      statusNote: "2025-03-05 通过；据报道经更正后 2026-12-09 起适用（待核实）",
+      basis: "废物框架指令（修订废物清单 2000/532/EC）"
+    },
+    nameZh: "电池相关废物代码更新：黑粉列为危险废物",
+    shortZh: "黑粉列为危险废物",
+    category: "circular",
+    relevance: "core",
+    tags: [
+      "黑粉",
+      "废物清单",
+      "危险废物"
+    ],
+    summaryZh: "授权决定 (EU) 2025/934（C(2025) 1360），修订欧盟废物清单第 16 06 章：新增按化学体系区分的电池废物代码，其中废锂电池为 16 06 07*、锂电池生产废料为 16 06 24*，并将黑粉作为危险废物管理。据报道经 2025 年 8 月更正后自 2026-12-09 起适用。理事会文件指出欧委会可在必要时提出进一步出口限制。",
+    impactZh: [
+      "黑粉成为危险废物，叠加废物运输条例，不能出口到非 OECD 国家",
+      "在欧回收企业须按危险废物管理要求运营"
+    ],
+    batteryImpact: {
+      level: "high",
+      levelNote: "切断黑粉出口到非 OECD 国家的路径",
+      segments: [
+        "回收",
+        "在欧设厂"
+      ],
+      compliance: [
+        "在欧工厂的锂电池生产废料须按危险废物代码分类、储存、运输和交付处理"
+      ],
+      access: [
+        "黑粉不能再出口到中国等非 OECD 国家提炼"
+      ],
+      support: [
+        "欧洲本土湿法冶金和再生料产能需求上升"
+      ],
+      actions: [
+        "2026 年 12 月前完成废料分类与处理合同调整",
+        "评估在欧提炼产能或与欧洲回收企业合作"
+      ]
+    },
+    council: [],
+    milestones: [
+      {
+        date: "2025-03-05",
+        kind: "secondary",
+        label: "欧委会通过授权决定"
+      },
+      {
+        date: "2026-12-09",
+        kind: "apply",
+        label: "新废物代码开始适用",
+        verified: false
+      }
+    ]
+  },
+  {
+    id: "ppwr",
+    oeil: "2022/0396(COD)",
+    nameZh: "包装与包装废物条例（PPWR）",
+    shortZh: "包装与包装废物条例",
+    category: "circular",
+    relevance: "high",
+    tags: [
+      "运输包装",
+      "可回收性",
+      "重复使用",
+      "包装 EPR"
+    ],
+    summaryZh: "条例 (EU) 2025/40，以直接适用的条例取代包装指令。所有包装须可回收（2030 年起分级要求），塑料包装设再生料最低含量，设定运输包装和托盘的重复使用目标，限制空隙率和过度包装，统一包装标签，并要求各国建立包装生产者责任延伸制度。",
+    impactZh: [
+      "电池和储能产品的运输包装、托盘、缓冲材料须满足可回收性和重复使用要求",
+      "进口商在欧盟投放包装即承担包装 EPR 义务"
+    ],
+    batteryImpact: {
+      level: "medium",
+      levelNote: "影响电池产品的包装设计和物流成本",
+      segments: [
+        "对欧出口",
+        "在欧设厂",
+        "储能系统集成"
+      ],
+      compliance: [
+        "2026-08-12 起包装须满足基本要求；进口商须在各国履行包装 EPR 登记与申报",
+        "欧盟内运输使用的托盘、周转箱等运输包装 2030 年起须达到重复使用比例"
+      ],
+      access: [
+        "不满足可回收性或标签要求的包装不得投放欧盟市场"
+      ],
+      support: [],
+      actions: [
+        "梳理出口包装材料与结构，按可回收性要求重新设计",
+        "在欧仓储与工厂间物流推行可循环周转包装"
+      ]
+    },
+    council: [
+      {
+        date: "2023-12-18",
+        stage: "ga",
+        label: "环境理事会达成总体方针",
+        body: "环境理事会",
+        verified: false
+      },
+      {
+        date: "2024-03-04",
+        stage: "deal",
+        label: "理事会与议会达成临时协议",
+        body: "比利时轮值主席国",
+        verified: false
+      }
+    ],
+    milestones: [
+      {
+        date: "2025-02-11",
+        kind: "force",
+        label: "条例生效"
+      },
+      {
+        date: "2026-08-12",
+        kind: "apply",
+        label: "条例开始适用"
+      },
+      {
+        date: "2030-01-01",
+        kind: "deadline",
+        label: "包装可回收性与运输包装重复使用目标",
+        verified: false
+      }
+    ]
+  },
+  {
+    id: "weee",
+    oeil: "2008/0241(COD)",
+    nameZh: "报废电子电气设备指令（WEEE）",
+    shortZh: "WEEE 指令",
+    category: "circular",
+    relevance: "medium",
+    tags: [
+      "电子废物",
+      "生产者责任",
+      "储能系统",
+      "逆变器"
+    ],
+    summaryZh: "指令 2012/19/EU（重订版）。电子电气设备的生产者须为其产品的报废回收承担责任：在各成员国登记、标注分类回收标识、承担收集处理费用，并满足收集率和回收率目标。电池本身由新电池法管理，但储能系统中的电子部件、逆变器、充电设备属于 WEEE 范围。欧委会已完成评估，计划借循环经济法修订。",
+    impactZh: [
+      "储能系统、逆变器、充电桩生产商须在各销售国履行 WEEE 登记与回收义务"
+    ],
+    batteryImpact: {
+      level: "medium",
+      levelNote: "影响储能系统、逆变器等电气设备的回收责任",
+      segments: [
+        "储能系统集成",
+        "对欧出口"
+      ],
+      compliance: [
+        "在每个销售国登记为 WEEE 生产者（非欧盟企业须指定授权代表），产品加贴回收标识，承担回收费用",
+        "电池部分按新电池法履行 EPR，与 WEEE 分开登记"
+      ],
+      access: [
+        "未完成 WEEE 登记的设备在多数成员国不得销售"
+      ],
+      support: [],
+      actions: [
+        "核对储能系统中哪些部件适用 WEEE、哪些适用新电池法",
+        "跟踪循环经济法框架下的 WEEE 修订"
+      ]
+    },
+    council: [],
+    milestones: [
+      {
+        date: "2012-08-13",
+        kind: "force",
+        label: "指令生效"
+      },
+      {
+        date: "2014-02-14",
+        kind: "transpose",
+        label: "成员国转化期限"
+      }
+    ]
+  },
+  {
+    id: "weee-2024",
+    oeil: "2023/0007(COD)",
+    parent: "weee",
+    nameZh: "WEEE 指令定向修订（光伏组件等）",
+    shortZh: "WEEE 定向修订",
+    category: "circular",
+    relevance: "related",
+    tags: [
+      "光伏组件",
+      "回溯责任"
+    ],
+    summaryZh: "指令 (EU) 2024/884，回应欧盟法院判决，修改光伏组件和 2018 年开放范围后新纳入设备的回收费用分担规则，取消对过去投放产品的回溯责任。",
+    impactZh: [
+      "光储一体产品中光伏组件的回收费用规则更清晰"
+    ],
+    batteryImpact: {
+      level: "low",
+      levelNote: "主要涉及光伏组件",
+      segments: [
+        "储能系统集成"
+      ],
+      compliance: [
+        "光储一体产品中的光伏组件按修订后的规则承担回收费用"
+      ],
+      access: [],
+      support: [],
+      actions: []
+    },
+    council: [],
+    milestones: [
+      {
+        date: "2025-10-09",
+        kind: "transpose",
+        label: "成员国转化期限",
+        verified: false
+      }
+    ]
+  },
+  {
     id: "elv",
     oeil: "2023/0284(COD)",
     nameZh: "车辆设计循环性要求与报废车辆管理法规（ELV 法规）",
     shortZh: "报废车辆法规",
-    category: "battery",
+    category: "circular",
     relevance: "high",
     tags: ["循环设计", "再生塑料", "动力电池拆解"],
     summaryZh: "以“法规”取代报废车辆指令与 3R 型式认证指令，引入车辆循环设计要求、新车再生塑料最低含量，并规定报废车辆中动力电池与电机的拆除义务。",
@@ -593,11 +1262,574 @@ window.CURATED = [
     milestones: []
   },
   {
+    id: "nzia-nonprice",
+    oeil: "",
+    parent: "nzia",
+    secondary: true,
+    act: {
+      kind: "implementing",
+      ref: "实施条例（2025-05-23 通过）",
+      status: "adopted",
+      statusNote: "条例编号待核实",
+      basis: "净零工业法第 26 条"
+    },
+    nameZh: "可再生能源拍卖非价格标准实施条例",
+    shortZh: "拍卖非价格标准",
+    category: "industry",
+    relevance: "high",
+    tags: [
+      "拍卖",
+      "韧性标准",
+      "网络安全",
+      "单一来源依赖"
+    ],
+    summaryZh: "依据净零工业法第 26 条，规定可再生能源拍卖中必须适用的非价格标准：负责任商业行为、网络安全与数据安全、按时交付能力，以及韧性标准——若某净零技术或其主要部件来自单一第三国的供应超过 50%，该国产品在评标中处于不利地位。2025-12-30 起拍卖须适用。",
+    impactZh: [
+      "光伏、风电、储能等拍卖中，来自中国的主要部件可能被扣分"
+    ],
+    batteryImpact: {
+      level: "high",
+      levelNote: "直接影响中国储能和逆变器在欧洲拍卖项目中的竞争力",
+      segments: [
+        "储能系统集成",
+        "对欧出口",
+        "在欧设厂"
+      ],
+      compliance: [
+        "投标时须提供网络安全、数据安全、负责任商业行为方面的证明文件"
+      ],
+      access: [
+        "每年至少 30% 拍卖容量（或 6GW）须适用韧性标准；依赖度超过 50% 的国家（如中国）的产品处于不利地位"
+      ],
+      support: [
+        "在欧生产的储能系统和部件在评标中更具优势"
+      ],
+      actions: [
+        "研究重点国家拍卖规则中韧性标准的具体评分方式",
+        "评估关键部件本地化以满足韧性要求"
+      ]
+    },
+    council: [],
+    milestones: [
+      {
+        date: "2025-05-23",
+        kind: "secondary",
+        label: "欧委会通过实施条例"
+      },
+      {
+        date: "2025-12-30",
+        kind: "apply",
+        label: "拍卖非价格标准义务开始适用"
+      }
+    ]
+  },
+  {
+    id: "fsr",
+    oeil: "2021/0114(COD)",
+    nameZh: "外国补贴条例（FSR）",
+    shortZh: "外国补贴条例",
+    category: "industry",
+    relevance: "high",
+    tags: [
+      "外国补贴",
+      "并购申报",
+      "公共采购",
+      "依职权调查"
+    ],
+    summaryZh: "条例 (EU) 2022/2560。欧委会可审查扭曲内部市场的外国补贴：营业额 ≥5 亿欧元、外国财政资助 ≥5000 万欧元的并购须事先申报；预估价值 ≥2.5 亿欧元的公共采购投标须申报外国财政资助；欧委会还可依职权调查。可采取承诺、禁止交易或排除投标等措施。曾用于调查中国企业参与罗马尼亚光伏电站招标（投标方随后退出）和风电设备。",
+    impactZh: [
+      "中国电池企业在欧并购、新建工厂获得的国内补贴可能被审查",
+      "参与大型储能、电网公共采购项目须申报外国财政资助"
+    ],
+    batteryImpact: {
+      level: "high",
+      levelNote: "中国企业在欧投资和投标的重要审查工具",
+      segments: [
+        "在欧设厂",
+        "储能系统集成",
+        "对欧出口"
+      ],
+      compliance: [
+        "达到门槛的并购和公共采购投标须向欧委会申报所获外国财政资助（含政府补贴、低息贷款、税收优惠）"
+      ],
+      access: [
+        "欧委会可依职权调查在欧电池厂所获补贴，可能要求承诺或附加条件；公共采购中可被排除投标"
+      ],
+      support: [],
+      actions: [
+        "梳理集团所获国内补贴与融资支持，建立 FSR 申报材料库",
+        "大型储能项目投标前评估是否达到申报门槛"
+      ]
+    },
+    council: [
+      {
+        date: "2022-06-30",
+        stage: "deal",
+        label: "理事会与议会达成临时协议",
+        body: "法国轮值主席国",
+        verified: false
+      }
+    ],
+    milestones: [
+      {
+        date: "2023-01-12",
+        kind: "force",
+        label: "条例生效"
+      },
+      {
+        date: "2023-07-12",
+        kind: "apply",
+        label: "条例开始适用"
+      },
+      {
+        date: "2023-10-12",
+        kind: "apply",
+        label: "并购与公共采购事先申报义务开始适用"
+      }
+    ]
+  },
+  {
+    id: "forced-labour",
+    oeil: "2022/0269(COD)",
+    nameZh: "禁止强迫劳动产品条例",
+    shortZh: "强迫劳动产品禁令",
+    category: "supply",
+    relevance: "high",
+    tags: [
+      "强迫劳动",
+      "供应链",
+      "市场禁入"
+    ],
+    summaryZh: "条例 (EU) 2024/3015。禁止在欧盟市场投放、提供或出口使用强迫劳动生产的产品（不论产地、不论企业规模）。主管机关和欧委会基于风险开展调查，查实后产品须撤出市场并处置。欧委会须发布指南并建立强迫劳动风险领域与产品数据库。",
+    impactZh: [
+      "石墨、锂、多晶硅等原材料供应链若被认定涉及强迫劳动，相关电池产品将被禁止销售"
+    ],
+    batteryImpact: {
+      level: "high",
+      levelNote: "适用于所有企业和产品，查实即禁售",
+      segments: [
+        "材料采购",
+        "电芯/模组制造",
+        "对欧出口"
+      ],
+      compliance: [
+        "须能证明供应链不涉及强迫劳动，配合调查提供溯源信息"
+      ],
+      access: [
+        "被认定涉及强迫劳动的产品须撤出欧盟市场，相关零部件替换后才能重新投放——对原料来自高风险地区的供应链构成直接风险"
+      ],
+      support: [],
+      actions: [
+        "对石墨、锂等原料开展到矿源的溯源核查",
+        "跟踪欧委会风险领域与产品数据库"
+      ]
+    },
+    council: [
+      {
+        date: "2024-01-26",
+        stage: "coreper",
+        label: "COREPER 通过理事会谈判授权",
+        body: "COREPER II",
+        verified: false
+      },
+      {
+        date: "2024-03-05",
+        stage: "deal",
+        label: "理事会与议会达成临时协议",
+        body: "比利时轮值主席国",
+        verified: false
+      }
+    ],
+    milestones: [
+      {
+        date: "2024-12-13",
+        kind: "force",
+        label: "条例生效"
+      },
+      {
+        date: "2026-06-14",
+        kind: "secondary",
+        label: "欧委会发布指南与风险数据库的期限",
+        verified: false
+      },
+      {
+        date: "2027-12-14",
+        kind: "apply",
+        label: "条例开始适用"
+      }
+    ]
+  },
+  {
+    id: "csddd",
+    oeil: "2022/0051(COD)",
+    nameZh: "企业可持续发展尽职调查指令（CSDDD）",
+    shortZh: "CSDDD",
+    category: "supply",
+    relevance: "high",
+    tags: [
+      "尽职调查",
+      "人权",
+      "环境",
+      "价值链"
+    ],
+    summaryZh: "指令 (EU) 2024/1760。要求大型企业识别、预防和减轻其自身运营、子公司及上游业务伙伴的人权与环境不利影响。经 Omnibus I（指令 (EU) 2026/470）大幅收窄范围并推迟适用：取消欧盟统一民事责任和气候转型计划义务，适用日推迟至 2029 年 7 月。",
+    impactZh: [
+      "与新电池法的电池尽调要求叠加，大型在欧企业须统一设计尽调体系"
+    ],
+    batteryImpact: {
+      level: "medium",
+      levelNote: "经 Omnibus I 收窄后只覆盖超大型企业",
+      segments: [
+        "在欧设厂",
+        "材料采购"
+      ],
+      compliance: [
+        "达到门槛的在欧企业（及在欧营业额达标的非欧盟企业）须开展价值链尽调；门槛经 Omnibus I 提高"
+      ],
+      access: [
+        "欧洲客户（车企、能源企业）会把尽调要求传导给电池供应商"
+      ],
+      support: [],
+      actions: [
+        "对照新电池法尽调体系，评估是否需要扩展到 CSDDD 范围",
+        "准备应对客户的尽调问卷"
+      ]
+    },
+    council: [
+      {
+        date: "2022-12-01",
+        stage: "ga",
+        label: "竞争力理事会达成总体方针",
+        body: "竞争力理事会"
+      },
+      {
+        date: "2023-12-14",
+        stage: "deal",
+        label: "理事会与议会达成临时协议",
+        body: "西班牙轮值主席国"
+      }
+    ],
+    milestones: [
+      {
+        date: "2024-07-25",
+        kind: "force",
+        label: "指令生效"
+      },
+      {
+        date: "2028-07-26",
+        kind: "transpose",
+        label: "成员国转化期限（经 Omnibus I 修订）"
+      },
+      {
+        date: "2029-07-26",
+        kind: "apply",
+        label: "尽调义务开始适用（经 Omnibus I 修订）"
+      }
+    ]
+  },
+  {
+    id: "omnibus-i",
+    oeil: "2025/0045(COD)",
+    parent: "csddd",
+    nameZh: "Omnibus I：简化 CSRD 与 CSDDD",
+    shortZh: "Omnibus I 简化",
+    category: "supply",
+    relevance: "medium",
+    tags: [
+      "Omnibus 简化",
+      "CSRD",
+      "CSDDD"
+    ],
+    summaryZh: "指令 (EU) 2026/470，2026-02-26 公报发布，2026-03-18 生效。大幅收窄企业可持续发展报告指令（CSRD）和 CSDDD 的适用范围，以更严格的累计门槛取代“三选二”规则；CSDDD 删除欧盟统一民事责任和气候转型计划义务。CSRD 相关修改的转化期限为 2027-03-19，CSDDD 为 2028-07-26。",
+    impactZh: [
+      "多数中型在欧子公司不再需要 CSRD 报告或 CSDDD 尽调"
+    ],
+    batteryImpact: {
+      level: "medium",
+      levelNote: "降低在欧子公司的报告与尽调负担",
+      segments: [
+        "在欧设厂"
+      ],
+      compliance: [
+        "按新门槛重新判断在欧子公司是否仍需 CSRD 报告和 CSDDD 尽调（具体员工和营业额门槛待核实）"
+      ],
+      access: [],
+      support: [
+        "报告和尽调负担减轻"
+      ],
+      actions: [
+        "按新门槛复核 CSRD 报告计划"
+      ]
+    },
+    council: [
+      {
+        date: "2025-06-23",
+        stage: "coreper",
+        label: "理事会通过谈判授权",
+        body: "COREPER I",
+        verified: false
+      },
+      {
+        date: "2025-12-08",
+        stage: "deal",
+        label: "理事会与议会达成临时协议",
+        body: "丹麦轮值主席国",
+        verified: false
+      }
+    ],
+    milestones: [
+      {
+        date: "2026-03-18",
+        kind: "force",
+        label: "指令生效"
+      },
+      {
+        date: "2027-03-19",
+        kind: "transpose",
+        label: "CSRD 相关修改转化期限"
+      },
+      {
+        date: "2028-07-26",
+        kind: "transpose",
+        label: "CSDDD 相关修改转化期限"
+      }
+    ]
+  },
+  {
+    id: "gpsr",
+    oeil: "2021/0170(COD)",
+    nameZh: "通用产品安全条例（GPSR）",
+    shortZh: "通用产品安全条例",
+    category: "safety",
+    relevance: "medium",
+    tags: [
+      "消费品安全",
+      "召回",
+      "线上销售",
+      "移动电源"
+    ],
+    summaryZh: "条例 (EU) 2023/988，取代通用产品安全指令。适用于消费品（含移动电源、便携储能、户用储能等消费类电池产品），要求安全评估、技术文件、可追溯信息和欧盟责任人，线上市场负有配合义务，事故须通过 Safety Business Gateway 报告，并规范召回程序。",
+    impactZh: [
+      "面向消费者销售的电池产品须有欧盟责任人，并满足标签、追溯与事故报告要求"
+    ],
+    batteryImpact: {
+      level: "medium",
+      levelNote: "影响移动电源、便携储能等消费类电池产品",
+      segments: [
+        "对欧出口",
+        "储能系统集成"
+      ],
+      compliance: [
+        "消费类电池产品须有欧盟境内责任经营者，产品和包装标注制造商与责任人信息",
+        "发生安全事故须通过欧盟平台报告，召回须按规定通知消费者并提供补救"
+      ],
+      access: [
+        "在亚马逊等线上平台销售时，平台会要求提供责任人和安全信息，否则下架"
+      ],
+      support: [],
+      actions: [
+        "核对消费类产品的欧盟责任人与标签信息",
+        "建立事故报告与召回流程"
+      ]
+    },
+    council: [
+      {
+        date: "2022-11-28",
+        stage: "deal",
+        label: "理事会与议会达成临时协议",
+        body: "捷克轮值主席国",
+        verified: false
+      }
+    ],
+    milestones: [
+      {
+        date: "2023-06-12",
+        kind: "force",
+        label: "条例生效"
+      },
+      {
+        date: "2024-12-13",
+        kind: "apply",
+        label: "条例开始适用"
+      }
+    ]
+  },
+  {
+    id: "rohs",
+    oeil: "2008/0240(COD)",
+    nameZh: "电子电气设备有害物质限制指令（RoHS）",
+    shortZh: "RoHS 指令",
+    category: "safety",
+    relevance: "medium",
+    tags: [
+      "有害物质",
+      "BMS",
+      "变流器",
+      "CE"
+    ],
+    summaryZh: "指令 2011/65/EU（RoHS 2），限制电子电气设备中铅、汞、镉、六价铬、多溴联苯、多溴二苯醚及四种邻苯二甲酸酯的含量，作为 CE 标志的前提。电池本身不适用 RoHS（由新电池法管理），但储能系统中的 BMS、变流器、线缆和充电设备须符合。",
+    impactZh: [
+      "储能系统中的电子部件须提供 RoHS 符合性文件"
+    ],
+    batteryImpact: {
+      level: "medium",
+      levelNote: "储能系统的电子部件须符合",
+      segments: [
+        "储能系统集成",
+        "BMS/EMS",
+        "对欧出口"
+      ],
+      compliance: [
+        "储能系统、逆变器、充电设备中的电子部件须满足有害物质限值，并纳入技术文件和符合性声明"
+      ],
+      access: [
+        "不符合 RoHS 的电子电气设备不能加贴 CE 标志"
+      ],
+      support: [],
+      actions: [
+        "核对储能系统电子部件供应商的 RoHS 检测报告"
+      ]
+    },
+    council: [],
+    milestones: [
+      {
+        date: "2011-07-21",
+        kind: "force",
+        label: "指令生效"
+      },
+      {
+        date: "2013-01-02",
+        kind: "transpose",
+        label: "成员国转化期限"
+      }
+    ]
+  },
+  {
+    id: "pfas",
+    oeil: "",
+    secondary: true,
+    act: {
+      kind: "restriction",
+      ref: "REACH 附件十七限制提案（PFAS 通用限制）",
+      status: "draft",
+      url: "https://echa.europa.eu/-/echa-to-consult-on-pfas-draft-opinion-in-spring-2026",
+      statusNote: "RAC 已出意见；SEAC 最终意见预计 2026 年底",
+      basis: "REACH 第 68–73 条"
+    },
+    nameZh: "PFAS（全氟和多氟烷基物质）通用限制",
+    shortZh: "PFAS 通用限制",
+    category: "safety",
+    relevance: "high",
+    tags: [
+      "PFAS",
+      "PVDF",
+      "电解液",
+      "REACH"
+    ],
+    summaryZh: "五国于 2023 年提交、按 REACH 限制程序推进的 PFAS 通用限制提案，覆盖约一万种物质。ECHA 风险评估委员会（RAC）于 2026-03-02 通过意见，拒绝对含氟聚合物整体豁免；社会经济分析委员会（SEAC）2026-03-10 通过意见草案并征求意见至 05-25，未接受将含氟聚合物排除在范围外，但支持对无替代品的特定用途给予有针对性的豁免，最终意见预计 2026 年底，之后由欧委会和 REACH 委员会决定。欧委会 2026-04 宣布不再提出 REACH 全面修订，但明确 PFAS 限制不受影响。",
+    impactZh: [
+      "PVDF 粘结剂、含氟电解液添加剂和隔膜涂层可能受限，取决于电池用途能否获得豁免及过渡期长短"
+    ],
+    batteryImpact: {
+      level: "high",
+      levelNote: "PVDF 等含氟材料广泛用于电极粘结剂和电解液",
+      segments: [
+        "电芯/模组制造",
+        "材料采购",
+        "在欧设厂"
+      ],
+      compliance: [
+        "若限制通过，在欧生产和投放的电池中含 PFAS 材料须在过渡期内替代，或依据豁免条件使用并申报"
+      ],
+      access: [
+        "没有获得豁免的含 PFAS 电池部件可能被禁止在欧盟市场使用"
+      ],
+      support: [],
+      actions: [
+        "盘点电芯中 PFAS 材料的用途和用量（粘结剂、电解液、隔膜、密封件）",
+        "评估无氟粘结剂等替代方案的研发进度",
+        "通过行业协会参与 SEAC 意见征求和后续欧委会决策"
+      ]
+    },
+    council: [],
+    milestones: [
+      {
+        date: "2026-03-02",
+        kind: "secondary",
+        label: "ECHA 风险评估委员会（RAC）通过意见"
+      },
+      {
+        date: "2026-05-25",
+        kind: "secondary",
+        label: "SEAC 意见草案征求意见截止"
+      },
+      {
+        date: "2026-12-31",
+        kind: "secondary",
+        label: "SEAC 最终意见（预计）",
+        verified: false
+      }
+    ]
+  },
+  {
+    id: "lithium-clp",
+    oeil: "",
+    secondary: true,
+    act: {
+      kind: "clp",
+      ref: "CLP 第 24 次适应技术进步修订（ATP）草案",
+      status: "draft",
+      statusNote: "2025-11-27 向 WTO 通报，原计划 2026 年第一季度通过，最新状态待核实",
+      basis: "CLP 条例 (EC) 1272/2008 附件六"
+    },
+    nameZh: "锂盐有害性分类（碳酸锂、氢氧化锂、氯化锂）",
+    shortZh: "锂盐有害性分类",
+    category: "safety",
+    relevance: "high",
+    tags: [
+      "碳酸锂",
+      "氢氧化锂",
+      "生殖毒性",
+      "CLP"
+    ],
+    summaryZh: "ECHA 风险评估委员会 2021 年建议将碳酸锂、氯化锂、氢氧化锂统一分类为生殖毒性 1A 类，并在复审后维持该意见。欧委会在 CLP 第 24 次适应技术进步修订草案中纳入这三种锂盐，2025-11-27 向 WTO 通报，原计划 2026 年第一季度通过，是否已通过尚待核实。",
+    impactZh: [
+      "锂盐被列为 1A 类生殖毒性物质后，可能触发 REACH 下的后续管控和职业健康要求，增加在欧正极材料与电芯生产成本"
+    ],
+    batteryImpact: {
+      level: "medium",
+      levelNote: "影响在欧正极材料、电芯工厂的职业健康与合规成本",
+      segments: [
+        "材料采购",
+        "在欧设厂"
+      ],
+      compliance: [
+        "分类生效后，锂盐须按 1A 类生殖毒性物质标签和包装，工厂须加强职业暴露控制"
+      ],
+      access: [
+        "可能被纳入 REACH 授权或限制候选，长期影响在欧使用"
+      ],
+      support: [],
+      actions: [
+        "评估在欧工厂锂盐操作环节的暴露控制",
+        "跟踪 ATP 通过与适用日期"
+      ]
+    },
+    council: [],
+    milestones: [
+      {
+        date: "2025-11-27",
+        kind: "secondary",
+        label: "ATP 草案向 WTO 通报"
+      }
+    ]
+  },
+  {
     id: "espr",
     oeil: "2022/0095(COD)",
     nameZh: "可持续产品生态设计法规（ESPR）",
     shortZh: "生态设计法规",
-    category: "industry",
+    category: "circular",
     relevance: "high",
     tags: ["数字产品护照", "耐用性", "钢铁铝"],
     summaryZh: "将生态设计框架从能源相关产品扩展至几乎所有实物产品，设定耐用性、可修复性、再生料含量、碳/环境足迹等要求，并建立数字产品护照（DPP）。电池的产品要求在新电池法中单独规定，但 DPP 体系与电池护照共用。",
@@ -732,6 +1964,61 @@ window.CURATED = [
     },
     council: [],
     milestones: [{ date: "2024-05-07", kind: "force", label: "条例生效" }]
+  },
+  {
+    id: "dr-nc",
+    oeil: "",
+    parent: "emd-reg",
+    secondary: true,
+    act: {
+      kind: "implementing",
+      ref: "网络规范（委员会条例，尚未通过）",
+      status: "draft",
+      url: "https://www.acer.europa.eu/news/new-network-code-demand-response-will-further-advance-energy-transition",
+      statusNote: "ACER 2025-03-07 提交建议；截至 2026 年中尚未通过",
+      basis: "电力市场条例 (EU) 2019/943 第 59 条"
+    },
+    nameZh: "需求响应网络规范（NC DR）",
+    shortZh: "需求响应网络规范",
+    category: "power",
+    relevance: "high",
+    tags: [
+      "需求响应",
+      "储能",
+      "聚合商",
+      "灵活性市场"
+    ],
+    summaryZh: "依据电力市场条例第 59 条制定，由 ENTSO-E 与欧盟配电运营商实体联合起草、ACER 修订后于 2025-03-07 提交欧委会。统一需求响应、聚合、储能参与平衡市场和配电网灵活性服务的规则，并修订平衡导则、系统运行导则和需求连接网络规范。截至 2026 年中尚未通过。",
+    impactZh: [
+      "统一储能和聚合商参与各国平衡与灵活性市场的准入规则，打开储能收益空间"
+    ],
+    batteryImpact: {
+      level: "medium",
+      levelNote: "为储能参与欧洲灵活性市场统一规则",
+      segments: [
+        "储能系统集成",
+        "BMS/EMS"
+      ],
+      compliance: [
+        "储能系统参与灵活性服务须满足资格预审、计量和数据交换要求，EMS 需支持相应接口"
+      ],
+      access: [],
+      support: [
+        "统一规则降低储能进入各国平衡市场的门槛，扩大工商业和户用储能的收益来源"
+      ],
+      actions: [
+        "跟踪网络规范通过时间",
+        "评估 EMS 对资格预审和数据交换要求的支持"
+      ]
+    },
+    council: [],
+    milestones: [
+      {
+        date: "2025-03-07",
+        kind: "secondary",
+        label: "ACER 向欧委会提交建议"
+      }
+    ]
   },
   {
     id: "gas-h2-dir",
@@ -1234,6 +2521,60 @@ window.CURATED = [
     milestones: []
   },
   {
+    id: "cbam-downstream",
+    oeil: "2025/0419(COD)",
+    parent: "cbam",
+    nameZh: "CBAM 扩展至下游产品与反规避",
+    shortZh: "CBAM 下游扩围",
+    category: "carbon",
+    relevance: "high",
+    tags: [
+      "下游产品",
+      "钢铝制品",
+      "反规避"
+    ],
+    summaryZh: "2025-12-17 提出（COM(2025) 989），拟自 2028-01-01 起将 CBAM 扩展至约 180 种钢铝密集型下游产品，并增加反规避措施、修改进口电力隐含排放的计算方法。理事会于 2026-06-12 达成总体方针，议会立场预计 2026 年 9 月全会形成，之后进入三方谈判。",
+    impactZh: [
+      "需关注电池壳体、结构件、模组框架等钢铝部件是否在下游产品清单中"
+    ],
+    batteryImpact: {
+      level: "medium",
+      levelNote: "可能把电池用钢铝部件纳入征收范围",
+      segments: [
+        "在欧设厂",
+        "材料采购",
+        "对欧出口"
+      ],
+      compliance: [
+        "若相关部件被纳入，进口时须申报隐含排放并购买 CBAM 证书"
+      ],
+      access: [
+        "进口钢铝部件成本上升，削弱进口部件相对欧盟本地采购的价格优势"
+      ],
+      support: [],
+      actions: [
+        "对照下游产品清单（CN 编码）核查电池相关钢铝部件",
+        "测算 2028 年起的潜在成本"
+      ]
+    },
+    council: [
+      {
+        date: "2026-06-12",
+        stage: "ga",
+        label: "理事会达成总体方针",
+        body: "理事会"
+      }
+    ],
+    milestones: [
+      {
+        date: "2028-01-01",
+        kind: "apply",
+        label: "下游产品纳入 CBAM（拟议）",
+        verified: false
+      }
+    ]
+  },
+  {
     id: "ets",
     oeil: "2021/0211A(COD)",
     nameZh: "欧盟碳排放交易体系修订（ETS，Fit for 55）",
@@ -1317,6 +2658,60 @@ window.CURATED = [
     },
     milestones: []
   },
+  {
+    id: "ev-duties",
+    oeil: "",
+    secondary: true,
+    act: {
+      kind: "trade",
+      ref: "实施条例 (EU) 2024/2754",
+      status: "adopted",
+      url: "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202402754",
+      basis: "反补贴基本条例 (EU) 2016/1037"
+    },
+    nameZh: "对中国产纯电动车征收最终反补贴税",
+    shortZh: "对华电动车反补贴税",
+    category: "carbon",
+    relevance: "high",
+    tags: [
+      "反补贴",
+      "电动车",
+      "贸易救济"
+    ],
+    summaryZh: "实施条例 (EU) 2024/2754，2024-10-30 起对中国产纯电动乘用车征收为期五年的最终反补贴税：比亚迪 17.0%、吉利 18.8%、上汽 35.3%、特斯拉（上海）7.8%，其他合作企业 20.7%，非合作企业 35.3%（在 10% 普通关税之上）。行业组织呼吁对电池供应链另行发起反补贴调查。",
+    impactZh: [
+      "整车出口欧洲成本上升，推动中国车企和电池企业在欧本地化",
+      "电池目前不在征税范围内，但行业呼吁对电芯、正负极材料另行调查"
+    ],
+    batteryImpact: {
+      level: "medium",
+      levelNote: "通过整车传导影响动力电池出口，并推动在欧本地化",
+      segments: [
+        "对欧出口",
+        "在欧设厂"
+      ],
+      compliance: [],
+      access: [
+        "搭载中国电池的中国产电动车在欧洲价格竞争力下降，间接影响动力电池出口",
+        "存在对电池及材料另行发起反补贴调查的风险"
+      ],
+      support: [
+        "在欧设厂为欧洲车企或在欧建厂的中国车企配套的电池企业受益"
+      ],
+      actions: [
+        "评估跟随客户在欧本地化配套",
+        "跟踪是否对电池供应链发起新的贸易救济调查"
+      ]
+    },
+    council: [],
+    milestones: [
+      {
+        date: "2024-10-30",
+        kind: "apply",
+        label: "最终反补贴税开始征收（为期五年）"
+      }
+    ]
+  },
   /* ================= 网络安全与人工智能 ================= */
   {
     id: "cra",
@@ -1370,6 +2765,60 @@ window.CURATED = [
     ]
   },
   {
+    id: "cra-important",
+    oeil: "",
+    parent: "cra",
+    secondary: true,
+    act: {
+      kind: "implementing",
+      ref: "实施条例 (EU) 2025/2392",
+      status: "adopted",
+      statusNote: "2025-11-28 通过",
+      basis: "网络韧性法第 7 条"
+    },
+    nameZh: "网络韧性法重要产品与关键产品技术描述",
+    shortZh: "CRA 重要产品清单",
+    category: "digital",
+    relevance: "high",
+    tags: [
+      "重要产品",
+      "关键产品",
+      "合格评定"
+    ],
+    summaryZh: "实施条例 (EU) 2025/2392，为网络韧性法附件三、四中的 28 类重要产品和关键产品给出精确技术描述，决定哪些产品须采用协调标准或第三方合格评定。欧委会能源专家组已建议将光伏逆变器列为 II 类重要产品。",
+    impactZh: [
+      "储能系统中的网关、路由、操作系统类软件等若属于重要产品，合格评定要求更严格"
+    ],
+    batteryImpact: {
+      level: "high",
+      levelNote: "决定联网储能部件的合格评定路径",
+      segments: [
+        "储能系统集成",
+        "BMS/EMS",
+        "对欧出口"
+      ],
+      compliance: [
+        "对照技术描述判断产品是否属于 I 类、II 类重要产品或关键产品；II 类须第三方合格评定"
+      ],
+      access: [
+        "若储能变流器、EMS 被归为 II 类（参照专家组对逆变器的建议），须经公告机构评定才能加贴 CE"
+      ],
+      support: [],
+      actions: [
+        "逐项对照 28 类技术描述，确定每个联网产品的合格评定路径",
+        "提前预约公告机构产能"
+      ]
+    },
+    council: [],
+    milestones: [
+      {
+        date: "2025-11-28",
+        kind: "secondary",
+        label: "欧委会通过实施条例"
+      }
+    ]
+  },
+  {
     id: "nis2",
     oeil: "2020/0359(COD)",
     nameZh: "网络与信息系统安全指令（NIS2）",
@@ -1414,6 +2863,55 @@ window.CURATED = [
       { date: "2024-10-17", kind: "transpose", label: "成员国转化期限" },
       { date: "2024-10-18", kind: "apply", label: "成员国措施开始适用；实施条例 (EU) 2024/2690（数字基础设施等风险管理措施）同步适用" },
       { date: "2025-04-17", kind: "deadline", label: "成员国确定基本实体与重要实体清单" }
+    ]
+  },
+  {
+    id: "nccs",
+    oeil: "",
+    parent: "nis2",
+    secondary: true,
+    act: {
+      kind: "delegated",
+      ref: "授权条例 (EU) 2024/1366",
+      status: "adopted",
+      basis: "电力市场条例 (EU) 2019/943 第 59 条"
+    },
+    nameZh: "电力行业跨境网络安全网络规范（NCCS）",
+    shortZh: "电力网络安全网络规范",
+    category: "digital",
+    relevance: "medium",
+    tags: [
+      "电力行业",
+      "网络安全",
+      "风险评估"
+    ],
+    summaryZh: "授权条例 (EU) 2024/1366，2024-06-13 生效。为影响跨境电力流的实体规定网络安全风险评估、最低与高级安全控制、供应链安全和信息共享要求，按欧盟、区域和成员国三级周期性开展风险评估，与 NIS2 互补。",
+    impactZh: [
+      "被认定为高影响或关键影响实体的电网、大型储能运营商须落实额外安全控制，并向供应商提出要求"
+    ],
+    batteryImpact: {
+      level: "medium",
+      levelNote: "通过大型储能和电网客户传导安全要求",
+      segments: [
+        "储能系统集成",
+        "BMS/EMS"
+      ],
+      compliance: [],
+      access: [
+        "高影响实体在采购中会要求储能设备满足规范规定的安全控制和供应链安全要求"
+      ],
+      support: [],
+      actions: [
+        "准备针对电网和大型储能客户的网络安全控制说明"
+      ]
+    },
+    council: [],
+    milestones: [
+      {
+        date: "2024-06-13",
+        kind: "force",
+        label: "授权条例生效"
+      }
     ]
   },
   {
@@ -1584,12 +3082,15 @@ window.CURATED = [
 ];
 
 window.CATEGORIES = {
-  battery:   { zh: "电池与关键原材料", color: "battery" },
-  industry:  { zh: "工业与制造",       color: "industry" },
-  power:     { zh: "电力市场与电网",   color: "power" },
-  renewable: { zh: "可再生能源与能效", color: "renewable" },
-  transport: { zh: "交通与充电",       color: "transport" },
-  carbon:    { zh: "碳定价与贸易",     color: "carbon" },
+  battery:   { zh: "电池与关键原材料",   color: "battery" },
+  circular:  { zh: "循环经济",           color: "circular" },
+  industry:  { zh: "产业政策与投资",     color: "industry" },
+  supply:    { zh: "供应链与企业责任",   color: "supply" },
+  safety:    { zh: "产品安全与化学品",   color: "safety" },
+  power:     { zh: "电力市场与电网",     color: "power" },
+  renewable: { zh: "可再生能源与能效",   color: "renewable" },
+  transport: { zh: "交通与充电",         color: "transport" },
+  carbon:    { zh: "碳定价与贸易",       color: "carbon" },
   digital:   { zh: "网络安全与人工智能", color: "digital" }
 };
 
@@ -1710,6 +3211,22 @@ window.STAKEHOLDERS = {
      "stance": "amend",
      "textZh": "支持增强欧洲储能制造能力的目标，但警告部分条款可能拖慢储能部署、推高成本；电池原产地要求应逐步引入；仅聚焦系统制造会让上游供应链仍由中国主导",
      "url": "https://www.energy-storage.news/eu-made-in-europe-regulation-welcomed-but-will-not-remove-dependency-on-china/"
+    }
+   ]
+  },
+  {
+   "id": "recharge",
+   "type": "assoc",
+   "nameZh": "欧洲先进充电电池与锂电池协会",
+   "name": "RECHARGE",
+   "roleZh": "欧洲锂电池与先进电池产业链协会",
+   "url": "https://rechargebatteries.org/",
+   "positions": [
+    {
+     "dossier": "cea",
+     "stance": "amend",
+     "textZh": "要求循环经济法统一黑粉的欧盟定义和技术规格，堵住黑粉流向欧盟以外的漏洞",
+     "url": "https://rechargebatteries.org/wp-content/uploads/2026/08/Closing-Black-Mass-Loopholes-Industry-guidance-July-2026.pdf"
     }
    ]
   },
@@ -2341,6 +3858,23 @@ window.STAKEHOLDERS = {
    "kind": "report",
    "textZh": "发布分析：法德汽车协议将使欧洲近 90% 规划中的电池产能面临风险，电池要求远低于现状（目前欧盟销售的电动车中已有超过 50% 电芯在欧洲制造）",
    "url": "https://cleantechnica.com/2026/11/18/almost-90-of-europes-battery-production-at-risk-from-franco-german-car-deal"
+  },
+  {
+   "id": "recharge-black-mass",
+   "date": "2026-07-15",
+   "dossiers": [
+    "black-mass",
+    "cea",
+    "wsr"
+   ],
+   "actors": [
+    "recharge"
+   ],
+   "stance": "amend",
+   "kind": "position",
+   "textZh": "发布行业指南《堵住黑粉漏洞，建设欧盟电池回收产业》，要求在循环经济法中统一黑粉定义与技术规格，防止黑粉以非危险废物等名义流出欧盟",
+   "url": "https://rechargebatteries.org/wp-content/uploads/2026/08/Closing-Black-Mass-Loopholes-Industry-guidance-July-2026.pdf",
+   "approx": true
   }
  ]
 };
@@ -2488,7 +4022,8 @@ const D = CUR.map(c => {
   events.sort((a,b)=> a.date<b.date?-1:a.date>b.date?1:0);
   const d = Object.assign({}, c, {o, events});
   d.stages = computeStages(d);
-  d.completed = o ? /completed/i.test(o.status||"") : false;
+  d.completed = o ? /completed/i.test(o.status||"") : !!(c.act && c.act.status==="adopted");
+  d.refLabel = c.oeil || (c.act && c.act.ref) || "尚未提出";
   d.proposal = (events.find(e=>/^Legislative proposal/.test(e.orig))||{}).date || "";
   d.lastPast = [...events].reverse().find(e=>e.date<=TODAY && e.src!=="milestone");
   return d;
@@ -2615,12 +4150,17 @@ function render(){
 }
 
 function catDot(cat){ return `<span class="cat" style="background:var(--${CATS[cat]?CATS[cat].color:"carbon"})"></span>`; }
+const ACTSTATUS = {adopted:"已通过", draft:"草案/待通过", planned:"规划中"};
+const ACTKINDZH = {delegated:"授权法案", implementing:"实施法案", guideline:"欧委会指南", decision:"欧委会决定", restriction:"REACH 限制", clp:"CLP 分类（适应技术进步）", trade:"贸易救济措施", planned:"规划中的立法"};
+function actStatusZh(d){ return d.act ? (ACTSTATUS[d.act.status]||d.act.status) : "尚未提出立法提案"; }
 function statusPill(d){
+  if(!d.o && !d.oeil) return `<span class="pill ${d.completed?"done":"live"}">${esc(actStatusZh(d))}</span>`;
   if(!d.o) return `<span class="pill">无 OEIL 数据</span>`;
   const z = STATUS[d.o.status] || d.o.status;
   return `<span class="pill ${d.completed?"done":"live"}">${esc(z)}</span>`;
 }
 function curStageName(d){
+  if(!d.oeil) return actStatusZh(d);
   if(d.completed) return d.stages.impl.done ? "已进入实施" : "已发布，待适用";
   const i = d.stages._cur; return i>=0 ? STAGES[i].nm : "";
 }
@@ -2674,7 +4214,7 @@ function vOverview(){
 }
 function feedLi(e){
   const L = LANES[e.lane];
-  return `<li><div class="d">${fmt(e.date)}</div><div><div class="t"><span class="lane-dot" style="background:${L.color}"></span>${esc(e.zh)}${e.verified===false?'<span class="unv">待核实</span>':''}</div><div class="s"><a data-go="${e.d.id}" href="javascript:void 0">${esc(e.d.shortZh||e.d.nameZh)}</a> · ${L.zh} · <span class="mono">${esc(e.d.oeil)}</span></div></div></li>`;
+  return `<li><div class="d">${fmt(e.date)}</div><div><div class="t"><span class="lane-dot" style="background:${L.color}"></span>${esc(e.zh)}${e.verified===false?'<span class="unv">待核实</span>':''}</div><div class="s"><a data-go="${e.d.id}" href="javascript:void 0">${esc(e.d.shortZh||e.d.nameZh)}</a> · ${L.zh} · <span class="mono">${esc(e.d.refLabel)}</span></div></div></li>`;
 }
 function allEvents(){
   const out=[], seen=new Set(); D.forEach(d=>d.events.forEach(e=>{ if(e.sid){ if(seen.has(e.sid)) return; seen.add(e.sid); } out.push(Object.assign({d},e)); }));
@@ -2723,8 +4263,9 @@ function filtered(){
     if(state.st==="live" && d.completed) return false;
     if(state.st==="done" && !d.completed) return false;
     if(state.st==="core" && d.relevance!=="core") return false;
+    if(state.st==="sec" && !d.secondary) return false;
     if(q){
-      const hay = [d.nameZh,d.shortZh,d.oeil,d.o&&d.o.title,d.o&&d.o.mainAct,(d.tags||[]).join(" "),d.summaryZh].join(" ").toLowerCase();
+      const hay = [d.nameZh,d.shortZh,d.oeil,d.act&&d.act.ref,d.o&&d.o.title,d.o&&d.o.mainAct,(d.tags||[]).join(" "),d.summaryZh].join(" ").toLowerCase();
       if(!hay.includes(q)) return false;
     }
     return true;
@@ -2734,7 +4275,8 @@ function vDossiers(){
   const list = filtered();
   // group children under parents when parent is visible
   const ids = new Set(list.map(d=>d.id));
-  const roots = list.filter(d=>!d.parent || !ids.has(d.parent));
+  const corder = Object.keys(CATS);
+  const roots = list.filter(d=>!d.parent || !ids.has(d.parent)).map((d,i)=>[d,i]).sort((a,b)=>(corder.indexOf(a[0].category)-corder.indexOf(b[0].category))||(a[1]-b[1])).map(x=>x[0]);
   const rows=[];
   const push=(d,depth)=>{ rows.push([d,depth]); list.filter(c=>c.parent===d.id).forEach(c=>push(c,depth+1)); };
   roots.forEach(r=>push(r,0));
@@ -2744,12 +4286,12 @@ function vDossiers(){
       <div class="filters">
         <input class="search" id="q" placeholder="搜索：名称 / 程序编号 / 法案号 / 关键词" value="${esc(state.q)}">
         <div class="chips" id="cats"><span class="chip ${state.cat==="all"?"on":""}" data-c="all">全部领域</span>${Object.entries(CATS).map(([k,v])=>`<span class="chip ${state.cat===k?"on":""}" data-c="${k}">${catDot(k)}${v.zh}</span>`).join("")}</div>
-        <div class="chips" id="sts">${[["all","全部"],["live","审议中"],["done","已通过"],["core","核心法规"]].map(([k,z])=>`<span class="chip ${state.st===k?"on":""}" data-s="${k}">${z}</span>`).join("")}</div>
+        <div class="chips" id="sts">${[["all","全部"],["live","审议中"],["done","已通过"],["core","核心法规"],["sec","二级法案"]].map(([k,z])=>`<span class="chip ${state.st===k?"on":""}" data-s="${k}">${z}</span>`).join("")}</div>
       </div>
       <div class="list">${rows.map(([d,dep])=>`
         <div class="item ${dep?"child":""} ${d.id===sel.id?"on":""}" data-go="${d.id}" style="${dep>1?"margin-left:"+(16*dep)+"px":""}">
           <div class="n">${catDot(d.category)}${esc(d.shortZh||d.nameZh)}</div>
-          <div class="m"><span class="mono">${esc(d.oeil)}</span>${d.o&&d.o.mainAct?`<span>${esc(d.o.mainAct)}</span>`:""}<span style="color:${d.completed?"var(--done)":"var(--current)"}">● ${esc(curStageName(d))}</span></div>
+          <div class="m">${d.secondary?'<span class="pill sec">二级法案</span>':""}<span class="mono">${esc(d.refLabel)}</span>${d.o&&d.o.mainAct?`<span>${esc(d.o.mainAct)}</span>`:""}<span style="color:${d.completed?"var(--done)":"var(--current)"}">● ${esc(curStageName(d))}</span></div>
         </div>`).join("") || '<div class="empty">没有匹配的法规</div>'}
       </div>
     </aside>
@@ -2779,11 +4321,11 @@ function vDetail(d){
   }).join("");
   return `
   <div class="card dhead">
-    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">${catDot(d.category)}<span class="muted" style="font-size:12px">${esc(CATS[d.category]?CATS[d.category].zh:"")}</span>${statusPill(d)}${d.relevance==="core"?'<span class="pill core">核心</span>':""}</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">${catDot(d.category)}<span class="muted" style="font-size:12px">${esc(CATS[d.category]?CATS[d.category].zh:"")}</span>${statusPill(d)}${d.relevance==="core"?'<span class="pill core">核心</span>':""}${d.secondary?'<span class="pill sec">二级法案</span>':""}</div>
     <h1>${esc(d.nameZh)}</h1>
     <div class="en">${esc(o.title||"")}</div>
     <div class="meta">
-      <span>程序编号 <b class="mono"><a href="${oeilUrl(d.oeil)}" target="_blank" rel="noopener">${esc(d.oeil)}</a></b></span>
+      ${d.oeil?`<span>程序编号 <b class="mono"><a href="${oeilUrl(d.oeil)}" target="_blank" rel="noopener">${esc(d.oeil)}</a></b></span>`:`<span>${d.act?"法案":"状态"} <b class="mono">${d.act&&d.act.url?`<a href="${esc(d.act.url)}" target="_blank" rel="noopener">${esc(d.refLabel)}</a>`:esc(d.refLabel)}</b></span>`}
       ${o.procedureType?`<span>程序 <b>${esc(o.procedureType.replace(/ \(ex-codecision procedure\)/,""))}</b></span>`:""}
       ${o.instrument?`<span>文件类型 <b>${esc(o.instrument)}</b></span>`:""}
       ${o.mainAct?`<span>最终法案 <b>${o.mainActHref?`<a href="${esc(o.mainActHref)}" target="_blank" rel="noopener">${esc(o.mainAct)}</a>`:esc(o.mainAct)}</b> <span class="faint">${esc(o.mainActOj||"")}</span></span>`:""}
@@ -2792,7 +4334,7 @@ function vDetail(d){
     <div class="tags">${(d.tags||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div>
   </div>
 
-  <div class="card"><div class="hd"><h3>立法阶段进程</h3><span class="muted" style="font-size:12px">当前：${esc(curStageName(d))}</span></div><div class="pipe">${pipe}</div></div>
+  ${d.oeil ? `<div class="card"><div class="hd"><h3>立法阶段进程</h3><span class="muted" style="font-size:12px">当前：${esc(curStageName(d))}</span></div><div class="pipe">${pipe}</div></div>` : vActInfo(d)}
 
   <div class="cols">
     <div class="card sum"><div class="hd"><h3>法规要点</h3></div><div class="bd"><p>${esc(d.summaryZh||"")}</p>
@@ -2804,7 +4346,7 @@ function vDetail(d){
   ${vStake(d)}
   ${vSecondary(d)}
 
-  <div class="card actors"><div class="hd"><h3>主要参与方</h3><span class="muted" style="font-size:12px">来源：OEIL Key players</span></div><div class="bd">${vActors(d)}</div></div>
+  ${d.oeil?`<div class="card actors"><div class="hd"><h3>主要参与方</h3><span class="muted" style="font-size:12px">来源：OEIL Key players</span></div><div class="bd">${vActors(d)}</div></div>`:""}
   ${vDocs(d)}
 
   <div class="card"><div class="hd"><h3>完整进程时间线</h3>
@@ -2832,6 +4374,20 @@ function vBatteryImpact(d){
     </div>
     ${next.length?`<div class="sub" style="font-weight:600;margin:14px 0 6px">接下来的关键时间点</div><ul class="feed">${next.map(m=>`<li><div class="d">${fmt(m.date)}</div><div><div class="t">${esc(m.label)}${m.verified===false?'<span class="unv">待核实</span>':""}</div><div class="s">${esc(MKIND[m.kind]||m.kind)}</div></div></li>`).join("")}</ul>`:""}
     ${(b.actions||[]).length?`<div class="sub" style="font-weight:600;margin:14px 0 6px">建议行动</div><ol class="bi-act">${b.actions.map(x=>`<li>${esc(x)}</li>`).join("")}</ol>`:""}
+  </div></div>`;
+}
+
+function vActInfo(d){
+  const a = d.act || {kind:"planned", status:"planned"};
+  const par = d.parent && BYID[d.parent];
+  const row = (k,v) => v ? `<div class="relrow"><span class="muted" style="display:inline-block;min-width:84px">${k}</span>${v}</div>` : "";
+  return `<div class="card"><div class="hd"><h3>${d.secondary?"二级法案信息":"立法进展"}</h3><span class="muted" style="font-size:12px">当前：${esc(actStatusZh(d))}</span></div><div class="bd">
+    ${row("类型", esc(ACTKINDZH[a.kind]||a.kind||""))}
+    ${row("法律依据", par ? `<a data-go="${par.id}" href="javascript:void 0">${esc(par.nameZh)}</a>${a.basis?` · ${esc(a.basis)}`:""}` : (a.basis?esc(a.basis):""))}
+    ${row("编号", a.ref ? (a.url?`<a class="mono" href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.ref)}</a>`:`<span class="mono">${esc(a.ref)}</span>`) : "")}
+    ${row("状态", esc(actStatusZh(d)) + (a.statusNote?` · ${esc(a.statusNote)}`:""))}
+    ${!d.oeil && !d.secondary ? `<div class="sub" style="margin-top:8px">尚未提出立法提案，暂无欧洲议会程序编号；欧委会意见征求与提案进展通过 Have Your Say 自动跟踪，提出后填入程序编号即可自动抓取立法进程。</div>` : ""}
+    ${d.secondary ? `<div class="sub" style="margin-top:8px">二级法案不经过普通立法程序，没有欧洲议会程序编号；草案意见征求和通过情况通过 Have Your Say 与 EUR-Lex 自动跟踪（见下方“二级立法”）。</div>` : ""}
   </div></div>`;
 }
 
@@ -3082,6 +4638,7 @@ function vHelp(){
   <ul>
     <li><b>二级立法层</b> <code>data/secondary-data.js</code>：由 <code>tools/update-secondary.ps1</code> 自动抓取。① EUR-Lex（Cellar SPARQL）：依据母法制定、修订母法或引用母法的授权法案、实施法案、协调标准、指南通知、欧委会报告；② 欧委会 Have Your Say：规划中的授权/实施法案、证据征集与公众咨询、<b>草案意见征求</b>（含反馈期与反馈数量）、通过阶段。配置（母法 CELEX、关键词）见 <code>data/sources.json</code>。</li>
     <li><b>在审动态层</b> <code>curated.js</code> 中的 <code>tracking</code>：Legislative Train 等站点禁止脚本抓取，由人工阅读后整理，每条注明来源与“截至”日期；OEIL 的委员会表决排期、全会预定日期、报告草案、修正案、意见等则自动抓取。</li>
+    <li><b>二级法案与尚未提出的立法</b>：授权法案、实施法案、欧委会指南、REACH 限制、CLP 分类、贸易救济措施等单独列为条目（法规库筛选“二级法案”），挂在母法下面；它们没有欧洲议会程序编号，<code>oeil</code> 留空，在 <code>act</code> 字段记录类型、编号和状态，进展通过 Have Your Say 与 EUR-Lex 自动跟踪。尚未提出的立法（如循环经济法）同样留空程序编号，提出后填入即可自动抓取立法进程。</li>
     <li><b>对电池生产企业的影响</b> <code>curated.js</code> 中的 <code>batteryImpact</code>：每部法规的影响程度、受影响业务环节，以及按“合规”“准入”“政策支持”分类的影响和建议行动，显示在法规详情页最下方。视角为对欧出口或在欧设厂的电池企业；关键时间点取自实施节点。</li>
     <li><b>利益相关方层</b> <code>data/stakeholders.js</code>：人工整理的行业协会、NGO、智库、企业联盟、关键人物、成员国政府对各法规的立场与有日期的影响动态（公开信、立场文件、研究报告、政治协议），每条附原文链接；“日期（约）”表示仅精确到月，“待核实”表示仅有单一二手来源。新增条目后，变更追踪会把它列入“新增动态”。</li>
     <li><b>变更追踪</b> <code>data/changes.js</code>：每次更新与上次快照对比，新增的事件、排期、文件、草案阶段、二级立法都会出现在总览“新增动态”中。</li>

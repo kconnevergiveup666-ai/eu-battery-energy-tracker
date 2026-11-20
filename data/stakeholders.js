@@ -105,6 +105,22 @@ window.STAKEHOLDERS = {
    ]
   },
   {
+   "id": "recharge",
+   "type": "assoc",
+   "nameZh": "欧洲先进充电电池与锂电池协会",
+   "name": "RECHARGE",
+   "roleZh": "欧洲锂电池与先进电池产业链协会",
+   "url": "https://rechargebatteries.org/",
+   "positions": [
+    {
+     "dossier": "cea",
+     "stance": "amend",
+     "textZh": "要求循环经济法统一黑粉的欧盟定义和技术规格，堵住黑粉流向欧盟以外的漏洞",
+     "url": "https://rechargebatteries.org/wp-content/uploads/2026/08/Closing-Black-Mass-Loopholes-Industry-guidance-July-2026.pdf"
+    }
+   ]
+  },
+  {
    "id": "spe",
    "type": "assoc",
    "nameZh": "欧洲光伏产业协会",
@@ -732,6 +748,23 @@ window.STAKEHOLDERS = {
    "kind": "report",
    "textZh": "发布分析：法德汽车协议将使欧洲近 90% 规划中的电池产能面临风险，电池要求远低于现状（目前欧盟销售的电动车中已有超过 50% 电芯在欧洲制造）",
    "url": "https://cleantechnica.com/2026/11/18/almost-90-of-europes-battery-production-at-risk-from-franco-german-car-deal"
+  },
+  {
+   "id": "recharge-black-mass",
+   "date": "2026-07-15",
+   "dossiers": [
+    "black-mass",
+    "cea",
+    "wsr"
+   ],
+   "actors": [
+    "recharge"
+   ],
+   "stance": "amend",
+   "kind": "position",
+   "textZh": "发布行业指南《堵住黑粉漏洞，建设欧盟电池回收产业》，要求在循环经济法中统一黑粉定义与技术规格，防止黑粉以非危险废物等名义流出欧盟",
+   "url": "https://rechargebatteries.org/wp-content/uploads/2026/08/Closing-Black-Mass-Loopholes-Industry-guidance-July-2026.pdf",
+   "approx": true
   }
  ]
 };
