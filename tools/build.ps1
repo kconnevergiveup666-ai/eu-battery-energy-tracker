@@ -75,7 +75,15 @@ $today = (Get-Date).ToString('yyyy-MM-dd')
 $new = @()
 if ($snap) {
   $known = @{}; foreach ($k in @($snap.keys)) { $known[$k] = $true }
-  foreach ($k in $items.Keys) { if (-not $known.ContainsKey($k)) { $it = $items[$k]; $it['detected'] = $today; $new += $it } }
+  # dossiers seen in earlier runs; the first fetch of a newly added dossier is a baseline, not "new"
+  $knownDos = $null
+  if ($snap.dossiers) { $knownDos = @{}; foreach ($x in @($snap.dossiers)) { $knownDos[$x] = $true } }
+  foreach ($k in $items.Keys) {
+    if ($known.ContainsKey($k)) { continue }
+    $it = $items[$k]
+    if ($knownDos -and $it.source -ne 'Stakeholder' -and -not $knownDos.ContainsKey($it.dossier)) { continue }
+    $it['detected'] = $today; $new += $it
+  }
   Write-Host "Change tracking: $($new.Count) new item(s) since last update"
 } else {
   Write-Host "Change tracking: baseline recorded ($($items.Count) items); future runs will report new items"
@@ -87,7 +95,10 @@ $chg = [ordered]@{ changes = @($history); runs = @($runs) }
 $cj = $chg | ConvertTo-Json -Depth 6 -Compress
 [IO.File]::WriteAllText($chgPath, $cj, $utf8)
 [IO.File]::WriteAllText((Join-Path $d 'changes.js'), "window.CHANGES = $cj;`n", $utf8)
-$snapObj = [ordered]@{ date = $today; keys = @($items.Keys) }
+$dosSeen = @{}
+if ($snap -and $snap.dossiers) { foreach ($x in @($snap.dossiers)) { $dosSeen[$x] = $true } }
+foreach ($it in $items.Values) { if ($it.source -ne 'Stakeholder') { $dosSeen[$it.dossier] = $true } }
+$snapObj = [ordered]@{ date = $today; dossiers = @($dosSeen.Keys | Sort-Object); keys = @($items.Keys) }
 [IO.File]::WriteAllText($snapPath, ($snapObj | ConvertTo-Json -Depth 3 -Compress), $utf8)
 
 # ---- standalone tracker.html ----
