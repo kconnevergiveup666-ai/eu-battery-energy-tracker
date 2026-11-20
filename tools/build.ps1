@@ -50,6 +50,20 @@ if ($sec) {
   }
 }
 
+# ---- stakeholder influence events (data/stakeholders.js: window.STAKEHOLDERS = <JSON>;) ----
+$stkPath = Join-Path $d 'stakeholders.js'
+if (Test-Path $stkPath) {
+  $raw = [IO.File]::ReadAllText($stkPath, [Text.Encoding]::UTF8)
+  $i0 = $raw.IndexOf('window.STAKEHOLDERS')
+  $json = $raw.Substring($raw.IndexOf('{', $i0)); $json = $json.Substring(0, $json.LastIndexOf('}') + 1)
+  $stk = $json | ConvertFrom-Json
+  $names = @{}; foreach ($a in @($stk.actors)) { $names[$a.id] = $a.nameZh }
+  foreach ($e in @($stk.events)) {
+    $who = (@($e.actors) | ForEach-Object { if ($names.ContainsKey($_)) { $names[$_] } else { $_ } }) -join ', '
+    foreach ($ds in @($e.dossiers)) { Add-Item "stk|$($e.id)|$ds" $ds 'Stakeholder' 'stakeholder' $e.date "${who}: $($e.textZh)" $e.url }
+  }
+}
+
 # ---- diff against snapshot ----
 $snapPath = Join-Path $d 'snapshot.json'
 $chgPath  = Join-Path $d 'changes.json'
@@ -78,7 +92,7 @@ $snapObj = [ordered]@{ date = $today; keys = @($items.Keys) }
 
 # ---- standalone tracker.html ----
 $page = [IO.File]::ReadAllText((Join-Path $root 'index.html'), [Text.Encoding]::UTF8)
-foreach ($f in 'curated.js', 'oeil-data.js', 'secondary-data.js', 'changes.js') {
+foreach ($f in 'curated.js', 'oeil-data.js', 'secondary-data.js', 'changes.js', 'stakeholders.js') {
   $p = Join-Path $d $f
   $content = if (Test-Path $p) { [IO.File]::ReadAllText($p, [Text.Encoding]::UTF8) } else { '' }
   $page = $page.Replace("<script src=`"data/$f`"></script>", "<script>`n" + $content.Replace('</script', '<\/script') + "`n</script>")

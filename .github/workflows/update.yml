@@ -13,6 +13,7 @@ on:
     paths:
       - "data/curated.js"
       - "data/sources.json"
+      - "data/stakeholders.js"
       - "index.html"
       - "tools/**"
 
