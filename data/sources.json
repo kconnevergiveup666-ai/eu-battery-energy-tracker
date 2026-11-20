@@ -37,7 +37,7 @@
   "forced-labour":     { "celex": ["32024R3015"], "eli": ["reg/2024/3015"], "hys": { "q": ["forced labour"], "match": "forced labour|2024/3015" } },
   "csddd":             { "celex": ["32024L1760"], "eli": ["dir/2024/1760"], "hys": { "q": ["corporate sustainability due diligence"], "match": "due diligence|CSDDD|2024/1760" } },
   "gpsr":              { "celex": ["32023R0988"], "eli": ["reg/2023/988"], "hys": { "q": ["general product safety"], "match": "product safety|2023/988" } },
-  "rohs":              { "celex": ["32011L0065"], "eli": ["dir/2011/65"], "hys": { "q": ["RoHS", "hazardous substances electrical equipment"], "match": "RoHS|hazardous substances in electrical|2011/65" } },
+  "rohs":              { "celex": [], "eli": [], "hys": { "q": ["RoHS evaluation", "RoHS revision"], "match": "RoHS.*(review|revision|evaluation)|(review|revision|evaluation).*RoHS" } },
   "pfas":              { "celex": [], "eli": [], "hys": { "q": ["PFAS"], "match": "PFAS|polyfluoro" } },
   "dr-nc":             { "celex": [], "eli": [], "hys": { "q": ["network code demand response"], "match": "demand response" } },
   "cbam-downstream":   { "celex": [], "eli": [], "hys": { "q": ["CBAM downstream"], "match": "downstream" } },

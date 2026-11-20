@@ -820,7 +820,7 @@ window.CURATED = [
   },
   {
     id: "weee-2024",
-    oeil: "2023/0007(COD)",
+    oeil: "2023/0025(COD)",
     parent: "weee",
     nameZh: "WEEE 指令定向修订（光伏组件等）",
     shortZh: "WEEE 定向修订",
@@ -852,8 +852,7 @@ window.CURATED = [
       {
         date: "2025-10-09",
         kind: "transpose",
-        label: "成员国转化期限",
-        verified: false
+        label: "成员国转化期限"
       }
     ]
   },
