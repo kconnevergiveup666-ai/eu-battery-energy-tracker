@@ -7519,7 +7519,11 @@ function vChanges(){
   if(!CHG.length) return Z("<div class=\"muted\" style=\"font-size:13px\">数据每天北京时间 06:00 自动更新（也可在本地运行 <code>tools\\update-all.ps1</code>）。与上次相比新出现的事件、文件、投票排期、草案与二级立法会列在这里。</div>");
   const map = new Map();
   CHG.forEach(c=>{ const k=c.detected+"|"+c.dossier; if(!map.has(k)) map.set(k,{detected:c.detected, dossier:c.dossier, items:[]}); map.get(k).items.push(c); });
-  const groups = [...map.values()].sort((a,b)=> a.detected<b.detected?1:a.detected>b.detected?-1:(b.items.length-a.items.length));
+  // newest first: items by event date, groups by detection date, then by their latest event
+  const evDate = c => String(c.date||"").slice(0,10);
+  const groups = [...map.values()];
+  groups.forEach(g=>{ g.items.sort((a,b)=> evDate(a)<evDate(b)?1:evDate(a)>evDate(b)?-1:0); g.latest = evDate(g.items[0]); });
+  groups.sort((a,b)=> a.detected<b.detected?1:a.detected>b.detected?-1:(a.latest<b.latest?1:a.latest>b.latest?-1:(b.items.length-a.items.length)));
   const SHOW = 5, shown = chgAll ? groups : groups.slice(0,SHOW);
   const chgText = c => {
     if(LANG!=="en" || c.source!=="Stakeholder") return c.text;
