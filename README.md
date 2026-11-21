@@ -50,3 +50,10 @@ powershell -ExecutionPolicy Bypass -File tools\update-all.ps1
 - Legislative Train 和 EUR-Lex 的程序页禁止脚本访问，所以 `tracking` 里的在审动态和理事会节点是人工阅读后整理的，每条都注明了来源和"截至"日期，需要定期人工更新。
 - Have Your Say 的草案有两种挂靠方式：一是按法律依据（ELI）挂到母法上，最可靠；二是按标题关键词匹配，页面上会标注"按标题关键词匹配"。
 - 标注"待核实"的条目，请对照官方来源确认。
+
+## LLM Wiki（知识库原型）
+`wiki/` 是一个由 LLM 维护的 Markdown 知识库（参考 Karpathy 的 LLM Wiki 模式），把每日抓取的数据整理成可以交叉引用、可以提问的法规页、主题页和机构页。
+- 维护规范：`wiki/CLAUDE.md`（ingest / query / lint 三个工作流）；总目录：`wiki/index.md`；操作日志：`wiki/log.md`
+- `tools/export-wiki-raw.ps1`：把 curated、OEIL、EUR-Lex、Have Your Say 和 changes 数据合并成 `wiki/raw/dossiers/<id>.md`（只读的原始资料层）
+- `tools/lint-wiki.ps1`：检查失效链接、孤立页、frontmatter，并列出尚未写入 wiki 的 dossier
+- 目前覆盖电池与关键原材料板块的 9 个 dossier。在仓库里打开 Claude Code，说“ingest 最新变化”或“ingest emd-reg”即可继续扩充；也可以用 Obsidian 打开 `wiki/` 浏览
