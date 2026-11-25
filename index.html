@@ -9,7 +9,7 @@
   --bg:#f6f7f9; --panel:#ffffff; --panel2:#f1f3f6; --line:#e2e5ea; --text:#1b1f24; --muted:#5f6b7a; --faint:#8a95a3;
   --accent:#1f5fd6; --accent-weak:#e6eefc;
   --c-commission:#1f5fd6; --c-epc:#7a3fd1; --c-epp:#c2398a; --c-council:#d9822b; --c-trilogue:#b8860b; --c-final:#18864b; --c-impl:#0e8f8f; --c-future:#8a95a3;
-  --battery:#0e8f8f; --industry:#7a3fd1; --power:#d9822b; --renewable:#18864b; --transport:#1f5fd6; --carbon:#6b7280; --digital:#c0396b; --circular:#6d8a1f; --supply:#a0522d; --safety:#0f7c9c;
+  --battery:#0e8f8f; --industry:#7a3fd1; --power:#d9822b; --renewable:#18864b; --transport:#1f5fd6; --carbon:#6b7280; --digital:#c0396b; --circular:#6d8a1f; --supply:#a0522d; --safety:#0f7c9c; --uk:#b4233c;
   --done:#18864b; --current:#d9822b; --pending:#c9ced6;
   --c-sec:#5b6ee1; --c-other:#8a6d3b; --c-stake:#b4338a;
   --shadow:0 1px 2px rgba(16,24,40,.06),0 1px 3px rgba(16,24,40,.08);
@@ -22,7 +22,7 @@
     --bg:#0f1216; --panel:#171b21; --panel2:#1e232b; --line:#2a313b; --text:#e6e9ed; --muted:#a1abb8; --faint:#7d8896;
     --accent:#6ea0ff; --accent-weak:#1b2a44;
     --c-commission:#6ea0ff; --c-epc:#a98bf0; --c-epp:#e879b8; --c-council:#f0a456; --c-trilogue:#e0b84a; --c-final:#4cc08a; --c-impl:#3cc6c6; --c-future:#7d8896;
-    --battery:#3cc6c6; --industry:#a98bf0; --power:#f0a456; --renewable:#4cc08a; --transport:#6ea0ff; --carbon:#9aa3af; --digital:#f07aa6; --circular:#a9c95a; --supply:#e0a07a; --safety:#5cc3e0;
+    --battery:#3cc6c6; --industry:#a98bf0; --power:#f0a456; --renewable:#4cc08a; --transport:#6ea0ff; --carbon:#9aa3af; --digital:#f07aa6; --circular:#a9c95a; --supply:#e0a07a; --safety:#5cc3e0; --uk:#f07b8e;
     --done:#4cc08a; --current:#f0a456; --pending:#3a424d; --shadow:none;
   }
 }
@@ -30,7 +30,7 @@
   --bg:#0f1216; --panel:#171b21; --panel2:#1e232b; --line:#2a313b; --text:#e6e9ed; --muted:#a1abb8; --faint:#7d8896;
   --accent:#6ea0ff; --accent-weak:#1b2a44;
   --c-commission:#6ea0ff; --c-epc:#a98bf0; --c-epp:#e879b8; --c-council:#f0a456; --c-trilogue:#e0b84a; --c-final:#4cc08a; --c-impl:#3cc6c6; --c-future:#7d8896;
-  --battery:#3cc6c6; --industry:#a98bf0; --power:#f0a456; --renewable:#4cc08a; --transport:#6ea0ff; --carbon:#9aa3af; --digital:#f07aa6; --circular:#a9c95a; --supply:#e0a07a; --safety:#5cc3e0;
+  --battery:#3cc6c6; --industry:#a98bf0; --power:#f0a456; --renewable:#4cc08a; --transport:#6ea0ff; --carbon:#9aa3af; --digital:#f07aa6; --circular:#a9c95a; --supply:#e0a07a; --safety:#5cc3e0; --uk:#f07b8e;
   --done:#4cc08a; --current:#f0a456; --pending:#3a424d; --shadow:none;
 }
 *{box-sizing:border-box}
@@ -506,6 +506,15 @@ window.EN_UI = {
 "CLP 分类（适应技术进步）": "CLP classification (ATP)",
 "贸易救济措施": "Trade defence measure",
 "规划中的立法": "Planned legislation",
+"英国政府/议会": "UK government/Parliament",
+"英国议会法令/税收立法": "UK Act / tax legislation",
+"英国条例（SI）": "UK regulations (SI)",
+"英欧协定安排": "UK–EU agreement",
+"英国政府计划/补贴": "UK government scheme/grant",
+"英国政策文件": "UK policy paper",
+"英国政府咨询/证据征集": "UK consultation/call for evidence",
+"英国法规信息": "UK law details",
+"英国法规，不经过欧盟立法程序；状态和时间线根据 GOV.UK、legislation.gov.uk 等英国官方来源人工跟踪。": "A UK law outside the EU legislative process; status and timeline are tracked manually from official UK sources such as GOV.UK and legislation.gov.uk.",
 "尚未提出立法提案": "Not yet proposed",
 "无 OEIL 数据": "No OEIL data",
 "已进入实施": "In application",
@@ -860,7 +869,8 @@ const LANES = {
   impl:{zh:Z("实施节点"), color:"var(--c-impl)"},
   secondary:{zh:Z("二级立法/草案"), color:"var(--c-sec)"},
   other:{zh:Z("咨询机构/成员国议会"), color:"var(--c-other)"},
-  stake:{zh:Z("利益相关方"), color:"var(--c-stake)"}
+  stake:{zh:Z("利益相关方"), color:"var(--c-stake)"},
+  uk:{zh:Z("英国政府/议会"), color:"var(--uk)"}
 };
 const ACTTYPE = {REG_DEL:Z("授权条例"),DEC_DEL:Z("授权决定"),DIR_DEL:Z("授权指令"),REG_IMPL:Z("实施条例"),DEC_IMPL:Z("实施决定"),DIR_IMPL:Z("实施指令"),PROP_REG:Z("条例提案"),PROP_DIR:Z("指令提案"),PROP_DEC:Z("决定提案"),REG:Z("委员会条例"),DEC:Z("委员会决定"),DIR:Z("指令"),COMMUNICATION:Z("通讯"),COM:Z("通讯"),RECOMMENDATION:Z("建议"),REC:Z("建议"),GUIDELINES:Z("指南"),STAFF_WORKING_DOCUMENT:Z("工作文件"),REPORT:Z("报告"),OTHER:Z("其他")};
 const PUBTYPE = t => {
@@ -1063,7 +1073,7 @@ function computeStages(d){
 }
 
 /* ---------- state & routing ---------- */
-let state = { view:"overview", id:null, cat:store.get("cat","all"), st:store.get("st","all"), q:"", showAll:false, lanes: store.get("lanes3", Object.keys(LANES)), role: store.get("role","battery"), mkt: store.get("mkt","eu"), rel: store.get("rel", true) };
+let state = { view:"overview", id:null, cat:store.get("cat","all"), st:store.get("st","all"), q:"", showAll:false, lanes: store.get("lanes4", Object.keys(LANES)), role: store.get("role","battery"), mkt: store.get("mkt","eu"), rel: store.get("rel", true) };
 if(!ROLEZH[state.role]) state.role="battery";
 if(state.mkt!=="eu" && !MK.countries.some(c=>c.id===state.mkt)) state.mkt="eu";
 function hashParams(){ const p=[]; if(state.role!=="battery") p.push("r="+state.role); if(state.mkt!=="eu") p.push("m="+state.mkt); return p.length?"?"+p.join("&"):""; }
@@ -1153,7 +1163,7 @@ function render(){
 
 function catDot(cat){ return `<span class="cat" style="background:var(--${CATS[cat]?CATS[cat].color:"carbon"})"></span>`; }
 const ACTSTATUS = {adopted:Z("已通过"), draft:Z("草案/待通过"), planned:Z("规划中")};
-const ACTKINDZH = {delegated:Z("授权法案"), implementing:Z("实施法案"), guideline:Z("欧委会指南"), decision:Z("欧委会决定"), restriction:Z("REACH 限制"), clp:Z("CLP 分类（适应技术进步）"), trade:Z("贸易救济措施"), planned:Z("规划中的立法")};
+const ACTKINDZH = {delegated:Z("授权法案"), implementing:Z("实施法案"), guideline:Z("欧委会指南"), decision:Z("欧委会决定"), restriction:Z("REACH 限制"), clp:Z("CLP 分类（适应技术进步）"), trade:Z("贸易救济措施"), planned:Z("规划中的立法"), "uk-act":Z("英国议会法令/税收立法"), "uk-si":Z("英国条例（SI）"), "uk-trade":Z("英欧协定安排"), "uk-scheme":Z("英国政府计划/补贴"), "uk-policy":Z("英国政策文件"), "uk-consult":Z("英国政府咨询/证据征集")};
 function actStatusZh(d){ return d.act ? (ACTSTATUS[d.act.status]||d.act.status) : Z("尚未提出立法提案"); }
 function statusPill(d){
   if(!d.o && !d.oeil) return `<span class="pill ${d.completed?"done":"live"}">${esc(actStatusZh(d))}</span>`;
@@ -1389,7 +1399,7 @@ function bindDossiers(){
   if(ic) ic.addEventListener("click",e=>{ const b=e.target.closest("[data-role]"); if(!b) return; state.role=b.dataset.role; store.set("role",state.role); try{ history.replaceState(null,"",curHash()); }catch(_){} const y=window.scrollY; render(); window.scrollTo(0,y); });
   const sa = document.getElementById("showAll"); if(sa) sa.addEventListener("change",()=>{state.showAll=sa.checked; render();});
   document.querySelectorAll("[data-lane]").forEach(cb=>cb.addEventListener("change",()=>{
-    state.lanes = [...document.querySelectorAll("[data-lane]")].filter(x=>x.checked).map(x=>x.dataset.lane); store.set("lanes3",state.lanes); render();
+    state.lanes = [...document.querySelectorAll("[data-lane]")].filter(x=>x.checked).map(x=>x.dataset.lane); store.set("lanes4",state.lanes); render();
   }));
 }
 
@@ -1526,12 +1536,13 @@ function vActInfo(d){
   const a = d.act || {kind:"planned", status:"planned"};
   const par = d.parent && BYID[d.parent];
   const row = (k,v) => v ? `<div class="relrow"><span class="muted" style="display:inline-block;min-width:84px">${k}</span>${v}</div>` : "";
-  return `<div class="card"><div class="hd"><h3>${d.secondary?Z("二级法案信息"):Z("立法进展")}</h3><span class="muted" style="font-size:12px">${Z("当前：")}${esc(actStatusZh(d))}</span></div><div class="bd">
+  return `<div class="card"><div class="hd"><h3>${d.secondary?Z("二级法案信息"):d.jurisdiction==="uk"?Z("英国法规信息"):Z("立法进展")}</h3><span class="muted" style="font-size:12px">${Z("当前：")}${esc(actStatusZh(d))}</span></div><div class="bd">
     ${row(Z("类型"), esc(ACTKINDZH[a.kind]||a.kind||""))}
     ${row(Z("法律依据"), par ? `<a data-go="${par.id}" href="javascript:void 0">${esc(par.nameZh)}</a>${a.basis?` · ${esc(a.basis)}`:""}` : (a.basis?esc(a.basis):""))}
     ${row(Z("编号"), a.ref ? (a.url?`<a class="mono" href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.ref)}</a>`:`<span class="mono">${esc(a.ref)}</span>`) : "")}
     ${row(Z("状态"), esc(actStatusZh(d)) + (a.statusNote?` · ${esc(a.statusNote)}`:""))}
-    ${!d.oeil && !d.secondary ? `<div class="sub" style="margin-top:8px">${Z("尚未提出立法提案，暂无欧洲议会程序编号；欧委会意见征求与提案进展通过 Have Your Say 自动跟踪，提出后填入程序编号即可自动抓取立法进程。")}</div>` : ""}
+    ${d.jurisdiction==="uk" ? `<div class="sub" style="margin-top:8px">${Z("英国法规，不经过欧盟立法程序；状态和时间线根据 GOV.UK、legislation.gov.uk 等英国官方来源人工跟踪。")}</div>` : ""}
+    ${!d.oeil && !d.secondary && d.jurisdiction!=="uk" ? `<div class="sub" style="margin-top:8px">${Z("尚未提出立法提案，暂无欧洲议会程序编号；欧委会意见征求与提案进展通过 Have Your Say 自动跟踪，提出后填入程序编号即可自动抓取立法进程。")}</div>` : ""}
     ${d.secondary ? `<div class="sub" style="margin-top:8px">${Z("二级法案不经过普通立法程序，没有欧洲议会程序编号；草案意见征求和通过情况通过 Have Your Say 与 EUR-Lex 自动跟踪（见下方“二级立法”）。")}</div>` : ""}
   </div></div>`;
 }

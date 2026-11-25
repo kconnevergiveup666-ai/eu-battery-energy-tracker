@@ -15,7 +15,8 @@ window.CURATED_EN = {
   "renewable": "Renewables & efficiency",
   "transport": "Transport & charging",
   "carbon": "Carbon pricing & trade",
-  "digital": "Cybersecurity & AI"
+  "digital": "Cybersecurity & AI",
+  "uk": "United Kingdom"
  },
  "batteries": {
   "name": "Batteries and Waste Batteries Regulation",
@@ -2567,5 +2568,584 @@ window.CURATED_EN = {
    "Regulation (EU) 2026/1744 enters into force",
    "New deadline for national AI regulatory sandboxes"
   ]
+ },
+ "uk-zev": {
+  "name": "UK Zero Emission Vehicle (ZEV) Mandate",
+  "short": "UK ZEV mandate",
+  "tags": [
+   "Zero-emission vehicles",
+   "Manufacturer quotas",
+   "2030 ICE phase-out",
+   "Credit trading"
+  ],
+  "summary": "The UK ZEV mandate requires each manufacturer to make a set share of its new UK car and van registrations zero-emission each year: cars 22% in 2024 rising to 80% in 2030 and 100% in 2035; vans 10% in 2024, 70% in 2030 and 100% in 2035. Manufacturers can comply through CO2 conversion, borrowing (repaid by 2030 at 3.5% compound interest), banking (up to three years), car–van transfers and trading; shortfalls cost £12,000 per car and £15,000 per van. In April 2025 the government confirmed that new pure-ICE cars end in 2030, with hybrids and plug-in hybrids allowed until 2035.",
+  "impact": [
+   "Unlike the EU's fleet-average CO2 targets, the UK sets a zero-emission sales share and lets manufacturers trade credits",
+   "Manufacturers with high BEV sales (including most Chinese brands) generate surplus credits they can sell to legacy carmakers",
+   "The 2026 review may change annual targets and flexibilities; the outcome is expected by early 2027 and will drive credit prices",
+   "Pay-per-mile taxation of EVs (eVED) from April 2028 may dampen some consumer demand"
+  ],
+  "bi": {
+   "levelNote": "Indirect: the ZEV share sets the growth of UK traction-battery demand",
+   "segments": [
+    "Traction-battery supply",
+    "Exports to the UK"
+   ],
+   "compliance": [
+    "Battery makers have no ZEV quota of their own; the obligation sits with carmakers registering new vehicles in the UK"
+   ],
+   "access": [
+    "UK BEV demand is underpinned by the mandate: 80% of new cars must be zero-emission in 2030"
+   ],
+   "support": [
+    "Rising quotas give demand certainty to battery makers building in the UK or supplying UK carmakers"
+   ],
+   "actions": [
+    "Track the 2026 review conclusions (expected early 2027) and update UK traction-battery demand forecasts"
+   ]
+  },
+  "milestones": [
+   "VETS Order applies (cars 22%, vans 10%)",
+   "ZEV mandate review consultation closes",
+   "Pay-per-mile EV taxation (eVED) starts (related tax measure)",
+   "Cars 80% and vans 70% zero-emission; end of new pure-ICE car sales",
+   "100% zero-emission cars and vans"
+  ],
+  "tracking": {
+   "source": "GOV.UK",
+   "items": [
+    "Government changes: new pure-ICE cars end in 2030, hybrids/PHEVs allowed until 2035; borrowing and conversion flexibilities widened, compliance payments lowered",
+    "ZEV mandate review consultation published: annual targets, effectiveness of flexibilities, alternatives, and the definition of the 2030 phase-out",
+    "Review consultation closes",
+    "Government committed to completing the VETS review by early 2027 (date not fixed)"
+   ],
+   "outlook": "The review may change post-2027 targets and flexibilities; watch credit prices and any further easing"
+  },
+  "act": {
+   "ref": "SI 2023/1394 (VETS Order)",
+   "statusNote": "In force since 1 Jan 2024; flexibilities widened in early 2026; review consultation 14 Aug–23 Oct 2026, review to finish by early 2027",
+   "basis": "Vehicle Emissions Trading Schemes Order, made jointly by the UK, Scottish and Welsh governments and Northern Ireland"
+  }
+ },
+ "uk-ecg": {
+  "name": "UK Electric Car Grant",
+  "short": "UK car grant",
+  "tags": [
+   "Purchase grant",
+   "Manufacturing emissions",
+   "Cell production location",
+   "Science-based targets"
+  ],
+  "summary": "A grant for new battery-electric cars priced at £37,000 or less, banded by the carbon emissions of production: £3,750 for the highest band and £1,500 for the second. Manufacturers must apply for each model: technically it must be an M1 car with zero tailpipe emissions, at least 100 miles WLTP range, and an 8-year/100,000-mile battery warranty with replacement below 70% capacity; environmentally the manufacturer must hold a verified science-based target (SBTi) or a TPI auto-sector score of Level 4 or higher, and emissions at the vehicle-assembly and battery-cell production locations must be below set thresholds. All evidence must be in English.",
+  "impact": [
+   "Eligibility is tied to emissions at assembly and cell-production sites; sites on coal-heavy grids will struggle to reach the top band",
+   "The 2026 application form adds evidence on cell production location, so battery suppliers must provide data",
+   "The grant directly affects competitiveness of models under £37,000 and is a key variable in Chinese brands' UK pricing"
+  ],
+  "bi": {
+   "levelNote": "Emissions at the cell production site are one of the eligibility conditions",
+   "segments": [
+    "Cell/module manufacturing",
+    "Traction-battery supply",
+    "Exports to the UK"
+   ],
+   "compliance": [
+    "Carmakers must evidence cell production location and its emissions; battery makers need to supply plant location and power-mix data"
+   ],
+   "access": [
+    "Cells made on high-carbon grids may leave the vehicle ineligible or in the lower band, affecting battery orders"
+   ],
+   "support": [
+    "Cells made with green power or on low-carbon grids (including Europe and the UK) become more attractive to carmakers"
+   ],
+   "actions": [
+    "Prepare grid-carbon intensity and green-power evidence for each plant and share it with customers' UK models",
+    "Assess supplying UK models from low-carbon sites"
+   ]
+  },
+  "milestones": [
+   "Eligibility application form published; scheme starts",
+   "Price cap of £42,000 for variants",
+   "Application form adds evidence on cell production location"
+  ],
+  "act": {
+   "ref": "Electric Car Grant (OZEV)",
+   "statusNote": "Launched July 2025; £42,000 cap for variants from 29 Aug 2025; form updated Mar–Apr 2026 to require cell-production-location evidence; grant levels and criteria may change without notice",
+   "basis": "Office for Zero Emission Vehicles grant scheme; technical checks by the VCA"
+  }
+ },
+ "uk-roo": {
+  "name": "UK–EU rules of origin for EVs and batteries (tightening in 2027)",
+  "short": "UK–EU EV rules of origin",
+  "tags": [
+   "Rules of origin",
+   "Zero tariffs",
+   "Battery packs",
+   "Cells"
+  ],
+  "summary": "Under the UK–EU Trade and Cooperation Agreement, EVs and traction batteries trade tariff-free only if they meet the rules of origin. In December 2023 both sides extended the looser transitional rules to the end of 2026: EVs may contain up to 60% non-originating materials (ex-works); battery packs may be assembled from non-originating cells or modules, or contain up to 70% non-originating materials; cells and modules need a change of tariff heading or up to 70% non-originating materials. From 1 January 2027 the final rules in Annex 3 apply, with much higher local-content requirements for vehicles and batteries; the decision states there will be no further postponement and no changes before 2032.",
+  "impact": [
+   "From 2027, UK-built EVs using imported Asian cells or packs exported to the EU (and EU-built EVs exported to the UK) may lose tariff-free access and pay the 10% car tariff",
+   "Exact final thresholds are in TCA Annex 3 (commonly understood as about 45% maximum non-originating content for vehicles plus an originating battery; to be verified)",
+   "Cell and pack production in the UK or EU becomes much more valuable"
+  ],
+  "bi": {
+   "levelNote": "Battery origin decides whether the vehicle trades tariff-free between the UK and EU",
+   "segments": [
+    "Cell/module manufacturing",
+    "Pack assembly",
+    "EU plants",
+    "Exports to the UK"
+   ],
+   "compliance": [
+    "Provide customers with material-origin, cost-structure and processing data for origin declarations",
+    "From 2027 calculate pack and cell origin under the final rules"
+   ],
+   "access": [
+    "Cells and packs imported from China will rarely meet the final rules, so vehicles using them face tariffs between the UK and EU",
+    "Local battery capacity in the UK and EU becomes key for carmakers to keep zero tariffs"
+   ],
+   "support": [
+    "Companies with cell and pack plants in the UK or EU gain a clear advantage"
+   ],
+   "actions": [
+    "Check origin product by product under the Annex 3 final rules",
+    "Assess timelines for UK or EU cell and pack capacity"
+   ]
+  },
+  "milestones": [
+   "Partnership Council extends transitional rules to end-2026",
+   "Transitional rules of origin expire",
+   "Final Annex 3 rules apply to EVs and batteries",
+   "No changes to EV and battery rules of origin before this date"
+  ],
+  "act": {
+   "ref": "TCA Partnership Council Decision No 1/2023",
+   "statusNote": "Transitional rules expire 31 Dec 2026; final Annex 3 rules apply from 1 Jan 2027; no amendments before 2032 (except HS updates)",
+   "basis": "UK–EU Trade and Cooperation Agreement, Article 68 and Annexes 3 and 5"
+  }
+ },
+ "uk-cbam": {
+  "name": "UK Carbon Border Adjustment Mechanism (UK CBAM)",
+  "short": "UK CBAM",
+  "tags": [
+   "Carbon border tax",
+   "Aluminium",
+   "Iron & steel",
+   "Importers"
+  ],
+  "summary": "From 1 January 2027 the UK taxes the embodied emissions of specific imported goods in five sectors: aluminium, cement, fertiliser, hydrogen, and iron and steel (glass and ceramics are not included). Importers must keep records from 2027, and registration opens on 1 January 2028. HMRC has published guidance for overseas installations on monitoring emissions, on obtaining emissions intensity, and a commodity-code list of goods in scope. Once the UK–EU ETS link is fully operational, both sides will exempt each other from their CBAMs; the UK has published draft legislation exempting EU, EEA and Swiss-origin goods.",
+  "impact": [
+   "Chinese aluminium (including foil) and steel products exported to the UK need embodied-emissions data, or default values apply",
+   "UK CBAM starts close to the EU CBAM's definitive phase (2026), but rules, default values and reporting systems are separate",
+   "EU goods will be exempt, widening the cost gap between Chinese and EU products"
+  ],
+  "bi": {
+   "levelNote": "Batteries are not in scope; impact is limited to imported aluminium foil, steel casings and similar inputs",
+   "segments": [
+    "Material sourcing",
+    "UK plants"
+   ],
+   "compliance": [
+    "UK battery plants importing aluminium foil or steel directly are importers: keep emissions records and register once above the threshold (threshold to be verified)"
+   ],
+   "access": [
+    "Higher cost of imported inputs"
+   ],
+   "support": [],
+   "actions": [
+    "List CBAM commodity codes among inputs imported by UK plants"
+   ]
+  },
+  "milestones": [
+   "UK CBAM starts; importers keep records",
+   "CBAM registration opens"
+  ],
+  "tracking": {
+   "source": "GOV.UK / HMRC",
+   "items": [
+    "HMRC publishes commodity-code lists of goods in scope (aluminium, cement, fertiliser, hydrogen, iron and steel)",
+    "CBAM (Emissions and Verification) Regulations 2026 and interest appointed-day order published",
+    "Guidance for overseas installations monitoring emissions of CBAM goods exported to the UK",
+    "Confirmed: records from 1 Jan 2027, registration opens 1 Jan 2028",
+    "Draft legislation exempting EU, EEA and Swiss-origin goods from CBAM"
+   ],
+   "outlook": "Watch default values, verification requirements for actual emissions and the first return and payment dates"
+  },
+  "act": {
+   "ref": "UK CBAM (HMRC)",
+   "statusNote": "Applies from 1 Jan 2027 with record-keeping; registration opens 1 Jan 2028; CBAM (Emissions and Verification) Regulations 2026 published Sep 2026; draft exemption for EU, EEA and Swiss goods published 23 Nov 2026",
+   "basis": "Tax legislation administered by HMRC"
+  }
+ },
+ "uk-ets-link": {
+  "name": "UK–EU ETS linking agreement",
+  "short": "UK–EU ETS link",
+  "tags": [
+   "Carbon market",
+   "Carbon price",
+   "CBAM exemption",
+   "Dynamic alignment"
+  ],
+  "summary": "The UK and EU have agreed to link the UK ETS and EU ETS, aiming for the link to operate from 1 January 2028, when allowances from either scheme can be used for compliance in both, including surrender for 2027 emissions. The two systems remain separate; the UK dynamically aligns with the EU ETS legislation listed in the annex (with UK adaptations) and gains decision-shaping rights. Once the link is fully operational both sides will exempt each other from their CBAMs (subject to EU legislative procedures); the UK government estimates this exempts about £6.5 billion of UK exports from the EU CBAM.",
+  "impact": [
+   "UK goods exported to the EU will be exempt from the EU CBAM, making the UK more attractive as a production base for the EU",
+   "UK carbon prices will converge with EU prices, which may raise energy costs for UK production",
+   "The EU ETS is being revised; outcomes will extend to the UK through the joint committee"
+  ],
+  "bi": {
+   "levelNote": "Battery manufacturing is usually outside ETS coverage; the main effects are on power prices and exports to the EU",
+   "segments": [
+    "UK plants",
+    "Exports to the EU"
+   ],
+   "compliance": [],
+   "access": [
+    "When UK plants export to the EU, CBAM goods such as UK-made aluminium and steel used in the product are exempt from the EU CBAM"
+   ],
+   "support": [
+    "A common carbon price narrows carbon-cost differences between UK and EU plants"
+   ],
+   "actions": [
+    "Compare power prices and carbon costs for UK versus EU plants"
+   ]
+  },
+  "milestones": [
+   "UK–EU summit commits to pursue ETS linking",
+   "UK government publishes the linking agreement explainer",
+   "Target: UK–EU ETS link operational, allowances mutually recognised"
+  ],
+  "act": {
+   "ref": "UK–EU ETS linking agreement",
+   "statusNote": "Agreed November 2026; explainer published ahead of the legal text; legal text and ratification pending; target start 1 Jan 2028",
+   "basis": "TCA carbon-pricing cooperation; Common Understanding of the May 2025 UK–EU summit"
+  }
+ },
+ "uk-batteries": {
+  "name": "UK batteries rules (Great Britain regime and reform)",
+  "short": "UK batteries rules",
+  "tags": [
+   "Batteries",
+   "Producer responsibility",
+   "Northern Ireland",
+   "EU alignment"
+  ],
+  "summary": "The UK currently runs two regimes: Great Britain still applies the 2008 Placing on the Market Regulations (cadmium, mercury and lead limits, capacity labelling, removability) and the 2009 Waste Batteries Regulations (producer registration, take-back); Northern Ireland has applied the EU Batteries Regulation 2023/1542 directly since 18 February 2024 under the Windsor Framework, and the Batteries (Placing on the Market) (Northern Ireland) Regulations 2026 disapply the old rules there and set up penalties and enforcement. The UK government says it will consult on a UK-wide regime consistent with the EU Batteries Regulation.",
+  "impact": [
+   "Batteries sold in Great Britain do not yet need EU-style passports or carbon-footprint declarations, but producer registration and take-back apply",
+   "Batteries placed on the Northern Ireland market must meet the EU Batteries Regulation, including labelling from 18 Aug 2026 and the passport from 18 Feb 2027",
+   "The UK plans to align with the EU Regulation, so compliance systems built to EU standards will likely carry over"
+  ],
+  "bi": {
+   "levelNote": "Directly regulates batteries sold in the UK",
+   "segments": [
+    "Cell/module manufacturing",
+    "Storage integration",
+    "Exports to the UK",
+    "Recycling"
+   ],
+   "compliance": [
+    "Great Britain: register as a battery producer and meet take-back duties for industrial, automotive or portable batteries; meet substance limits and labelling",
+    "Northern Ireland: meet all EU Batteries Regulation duties (CE, labelling, passport, due diligence)"
+   ],
+   "access": [
+    "Supplying both GB and NI means meeting two rulebooks",
+    "A future UK-wide regime may add EU-style carbon footprint, passport and due-diligence requirements"
+   ],
+   "support": [
+    "Alignment with the EU Regulation would cut duplicate UK/EU compliance costs"
+   ],
+   "actions": [
+    "Confirm UK producer registration and take-back arrangements",
+    "Track publication and content of the UK-wide regime consultation"
+   ]
+  },
+  "milestones": [
+   "EU Batteries Regulation applies directly in Northern Ireland",
+   "Northern Ireland: EU labelling requirements apply",
+   "Northern Ireland: battery passport applies"
+  ],
+  "tracking": {
+   "source": "GOV.UK",
+   "items": [
+    "Government publishes the UK Battery Strategy",
+    "Guidance on the EU Batteries Regulation in Northern Ireland published; consultation on a UK-wide regime promised for autumn",
+    "Batteries (Placing on the Market) (Northern Ireland) Regulations 2026 in force: 2008 rules disapplied in NI, penalties and enforcement for the EU Regulation"
+   ],
+   "outlook": "The UK-wide batteries consultation was due in autumn 2026; watch whether it adds carbon footprint, passport and due-diligence requirements and what transition it allows"
+  },
+  "act": {
+   "ref": "SI 2008/2164 · SI 2009/890",
+   "statusNote": "Great Britain still applies rules based on the 2006 EU Batteries Directive; Northern Ireland has applied the EU Batteries Regulation since 18 Feb 2024; the government said it would consult in autumn 2026 on a UK-wide regime aligned with the EU Regulation (not published as of 25 Nov 2026)",
+   "basis": "Batteries and Accumulators (Placing on the Market) Regulations 2008; Waste Batteries and Accumulators Regulations 2009; Windsor Framework for Northern Ireland"
+  }
+ },
+ "uk-dpr": {
+  "name": "UK digital product record (product passport) policy",
+  "short": "UK digital product record",
+  "tags": [
+   "Digital product passport",
+   "Traceability",
+   "Northern Ireland"
+  ],
+  "summary": "The UK government gathered evidence on 'digital product records' (similar to the EU Digital Product Passport, including the battery passport) to decide whether to set up a UK scheme for passing product and sustainability information along supply chains and supporting market surveillance. It asked about impacts on businesses already selling into the EU and Northern Ireland and what UK policy should consider. The EU Digital Product Passport will apply in Northern Ireland under the Windsor Framework.",
+  "impact": [
+   "Whether the UK builds its own passport and whether it interoperates with the EU format decides whether companies need two data sets",
+   "Still at call-for-evidence stage; no obligations yet"
+  ],
+  "bi": {
+   "levelNote": "Interoperability with the EU battery passport drives data-system investment",
+   "segments": [
+    "Cell/module manufacturing",
+    "Exports to the UK"
+   ],
+   "compliance": [],
+   "access": [
+    "A separate UK format may need an extra data system"
+   ],
+   "support": [
+    "If the UK recognises the EU passport, EU compliance data can be reused"
+   ],
+   "actions": [
+    "Track the government response and push for interoperability with the EU format"
+   ]
+  },
+  "milestones": [
+   "Call for evidence opens",
+   "Call for evidence closes"
+  ],
+  "act": {
+   "ref": "Call for evidence: digital product records",
+   "statusNote": "Open 27 Jul–21 Sep 2026; no legislative proposal yet",
+   "basis": "UK product regulation policy; the EU Digital Product Passport applies in Northern Ireland under the Windsor Framework"
+  }
+ },
+ "uk-product-reg": {
+  "name": "UK Product Regulation and Metrology Act and UKCA/CE marking",
+  "short": "UK Product Regulation Act",
+  "tags": [
+   "UKCA",
+   "CE recognition",
+   "Product safety",
+   "Online marketplaces"
+  ],
+  "summary": "The Product Regulation and Metrology Act 2025 lets the UK government make and update product rules by regulations, including keeping pace with corresponding EU rules and setting duties for supply-chain actors such as online marketplaces. On marking, for the Great Britain market the UK continues to recognise CE marking in most product areas under the Product Safety and Metrology (Amendment) Regulations 2024, alongside or instead of UKCA, and allows 'Fast-Track UKCA' for products meeting EU requirements. Northern Ireland continues to follow EU product rules.",
+  "impact": [
+   "Most products CE-marked under EU rules can enter Great Britain without re-certification",
+   "The Act lets the UK follow EU product rules (such as the Batteries Regulation or ecodesign) quickly, or diverge",
+   "Duties on online marketplaces and fulfilment providers may tighten, affecting cross-border e-commerce"
+  ],
+  "bi": {
+   "levelNote": "Sets the certification route for batteries and storage products entering the UK",
+   "segments": [
+    "Exports to the UK",
+    "Storage integration"
+   ],
+   "compliance": [
+    "Check whether CE remains recognised for the product area; where UKCA is needed, use UK designated standards or Fast-Track UKCA"
+   ],
+   "access": [
+    "Continued CE recognition lowers the barrier to Great Britain"
+   ],
+   "support": [
+    "One set of EU compliance files can serve both markets"
+   ],
+   "actions": [
+    "Check the government's sector-by-sector UKCA/CE list for each product"
+   ]
+  },
+  "milestones": [
+   "Product Regulation and Metrology Act receives Royal Assent"
+  ],
+  "act": {
+   "ref": "Product Regulation and Metrology Act 2025 (c. 20)",
+   "statusNote": "Royal Assent 21 Jul 2025; regulations follow in stages; continued CE recognition in Great Britain under the Product Safety and Metrology (Amendment) Regulations 2024",
+   "basis": "Act of the UK Parliament"
+  }
+ },
+ "uk-minerals": {
+  "name": "UK Critical Minerals Strategy (Vision 2035)",
+  "short": "UK minerals strategy",
+  "tags": [
+   "Critical minerals",
+   "Lithium",
+   "Recycling",
+   "Supply diversification"
+  ],
+  "summary": "The UK's ten-year critical minerals strategy focuses on midstream processing and recycling. Targets for 2035: domestic production (extraction, processing, refining) meets at least 10% of annual demand, including at least 50,000 tonnes of lithium (LCE); recycling meets 20% of demand; and no single country supplies more than 60% of demand in aggregate. Support includes a critical minerals fund of up to £50 million, DRIVE35 funding, faster permitting and electricity cost relief.",
+  "impact": [
+   "The 'no more than 60% from one country' diversification goal mainly targets dependence on China and may shape procurement in government-backed projects",
+   "UK lithium projects (such as in Cornwall) receive public funding and may become a European lithium source",
+   "The recycling target creates opportunities for battery recyclers"
+  ],
+  "bi": {
+   "levelNote": "Affects raw-material sourcing and policy support for UK battery plants",
+   "segments": [
+    "Material sourcing",
+    "Recycling",
+    "UK plants"
+   ],
+   "compliance": [],
+   "access": [
+    "Government-backed projects may favour supply diversification"
+   ],
+   "support": [
+    "UK recycling and materials projects can apply to the minerals fund and DRIVE35"
+   ],
+   "actions": [
+    "Watch the minerals fund details due in 2026"
+   ]
+  },
+  "milestones": [
+   "Critical Minerals Strategy published",
+   "Targets: 10% domestic production, 20% recycling, no country above 60%"
+  ],
+  "tracking": {
+   "source": "GOV.UK",
+   "items": [
+    "Geothermal Engineering Limited to invest about £43 million in a Cornwall lithium extraction facility, with an offer in principle of nearly £10 million from DRIVE35"
+   ],
+   "outlook": "Watch the minerals fund details and UK agreements with resource-rich countries"
+  },
+  "act": {
+   "ref": "Vision 2035: Critical Minerals Strategy",
+   "statusNote": "Published 22 Nov 2025; technical annex updated 23 Jan 2026; up to £50 million critical minerals fund",
+   "basis": "UK government policy paper (not legislation)"
+  }
+ },
+ "uk-drive35": {
+  "name": "UK Industrial Strategy and DRIVE35 vehicle-electrification funding",
+  "short": "UK DRIVE35",
+  "tags": [
+   "Industrial strategy",
+   "Battery manufacturing",
+   "Investment grants",
+   "Automotive supply chain"
+  ],
+  "summary": "DRIVE35 is the vehicle-electrification funding programme under the UK's Modern Industrial Strategy: £2.5 billion to 2035 for zero-emission vehicle manufacturing, battery manufacturing, supply-chain investment and R&D, aiming for UK vehicle output above 1.3 million by 2035 and supporting battery manufacturing capacity. Funds are granted through the Advanced Propulsion Centre (APC) and Innovate UK.",
+  "impact": [
+   "Investments in UK ZEV supply-chain projects such as batteries, e-drives and materials can apply for DRIVE35 grants",
+   "Several awards landed in 2026, including next-generation vehicle projects and the Cornwall lithium project",
+   "Together with the ZEV mandate, the car grant and rules of origin, it forms the UK's package to attract local battery capacity"
+  ],
+  "bi": {
+   "levelNote": "UK battery or material capacity can apply for grants",
+   "segments": [
+    "UK plants",
+    "Cell/module manufacturing",
+    "R&D"
+   ],
+   "compliance": [],
+   "access": [],
+   "support": [
+    "Battery manufacturing capacity is an explicit DRIVE35 priority"
+   ],
+   "actions": [
+    "With rules of origin tightening in 2027, assess UK battery projects and apply to DRIVE35"
+   ]
+  },
+  "milestones": [
+   "DRIVE35 summary business case published",
+   "Target: UK vehicle output above 1.3 million"
+  ],
+  "tracking": {
+   "source": "GOV.UK",
+   "items": [
+    "Government announces £130 million for next-generation vehicle projects, securing over 1,800 jobs",
+    "DRIVE35 offers nearly £10 million in principle to the Cornwall lithium extraction project"
+   ],
+   "outlook": "Watch future funding rounds and conditions for foreign-owned projects"
+  },
+  "act": {
+   "ref": "DRIVE35 (Industrial Strategy, Advanced Manufacturing Sector Plan)",
+   "statusNote": "£2.5 billion to 2035 (a £2 billion core programme for FY2025/26–2029/30 plus £500 million R&D), delivered by APC and Innovate UK",
+   "basis": "UK Modern Industrial Strategy (2025) and Advanced Manufacturing Sector Plan"
+  }
+ },
+ "uk-esa": {
+  "name": "UK Energy Smart Appliances Regulations (SSES phase 1)",
+  "short": "UK smart appliances rules",
+  "tags": [
+   "Home storage",
+   "Chargers",
+   "Cybersecurity",
+   "Demand response"
+  ],
+  "summary": "Phase 1 regulations of the UK Smart Secure Electricity Systems (SSES) programme cover domestic EV smart charge points, electric heating appliances, and domestic and small non-domestic battery energy storage systems (BESS), setting minimum requirements for smart functionality, cybersecurity and grid stability. They absorb and amend the Electric Vehicles (Smart Charge Points) Regulations 2021 and set a smart mandate for electric heating; for storage, the draft applies requirements to home batteries sold with smart functionality without yet mandating smart capability for all, and grid-scale storage is out of scope.",
+  "impact": [
+   "Smart home batteries and chargers sold in the UK must meet UK cybersecurity, smart functionality and grid-stability requirements",
+   "Implementation dates await the final regulations; for electric heating, 31 Oct 2028 or two years after the regulations are made",
+   "The government may later mandate smart capability for home batteries"
+  ],
+  "bi": {
+   "levelNote": "Home storage systems are directly regulated; cell makers are affected through system customers",
+   "segments": [
+    "Storage integration",
+    "Residential/C&I storage"
+   ],
+   "compliance": [
+    "Home batteries sold with smart functionality must meet UK smart, cybersecurity and grid-stability requirements"
+   ],
+   "access": [],
+   "support": [],
+   "actions": [
+    "Track storage implementation dates in the final regulations"
+   ]
+  },
+  "milestones": [
+   "Consultation on draft regulations closes",
+   "Earliest date for electric heating smart requirements (or two years after making)"
+  ],
+  "tracking": {
+   "source": "GOV.UK / DESNZ",
+   "items": [
+    "Draft Energy Smart Appliances Regulations and impact assessment published for consultation",
+    "Interim response: electric heating implementation moved to 31 Oct 2028 or two years after the regulations are made, whichever is later"
+   ],
+   "outlook": "Watch when the final regulations are laid and the dates for storage and chargers"
+  },
+  "act": {
+   "ref": "Energy Smart Appliances Regulations (draft)",
+   "statusNote": "Draft consulted 1 Dec 2025–5 Feb 2026; interim response 17 Sep 2026 moved electric heating to 31 Oct 2028 or two years after making; needs parliamentary approval",
+   "basis": "Energy Act 2023, sections 239 and 244"
+  }
+ },
+ "uk-ldes": {
+  "name": "UK Long Duration Electricity Storage cap and floor scheme",
+  "short": "UK LDES scheme",
+  "tags": [
+   "Long-duration storage",
+   "Revenue floor",
+   "Grid"
+  ],
+  "summary": "The UK has set up a cap-and-floor revenue scheme for long-duration electricity storage (LDES), delivered by Ofgem: if project revenue falls below the floor, consumers top it up; revenue above the cap is returned to consumers, lowering investment risk. In March 2025 the government and Ofgem published a Technical Decision Document setting application windows, eligibility criteria (including minimum duration) and capacity needs.",
+  "impact": [
+   "The scheme targets long-duration technologies; typical 2–4 hour lithium-ion storage generally does not meet the criteria (exact duration requirement to be verified)",
+   "Gives flow batteries, compressed air and pumped hydro predictable revenue"
+  ],
+  "bi": {
+   "levelNote": "Mainly benefits long-duration technologies; limited for standard lithium-ion storage",
+   "segments": [
+    "Storage integration"
+   ],
+   "compliance": [],
+   "access": [
+    "Eligibility requires a minimum duration; short-duration lithium projects are generally out of scope (to be verified)"
+   ],
+   "support": [
+    "Long-duration lithium or other electrochemical projects may qualify"
+   ],
+   "actions": [
+    "Watch future windows and eligibility rules"
+   ]
+  },
+  "milestones": [
+   "Government and Ofgem publish the Technical Decision Document"
+  ],
+  "act": {
+   "ref": "LDES cap and floor (Ofgem)",
+   "statusNote": "Decided October 2024; Technical Decision Document 11 Mar 2025; first window opened spring 2025; project assessment results to be verified",
+   "basis": "Decision of DESNZ, delivered by Ofgem"
+  }
  }
 };

@@ -2826,6 +2826,911 @@ window.CURATED = [
       { date: "2026-07-27", kind: "force", label: "条例 (EU) 2026/1744 生效" },
       { date: "2027-08-02", kind: "deadline", label: "成员国设立 AI 监管沙盒的新期限" }
     ]
+  },
+  /* ================= 英国 ================= */
+  {
+   "id": "uk-zev",
+   "oeil": "",
+   "jurisdiction": "uk",
+   "act": {
+    "kind": "uk-si",
+    "ref": "SI 2023/1394（VETS Order）",
+    "status": "adopted",
+    "url": "https://www.legislation.gov.uk/uksi/2023/1394/contents",
+    "statusNote": "2024-01-01 起实施；2026 年初修订放宽灵活机制；2026-08-14 至 10-23 进行审查咨询，政府承诺 2027 年初前完成审查",
+    "basis": "《车辆排放交易计划令》，由英国政府与苏格兰、威尔士、北爱尔兰共同制定"
+   },
+   "nameZh": "英国零排放汽车强制令（ZEV Mandate）",
+   "shortZh": "英国 ZEV 强制令",
+   "category": "uk",
+   "relevance": "core",
+   "tags": [
+    "零排放车",
+    "车企配额",
+    "2030 禁售燃油车",
+    "额度交易"
+   ],
+   "summaryZh": "英国的“零排放汽车强制令”要求每家车企每年在英国新注册的乘用车和货车中，零排放车（纯电、氢燃料）达到规定比例：乘用车 2024 年 22%，逐年提高到 2030 年 80%、2035 年 100%；货车 2024 年 10%，2030 年 70%、2035 年 100%。可通过 CO2 转换、借用（2030 年前偿还，年复利 3.5%）、储蓄（最长 3 年）、乘用车与货车额度互转以及车企间交易来履约；未达标须按每辆乘用车 £12,000、每辆货车 £15,000 缴纳合规款。2025 年 4 月政府确认：2030 年起停售纯燃油新车，混动和插混可销售至 2035 年。",
+   "impactZh": [
+    "与欧盟按车队平均 CO2 考核不同，英国直接规定零排放车销量占比，并允许车企之间买卖额度",
+    "纯电车销量高的车企（包括多数中国品牌）可产生富余额度，出售给传统车企获得收入",
+    "2026 年审查可能调整年度目标和灵活机制，结果预计 2027 年初公布，直接影响额度价格",
+    "2028 年 4 月起电动车将按里程缴税（eVED），可能抑制部分消费需求"
+   ],
+   "batteryImpact": {
+    "level": "medium",
+    "levelNote": "间接影响：ZEV 比例决定英国动力电池需求增速",
+    "segments": [
+     "动力电池供货",
+     "对英出口"
+    ],
+    "compliance": [
+     "电池企业本身不承担 ZEV 配额义务，义务主体是在英注册新车的车企"
+    ],
+    "access": [
+     "英国纯电车需求由强制令托底，2030 年乘用车零排放占比须达 80%"
+    ],
+    "support": [
+     "配额刚性增长为在英设厂或向英国车企供货的电池企业提供需求确定性"
+    ],
+    "actions": [
+     "跟踪 2026 年审查结论（预计 2027 年初），评估英国动力电池需求预测"
+    ]
+   },
+   "council": [],
+   "milestones": [
+    {
+     "date": "2024-01-01",
+     "kind": "apply",
+     "label": "VETS Order 开始实施（乘用车 22%、货车 10%）"
+    },
+    {
+     "date": "2026-10-23",
+     "kind": "review",
+     "label": "ZEV 强制令审查咨询截止"
+    },
+    {
+     "date": "2028-04-01",
+     "kind": "deadline",
+     "label": "电动车按里程征税（eVED）开始实施（相关税收措施）",
+     "verified": false
+    },
+    {
+     "date": "2030-01-01",
+     "kind": "deadline",
+     "label": "乘用车零排放占比 80%、货车 70%；停售纯燃油新车"
+    },
+    {
+     "date": "2035-01-01",
+     "kind": "deadline",
+     "label": "乘用车和货车 100% 零排放"
+    }
+   ],
+   "tracking": {
+    "asOf": "2026-11-25",
+    "source": "GOV.UK",
+    "url": "https://www.gov.uk/government/consultations/zero-emission-vehicle-mandate-review",
+    "items": [
+     {
+      "date": "2025-04-07",
+      "lane": "uk",
+      "text": "政府宣布调整：2030 年停售纯燃油新车，混动/插混可售至 2035 年；放宽借用和转换等灵活机制，降低合规款",
+      "verified": false
+     },
+     {
+      "date": "2026-08-14",
+      "lane": "uk",
+      "text": "发布 ZEV 强制令审查咨询：评估年度目标、灵活机制效果及替代方案，并就 2030 年停售纯燃油车的定义征求意见"
+     },
+     {
+      "date": "2026-10-23",
+      "lane": "uk",
+      "text": "审查咨询截止"
+     },
+     {
+      "date": "2027-03-31",
+      "lane": "uk",
+      "text": "政府承诺 2027 年初前完成 VETS 审查（具体日期未定）",
+      "planned": true,
+      "verified": false
+     }
+    ],
+    "outlook": "审查结论可能修改 2027 年以后的年度目标和灵活机制；需关注额度价格和是否进一步放宽"
+   }
+  },
+  {
+   "id": "uk-ecg",
+   "oeil": "",
+   "jurisdiction": "uk",
+   "act": {
+    "kind": "uk-scheme",
+    "ref": "Electric Car Grant（OZEV）",
+    "status": "adopted",
+    "url": "https://www.gov.uk/government/publications/how-to-apply-for-vehicle-eligibility-for-the-electric-car-grant",
+    "statusNote": "2025 年 7 月推出；2025-08-29 起变体车型售价上限 £42,000；2026 年 3–4 月更新申请表，要求提供电芯生产地证据；政府保留随时调整补贴额和标准的权利",
+    "basis": "交通部零排放车辆办公室（OZEV）补贴计划，车辆技术审核由 VCA 负责"
+   },
+   "nameZh": "英国电动车购车补贴（Electric Car Grant）",
+   "shortZh": "英国购车补贴",
+   "category": "uk",
+   "relevance": "core",
+   "tags": [
+    "购车补贴",
+    "生产碳排放",
+    "电芯生产地",
+    "科学碳目标"
+   ],
+   "summaryZh": "面向售价 £37,000 及以下的新纯电乘用车，按“生产过程的碳排放”分两档补贴：最高档 £3,750，第二档 £1,500。车型须由车企申请资格：技术上要求 M1 乘用车、零尾气排放、WLTP 续航不少于 100 英里、电池质保 8 年或 10 万英里且容量低于 70% 须更换；环境上要求生产商持有经核实的科学碳目标（SBTi）或 TPI 汽车评估 4 级及以上，并且整车组装地和电芯生产地的碳排放须低于规定阈值。所有材料须为英文。",
+   "impactZh": [
+    "补贴门槛与整车组装地和电芯生产地的碳排放挂钩，电网以煤电为主的生产地较难拿到高档补贴",
+    "2026 年申请表新增电芯生产地证据要求，电池供应商需配合提供数据",
+    "补贴直接影响售价 £37,000 以下车型的竞争力，是中国品牌在英定价的重要变量"
+   ],
+   "batteryImpact": {
+    "level": "high",
+    "levelNote": "电芯生产地的碳排放是车型能否获得补贴的条件之一",
+    "segments": [
+     "电芯/模组制造",
+     "动力电池供货",
+     "对英出口"
+    ],
+    "compliance": [
+     "车企申请时须提供电芯生产地及其碳排放证据，电池企业需要提供工厂位置、用电结构等数据"
+    ],
+    "access": [
+     "电芯在高碳电网地区生产，可能导致配套车型无法获得补贴或只能拿低档，影响电池订单"
+    ],
+    "support": [
+     "使用绿电或在低碳电网地区（含欧洲、英国）生产的电芯更受车企青睐"
+    ],
+    "actions": [
+     "准备各工厂的电力碳强度和绿电采购证明，主动提供给英国市场车型的客户",
+     "评估为英国车型从低碳基地供货的可行性"
+    ]
+   },
+   "council": [],
+   "milestones": [
+    {
+     "date": "2025-07-14",
+     "kind": "apply",
+     "label": "发布车型资格申请表，补贴计划启动"
+    },
+    {
+     "date": "2025-08-29",
+     "kind": "deadline",
+     "label": "变体车型售价上限 £42,000（超出不再符合资格）"
+    },
+    {
+     "date": "2026-04-09",
+     "kind": "secondary",
+     "label": "申请表补充电芯生产地证据要求"
+    }
+   ]
+  },
+  {
+   "id": "uk-roo",
+   "oeil": "",
+   "jurisdiction": "uk",
+   "act": {
+    "kind": "uk-trade",
+    "ref": "TCA 伙伴关系理事会第 1/2023 号决定",
+    "status": "adopted",
+    "url": "https://www.gov.uk/government/publications/trade-and-cooperation-agreement-partnership-council-decision-number-1-2023-electric-vehicle-rules-of-origin",
+    "statusNote": "过渡规则 2026-12-31 到期，2027-01-01 起适用协定附件 3 的最终规则；决定明确 2032 年前不得再修改（HS 编码更新除外）",
+    "basis": "《英欧贸易与合作协定》（TCA）第 68 条及附件 3、附件 5"
+   },
+   "nameZh": "英欧电动车与电池原产地规则（2027 年收紧）",
+   "shortZh": "英欧电动车原产地规则",
+   "category": "uk",
+   "relevance": "core",
+   "tags": [
+    "原产地规则",
+    "零关税",
+    "电池包",
+    "电芯"
+   ],
+   "summaryZh": "英欧《贸易与合作协定》下，电动车和动力电池要在英欧之间享受零关税，必须满足原产地规则。2023 年 12 月双方决定把较宽松的过渡规则延长到 2026 年底：电动车非原产材料不超过出厂价 60%；电池包可用非原产电芯或模组组装，或非原产材料不超过 70%；电芯和模组税目改变或非原产材料不超过 70%。2027 年 1 月 1 日起改为协定附件 3 的最终规则，对整车和电池的本地增值要求明显提高；决定同时写明不再推迟，2032 年前不得修改。",
+   "impactZh": [
+    "2027 年起，使用亚洲进口电芯或电池包的英国产电动车出口欧盟、欧盟产电动车出口英国，可能无法享受零关税，须按 10% 整车关税缴纳",
+    "最终规则的具体比例以 TCA 附件 3 原文为准（一般理解为整车非原产材料上限降至 45% 左右，并要求电池具备原产资格，待核实）",
+    "在英国或欧盟本地生产电芯、电池包的价值显著上升"
+   ],
+   "batteryImpact": {
+    "level": "high",
+    "levelNote": "电池原产资格直接决定配套整车能否在英欧之间零关税流通",
+    "segments": [
+     "电芯/模组制造",
+     "电池包组装",
+     "在欧设厂",
+     "对英出口"
+    ],
+    "compliance": [
+     "为客户出具原产地声明所需的材料来源、成本构成和加工工序数据",
+     "2027 年起按最终规则核算电池包和电芯的原产资格"
+    ],
+    "access": [
+     "从中国进口的电芯、电池包难以满足最终规则，配套车辆在英欧之间流通将面临关税",
+     "英国和欧盟本地电池产能成为整车厂维持零关税的关键"
+    ],
+    "support": [
+     "在英国或欧盟设立电芯和电池包工厂的企业获得明显竞争优势"
+    ],
+    "actions": [
+     "按附件 3 最终规则逐个产品测算原产资格",
+     "评估英国或欧盟本地电芯、电池包产能的布局时间表"
+    ]
+   },
+   "council": [],
+   "milestones": [
+    {
+     "date": "2023-12-21",
+     "kind": "secondary",
+     "label": "伙伴关系理事会决定将过渡规则延长至 2026 年底"
+    },
+    {
+     "date": "2026-12-31",
+     "kind": "deadline",
+     "label": "过渡性原产地规则到期"
+    },
+    {
+     "date": "2027-01-01",
+     "kind": "apply",
+     "label": "电动车和电池适用 TCA 附件 3 最终原产地规则"
+    },
+    {
+     "date": "2032-01-01",
+     "kind": "review",
+     "label": "此前不得修改电动车和电池原产地规则"
+    }
+   ]
+  },
+  {
+   "id": "uk-cbam",
+   "oeil": "",
+   "jurisdiction": "uk",
+   "act": {
+    "kind": "uk-act",
+    "ref": "英国 CBAM（HMRC）",
+    "status": "adopted",
+    "url": "https://www.gov.uk/government/collections/carbon-border-adjustment-mechanism",
+    "statusNote": "2027-01-01 起实施并须保存记录，2028-01-01 开放注册；2026 年 9 月发布《CBAM（排放与核查）条例 2026》；2026-11-23 公布对欧盟、EEA 和瑞士原产货物豁免的立法草案",
+    "basis": "税收立法，由英国税务海关总署（HMRC）主管"
+   },
+   "nameZh": "英国碳边境调节机制（UK CBAM）",
+   "shortZh": "英国 CBAM",
+   "category": "uk",
+   "relevance": "high",
+   "tags": [
+    "碳边境税",
+    "铝",
+    "钢铁",
+    "进口商"
+   ],
+   "summaryZh": "英国自 2027 年 1 月 1 日起对进口的铝、水泥、化肥、氢、钢铁五个行业的特定商品，按其隐含碳排放征税（不含玻璃和陶瓷）。进口商从 2027 年起须保存排放记录，2028 年 1 月 1 日开放注册。HMRC 已发布海外设施监测排放、获取排放强度的指南，以及按商品编码查询是否在范围内的清单。英欧碳市场挂钩全面运行后，双方将互相豁免对方 CBAM；英国已公布对欧盟、EEA 和瑞士原产货物的豁免立法草案。",
+   "impactZh": [
+    "中国出口英国的铝材（含铝箔）、钢铁制品须提供隐含排放数据，否则按默认值计税",
+    "英国 CBAM 起步时间与欧盟 CBAM 正式征税（2026 年）接近，但规则、默认值和申报系统各自独立",
+    "欧盟产品将获豁免，中国产品相对欧盟产品的成本差距扩大"
+   ],
+   "batteryImpact": {
+    "level": "low",
+    "levelNote": "电池本身不在范围内，影响限于进口铝箔、钢壳等原材料",
+    "segments": [
+     "材料采购",
+     "在英设厂"
+    ],
+    "compliance": [
+     "在英电池厂直接进口铝箔、钢材时，作为进口商须保存排放记录，达到门槛后注册申报（注册门槛待核实）"
+    ],
+    "access": [
+     "进口原材料成本上升"
+    ],
+    "support": [],
+    "actions": [
+     "梳理在英工厂进口原材料中的 CBAM 商品编码"
+    ]
+   },
+   "council": [],
+   "milestones": [
+    {
+     "date": "2027-01-01",
+     "kind": "apply",
+     "label": "英国 CBAM 实施，进口商开始保存记录"
+    },
+    {
+     "date": "2028-01-01",
+     "kind": "deadline",
+     "label": "CBAM 注册开放"
+    }
+   ],
+   "tracking": {
+    "asOf": "2026-11-25",
+    "source": "GOV.UK / HMRC",
+    "url": "https://www.gov.uk/government/collections/carbon-border-adjustment-mechanism",
+    "items": [
+     {
+      "date": "2026-07-16",
+      "lane": "uk",
+      "text": "HMRC 发布按商品编码查询范围的清单（铝、水泥、化肥、氢、钢铁）"
+     },
+     {
+      "date": "2026-09-09",
+      "lane": "uk",
+      "text": "发布《CBAM（排放与核查）条例 2026》和利息起算日令"
+     },
+     {
+      "date": "2026-10-16",
+      "lane": "uk",
+      "text": "发布海外设施监测出口英国 CBAM 商品排放的指南"
+     },
+     {
+      "date": "2026-11-10",
+      "lane": "uk",
+      "text": "确认 2027-01-01 起须保存记录，2028-01-01 开放注册"
+     },
+     {
+      "date": "2026-11-23",
+      "lane": "uk",
+      "text": "公布对欧盟、EEA 和瑞士原产货物豁免 CBAM 的立法草案"
+     }
+    ],
+    "outlook": "关注默认排放值、实际排放核查要求和首次申报缴税时间"
+   }
+  },
+  {
+   "id": "uk-ets-link",
+   "oeil": "",
+   "jurisdiction": "uk",
+   "act": {
+    "kind": "uk-trade",
+    "ref": "英欧碳市场挂钩协定",
+    "status": "draft",
+    "url": "https://www.gov.uk/government/publications/uk-eu-linking-agreement-explainer",
+    "statusNote": "2026 年 11 月达成协议，政府先于法律文本发布说明；法律文本待公布并经双方批准，目标 2028-01-01 运行",
+    "basis": "《英欧贸易与合作协定》碳定价合作条款；2025 年 5 月英欧峰会共同谅解"
+   },
+   "nameZh": "英欧碳市场挂钩协定（UK ETS–EU ETS）",
+   "shortZh": "英欧碳市场挂钩",
+   "category": "uk",
+   "relevance": "high",
+   "tags": [
+    "碳市场",
+    "碳价",
+    "CBAM 豁免",
+    "动态对齐"
+   ],
+   "summaryZh": "英国与欧盟已就英国碳市场（UK ETS）与欧盟碳市场（EU ETS）挂钩达成协议，目标 2028 年 1 月 1 日运行：届时双方配额可互相用于履约，包括 2027 年度排放的清缴。两个市场仍分别运行，英国须动态对齐协定附件所列欧盟碳市场法规（附有英国适配安排），并获得参与欧盟决策的权利。挂钩全面运行后双方互相豁免 CBAM（欧盟一侧须走立法程序），英国政府估计约 65 亿英镑英国出口可因此免缴欧盟 CBAM。",
+   "impactZh": [
+    "英国产品出口欧盟将免缴欧盟 CBAM，英国作为对欧生产基地的吸引力上升",
+    "英国碳价将向欧盟碳价靠拢，在英生产的用能成本可能上升",
+    "欧盟碳市场正在修订，修订结果将通过联合委员会延伸到英国"
+   ],
+   "batteryImpact": {
+    "level": "low",
+    "levelNote": "电池生产本身通常不在碳市场覆盖范围，主要影响电力价格和对欧出口",
+    "segments": [
+     "在英设厂",
+     "对欧出口"
+    ],
+    "compliance": [],
+    "access": [
+     "英国工厂的产品出口欧盟时，所用铝、钢等 CBAM 商品若产自英国可免欧盟 CBAM"
+    ],
+    "support": [
+     "英欧统一碳价减少在英与在欧设厂之间的碳成本差异"
+    ],
+    "actions": [
+     "比较英国与欧盟设厂的电价和碳成本"
+    ]
+   },
+   "council": [],
+   "milestones": [
+    {
+     "date": "2025-05-19",
+     "kind": "secondary",
+     "label": "英欧峰会承诺推进碳市场挂钩"
+    },
+    {
+     "date": "2026-11-20",
+     "kind": "secondary",
+     "label": "英国政府公布挂钩协定说明"
+    },
+    {
+     "date": "2028-01-01",
+     "kind": "apply",
+     "label": "目标：英欧碳市场挂钩运行，配额互认"
+    }
+   ]
+  },
+  {
+   "id": "uk-batteries",
+   "oeil": "",
+   "jurisdiction": "uk",
+   "act": {
+    "kind": "uk-si",
+    "ref": "SI 2008/2164 · SI 2009/890",
+    "status": "adopted",
+    "url": "https://www.legislation.gov.uk/uksi/2008/2164/contents",
+    "statusNote": "大不列颠（英格兰、苏格兰、威尔士）仍适用基于欧盟 2006 年电池指令的旧规则；北爱尔兰自 2024-02-18 起直接适用欧盟新电池法；政府表示将于 2026 年秋季就与欧盟新电池法一致的全英统一制度征求意见（截至 2026-11-25 未见发布）",
+    "basis": "《电池与蓄电池（投放市场）条例 2008》《废电池与蓄电池条例 2009》；北爱尔兰依据《温莎框架》"
+   },
+   "nameZh": "英国电池法规（大不列颠现行规则与改革）",
+   "shortZh": "英国电池法规",
+   "category": "uk",
+   "relevance": "core",
+   "tags": [
+    "电池",
+    "生产者责任",
+    "北爱尔兰",
+    "与欧盟对齐"
+   ],
+   "summaryZh": "英国目前实行“一国两制”：大不列颠仍适用 2008 年投放市场条例（镉、汞、铅限制，容量标签，可拆卸）和 2009 年废电池条例（生产者登记、回收义务）；北爱尔兰根据《温莎框架》自 2024 年 2 月 18 日起直接适用欧盟新电池法 2023/1542，《2026 年电池（投放市场）（北爱尔兰）条例》停用了旧规则并建立处罚执行机制。英国政府表示将就与欧盟新电池法一致的全英统一制度征求意见。",
+   "impactZh": [
+    "目前对大不列颠出口电池无需电池护照、碳足迹声明等欧盟新要求，但须完成生产者登记和回收责任",
+    "进入北爱尔兰的电池须满足欧盟新电池法，包括 2026-08-18 起的标签和 2027-02-18 起的电池护照",
+    "英国计划向欧盟新电池法看齐，按欧盟标准建设的合规体系今后大概率可以沿用"
+   ],
+   "batteryImpact": {
+    "level": "high",
+    "levelNote": "直接规制对英销售的电池产品",
+    "segments": [
+     "电芯/模组制造",
+     "储能系统集成",
+     "对英出口",
+     "回收"
+    ],
+    "compliance": [
+     "大不列颠：须在英登记为电池生产者，履行工业电池、汽车电池或便携电池的回收义务；满足有害物质限制和标签要求",
+     "北爱尔兰：按欧盟新电池法履行 CE、标签、护照、尽调等全部义务"
+    ],
+    "access": [
+     "同时供应大不列颠和北爱尔兰时须满足两套规则",
+     "全英统一新制度出台后，可能引入类似欧盟的碳足迹、护照和尽调要求"
+    ],
+    "support": [
+     "向欧盟新电池法对齐将减少英欧两套合规的重复成本"
+    ],
+    "actions": [
+     "确认英国生产者登记和回收合规安排",
+     "跟踪全英统一制度咨询的发布和内容"
+    ]
+   },
+   "council": [],
+   "milestones": [
+    {
+     "date": "2024-02-18",
+     "kind": "apply",
+     "label": "欧盟新电池法在北爱尔兰直接适用"
+    },
+    {
+     "date": "2026-08-18",
+     "kind": "deadline",
+     "label": "北爱尔兰：欧盟新电池法标签要求适用"
+    },
+    {
+     "date": "2027-02-18",
+     "kind": "deadline",
+     "label": "北爱尔兰：电池护照要求适用"
+    }
+   ],
+   "tracking": {
+    "asOf": "2026-11-25",
+    "source": "GOV.UK",
+    "url": "https://www.gov.uk/guidance/eu-batteries-regulations-in-northern-ireland",
+    "items": [
+     {
+      "date": "2023-12-06",
+      "lane": "uk",
+      "text": "政府发布《英国电池战略》"
+     },
+     {
+      "date": "2026-07-17",
+      "lane": "uk",
+      "text": "发布北爱尔兰适用欧盟新电池法的企业指南，并表示秋季将就全英统一制度征求意见"
+     },
+     {
+      "date": "2026-10-17",
+      "lane": "uk",
+      "text": "《2026 年电池（投放市场）（北爱尔兰）条例》生效：在北爱尔兰停用 2008 年条例，建立欧盟新电池法的处罚执行机制"
+     }
+    ],
+    "outlook": "全英统一电池制度咨询原定 2026 年秋季发布，需关注是否引入碳足迹、电池护照和尽调要求以及过渡期"
+   }
+  },
+  {
+   "id": "uk-dpr",
+   "oeil": "",
+   "jurisdiction": "uk",
+   "parent": "uk-batteries",
+   "act": {
+    "kind": "uk-consult",
+    "ref": "数字产品记录证据征集",
+    "status": "planned",
+    "url": "https://www.gov.uk/government/calls-for-evidence/call-for-evidence-digital-product-record-policy",
+    "statusNote": "2026-07-27 至 09-21 征集意见，尚无立法提案",
+    "basis": "英国政府产品监管政策；欧盟数字产品护照通过《温莎框架》在北爱尔兰适用"
+   },
+   "nameZh": "英国数字产品记录（产品护照）政策",
+   "shortZh": "英国数字产品记录",
+   "category": "uk",
+   "relevance": "medium",
+   "tags": [
+    "数字产品护照",
+    "可追溯",
+    "北爱尔兰"
+   ],
+   "summaryZh": "英国政府就“数字产品记录”（类似欧盟数字产品护照，包括电池护照）征集证据，研究是否建立英国版制度，用于在供应链中传递产品信息和可持续性数据，并便于市场监管。征集内容包括企业向欧盟和北爱尔兰销售时已受到的影响，以及英国国内政策应考虑的因素。欧盟数字产品护照将通过《温莎框架》在北爱尔兰适用。",
+   "impactZh": [
+    "英国是否建立自己的产品护照制度、是否与欧盟格式互通，决定企业是否需要准备两套数据",
+    "目前处于证据征集阶段，尚无具体义务"
+   ],
+   "batteryImpact": {
+    "level": "medium",
+    "levelNote": "与欧盟电池护照的互通程度直接影响数据系统投入",
+    "segments": [
+     "电芯/模组制造",
+     "对英出口"
+    ],
+    "compliance": [],
+    "access": [
+     "若英国另行设立格式，可能需要额外的数据系统"
+    ],
+    "support": [
+     "若英国认可欧盟护照，欧盟合规数据可以直接复用"
+    ],
+    "actions": [
+     "跟踪证据征集的政府回应，表达与欧盟格式互通的诉求"
+    ]
+   },
+   "council": [],
+   "milestones": [
+    {
+     "date": "2026-07-27",
+     "kind": "secondary",
+     "label": "证据征集开始"
+    },
+    {
+     "date": "2026-09-21",
+     "kind": "secondary",
+     "label": "证据征集截止"
+    }
+   ]
+  },
+  {
+   "id": "uk-product-reg",
+   "oeil": "",
+   "jurisdiction": "uk",
+   "act": {
+    "kind": "uk-act",
+    "ref": "Product Regulation and Metrology Act 2025 (c. 20)",
+    "status": "adopted",
+    "url": "https://www.legislation.gov.uk/ukpga/2025/20/contents",
+    "statusNote": "2025-07-21 御准；配套条例分批制定；CE 标志在大不列颠的继续认可依据《2024 年产品安全与计量（修订）条例》",
+    "basis": "英国议会法令"
+   },
+   "nameZh": "英国产品监管与计量法及 UKCA/CE 标志",
+   "shortZh": "英国产品监管法",
+   "category": "uk",
+   "relevance": "high",
+   "tags": [
+    "UKCA",
+    "CE 认可",
+    "产品安全",
+    "网络平台"
+   ],
+   "summaryZh": "《2025 年产品监管与计量法》授权英国政府通过条例制定和更新产品规则，包括选择与欧盟相应规则保持一致、规定在线平台等供应链主体的责任。在标志方面，对于大不列颠市场，英国根据《2024 年产品安全与计量（修订）条例》在大多数产品领域继续认可 CE 标志，可与 UKCA 并用或替代；还允许满足欧盟要求的产品走“快速 UKCA”。北爱尔兰继续适用欧盟产品规则。",
+   "impactZh": [
+    "按欧盟规则取得 CE 的产品多数可以直接进入大不列颠，无需重复认证",
+    "该法让英国今后可以较快地跟进欧盟产品规则（如新电池法、生态设计），也可以选择不同做法",
+    "在线平台和履约服务商的责任可能加强，影响跨境电商渠道"
+   ],
+   "batteryImpact": {
+    "level": "medium",
+    "levelNote": "决定电池和储能产品进入英国的认证路径",
+    "segments": [
+     "对英出口",
+     "储能系统集成"
+    ],
+    "compliance": [
+     "确认产品所属领域是否继续认可 CE；需要 UKCA 时按英国指定标准或快速 UKCA 办理"
+    ],
+    "access": [
+     "CE 继续认可降低了进入大不列颠的门槛"
+    ],
+    "support": [
+     "一套欧盟合规文件可同时用于英欧两地"
+    ],
+    "actions": [
+     "对照政府按领域列出的 UKCA/CE 现行做法，确认各产品的标志要求"
+    ]
+   },
+   "council": [],
+   "milestones": [
+    {
+     "date": "2025-07-21",
+     "kind": "force",
+     "label": "《产品监管与计量法》御准"
+    }
+   ]
+  },
+  {
+   "id": "uk-minerals",
+   "oeil": "",
+   "jurisdiction": "uk",
+   "act": {
+    "kind": "uk-policy",
+    "ref": "Vision 2035: Critical Minerals Strategy",
+    "status": "adopted",
+    "url": "https://www.gov.uk/government/publications/uk-critical-minerals-strategy",
+    "statusNote": "2025-11-22 发布；2026-01-23 更新技术附件；配套最高 5,000 万英镑关键矿产基金",
+    "basis": "英国政府政策文件（非立法）"
+   },
+   "nameZh": "英国关键矿产战略（Vision 2035）",
+   "shortZh": "英国关键矿产战略",
+   "category": "uk",
+   "relevance": "high",
+   "tags": [
+    "关键矿产",
+    "锂",
+    "回收",
+    "供应多元化"
+   ],
+   "summaryZh": "英国未来十年的关键矿产战略，重点发展中游加工和回收。到 2035 年的目标：国内生产（开采、加工、精炼）满足至少 10% 的年需求，其中锂产量至少 5 万吨（碳酸锂当量）；回收满足 20% 的需求；任何单一国家供应的总量不超过需求的 60%。配套措施包括最高 5,000 万英镑的关键矿产基金、DRIVE35 资金支持、审批加速和电价补贴。",
+   "impactZh": [
+    "“单一国家供应不超过 60%”的多元化目标主要针对对中国的依赖，可能影响政府支持项目的采购选择",
+    "英国本土锂项目（如康沃尔）获得政府资金，未来可能成为欧洲锂资源来源之一",
+    "回收目标为电池回收企业带来机会"
+   ],
+   "batteryImpact": {
+    "level": "medium",
+    "levelNote": "影响在英电池企业的原材料来源和政策支持",
+    "segments": [
+     "材料采购",
+     "回收",
+     "在英设厂"
+    ],
+    "compliance": [],
+    "access": [
+     "政府支持的项目可能优先考虑供应多元化"
+    ],
+    "support": [
+     "在英电池回收、材料加工项目可申请关键矿产基金和 DRIVE35 支持"
+    ],
+    "actions": [
+     "关注 2026 年公布的关键矿产基金细则"
+    ]
+   },
+   "council": [],
+   "milestones": [
+    {
+     "date": "2025-11-22",
+     "kind": "apply",
+     "label": "关键矿产战略发布"
+    },
+    {
+     "date": "2035-12-31",
+     "kind": "deadline",
+     "label": "目标：国内生产 10%、回收 20%、单一国家供应不超过 60%"
+    }
+   ],
+   "tracking": {
+    "asOf": "2026-11-25",
+    "source": "GOV.UK",
+    "url": "https://www.gov.uk/government/publications/uk-critical-minerals-strategy",
+    "items": [
+     {
+      "date": "2026-09-27",
+      "lane": "uk",
+      "text": "Geothermal Engineering Limited 将在康沃尔投资约 4,300 万英镑建设锂提取设施，获 DRIVE35 近 1,000 万英镑原则性资助"
+     }
+    ],
+    "outlook": "关注关键矿产基金细则和英国与资源国的合作协议"
+   }
+  },
+  {
+   "id": "uk-drive35",
+   "oeil": "",
+   "jurisdiction": "uk",
+   "act": {
+    "kind": "uk-scheme",
+    "ref": "DRIVE35（工业战略·先进制造业计划）",
+    "status": "adopted",
+    "url": "https://www.gov.uk/government/publications/drive35-summary-business-case",
+    "statusNote": "总额 25 亿英镑至 2035 年（含 2025/26–2029/30 财年 20 亿英镑主体计划和 5 亿英镑研发），由先进推进中心（APC）和创新英国（Innovate UK）发放",
+    "basis": "英国《现代工业战略》（2025）及先进制造业行业计划"
+   },
+   "nameZh": "英国工业战略与 DRIVE35 汽车电动化资助",
+   "shortZh": "英国 DRIVE35",
+   "category": "uk",
+   "relevance": "high",
+   "tags": [
+    "工业战略",
+    "电池制造",
+    "投资补贴",
+    "汽车供应链"
+   ],
+   "summaryZh": "DRIVE35 是英国《现代工业战略》下的汽车电动化资助计划，总额 25 亿英镑、至 2035 年，用于零排放汽车制造、电池制造和供应链投资及研发，目标是到 2035 年英国汽车产量超过 130 万辆，并支撑电池制造产能。资金通过先进推进中心（APC）和创新英国以拨款形式发放。",
+   "impactZh": [
+    "在英国投资电池、电驱、材料等零排放汽车供应链项目可申请 DRIVE35 资助",
+    "2026 年已有多批资助落地，包括新一代汽车项目和康沃尔锂项目",
+    "与 ZEV 强制令、购车补贴、原产地规则一起构成英国吸引本地电池产能的政策组合"
+   ],
+   "batteryImpact": {
+    "level": "medium",
+    "levelNote": "在英设立电池或材料产能可申请资助",
+    "segments": [
+     "在英设厂",
+     "电芯/模组制造",
+     "研发"
+    ],
+    "compliance": [],
+    "access": [],
+    "support": [
+     "电池制造产能是 DRIVE35 明确支持的方向之一"
+    ],
+    "actions": [
+     "结合 2027 年原产地规则收紧，评估在英电池项目并申请 DRIVE35"
+    ]
+   },
+   "council": [],
+   "milestones": [
+    {
+     "date": "2025-12-15",
+     "kind": "secondary",
+     "label": "DRIVE35 商业论证摘要发布"
+    },
+    {
+     "date": "2035-12-31",
+     "kind": "deadline",
+     "label": "目标：英国汽车产量超过 130 万辆"
+    }
+   ],
+   "tracking": {
+    "asOf": "2026-11-25",
+    "source": "GOV.UK",
+    "url": "https://www.gov.uk/government/publications/drive35-summary-business-case",
+    "items": [
+     {
+      "date": "2026-08-10",
+      "lane": "uk",
+      "text": "政府宣布 1.3 亿英镑支持新一代汽车项目，保障 1,800 多个就业岗位"
+     },
+     {
+      "date": "2026-09-27",
+      "lane": "uk",
+      "text": "DRIVE35 为康沃尔锂提取项目提供近 1,000 万英镑原则性资助"
+     }
+    ],
+    "outlook": "关注后续资助轮次和对外资项目的条件"
+   }
+  },
+  {
+   "id": "uk-esa",
+   "oeil": "",
+   "jurisdiction": "uk",
+   "act": {
+    "kind": "uk-si",
+    "ref": "Energy Smart Appliances Regulations（草案）",
+    "status": "draft",
+    "url": "https://www.gov.uk/government/consultations/smart-secure-electricity-systems-sses-programme-first-phase-energy-smart-appliances-regulations",
+    "statusNote": "2025-12-01 至 2026-02-05 就条例草案征求意见；2026-09-17 发布中期回应，电采暖设备实施日期改为 2028-10-31 或条例制定后两年（以较晚者为准）；须经议会批准",
+    "basis": "《2023 年能源法》第 239、244 条"
+   },
+   "nameZh": "英国智能能源电器条例（SSES 第一阶段）",
+   "shortZh": "英国智能电器条例",
+   "category": "uk",
+   "relevance": "high",
+   "tags": [
+    "户用储能",
+    "充电桩",
+    "网络安全",
+    "需求响应"
+   ],
+   "summaryZh": "英国“智能安全电力系统”（SSES）计划第一阶段条例，覆盖家用电动车智能充电桩、电采暖设备和户用及小型非户用电池储能系统（BESS），对其智能功能、网络安全和电网稳定性规定最低要求。条例将吸收并修订《2021 年电动车（智能充电桩）条例》，对电采暖设备设智能强制要求；对储能，草案对“以智能功能销售”的户用储能适用相关要求，暂不强制所有储能具备智能功能，电网级储能不在范围内。",
+   "impactZh": [
+    "对英销售的智能户用储能和充电桩须满足英国的网络安全、智能功能和电网稳定性要求",
+    "实施日期尚待最终条例确定，电采暖设备为 2028-10-31 或条例制定后两年",
+    "政府保留今后对户用储能设智能强制要求的可能"
+   ],
+   "batteryImpact": {
+    "level": "medium",
+    "levelNote": "户用储能系统直接受管，电芯企业通过系统客户间接受影响",
+    "segments": [
+     "储能系统集成",
+     "户用/工商业储能"
+    ],
+    "compliance": [
+     "户用储能若以智能功能销售，须满足英国规定的智能功能、网络安全和电网稳定性要求"
+    ],
+    "access": [],
+    "support": [],
+    "actions": [
+     "跟踪最终条例的储能实施日期"
+    ]
+   },
+   "council": [],
+   "milestones": [
+    {
+     "date": "2026-02-05",
+     "kind": "secondary",
+     "label": "条例草案征求意见截止"
+    },
+    {
+     "date": "2028-10-31",
+     "kind": "deadline",
+     "label": "电采暖设备智能要求最早实施日期（或条例制定后两年）"
+    }
+   ],
+   "tracking": {
+    "asOf": "2026-11-25",
+    "source": "GOV.UK / DESNZ",
+    "url": "https://www.gov.uk/government/consultations/smart-secure-electricity-systems-sses-programme-first-phase-energy-smart-appliances-regulations",
+    "items": [
+     {
+      "date": "2025-12-01",
+      "lane": "uk",
+      "text": "发布智能能源电器条例草案和影响评估，征求意见"
+     },
+     {
+      "date": "2026-09-17",
+      "lane": "uk",
+      "text": "发布中期回应：电采暖设备实施日期调整为 2028-10-31 或条例制定后两年（以较晚者为准）"
+     }
+    ],
+    "outlook": "关注最终条例提交议会的时间以及储能、充电桩的实施日期"
+   }
+  },
+  {
+   "id": "uk-ldes",
+   "oeil": "",
+   "jurisdiction": "uk",
+   "act": {
+    "kind": "uk-scheme",
+    "ref": "LDES cap and floor（Ofgem）",
+    "status": "adopted",
+    "url": "https://www.gov.uk/government/publications/long-duration-electricity-storage-technical-details-of-the-scheme-and-its-operation",
+    "statusNote": "2024 年 10 月政府决定设立；2025-03-11 发布技术决策文件；首个申请窗口 2025 年春季开放，项目评估结果待核实",
+    "basis": "能源安全与净零部决定，由 Ofgem 实施"
+   },
+   "nameZh": "英国长时储能收益托底机制（LDES Cap and Floor）",
+   "shortZh": "英国长时储能机制",
+   "category": "uk",
+   "relevance": "medium",
+   "tags": [
+    "长时储能",
+    "收益托底",
+    "电网"
+   ],
+   "summaryZh": "英国为长时储能（LDES）设立“上限与下限”（cap and floor）收益机制，由 Ofgem 实施：项目收入低于下限时由消费者补足，高于上限的部分返还消费者，以降低长时储能的投资风险。2025 年 3 月政府和 Ofgem 发布技术决策文件，明确申请窗口时间、资格标准（含最短放电时长等）和所需容量。",
+   "impactZh": [
+    "机制主要面向放电时长较长的储能技术，常规 2–4 小时锂电储能一般难以满足资格标准（具体时长要求待核实）",
+    "为液流电池、压缩空气、抽水蓄能等长时技术带来稳定收益预期"
+   ],
+   "batteryImpact": {
+    "level": "low",
+    "levelNote": "主要惠及长时储能技术，常规锂电储能受益有限",
+    "segments": [
+     "储能系统集成"
+    ],
+    "compliance": [],
+    "access": [
+     "资格标准对放电时长有要求，短时锂电项目一般不在范围内（待核实）"
+    ],
+    "support": [
+     "长时锂电或其他电化学长时技术项目可能符合条件"
+    ],
+    "actions": [
+     "关注后续申请窗口和资格标准"
+    ]
+   },
+   "council": [],
+   "milestones": [
+    {
+     "date": "2025-03-11",
+     "kind": "secondary",
+     "label": "政府与 Ofgem 发布技术决策文件"
+    }
+   ]
   }
 ];
 
@@ -2839,5 +3744,6 @@ window.CATEGORIES = {
   renewable: { zh: "可再生能源与能效",   color: "renewable" },
   transport: { zh: "交通与充电",         color: "transport" },
   carbon:    { zh: "碳定价与贸易",       color: "carbon" },
-  digital:   { zh: "网络安全与人工智能", color: "digital" }
+  digital:   { zh: "网络安全与人工智能", color: "digital" },
+  uk:        { zh: "英国",               color: "uk" }
 };
