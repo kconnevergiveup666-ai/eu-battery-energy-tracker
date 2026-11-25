@@ -38,7 +38,7 @@ powershell -ExecutionPolicy Bypass -File tools\update-all.ps1
 ## 数据文件
 | 文件 | 说明 |
 |---|---|
-| `data/curated.js` | 人工层：监测清单（10 个分类，`window.CATEGORIES`）、中文解读、法规谱系（`parent`）、理事会内部节点（`council`）、实施节点（`milestones`）、在审动态（`tracking`）、对电池生产企业的影响（`batteryImpact`）。二级法案和尚未提出的立法 `oeil` 留空、`secondary:true`，在 `act` 字段记录类型、编号和状态 |
+| `data/curated.js` | 人工层：监测清单（11 个分类含“英国”，`window.CATEGORIES`；英国条目带 `jurisdiction: "uk"`，`act.kind` 取 uk-act / uk-si / uk-trade / uk-scheme / uk-policy / uk-consult，时间线用 `lane: "uk"`）、中文解读、法规谱系（`parent`）、理事会内部节点（`council`）、实施节点（`milestones`）、在审动态（`tracking`）、对电池生产企业的影响（`batteryImpact`）。二级法案和尚未提出的立法 `oeil` 留空、`secondary:true`，在 `act` 字段记录类型、编号和状态 |
 | `data/stakeholders.js` | 人工层：利益相关方（`actors`，含对各法规的立场 `positions`）与有日期的影响动态（`events`）。须保持为合法 JSON，`build.ps1` 读取它做变更追踪 |
 | `data/impacts.js` | 人工层：车企、储能企业、上游供应链三个视角的影响分析和“影响传导”（电池企业视角在 `curated.js` 的 `batteryImpact`） |
 | `data/markets.js` | 人工层：成员国落实（第一批 7 国）：指令转化状态、本国法律、主管与登记机构、本国补贴与时间节点、国家概况，附来源 |

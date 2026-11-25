@@ -2475,5 +2475,510 @@ window.IMPACTS_EN = {
    "actions": [],
    "segments": []
   }
+ },
+ "uk-zev": {
+  "chain": "Rising ZEV shares → carmakers must sell more BEVs or buy credits → BEV and battery demand is underpinned and credits change hands between carmakers",
+  "auto": {
+   "levelNote": "Manufacturers registering new vehicles in the UK carry annual quota obligations",
+   "segments": [
+    "Vehicle exports",
+    "UK sales"
+   ],
+   "compliance": [
+    "Zero-emission share of new registrations must meet the target each year: cars 33% in 2026, 80% in 2030; shortfalls cost £12,000 per car",
+    "Comply via banking, borrowing, CO2 conversion and trading; report registration data as required"
+   ],
+   "access": [
+    "Chinese brands with BEV-heavy line-ups face little pressure and can sell surplus credits",
+    "Carmakers relying on ICE and hybrids must buy credits or pay, which may reduce ICE supply in the UK"
+   ],
+   "support": [
+    "Credit trading gives BEV makers extra revenue and pricing room in the UK"
+   ],
+   "actions": [
+    "Estimate annual saleable credits and price range; negotiate credit sales with legacy carmakers",
+    "Track the 2026 review for any change to post-2027 targets"
+   ]
+  },
+  "upstream": {
+   "levelNote": "Indirect: the policy basis for UK EV output and battery demand",
+   "segments": [
+    "Cathode/anode materials",
+    "Lithium salts"
+   ],
+   "compliance": [],
+   "access": [
+    "The mandate underpins UK battery demand, but local cell capacity is limited, so material demand largely shows up as imported vehicles and batteries"
+   ],
+   "support": [],
+   "actions": [
+    "Watch local material sourcing needs of UK battery plants"
+   ]
+  }
+ },
+ "uk-ecg": {
+  "chain": "Grant banded by production emissions → carmakers ask battery suppliers for cell-site and power data → low-carbon cells and assembly sites gain a price edge",
+  "auto": {
+   "levelNote": "Decides whether BEV models under £37,000 get up to £3,750",
+   "segments": [
+    "Vehicle exports",
+    "UK sales"
+   ],
+   "compliance": [
+    "Apply to OZEV model by model with type-approval, warranty, degradation and production-emissions evidence (in English)",
+    "The manufacturer needs a verified SBTi target or TPI Level 4+"
+   ],
+   "access": [
+    "Models whose assembly or cell site exceeds the thresholds get no grant and lose out in their price segment"
+   ],
+   "support": [
+    "Eligible models get £1,500–£3,750, directly cutting the buyer's cost"
+   ],
+   "actions": [
+    "Assess eligibility and band for each model; adjust sourcing sites where needed",
+    "Seek SBTi validation or a higher TPI score early"
+   ]
+  },
+  "upstream": {
+   "levelNote": "Indirect: the grant looks at the cell production site; material-stage emissions are not in the thresholds yet",
+   "segments": [
+    "Cathode/anode materials"
+   ],
+   "compliance": [],
+   "access": [],
+   "support": [
+    "If cell makers shift to low-carbon sites, local material supply may follow"
+   ],
+   "actions": [
+    "Watch customers' plans to move cell capacity to low-carbon locations"
+   ]
+  }
+ },
+ "uk-roo": {
+  "chain": "Stricter rules of origin → carmakers need UK/EU-originating packs and cells → vehicles with imported Asian cells face a 10% tariff and demand for local battery capacity rises",
+  "auto": {
+   "levelNote": "EVs built in the UK or EU and sold across the Channel are directly affected",
+   "segments": [
+    "EU vehicle production",
+    "UK sales",
+    "Supply-chain sourcing"
+   ],
+   "compliance": [
+    "From 2027 check each model's origin under the final rules and issue origin statements to importers"
+   ],
+   "access": [
+    "Models with non-originating batteries lose zero tariffs between the UK and EU and pay 10%"
+   ],
+   "support": [
+    "Models with locally sourced batteries keep zero tariffs"
+   ],
+   "actions": [
+    "Finish origin calculations for current models before end-2026",
+    "Agree post-2027 localised supply with battery suppliers"
+   ]
+  },
+  "storage": {
+   "levelNote": "The rules target vehicles and traction batteries; stationary storage batteries fall outside these specific rules",
+   "segments": [
+    "Storage integration"
+   ],
+   "compliance": [],
+   "access": [
+    "Stationary batteries follow general rules of origin; limited impact (to be verified)"
+   ],
+   "support": [],
+   "actions": []
+  },
+  "upstream": {
+   "levelNote": "Battery origin calculations reach back to key components such as cathode active materials",
+   "segments": [
+    "Cathode materials",
+    "Cell components"
+   ],
+   "compliance": [
+    "Supplying UK/EU battery plants may require material-origin and value data"
+   ],
+   "access": [
+    "Local UK/EU materials help customers' batteries qualify as originating"
+   ],
+   "support": [
+    "Local material capacity in the UK or EU can win orders"
+   ],
+   "actions": [
+    "Understand what data customers need for origin calculations under the final rules"
+   ]
+  }
+ },
+ "uk-cbam": {
+  "chain": "Imported aluminium and steel taxed on embodied emissions → higher input costs for UK processors → low-carbon or EU-sourced materials become more competitive",
+  "auto": {
+   "levelNote": "Vehicles and parts are out of scope; UK plants importing steel and aluminium are affected",
+   "segments": [
+    "UK vehicle production",
+    "Supply-chain sourcing"
+   ],
+   "compliance": [],
+   "access": [
+    "Higher cost of imported steel and aluminium for UK plants"
+   ],
+   "support": [],
+   "actions": [
+    "Check CBAM scope of inputs imported by UK plants"
+   ]
+  },
+  "storage": {
+   "levelNote": "Storage products are out of scope; imported steel structures or aluminium are affected",
+   "segments": [
+    "Storage integration"
+   ],
+   "compliance": [],
+   "access": [
+    "Steel structures for containerised storage may be in scope if imported separately (to be verified)"
+   ],
+   "support": [],
+   "actions": []
+  },
+  "upstream": {
+   "levelNote": "Aluminium and steel products exported to the UK are directly affected",
+   "segments": [
+    "Aluminium foil/products",
+    "Steel",
+    "Exports to the UK"
+   ],
+   "compliance": [
+    "Provide UK importers with embodied-emissions data calculated under UK rules, verified where required",
+    "Overseas installations must monitor emissions per HMRC guidance"
+   ],
+   "access": [
+    "Without actual data, default values apply and price competitiveness falls",
+    "EU goods will be exempt, widening the relative disadvantage"
+   ],
+   "support": [],
+   "actions": [
+    "Set up emissions monitoring for UK-bound products per HMRC guidance",
+    "Agree emissions data and cost sharing with UK customers"
+   ]
+  }
+ },
+ "uk-ets-link": {
+  "chain": "UK–EU ETS link → UK carbon price aligns with the EU and both sides exempt each other from CBAM → UK steel and aluminium enter the EU CBAM-free, raising the UK's value as an EU-facing base",
+  "auto": {
+   "levelNote": "Vehicle assembly is outside ETS coverage; effects show up in power and steel/aluminium costs",
+   "segments": [
+    "UK vehicle production"
+   ],
+   "compliance": [],
+   "access": [],
+   "support": [
+    "UK-made steel and aluminium parts exported to the EU are exempt from the EU CBAM"
+   ],
+   "actions": []
+  },
+  "storage": {
+   "levelNote": "Indirect: carbon prices affect UK power prices and arbitrage",
+   "segments": [
+    "Storage operation"
+   ],
+   "compliance": [],
+   "access": [],
+   "support": [
+    "Higher carbon prices usually widen peak/off-peak spreads, helping storage revenue (indirect)"
+   ],
+   "actions": []
+  },
+  "upstream": {
+   "levelNote": "UK aluminium and steel exported to the EU will be exempt from the EU CBAM",
+   "segments": [
+    "Aluminium",
+    "Steel",
+    "UK plants"
+   ],
+   "compliance": [],
+   "access": [
+    "CBAM goods made in the UK gain a cost edge in the EU; direct exports from China get no such exemption"
+   ],
+   "support": [
+    "UK aluminium or steel processing can serve both UK and EU markets"
+   ],
+   "actions": [
+    "Assess the UK as an EU-facing materials processing base"
+   ]
+  }
+ },
+ "uk-batteries": {
+  "chain": "Old GB rules and EU rules in NI coexist → battery makers run two compliance tracks → a UK-wide regime would align with the EU Regulation",
+  "auto": {
+   "levelNote": "Carmakers carry producer responsibility when they place traction batteries on the market",
+   "segments": [
+    "Vehicle exports",
+    "UK sales"
+   ],
+   "compliance": [
+    "When selling EVs in the UK, meet producer registration and take-back duties for the traction battery (depending on import set-up)",
+    "Sales in Northern Ireland must meet the EU Batteries Regulation"
+   ],
+   "access": [],
+   "support": [],
+   "actions": [
+    "Confirm which UK importer or representative carries battery producer responsibility"
+   ]
+  },
+  "storage": {
+   "levelNote": "Storage batteries are industrial batteries and directly regulated",
+   "segments": [
+    "Storage integration",
+    "Residential/C&I storage",
+    "Exports to the UK"
+   ],
+   "compliance": [
+    "Great Britain: register as an industrial battery producer and meet take-back duties",
+    "Northern Ireland: meet EU safety, performance and passport requirements for stationary storage"
+   ],
+   "access": [
+    "A UK-wide regime may add EU-style safety and performance requirements for stationary storage"
+   ],
+   "support": [],
+   "actions": [
+    "Track the UK-wide consultation and assess new requirements for storage products"
+   ]
+  },
+  "upstream": {
+   "levelNote": "Indirect: recycled-content and due-diligence rules, if introduced, would reach materials",
+   "segments": [
+    "Recycling",
+    "Cathode/anode materials"
+   ],
+   "compliance": [],
+   "access": [],
+   "support": [],
+   "actions": [
+    "Watch whether the UK-wide regime includes minimum recycled content and due diligence"
+   ]
+  }
+ },
+ "uk-dpr": {
+  "chain": "UK explores a product passport → interoperable with the EU means one data set for both → a separate format means two data sets along the chain",
+  "auto": {
+   "levelNote": "May cover product information for vehicles and batteries",
+   "segments": [
+    "Vehicle exports"
+   ],
+   "compliance": [],
+   "access": [],
+   "support": [],
+   "actions": [
+    "Track the government response"
+   ]
+  },
+  "storage": {
+   "levelNote": "Storage batteries also need passports; a separate UK format would add data work",
+   "segments": [
+    "Storage integration"
+   ],
+   "compliance": [],
+   "access": [
+    "A separate UK format may need an extra data system"
+   ],
+   "support": [],
+   "actions": [
+    "Track the government response"
+   ]
+  },
+  "upstream": {
+   "levelNote": "Passport data ultimately traces material origin and carbon footprint",
+   "segments": [
+    "Cathode/anode materials"
+   ],
+   "compliance": [],
+   "access": [],
+   "support": [],
+   "actions": []
+  }
+ },
+ "uk-product-reg": {
+  "chain": "UK keeps recognising CE and can follow EU rules → EU compliance files work in Great Britain → less duplicate certification",
+  "auto": {
+   "levelNote": "Vehicles use type approval; the Act mainly affects parts and charging equipment",
+   "segments": [
+    "Parts",
+    "Charging equipment"
+   ],
+   "compliance": [],
+   "access": [],
+   "support": [
+    "CE files for parts and chargers can be used in Great Britain (depending on area)"
+   ],
+   "actions": []
+  },
+  "storage": {
+   "levelNote": "Storage systems fall under product rules such as electrical safety and EMC",
+   "segments": [
+    "Storage integration",
+    "Residential/C&I storage"
+   ],
+   "compliance": [
+    "Check marking requirements in Great Britain for each area (low voltage, EMC, radio, etc.)"
+   ],
+   "access": [],
+   "support": [
+    "CE remains recognised, so EU certification can be reused"
+   ],
+   "actions": [
+    "Check the government's sector-by-sector list item by item"
+   ]
+  }
+ },
+ "uk-minerals": {
+  "chain": "UK pushes domestic processing and recycling and limits single-source supply → backed projects favour diversified sourcing → Chinese material companies may need different partnership or investment models",
+  "auto": {
+   "levelNote": "Indirect effect on battery raw-material sourcing",
+   "segments": [
+    "Supply-chain sourcing"
+   ],
+   "compliance": [],
+   "access": [],
+   "support": [],
+   "actions": []
+  },
+  "storage": {
+   "levelNote": "Indirect effect on battery raw-material sourcing",
+   "segments": [
+    "Material sourcing"
+   ],
+   "compliance": [],
+   "access": [],
+   "support": [],
+   "actions": []
+  },
+  "upstream": {
+   "levelNote": "Directly shapes the UK market and investment climate for lithium, nickel, cobalt and graphite",
+   "segments": [
+    "Lithium salts",
+    "Cathode/anode materials",
+    "Recycling",
+    "UK plants"
+   ],
+   "compliance": [],
+   "access": [
+    "The 60% single-country cap implies policy pressure on the share of Chinese supply"
+   ],
+   "support": [
+    "UK processing or recycling capacity can apply to the minerals fund, DRIVE35 and power-cost relief"
+   ],
+   "actions": [
+    "Assess policy support for UK processing or recycling projects",
+    "Watch sourcing requirements in government-backed projects"
+   ]
+  }
+ },
+ "uk-drive35": {
+  "chain": "Public funding for ZEV and battery manufacturing → lower cost of building in the UK → with rules of origin, attracts local battery and material capacity",
+  "auto": {
+   "levelNote": "UK vehicle and component investments can apply for grants",
+   "segments": [
+    "UK vehicle production",
+    "Components"
+   ],
+   "compliance": [],
+   "access": [],
+   "support": [
+    "ZEV models and key component lines can apply"
+   ],
+   "actions": [
+    "Assess funding for UK production projects"
+   ]
+  },
+  "storage": {
+   "levelNote": "Focused on automotive; storage projects are generally out of scope",
+   "segments": [],
+   "compliance": [],
+   "access": [],
+   "support": [],
+   "actions": []
+  },
+  "upstream": {
+   "levelNote": "Materials and critical-mineral projects are also eligible",
+   "segments": [
+    "Lithium salts",
+    "Cathode/anode materials",
+    "UK plants"
+   ],
+   "compliance": [],
+   "access": [],
+   "support": [
+    "The Cornwall lithium project has been funded"
+   ],
+   "actions": [
+    "Assess DRIVE35 conditions for UK materials projects"
+   ]
+  }
+ },
+ "uk-esa": {
+  "chain": "UK sets common cybersecurity and grid rules for smart home batteries and chargers → integrators and charger makers need UK-specific compliance → compliance becomes a barrier to the UK residential market",
+  "auto": {
+   "levelNote": "Mainly home chargers; affects carmakers selling own-brand chargers",
+   "segments": [
+    "Charging equipment"
+   ],
+   "compliance": [
+    "Own-brand home chargers must meet smart-charging and cybersecurity requirements"
+   ],
+   "access": [],
+   "support": [],
+   "actions": []
+  },
+  "storage": {
+   "levelNote": "Home and small C&I storage are directly regulated",
+   "segments": [
+    "Residential/C&I storage",
+    "Storage integration",
+    "Exports to the UK"
+   ],
+   "compliance": [
+    "Storage sold with smart functionality must meet smart, cybersecurity (including remote-control security) and grid-stability requirements",
+    "Keep and provide evidence of compliance"
+   ],
+   "access": [
+    "Non-compliant smart storage products cannot be sold in the UK"
+   ],
+   "support": [
+    "Common rules help home storage join demand-response and flexibility markets"
+   ],
+   "actions": [
+    "Assess product cybersecurity and remote-control design against the draft",
+    "Track implementation dates in the final regulations"
+   ]
+  }
+ },
+ "uk-ldes": {
+  "chain": "Revenue floor lowers LDES investment risk → long-duration projects accelerate → storage technology paths diverge",
+  "storage": {
+   "levelNote": "Shapes UK storage technology mix and project revenue",
+   "segments": [
+    "Storage integration",
+    "Utility-scale storage"
+   ],
+   "compliance": [],
+   "access": [
+    "Eligibility requires a minimum duration; standard lithium projects are generally out of scope (to be verified)"
+   ],
+   "support": [
+    "Qualifying LDES projects get long-term revenue certainty"
+   ],
+   "actions": [
+    "Check whether long-duration products meet the criteria",
+    "Watch the next application window"
+   ]
+  },
+  "upstream": {
+   "levelNote": "Indirect: may lift demand for long-duration storage materials such as vanadium",
+   "segments": [
+    "Other materials"
+   ],
+   "compliance": [],
+   "access": [],
+   "support": [],
+   "actions": []
+  }
  }
 };
