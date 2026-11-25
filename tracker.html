@@ -9,7 +9,7 @@
   --bg:#f6f7f9; --panel:#ffffff; --panel2:#f1f3f6; --line:#e2e5ea; --text:#1b1f24; --muted:#5f6b7a; --faint:#8a95a3;
   --accent:#1f5fd6; --accent-weak:#e6eefc;
   --c-commission:#1f5fd6; --c-epc:#7a3fd1; --c-epp:#c2398a; --c-council:#d9822b; --c-trilogue:#b8860b; --c-final:#18864b; --c-impl:#0e8f8f; --c-future:#8a95a3;
-  --battery:#0e8f8f; --industry:#7a3fd1; --power:#d9822b; --renewable:#18864b; --transport:#1f5fd6; --carbon:#6b7280; --digital:#c0396b; --circular:#6d8a1f; --supply:#a0522d; --safety:#0f7c9c;
+  --battery:#0e8f8f; --industry:#7a3fd1; --power:#d9822b; --renewable:#18864b; --transport:#1f5fd6; --carbon:#6b7280; --digital:#c0396b; --circular:#6d8a1f; --supply:#a0522d; --safety:#0f7c9c; --uk:#b4233c;
   --done:#18864b; --current:#d9822b; --pending:#c9ced6;
   --c-sec:#5b6ee1; --c-other:#8a6d3b; --c-stake:#b4338a;
   --shadow:0 1px 2px rgba(16,24,40,.06),0 1px 3px rgba(16,24,40,.08);
@@ -22,7 +22,7 @@
     --bg:#0f1216; --panel:#171b21; --panel2:#1e232b; --line:#2a313b; --text:#e6e9ed; --muted:#a1abb8; --faint:#7d8896;
     --accent:#6ea0ff; --accent-weak:#1b2a44;
     --c-commission:#6ea0ff; --c-epc:#a98bf0; --c-epp:#e879b8; --c-council:#f0a456; --c-trilogue:#e0b84a; --c-final:#4cc08a; --c-impl:#3cc6c6; --c-future:#7d8896;
-    --battery:#3cc6c6; --industry:#a98bf0; --power:#f0a456; --renewable:#4cc08a; --transport:#6ea0ff; --carbon:#9aa3af; --digital:#f07aa6; --circular:#a9c95a; --supply:#e0a07a; --safety:#5cc3e0;
+    --battery:#3cc6c6; --industry:#a98bf0; --power:#f0a456; --renewable:#4cc08a; --transport:#6ea0ff; --carbon:#9aa3af; --digital:#f07aa6; --circular:#a9c95a; --supply:#e0a07a; --safety:#5cc3e0; --uk:#f07b8e;
     --done:#4cc08a; --current:#f0a456; --pending:#3a424d; --shadow:none;
   }
 }
@@ -30,7 +30,7 @@
   --bg:#0f1216; --panel:#171b21; --panel2:#1e232b; --line:#2a313b; --text:#e6e9ed; --muted:#a1abb8; --faint:#7d8896;
   --accent:#6ea0ff; --accent-weak:#1b2a44;
   --c-commission:#6ea0ff; --c-epc:#a98bf0; --c-epp:#e879b8; --c-council:#f0a456; --c-trilogue:#e0b84a; --c-final:#4cc08a; --c-impl:#3cc6c6; --c-future:#7d8896;
-  --battery:#3cc6c6; --industry:#a98bf0; --power:#f0a456; --renewable:#4cc08a; --transport:#6ea0ff; --carbon:#9aa3af; --digital:#f07aa6; --circular:#a9c95a; --supply:#e0a07a; --safety:#5cc3e0;
+  --battery:#3cc6c6; --industry:#a98bf0; --power:#f0a456; --renewable:#4cc08a; --transport:#6ea0ff; --carbon:#9aa3af; --digital:#f07aa6; --circular:#a9c95a; --supply:#e0a07a; --safety:#5cc3e0; --uk:#f07b8e;
   --done:#4cc08a; --current:#f0a456; --pending:#3a424d; --shadow:none;
 }
 *{box-sizing:border-box}
@@ -3129,6 +3129,911 @@ window.CURATED = [
       { date: "2026-07-27", kind: "force", label: "条例 (EU) 2026/1744 生效" },
       { date: "2027-08-02", kind: "deadline", label: "成员国设立 AI 监管沙盒的新期限" }
     ]
+  },
+  /* ================= 英国 ================= */
+  {
+   "id": "uk-zev",
+   "oeil": "",
+   "jurisdiction": "uk",
+   "act": {
+    "kind": "uk-si",
+    "ref": "SI 2023/1394（VETS Order）",
+    "status": "adopted",
+    "url": "https://www.legislation.gov.uk/uksi/2023/1394/contents",
+    "statusNote": "2024-01-01 起实施；2026 年初修订放宽灵活机制；2026-08-14 至 10-23 进行审查咨询，政府承诺 2027 年初前完成审查",
+    "basis": "《车辆排放交易计划令》，由英国政府与苏格兰、威尔士、北爱尔兰共同制定"
+   },
+   "nameZh": "英国零排放汽车强制令（ZEV Mandate）",
+   "shortZh": "英国 ZEV 强制令",
+   "category": "uk",
+   "relevance": "core",
+   "tags": [
+    "零排放车",
+    "车企配额",
+    "2030 禁售燃油车",
+    "额度交易"
+   ],
+   "summaryZh": "英国的“零排放汽车强制令”要求每家车企每年在英国新注册的乘用车和货车中，零排放车（纯电、氢燃料）达到规定比例：乘用车 2024 年 22%，逐年提高到 2030 年 80%、2035 年 100%；货车 2024 年 10%，2030 年 70%、2035 年 100%。可通过 CO2 转换、借用（2030 年前偿还，年复利 3.5%）、储蓄（最长 3 年）、乘用车与货车额度互转以及车企间交易来履约；未达标须按每辆乘用车 £12,000、每辆货车 £15,000 缴纳合规款。2025 年 4 月政府确认：2030 年起停售纯燃油新车，混动和插混可销售至 2035 年。",
+   "impactZh": [
+    "与欧盟按车队平均 CO2 考核不同，英国直接规定零排放车销量占比，并允许车企之间买卖额度",
+    "纯电车销量高的车企（包括多数中国品牌）可产生富余额度，出售给传统车企获得收入",
+    "2026 年审查可能调整年度目标和灵活机制，结果预计 2027 年初公布，直接影响额度价格",
+    "2028 年 4 月起电动车将按里程缴税（eVED），可能抑制部分消费需求"
+   ],
+   "batteryImpact": {
+    "level": "medium",
+    "levelNote": "间接影响：ZEV 比例决定英国动力电池需求增速",
+    "segments": [
+     "动力电池供货",
+     "对英出口"
+    ],
+    "compliance": [
+     "电池企业本身不承担 ZEV 配额义务，义务主体是在英注册新车的车企"
+    ],
+    "access": [
+     "英国纯电车需求由强制令托底，2030 年乘用车零排放占比须达 80%"
+    ],
+    "support": [
+     "配额刚性增长为在英设厂或向英国车企供货的电池企业提供需求确定性"
+    ],
+    "actions": [
+     "跟踪 2026 年审查结论（预计 2027 年初），评估英国动力电池需求预测"
+    ]
+   },
+   "council": [],
+   "milestones": [
+    {
+     "date": "2024-01-01",
+     "kind": "apply",
+     "label": "VETS Order 开始实施（乘用车 22%、货车 10%）"
+    },
+    {
+     "date": "2026-10-23",
+     "kind": "review",
+     "label": "ZEV 强制令审查咨询截止"
+    },
+    {
+     "date": "2028-04-01",
+     "kind": "deadline",
+     "label": "电动车按里程征税（eVED）开始实施（相关税收措施）",
+     "verified": false
+    },
+    {
+     "date": "2030-01-01",
+     "kind": "deadline",
+     "label": "乘用车零排放占比 80%、货车 70%；停售纯燃油新车"
+    },
+    {
+     "date": "2035-01-01",
+     "kind": "deadline",
+     "label": "乘用车和货车 100% 零排放"
+    }
+   ],
+   "tracking": {
+    "asOf": "2026-11-25",
+    "source": "GOV.UK",
+    "url": "https://www.gov.uk/government/consultations/zero-emission-vehicle-mandate-review",
+    "items": [
+     {
+      "date": "2025-04-07",
+      "lane": "uk",
+      "text": "政府宣布调整：2030 年停售纯燃油新车，混动/插混可售至 2035 年；放宽借用和转换等灵活机制，降低合规款",
+      "verified": false
+     },
+     {
+      "date": "2026-08-14",
+      "lane": "uk",
+      "text": "发布 ZEV 强制令审查咨询：评估年度目标、灵活机制效果及替代方案，并就 2030 年停售纯燃油车的定义征求意见"
+     },
+     {
+      "date": "2026-10-23",
+      "lane": "uk",
+      "text": "审查咨询截止"
+     },
+     {
+      "date": "2027-03-31",
+      "lane": "uk",
+      "text": "政府承诺 2027 年初前完成 VETS 审查（具体日期未定）",
+      "planned": true,
+      "verified": false
+     }
+    ],
+    "outlook": "审查结论可能修改 2027 年以后的年度目标和灵活机制；需关注额度价格和是否进一步放宽"
+   }
+  },
+  {
+   "id": "uk-ecg",
+   "oeil": "",
+   "jurisdiction": "uk",
+   "act": {
+    "kind": "uk-scheme",
+    "ref": "Electric Car Grant（OZEV）",
+    "status": "adopted",
+    "url": "https://www.gov.uk/government/publications/how-to-apply-for-vehicle-eligibility-for-the-electric-car-grant",
+    "statusNote": "2025 年 7 月推出；2025-08-29 起变体车型售价上限 £42,000；2026 年 3–4 月更新申请表，要求提供电芯生产地证据；政府保留随时调整补贴额和标准的权利",
+    "basis": "交通部零排放车辆办公室（OZEV）补贴计划，车辆技术审核由 VCA 负责"
+   },
+   "nameZh": "英国电动车购车补贴（Electric Car Grant）",
+   "shortZh": "英国购车补贴",
+   "category": "uk",
+   "relevance": "core",
+   "tags": [
+    "购车补贴",
+    "生产碳排放",
+    "电芯生产地",
+    "科学碳目标"
+   ],
+   "summaryZh": "面向售价 £37,000 及以下的新纯电乘用车，按“生产过程的碳排放”分两档补贴：最高档 £3,750，第二档 £1,500。车型须由车企申请资格：技术上要求 M1 乘用车、零尾气排放、WLTP 续航不少于 100 英里、电池质保 8 年或 10 万英里且容量低于 70% 须更换；环境上要求生产商持有经核实的科学碳目标（SBTi）或 TPI 汽车评估 4 级及以上，并且整车组装地和电芯生产地的碳排放须低于规定阈值。所有材料须为英文。",
+   "impactZh": [
+    "补贴门槛与整车组装地和电芯生产地的碳排放挂钩，电网以煤电为主的生产地较难拿到高档补贴",
+    "2026 年申请表新增电芯生产地证据要求，电池供应商需配合提供数据",
+    "补贴直接影响售价 £37,000 以下车型的竞争力，是中国品牌在英定价的重要变量"
+   ],
+   "batteryImpact": {
+    "level": "high",
+    "levelNote": "电芯生产地的碳排放是车型能否获得补贴的条件之一",
+    "segments": [
+     "电芯/模组制造",
+     "动力电池供货",
+     "对英出口"
+    ],
+    "compliance": [
+     "车企申请时须提供电芯生产地及其碳排放证据，电池企业需要提供工厂位置、用电结构等数据"
+    ],
+    "access": [
+     "电芯在高碳电网地区生产，可能导致配套车型无法获得补贴或只能拿低档，影响电池订单"
+    ],
+    "support": [
+     "使用绿电或在低碳电网地区（含欧洲、英国）生产的电芯更受车企青睐"
+    ],
+    "actions": [
+     "准备各工厂的电力碳强度和绿电采购证明，主动提供给英国市场车型的客户",
+     "评估为英国车型从低碳基地供货的可行性"
+    ]
+   },
+   "council": [],
+   "milestones": [
+    {
+     "date": "2025-07-14",
+     "kind": "apply",
+     "label": "发布车型资格申请表，补贴计划启动"
+    },
+    {
+     "date": "2025-08-29",
+     "kind": "deadline",
+     "label": "变体车型售价上限 £42,000（超出不再符合资格）"
+    },
+    {
+     "date": "2026-04-09",
+     "kind": "secondary",
+     "label": "申请表补充电芯生产地证据要求"
+    }
+   ]
+  },
+  {
+   "id": "uk-roo",
+   "oeil": "",
+   "jurisdiction": "uk",
+   "act": {
+    "kind": "uk-trade",
+    "ref": "TCA 伙伴关系理事会第 1/2023 号决定",
+    "status": "adopted",
+    "url": "https://www.gov.uk/government/publications/trade-and-cooperation-agreement-partnership-council-decision-number-1-2023-electric-vehicle-rules-of-origin",
+    "statusNote": "过渡规则 2026-12-31 到期，2027-01-01 起适用协定附件 3 的最终规则；决定明确 2032 年前不得再修改（HS 编码更新除外）",
+    "basis": "《英欧贸易与合作协定》（TCA）第 68 条及附件 3、附件 5"
+   },
+   "nameZh": "英欧电动车与电池原产地规则（2027 年收紧）",
+   "shortZh": "英欧电动车原产地规则",
+   "category": "uk",
+   "relevance": "core",
+   "tags": [
+    "原产地规则",
+    "零关税",
+    "电池包",
+    "电芯"
+   ],
+   "summaryZh": "英欧《贸易与合作协定》下，电动车和动力电池要在英欧之间享受零关税，必须满足原产地规则。2023 年 12 月双方决定把较宽松的过渡规则延长到 2026 年底：电动车非原产材料不超过出厂价 60%；电池包可用非原产电芯或模组组装，或非原产材料不超过 70%；电芯和模组税目改变或非原产材料不超过 70%。2027 年 1 月 1 日起改为协定附件 3 的最终规则，对整车和电池的本地增值要求明显提高；决定同时写明不再推迟，2032 年前不得修改。",
+   "impactZh": [
+    "2027 年起，使用亚洲进口电芯或电池包的英国产电动车出口欧盟、欧盟产电动车出口英国，可能无法享受零关税，须按 10% 整车关税缴纳",
+    "最终规则的具体比例以 TCA 附件 3 原文为准（一般理解为整车非原产材料上限降至 45% 左右，并要求电池具备原产资格，待核实）",
+    "在英国或欧盟本地生产电芯、电池包的价值显著上升"
+   ],
+   "batteryImpact": {
+    "level": "high",
+    "levelNote": "电池原产资格直接决定配套整车能否在英欧之间零关税流通",
+    "segments": [
+     "电芯/模组制造",
+     "电池包组装",
+     "在欧设厂",
+     "对英出口"
+    ],
+    "compliance": [
+     "为客户出具原产地声明所需的材料来源、成本构成和加工工序数据",
+     "2027 年起按最终规则核算电池包和电芯的原产资格"
+    ],
+    "access": [
+     "从中国进口的电芯、电池包难以满足最终规则，配套车辆在英欧之间流通将面临关税",
+     "英国和欧盟本地电池产能成为整车厂维持零关税的关键"
+    ],
+    "support": [
+     "在英国或欧盟设立电芯和电池包工厂的企业获得明显竞争优势"
+    ],
+    "actions": [
+     "按附件 3 最终规则逐个产品测算原产资格",
+     "评估英国或欧盟本地电芯、电池包产能的布局时间表"
+    ]
+   },
+   "council": [],
+   "milestones": [
+    {
+     "date": "2023-12-21",
+     "kind": "secondary",
+     "label": "伙伴关系理事会决定将过渡规则延长至 2026 年底"
+    },
+    {
+     "date": "2026-12-31",
+     "kind": "deadline",
+     "label": "过渡性原产地规则到期"
+    },
+    {
+     "date": "2027-01-01",
+     "kind": "apply",
+     "label": "电动车和电池适用 TCA 附件 3 最终原产地规则"
+    },
+    {
+     "date": "2032-01-01",
+     "kind": "review",
+     "label": "此前不得修改电动车和电池原产地规则"
+    }
+   ]
+  },
+  {
+   "id": "uk-cbam",
+   "oeil": "",
+   "jurisdiction": "uk",
+   "act": {
+    "kind": "uk-act",
+    "ref": "英国 CBAM（HMRC）",
+    "status": "adopted",
+    "url": "https://www.gov.uk/government/collections/carbon-border-adjustment-mechanism",
+    "statusNote": "2027-01-01 起实施并须保存记录，2028-01-01 开放注册；2026 年 9 月发布《CBAM（排放与核查）条例 2026》；2026-11-23 公布对欧盟、EEA 和瑞士原产货物豁免的立法草案",
+    "basis": "税收立法，由英国税务海关总署（HMRC）主管"
+   },
+   "nameZh": "英国碳边境调节机制（UK CBAM）",
+   "shortZh": "英国 CBAM",
+   "category": "uk",
+   "relevance": "high",
+   "tags": [
+    "碳边境税",
+    "铝",
+    "钢铁",
+    "进口商"
+   ],
+   "summaryZh": "英国自 2027 年 1 月 1 日起对进口的铝、水泥、化肥、氢、钢铁五个行业的特定商品，按其隐含碳排放征税（不含玻璃和陶瓷）。进口商从 2027 年起须保存排放记录，2028 年 1 月 1 日开放注册。HMRC 已发布海外设施监测排放、获取排放强度的指南，以及按商品编码查询是否在范围内的清单。英欧碳市场挂钩全面运行后，双方将互相豁免对方 CBAM；英国已公布对欧盟、EEA 和瑞士原产货物的豁免立法草案。",
+   "impactZh": [
+    "中国出口英国的铝材（含铝箔）、钢铁制品须提供隐含排放数据，否则按默认值计税",
+    "英国 CBAM 起步时间与欧盟 CBAM 正式征税（2026 年）接近，但规则、默认值和申报系统各自独立",
+    "欧盟产品将获豁免，中国产品相对欧盟产品的成本差距扩大"
+   ],
+   "batteryImpact": {
+    "level": "low",
+    "levelNote": "电池本身不在范围内，影响限于进口铝箔、钢壳等原材料",
+    "segments": [
+     "材料采购",
+     "在英设厂"
+    ],
+    "compliance": [
+     "在英电池厂直接进口铝箔、钢材时，作为进口商须保存排放记录，达到门槛后注册申报（注册门槛待核实）"
+    ],
+    "access": [
+     "进口原材料成本上升"
+    ],
+    "support": [],
+    "actions": [
+     "梳理在英工厂进口原材料中的 CBAM 商品编码"
+    ]
+   },
+   "council": [],
+   "milestones": [
+    {
+     "date": "2027-01-01",
+     "kind": "apply",
+     "label": "英国 CBAM 实施，进口商开始保存记录"
+    },
+    {
+     "date": "2028-01-01",
+     "kind": "deadline",
+     "label": "CBAM 注册开放"
+    }
+   ],
+   "tracking": {
+    "asOf": "2026-11-25",
+    "source": "GOV.UK / HMRC",
+    "url": "https://www.gov.uk/government/collections/carbon-border-adjustment-mechanism",
+    "items": [
+     {
+      "date": "2026-07-16",
+      "lane": "uk",
+      "text": "HMRC 发布按商品编码查询范围的清单（铝、水泥、化肥、氢、钢铁）"
+     },
+     {
+      "date": "2026-09-09",
+      "lane": "uk",
+      "text": "发布《CBAM（排放与核查）条例 2026》和利息起算日令"
+     },
+     {
+      "date": "2026-10-16",
+      "lane": "uk",
+      "text": "发布海外设施监测出口英国 CBAM 商品排放的指南"
+     },
+     {
+      "date": "2026-11-10",
+      "lane": "uk",
+      "text": "确认 2027-01-01 起须保存记录，2028-01-01 开放注册"
+     },
+     {
+      "date": "2026-11-23",
+      "lane": "uk",
+      "text": "公布对欧盟、EEA 和瑞士原产货物豁免 CBAM 的立法草案"
+     }
+    ],
+    "outlook": "关注默认排放值、实际排放核查要求和首次申报缴税时间"
+   }
+  },
+  {
+   "id": "uk-ets-link",
+   "oeil": "",
+   "jurisdiction": "uk",
+   "act": {
+    "kind": "uk-trade",
+    "ref": "英欧碳市场挂钩协定",
+    "status": "draft",
+    "url": "https://www.gov.uk/government/publications/uk-eu-linking-agreement-explainer",
+    "statusNote": "2026 年 11 月达成协议，政府先于法律文本发布说明；法律文本待公布并经双方批准，目标 2028-01-01 运行",
+    "basis": "《英欧贸易与合作协定》碳定价合作条款；2025 年 5 月英欧峰会共同谅解"
+   },
+   "nameZh": "英欧碳市场挂钩协定（UK ETS–EU ETS）",
+   "shortZh": "英欧碳市场挂钩",
+   "category": "uk",
+   "relevance": "high",
+   "tags": [
+    "碳市场",
+    "碳价",
+    "CBAM 豁免",
+    "动态对齐"
+   ],
+   "summaryZh": "英国与欧盟已就英国碳市场（UK ETS）与欧盟碳市场（EU ETS）挂钩达成协议，目标 2028 年 1 月 1 日运行：届时双方配额可互相用于履约，包括 2027 年度排放的清缴。两个市场仍分别运行，英国须动态对齐协定附件所列欧盟碳市场法规（附有英国适配安排），并获得参与欧盟决策的权利。挂钩全面运行后双方互相豁免 CBAM（欧盟一侧须走立法程序），英国政府估计约 65 亿英镑英国出口可因此免缴欧盟 CBAM。",
+   "impactZh": [
+    "英国产品出口欧盟将免缴欧盟 CBAM，英国作为对欧生产基地的吸引力上升",
+    "英国碳价将向欧盟碳价靠拢，在英生产的用能成本可能上升",
+    "欧盟碳市场正在修订，修订结果将通过联合委员会延伸到英国"
+   ],
+   "batteryImpact": {
+    "level": "low",
+    "levelNote": "电池生产本身通常不在碳市场覆盖范围，主要影响电力价格和对欧出口",
+    "segments": [
+     "在英设厂",
+     "对欧出口"
+    ],
+    "compliance": [],
+    "access": [
+     "英国工厂的产品出口欧盟时，所用铝、钢等 CBAM 商品若产自英国可免欧盟 CBAM"
+    ],
+    "support": [
+     "英欧统一碳价减少在英与在欧设厂之间的碳成本差异"
+    ],
+    "actions": [
+     "比较英国与欧盟设厂的电价和碳成本"
+    ]
+   },
+   "council": [],
+   "milestones": [
+    {
+     "date": "2025-05-19",
+     "kind": "secondary",
+     "label": "英欧峰会承诺推进碳市场挂钩"
+    },
+    {
+     "date": "2026-11-20",
+     "kind": "secondary",
+     "label": "英国政府公布挂钩协定说明"
+    },
+    {
+     "date": "2028-01-01",
+     "kind": "apply",
+     "label": "目标：英欧碳市场挂钩运行，配额互认"
+    }
+   ]
+  },
+  {
+   "id": "uk-batteries",
+   "oeil": "",
+   "jurisdiction": "uk",
+   "act": {
+    "kind": "uk-si",
+    "ref": "SI 2008/2164 · SI 2009/890",
+    "status": "adopted",
+    "url": "https://www.legislation.gov.uk/uksi/2008/2164/contents",
+    "statusNote": "大不列颠（英格兰、苏格兰、威尔士）仍适用基于欧盟 2006 年电池指令的旧规则；北爱尔兰自 2024-02-18 起直接适用欧盟新电池法；政府表示将于 2026 年秋季就与欧盟新电池法一致的全英统一制度征求意见（截至 2026-11-25 未见发布）",
+    "basis": "《电池与蓄电池（投放市场）条例 2008》《废电池与蓄电池条例 2009》；北爱尔兰依据《温莎框架》"
+   },
+   "nameZh": "英国电池法规（大不列颠现行规则与改革）",
+   "shortZh": "英国电池法规",
+   "category": "uk",
+   "relevance": "core",
+   "tags": [
+    "电池",
+    "生产者责任",
+    "北爱尔兰",
+    "与欧盟对齐"
+   ],
+   "summaryZh": "英国目前实行“一国两制”：大不列颠仍适用 2008 年投放市场条例（镉、汞、铅限制，容量标签，可拆卸）和 2009 年废电池条例（生产者登记、回收义务）；北爱尔兰根据《温莎框架》自 2024 年 2 月 18 日起直接适用欧盟新电池法 2023/1542，《2026 年电池（投放市场）（北爱尔兰）条例》停用了旧规则并建立处罚执行机制。英国政府表示将就与欧盟新电池法一致的全英统一制度征求意见。",
+   "impactZh": [
+    "目前对大不列颠出口电池无需电池护照、碳足迹声明等欧盟新要求，但须完成生产者登记和回收责任",
+    "进入北爱尔兰的电池须满足欧盟新电池法，包括 2026-08-18 起的标签和 2027-02-18 起的电池护照",
+    "英国计划向欧盟新电池法看齐，按欧盟标准建设的合规体系今后大概率可以沿用"
+   ],
+   "batteryImpact": {
+    "level": "high",
+    "levelNote": "直接规制对英销售的电池产品",
+    "segments": [
+     "电芯/模组制造",
+     "储能系统集成",
+     "对英出口",
+     "回收"
+    ],
+    "compliance": [
+     "大不列颠：须在英登记为电池生产者，履行工业电池、汽车电池或便携电池的回收义务；满足有害物质限制和标签要求",
+     "北爱尔兰：按欧盟新电池法履行 CE、标签、护照、尽调等全部义务"
+    ],
+    "access": [
+     "同时供应大不列颠和北爱尔兰时须满足两套规则",
+     "全英统一新制度出台后，可能引入类似欧盟的碳足迹、护照和尽调要求"
+    ],
+    "support": [
+     "向欧盟新电池法对齐将减少英欧两套合规的重复成本"
+    ],
+    "actions": [
+     "确认英国生产者登记和回收合规安排",
+     "跟踪全英统一制度咨询的发布和内容"
+    ]
+   },
+   "council": [],
+   "milestones": [
+    {
+     "date": "2024-02-18",
+     "kind": "apply",
+     "label": "欧盟新电池法在北爱尔兰直接适用"
+    },
+    {
+     "date": "2026-08-18",
+     "kind": "deadline",
+     "label": "北爱尔兰：欧盟新电池法标签要求适用"
+    },
+    {
+     "date": "2027-02-18",
+     "kind": "deadline",
+     "label": "北爱尔兰：电池护照要求适用"
+    }
+   ],
+   "tracking": {
+    "asOf": "2026-11-25",
+    "source": "GOV.UK",
+    "url": "https://www.gov.uk/guidance/eu-batteries-regulations-in-northern-ireland",
+    "items": [
+     {
+      "date": "2023-12-06",
+      "lane": "uk",
+      "text": "政府发布《英国电池战略》"
+     },
+     {
+      "date": "2026-07-17",
+      "lane": "uk",
+      "text": "发布北爱尔兰适用欧盟新电池法的企业指南，并表示秋季将就全英统一制度征求意见"
+     },
+     {
+      "date": "2026-10-17",
+      "lane": "uk",
+      "text": "《2026 年电池（投放市场）（北爱尔兰）条例》生效：在北爱尔兰停用 2008 年条例，建立欧盟新电池法的处罚执行机制"
+     }
+    ],
+    "outlook": "全英统一电池制度咨询原定 2026 年秋季发布，需关注是否引入碳足迹、电池护照和尽调要求以及过渡期"
+   }
+  },
+  {
+   "id": "uk-dpr",
+   "oeil": "",
+   "jurisdiction": "uk",
+   "parent": "uk-batteries",
+   "act": {
+    "kind": "uk-consult",
+    "ref": "数字产品记录证据征集",
+    "status": "planned",
+    "url": "https://www.gov.uk/government/calls-for-evidence/call-for-evidence-digital-product-record-policy",
+    "statusNote": "2026-07-27 至 09-21 征集意见，尚无立法提案",
+    "basis": "英国政府产品监管政策；欧盟数字产品护照通过《温莎框架》在北爱尔兰适用"
+   },
+   "nameZh": "英国数字产品记录（产品护照）政策",
+   "shortZh": "英国数字产品记录",
+   "category": "uk",
+   "relevance": "medium",
+   "tags": [
+    "数字产品护照",
+    "可追溯",
+    "北爱尔兰"
+   ],
+   "summaryZh": "英国政府就“数字产品记录”（类似欧盟数字产品护照，包括电池护照）征集证据，研究是否建立英国版制度，用于在供应链中传递产品信息和可持续性数据，并便于市场监管。征集内容包括企业向欧盟和北爱尔兰销售时已受到的影响，以及英国国内政策应考虑的因素。欧盟数字产品护照将通过《温莎框架》在北爱尔兰适用。",
+   "impactZh": [
+    "英国是否建立自己的产品护照制度、是否与欧盟格式互通，决定企业是否需要准备两套数据",
+    "目前处于证据征集阶段，尚无具体义务"
+   ],
+   "batteryImpact": {
+    "level": "medium",
+    "levelNote": "与欧盟电池护照的互通程度直接影响数据系统投入",
+    "segments": [
+     "电芯/模组制造",
+     "对英出口"
+    ],
+    "compliance": [],
+    "access": [
+     "若英国另行设立格式，可能需要额外的数据系统"
+    ],
+    "support": [
+     "若英国认可欧盟护照，欧盟合规数据可以直接复用"
+    ],
+    "actions": [
+     "跟踪证据征集的政府回应，表达与欧盟格式互通的诉求"
+    ]
+   },
+   "council": [],
+   "milestones": [
+    {
+     "date": "2026-07-27",
+     "kind": "secondary",
+     "label": "证据征集开始"
+    },
+    {
+     "date": "2026-09-21",
+     "kind": "secondary",
+     "label": "证据征集截止"
+    }
+   ]
+  },
+  {
+   "id": "uk-product-reg",
+   "oeil": "",
+   "jurisdiction": "uk",
+   "act": {
+    "kind": "uk-act",
+    "ref": "Product Regulation and Metrology Act 2025 (c. 20)",
+    "status": "adopted",
+    "url": "https://www.legislation.gov.uk/ukpga/2025/20/contents",
+    "statusNote": "2025-07-21 御准；配套条例分批制定；CE 标志在大不列颠的继续认可依据《2024 年产品安全与计量（修订）条例》",
+    "basis": "英国议会法令"
+   },
+   "nameZh": "英国产品监管与计量法及 UKCA/CE 标志",
+   "shortZh": "英国产品监管法",
+   "category": "uk",
+   "relevance": "high",
+   "tags": [
+    "UKCA",
+    "CE 认可",
+    "产品安全",
+    "网络平台"
+   ],
+   "summaryZh": "《2025 年产品监管与计量法》授权英国政府通过条例制定和更新产品规则，包括选择与欧盟相应规则保持一致、规定在线平台等供应链主体的责任。在标志方面，对于大不列颠市场，英国根据《2024 年产品安全与计量（修订）条例》在大多数产品领域继续认可 CE 标志，可与 UKCA 并用或替代；还允许满足欧盟要求的产品走“快速 UKCA”。北爱尔兰继续适用欧盟产品规则。",
+   "impactZh": [
+    "按欧盟规则取得 CE 的产品多数可以直接进入大不列颠，无需重复认证",
+    "该法让英国今后可以较快地跟进欧盟产品规则（如新电池法、生态设计），也可以选择不同做法",
+    "在线平台和履约服务商的责任可能加强，影响跨境电商渠道"
+   ],
+   "batteryImpact": {
+    "level": "medium",
+    "levelNote": "决定电池和储能产品进入英国的认证路径",
+    "segments": [
+     "对英出口",
+     "储能系统集成"
+    ],
+    "compliance": [
+     "确认产品所属领域是否继续认可 CE；需要 UKCA 时按英国指定标准或快速 UKCA 办理"
+    ],
+    "access": [
+     "CE 继续认可降低了进入大不列颠的门槛"
+    ],
+    "support": [
+     "一套欧盟合规文件可同时用于英欧两地"
+    ],
+    "actions": [
+     "对照政府按领域列出的 UKCA/CE 现行做法，确认各产品的标志要求"
+    ]
+   },
+   "council": [],
+   "milestones": [
+    {
+     "date": "2025-07-21",
+     "kind": "force",
+     "label": "《产品监管与计量法》御准"
+    }
+   ]
+  },
+  {
+   "id": "uk-minerals",
+   "oeil": "",
+   "jurisdiction": "uk",
+   "act": {
+    "kind": "uk-policy",
+    "ref": "Vision 2035: Critical Minerals Strategy",
+    "status": "adopted",
+    "url": "https://www.gov.uk/government/publications/uk-critical-minerals-strategy",
+    "statusNote": "2025-11-22 发布；2026-01-23 更新技术附件；配套最高 5,000 万英镑关键矿产基金",
+    "basis": "英国政府政策文件（非立法）"
+   },
+   "nameZh": "英国关键矿产战略（Vision 2035）",
+   "shortZh": "英国关键矿产战略",
+   "category": "uk",
+   "relevance": "high",
+   "tags": [
+    "关键矿产",
+    "锂",
+    "回收",
+    "供应多元化"
+   ],
+   "summaryZh": "英国未来十年的关键矿产战略，重点发展中游加工和回收。到 2035 年的目标：国内生产（开采、加工、精炼）满足至少 10% 的年需求，其中锂产量至少 5 万吨（碳酸锂当量）；回收满足 20% 的需求；任何单一国家供应的总量不超过需求的 60%。配套措施包括最高 5,000 万英镑的关键矿产基金、DRIVE35 资金支持、审批加速和电价补贴。",
+   "impactZh": [
+    "“单一国家供应不超过 60%”的多元化目标主要针对对中国的依赖，可能影响政府支持项目的采购选择",
+    "英国本土锂项目（如康沃尔）获得政府资金，未来可能成为欧洲锂资源来源之一",
+    "回收目标为电池回收企业带来机会"
+   ],
+   "batteryImpact": {
+    "level": "medium",
+    "levelNote": "影响在英电池企业的原材料来源和政策支持",
+    "segments": [
+     "材料采购",
+     "回收",
+     "在英设厂"
+    ],
+    "compliance": [],
+    "access": [
+     "政府支持的项目可能优先考虑供应多元化"
+    ],
+    "support": [
+     "在英电池回收、材料加工项目可申请关键矿产基金和 DRIVE35 支持"
+    ],
+    "actions": [
+     "关注 2026 年公布的关键矿产基金细则"
+    ]
+   },
+   "council": [],
+   "milestones": [
+    {
+     "date": "2025-11-22",
+     "kind": "apply",
+     "label": "关键矿产战略发布"
+    },
+    {
+     "date": "2035-12-31",
+     "kind": "deadline",
+     "label": "目标：国内生产 10%、回收 20%、单一国家供应不超过 60%"
+    }
+   ],
+   "tracking": {
+    "asOf": "2026-11-25",
+    "source": "GOV.UK",
+    "url": "https://www.gov.uk/government/publications/uk-critical-minerals-strategy",
+    "items": [
+     {
+      "date": "2026-09-27",
+      "lane": "uk",
+      "text": "Geothermal Engineering Limited 将在康沃尔投资约 4,300 万英镑建设锂提取设施，获 DRIVE35 近 1,000 万英镑原则性资助"
+     }
+    ],
+    "outlook": "关注关键矿产基金细则和英国与资源国的合作协议"
+   }
+  },
+  {
+   "id": "uk-drive35",
+   "oeil": "",
+   "jurisdiction": "uk",
+   "act": {
+    "kind": "uk-scheme",
+    "ref": "DRIVE35（工业战略·先进制造业计划）",
+    "status": "adopted",
+    "url": "https://www.gov.uk/government/publications/drive35-summary-business-case",
+    "statusNote": "总额 25 亿英镑至 2035 年（含 2025/26–2029/30 财年 20 亿英镑主体计划和 5 亿英镑研发），由先进推进中心（APC）和创新英国（Innovate UK）发放",
+    "basis": "英国《现代工业战略》（2025）及先进制造业行业计划"
+   },
+   "nameZh": "英国工业战略与 DRIVE35 汽车电动化资助",
+   "shortZh": "英国 DRIVE35",
+   "category": "uk",
+   "relevance": "high",
+   "tags": [
+    "工业战略",
+    "电池制造",
+    "投资补贴",
+    "汽车供应链"
+   ],
+   "summaryZh": "DRIVE35 是英国《现代工业战略》下的汽车电动化资助计划，总额 25 亿英镑、至 2035 年，用于零排放汽车制造、电池制造和供应链投资及研发，目标是到 2035 年英国汽车产量超过 130 万辆，并支撑电池制造产能。资金通过先进推进中心（APC）和创新英国以拨款形式发放。",
+   "impactZh": [
+    "在英国投资电池、电驱、材料等零排放汽车供应链项目可申请 DRIVE35 资助",
+    "2026 年已有多批资助落地，包括新一代汽车项目和康沃尔锂项目",
+    "与 ZEV 强制令、购车补贴、原产地规则一起构成英国吸引本地电池产能的政策组合"
+   ],
+   "batteryImpact": {
+    "level": "medium",
+    "levelNote": "在英设立电池或材料产能可申请资助",
+    "segments": [
+     "在英设厂",
+     "电芯/模组制造",
+     "研发"
+    ],
+    "compliance": [],
+    "access": [],
+    "support": [
+     "电池制造产能是 DRIVE35 明确支持的方向之一"
+    ],
+    "actions": [
+     "结合 2027 年原产地规则收紧，评估在英电池项目并申请 DRIVE35"
+    ]
+   },
+   "council": [],
+   "milestones": [
+    {
+     "date": "2025-12-15",
+     "kind": "secondary",
+     "label": "DRIVE35 商业论证摘要发布"
+    },
+    {
+     "date": "2035-12-31",
+     "kind": "deadline",
+     "label": "目标：英国汽车产量超过 130 万辆"
+    }
+   ],
+   "tracking": {
+    "asOf": "2026-11-25",
+    "source": "GOV.UK",
+    "url": "https://www.gov.uk/government/publications/drive35-summary-business-case",
+    "items": [
+     {
+      "date": "2026-08-10",
+      "lane": "uk",
+      "text": "政府宣布 1.3 亿英镑支持新一代汽车项目，保障 1,800 多个就业岗位"
+     },
+     {
+      "date": "2026-09-27",
+      "lane": "uk",
+      "text": "DRIVE35 为康沃尔锂提取项目提供近 1,000 万英镑原则性资助"
+     }
+    ],
+    "outlook": "关注后续资助轮次和对外资项目的条件"
+   }
+  },
+  {
+   "id": "uk-esa",
+   "oeil": "",
+   "jurisdiction": "uk",
+   "act": {
+    "kind": "uk-si",
+    "ref": "Energy Smart Appliances Regulations（草案）",
+    "status": "draft",
+    "url": "https://www.gov.uk/government/consultations/smart-secure-electricity-systems-sses-programme-first-phase-energy-smart-appliances-regulations",
+    "statusNote": "2025-12-01 至 2026-02-05 就条例草案征求意见；2026-09-17 发布中期回应，电采暖设备实施日期改为 2028-10-31 或条例制定后两年（以较晚者为准）；须经议会批准",
+    "basis": "《2023 年能源法》第 239、244 条"
+   },
+   "nameZh": "英国智能能源电器条例（SSES 第一阶段）",
+   "shortZh": "英国智能电器条例",
+   "category": "uk",
+   "relevance": "high",
+   "tags": [
+    "户用储能",
+    "充电桩",
+    "网络安全",
+    "需求响应"
+   ],
+   "summaryZh": "英国“智能安全电力系统”（SSES）计划第一阶段条例，覆盖家用电动车智能充电桩、电采暖设备和户用及小型非户用电池储能系统（BESS），对其智能功能、网络安全和电网稳定性规定最低要求。条例将吸收并修订《2021 年电动车（智能充电桩）条例》，对电采暖设备设智能强制要求；对储能，草案对“以智能功能销售”的户用储能适用相关要求，暂不强制所有储能具备智能功能，电网级储能不在范围内。",
+   "impactZh": [
+    "对英销售的智能户用储能和充电桩须满足英国的网络安全、智能功能和电网稳定性要求",
+    "实施日期尚待最终条例确定，电采暖设备为 2028-10-31 或条例制定后两年",
+    "政府保留今后对户用储能设智能强制要求的可能"
+   ],
+   "batteryImpact": {
+    "level": "medium",
+    "levelNote": "户用储能系统直接受管，电芯企业通过系统客户间接受影响",
+    "segments": [
+     "储能系统集成",
+     "户用/工商业储能"
+    ],
+    "compliance": [
+     "户用储能若以智能功能销售，须满足英国规定的智能功能、网络安全和电网稳定性要求"
+    ],
+    "access": [],
+    "support": [],
+    "actions": [
+     "跟踪最终条例的储能实施日期"
+    ]
+   },
+   "council": [],
+   "milestones": [
+    {
+     "date": "2026-02-05",
+     "kind": "secondary",
+     "label": "条例草案征求意见截止"
+    },
+    {
+     "date": "2028-10-31",
+     "kind": "deadline",
+     "label": "电采暖设备智能要求最早实施日期（或条例制定后两年）"
+    }
+   ],
+   "tracking": {
+    "asOf": "2026-11-25",
+    "source": "GOV.UK / DESNZ",
+    "url": "https://www.gov.uk/government/consultations/smart-secure-electricity-systems-sses-programme-first-phase-energy-smart-appliances-regulations",
+    "items": [
+     {
+      "date": "2025-12-01",
+      "lane": "uk",
+      "text": "发布智能能源电器条例草案和影响评估，征求意见"
+     },
+     {
+      "date": "2026-09-17",
+      "lane": "uk",
+      "text": "发布中期回应：电采暖设备实施日期调整为 2028-10-31 或条例制定后两年（以较晚者为准）"
+     }
+    ],
+    "outlook": "关注最终条例提交议会的时间以及储能、充电桩的实施日期"
+   }
+  },
+  {
+   "id": "uk-ldes",
+   "oeil": "",
+   "jurisdiction": "uk",
+   "act": {
+    "kind": "uk-scheme",
+    "ref": "LDES cap and floor（Ofgem）",
+    "status": "adopted",
+    "url": "https://www.gov.uk/government/publications/long-duration-electricity-storage-technical-details-of-the-scheme-and-its-operation",
+    "statusNote": "2024 年 10 月政府决定设立；2025-03-11 发布技术决策文件；首个申请窗口 2025 年春季开放，项目评估结果待核实",
+    "basis": "能源安全与净零部决定，由 Ofgem 实施"
+   },
+   "nameZh": "英国长时储能收益托底机制（LDES Cap and Floor）",
+   "shortZh": "英国长时储能机制",
+   "category": "uk",
+   "relevance": "medium",
+   "tags": [
+    "长时储能",
+    "收益托底",
+    "电网"
+   ],
+   "summaryZh": "英国为长时储能（LDES）设立“上限与下限”（cap and floor）收益机制，由 Ofgem 实施：项目收入低于下限时由消费者补足，高于上限的部分返还消费者，以降低长时储能的投资风险。2025 年 3 月政府和 Ofgem 发布技术决策文件，明确申请窗口时间、资格标准（含最短放电时长等）和所需容量。",
+   "impactZh": [
+    "机制主要面向放电时长较长的储能技术，常规 2–4 小时锂电储能一般难以满足资格标准（具体时长要求待核实）",
+    "为液流电池、压缩空气、抽水蓄能等长时技术带来稳定收益预期"
+   ],
+   "batteryImpact": {
+    "level": "low",
+    "levelNote": "主要惠及长时储能技术，常规锂电储能受益有限",
+    "segments": [
+     "储能系统集成"
+    ],
+    "compliance": [],
+    "access": [
+     "资格标准对放电时长有要求，短时锂电项目一般不在范围内（待核实）"
+    ],
+    "support": [
+     "长时锂电或其他电化学长时技术项目可能符合条件"
+    ],
+    "actions": [
+     "关注后续申请窗口和资格标准"
+    ]
+   },
+   "council": [],
+   "milestones": [
+    {
+     "date": "2025-03-11",
+     "kind": "secondary",
+     "label": "政府与 Ofgem 发布技术决策文件"
+    }
+   ]
   }
 ];
 
@@ -3142,7 +4047,8 @@ window.CATEGORIES = {
   renewable: { zh: "可再生能源与能效",   color: "renewable" },
   transport: { zh: "交通与充电",         color: "transport" },
   carbon:    { zh: "碳定价与贸易",       color: "carbon" },
-  digital:   { zh: "网络安全与人工智能", color: "digital" }
+  digital:   { zh: "网络安全与人工智能", color: "digital" },
+  uk:        { zh: "英国",               color: "uk" }
 };
 
 </script>
@@ -3155,7 +4061,7 @@ window.SECONDARY_DATA = {"generatedAt":"2026-11-24T22:56:23Z","dossiers":{"batte
 
 </script>
 <script>
-window.CHANGES = {"changes":[{"key":"hys|19852","dossier":"ets","source":"HaveYourSay","kind":"initiative","date":"2026-11-24","text":"New initiative: Amendment to the Monitoring and Reporting Regulation","url":"https://ec.europa.eu/info/law/better-regulation/have-your-say/initiatives/19852_en","detected":"2026-11-24"},{"key":"hysstage|19852|PLANNING_WORKFLOW","dossier":"ets","source":"HaveYourSay","kind":"stage","date":"2026-11-19","text":"Amendment to the Monitoring and Reporting Regulation -\u003e stage PLANNING_WORKFLOW","url":"https://ec.europa.eu/info/law/better-regulation/have-your-say/initiatives/19852_en","detected":"2026-11-24"},{"key":"hyspub|19852|INIT_PLANNED","dossier":"ets","source":"HaveYourSay","kind":"publication","date":"2026-11-24","text":"Amendment to the Monitoring and Reporting Regulation: INIT_PLANNED published","url":"https://ec.europa.eu/info/law/better-regulation/have-your-say/initiatives/19852_en","detected":"2026-11-24"},{"key":"hysstage|19595|ISC_WORKFLOW","dossier":"nis2","source":"HaveYourSay","kind":"stage","date":"2026-11-24","text":"Common incident reporting templates under the NIS2 Directive -\u003e stage ISC_WORKFLOW","url":"https://ec.europa.eu/info/law/better-regulation/have-your-say/initiatives/19595_en","detected":"2026-11-24"},{"key":"hyspub|19595|REG_IMPL_DRAFT","dossier":"nis2","source":"HaveYourSay","kind":"publication","date":"2026-11-24","text":"Common incident reporting templates under the NIS2 Directive: REG_IMPL_DRAFT published","url":"https://ec.europa.eu/info/law/better-regulation/have-your-say/initiatives/19595_en","detected":"2026-11-24"},{"key":"status|2025/0420(COD)|Awaiting Parliament\u0027s position in 1st reading","dossier":"co2-revision-2035","source":"OEIL","kind":"status","date":"2026-11-23","text":"Procedure status: Awaiting Parliament\u0027s position in 1st reading","url":"https://oeil.europarl.europa.eu/oeil/en/procedure-file?reference=2025/0420(COD)","detected":"2026-11-23"},{"key":"ev|2025/0419(COD)|2025-12-17|Legislative proposal published","dossier":"cbam-downstream","source":"OEIL","kind":"event","date":"2025-12-17","text":"Legislative proposal published","url":"https://oeil.europarl.europa.eu/oeil/en/procedure-file?reference=2025/0419(COD)","detected":"2026-11-22"},{"key":"ev|2025/0419(COD)|2026-02-12|Committee referral announced in Parliament, 1st reading","dossier":"cbam-downstream","source":"OEIL","kind":"event","date":"2026-02-12","text":"Committee referral announced in Parliament, 1st reading","url":"https://oeil.europarl.europa.eu/oeil/en/procedure-file?reference=2025/0419(COD)","detected":"2026-11-22"},{"key":"ev|2025/0419(COD)|2026-07-06|Vote in committee, 1st reading","dossier":"cbam-downstream","source":"OEIL","kind":"event","date":"2026-07-06","text":"Vote in committee, 1st reading","url":"https://oeil.europarl.europa.eu/oeil/en/procedure-file?reference=2025/0419(COD)","detected":"2026-11-22"},{"key":"ev|2025/0419(COD)|2026-07-09|Committee report tabled for plenary, 1st reading","dossier":"cbam-downstream","source":"OEIL","kind":"event","date":"2026-07-09","text":"Committee report tabled for plenary, 1st reading","url":"https://oeil.europarl.europa.eu/oeil/en/procedure-file?reference=2025/0419(COD)","detected":"2026-11-22"},{"key":"ev|2025/0419(COD)|2026-09-14|Debate in Parliament","dossier":"cbam-downstream","source":"OEIL","kind":"event","date":"2026-09-14","text":"Debate in Parliament","url":"https://oeil.europarl.europa.eu/oeil/en/procedure-file?reference=2025/0419(COD)","detected":"2026-11-22"},{"key":"ev|2025/0419(COD)|2026-09-15|Decision by Parliament, 1st reading","dossier":"cbam-downstream","source":"OEIL","kind":"event","date":"2026-09-15","text":"Decision by Parliament, 1st reading","url":"https://oeil.europarl.europa.eu/oeil/en/procedure-file?reference=2025/0419(COD)","detected":"2026-11-22"},{"key":"ev|2025/0419(COD)|2026-09-15|Results of vote in Parliament","dossier":"cbam-downstream","source":"OEIL","kind":"event","date":"2026-09-15","text":"Results of vote in Parliament","url":"https://oeil.europarl.europa.eu/oeil/en/procedure-file?reference=2025/0419(COD)","detected":"2026-11-22"},{"key":"ev|2025/0419(COD)|2026-09-15|Matter referred back to the committee responsible for interinstitutional negotiations","dossier":"cbam-downstream","source":"OEIL","kind":"event","date":"2026-09-15","text":"Matter referred back to the committee responsible for interinstitutional negotiations","url":"https://oeil.europarl.europa.eu/oeil/en/procedure-file?reference=2025/0419(COD)","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EP|PE731.563|Committee draft report","dossier":"ai-act","source":"OEIL","kind":"document","date":"2022-04-20","text":"Committee draft report PE731.563","url":"https://www.europarl.europa.eu/doceo/document/CJ40-PR-731563_EN.html","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EP|PE699.056|Committee opinion","dossier":"ai-act","source":"OEIL","kind":"document","date":"2022-04-22","text":"Committee opinion ENVI PE699.056","url":"https://www.europarl.europa.eu/doceo/document/ENVI-AD-699056_EN.html","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EP|PE732.802|Amendments tabled in committee","dossier":"ai-act","source":"OEIL","kind":"document","date":"2022-06-10","text":"Amendments tabled in committee PE732.802","url":"https://www.europarl.europa.eu/doceo/document/CJ40-AM-732802_EN.html","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EP|PE732.836|Amendments tabled in committee","dossier":"ai-act","source":"OEIL","kind":"document","date":"2022-06-10","text":"Amendments tabled in committee PE732.836","url":"https://www.europarl.europa.eu/doceo/document/CJ40-AM-732836_EN.html","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EP|PE732.837|Amendments tabled in committee","dossier":"ai-act","source":"OEIL","kind":"document","date":"2022-06-10","text":"Amendments tabled in committee PE732.837","url":"https://www.europarl.europa.eu/doceo/document/CJ40-AM-732837_EN.html","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EP|PE732.838|Amendments tabled in committee","dossier":"ai-act","source":"OEIL","kind":"document","date":"2022-06-10","text":"Amendments tabled in committee PE732.838","url":"https://www.europarl.europa.eu/doceo/document/CJ40-AM-732838_EN.html","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EP|PE732.839|Amendments tabled in committee","dossier":"ai-act","source":"OEIL","kind":"document","date":"2022-06-10","text":"Amendments tabled in committee PE732.839","url":"https://www.europarl.europa.eu/doceo/document/CJ40-AM-732839_EN.html","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EP|PE732.840|Amendments tabled in committee","dossier":"ai-act","source":"OEIL","kind":"document","date":"2022-06-10","text":"Amendments tabled in committee PE732.840","url":"https://www.europarl.europa.eu/doceo/document/CJ40-AM-732840_EN.html","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EP|PE732.841|Amendments tabled in committee","dossier":"ai-act","source":"OEIL","kind":"document","date":"2022-06-10","text":"Amendments tabled in committee PE732.841","url":"https://www.europarl.europa.eu/doceo/document/CJ40-AM-732841_EN.html","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EP|PE732.843|Amendments tabled in committee","dossier":"ai-act","source":"OEIL","kind":"document","date":"2022-06-10","text":"Amendments tabled in committee PE732.843","url":"https://www.europarl.europa.eu/doceo/document/CJ40-AM-732843_EN.html","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EP|PE732.844|Amendments tabled in committee","dossier":"ai-act","source":"OEIL","kind":"document","date":"2022-06-10","text":"Amendments tabled in committee PE732.844","url":"https://www.europarl.europa.eu/doceo/document/CJ40-AM-732844_EN.html","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EP|PE719.801|Committee opinion","dossier":"ai-act","source":"OEIL","kind":"document","date":"2022-06-14","text":"Committee opinion ITRE PE719.801","url":"https://www.europarl.europa.eu/doceo/document/ITRE-AD-719801_EN.html","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EP|PE719.637|Committee opinion","dossier":"ai-act","source":"OEIL","kind":"document","date":"2022-06-16","text":"Committee opinion CULT PE719.637","url":"https://www.europarl.europa.eu/doceo/document/CULT-AD-719637_EN.html","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EP|PE730.085|Committee opinion","dossier":"ai-act","source":"OEIL","kind":"document","date":"2022-07-12","text":"Committee opinion TRAN PE730.085","url":"https://www.europarl.europa.eu/doceo/document/TRAN-AD-730085_EN.html","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EP|PE719.827|Committee opinion","dossier":"ai-act","source":"OEIL","kind":"document","date":"2022-09-12","text":"Committee opinion JURI PE719.827","url":"https://www.europarl.europa.eu/doceo/document/JURI-AD-719827_EN.html","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EP|A9-0188/2023|Committee report tabled for plenary, 1st reading/single reading","dossier":"ai-act","source":"OEIL","kind":"document","date":"2023-05-22","text":"Committee report tabled for plenary, 1st reading/single reading A9-0188/2023","url":"https://www.europarl.europa.eu/doceo/document/A-9-2023-0188_EN.html","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EP|T9-0236/2023|Text adopted by Parliament, partial vote at 1st reading/single reading","dossier":"ai-act","source":"OEIL","kind":"document","date":"2023-06-14","text":"Text adopted by Parliament, partial vote at 1st reading/single reading T9-0236/2023","url":"https://www.europarl.europa.eu/doceo/document/TA-9-2023-0236_EN.html","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EP|PE758.862|Text agreed during interinstitutional negotiations","dossier":"ai-act","source":"OEIL","kind":"document","date":"2024-02-02","text":"Text agreed during interinstitutional negotiations PE758.862","url":"https://www.europarl.europa.eu/RegData/commissions/libe/inag/2024/02-02/CJ40_AG(2024)758862_EN.docx","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EP|T9-0138/2024|Text adopted by Parliament, 1st reading/single reading","dossier":"ai-act","source":"OEIL","kind":"document","date":"2024-03-13","text":"Text adopted by Parliament, 1st reading/single reading T9-0138/2024","url":"https://www.europarl.europa.eu/doceo/document/TA-9-2024-0138_EN.html","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|CSL|GEDA/A/(2024)000753|Coreper letter confirming interinstitutional agreement","dossier":"ai-act","source":"OEIL","kind":"document","date":"2024-02-02","text":"Coreper letter confirming interinstitutional agreement GEDA/A/(2024)000753","url":"https://www.europarl.europa.eu/RegData/commissions/libe/lcag/2024/02-02/CJ40_LA(2024)000753_EN.pdf","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|CSL|00024/2024/LEX|Draft final act","dossier":"ai-act","source":"OEIL","kind":"document","date":"2024-06-13","text":"Draft final act 00024/2024/LEX","url":"https://www.consilium.europa.eu/EN/documents/public-register/public-register-search/?DocumentNumber=24%2F24\u0026DocumentTypes=LEGISLATIVE+ACTS+AND+OTHER+INSTRUMENTS","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EC|COM(2021)0206|Legislative proposal","dossier":"ai-act","source":"OEIL","kind":"document","date":"2021-04-21","text":"Legislative proposal COM(2021)0206","url":"http://www.europarl.europa.eu/RegData/docs_autres_institutions/commission_europeenne/com/2021/0206/COM_COM(2021)0206_EN.pdf","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EC|SEC(2021)0167|Document attached to the procedure","dossier":"ai-act","source":"OEIL","kind":"document","date":"2021-04-22","text":"Document attached to the procedure SEC(2021)0167","url":"https://eur-lex.europa.eu/smartapi/cgi/sga_doc?smartapi!celexplus!prod!DocNumber\u0026lg=EN\u0026type_doc=SECfinal\u0026an_doc=2021\u0026nu_doc=0167","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EC|SWD(2021)0084|Document attached to the procedure","dossier":"ai-act","source":"OEIL","kind":"document","date":"2021-04-22","text":"Document attached to the procedure SWD(2021)0084","url":"","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EC|SWD(2021)0085|Document attached to the procedure","dossier":"ai-act","source":"OEIL","kind":"document","date":"2021-04-22","text":"Document attached to the procedure SWD(2021)0085","url":"https://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=SWD:2021:0085:FIN:EN:PDF","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EC|SP(2024)350|Commission response to text adopted in plenary","dossier":"ai-act","source":"OEIL","kind":"document","date":"2024-07-22","text":"Commission response to text adopted in plenary SP(2024)350","url":"https://data.europarl.europa.eu/distribution/doc/SP-2024-350-TA-9-2023-0236_en.docx","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|NP|COM(2021)0206|Contribution","dossier":"ai-act","source":"OEIL","kind":"document","date":"2021-06-11","text":"Contribution CZ_CHAMBER COM(2021)0206","url":"https://connectfolx.europarl.europa.eu/connefof/app/exp/COM(2021)0206","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|OTHER|CES2482/2021|EESC","dossier":"ai-act","source":"OEIL","kind":"document","date":"2021-09-22","text":"EESC Economic and Social Committee: opinion, report CES2482/2021","url":"https://dmsearch.eesc.europa.eu/search/public?k=(documenttype:AC)(documentnumber:2482)(documentyear:2021)(documentlanguage:EN)","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|OTHER|CDR2682/2021|CofR","dossier":"ai-act","source":"OEIL","kind":"document","date":"2021-12-02","text":"CofR Committee of the Regions: opinion CDR2682/2021","url":"https://dmsearch.cor.europa.eu/search/public?k=(documenttype:AC)(documentnumber:2682)(documentyear:2021)(documentlanguage:EN)","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|OTHER|CON/2021/0040 OJ C 115 29.12.2021, p. 0005|ECB","dossier":"ai-act","source":"OEIL","kind":"document","date":"2021-12-29","text":"ECB European Central Bank: opinion, guideline, report CON/2021/0040 OJ C 115 29.12.2021, p. 0005","url":"https://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=CELEX:52021AB0040:EN:NOT","detected":"2026-11-22"},{"key":"doc|2025/0359(COD)|EP|PE782.530|Committee draft report","dossier":"ai-omnibus","source":"OEIL","kind":"document","date":"2026-02-05","text":"Committee draft report PE782.530","url":"https://www.europarl.europa.eu/doceo/document/CJ40-PR-782530_EN.html","detected":"2026-11-22"},{"key":"doc|2025/0359(COD)|EP|PE784.274|Amendments tabled in committee","dossier":"ai-omnibus","source":"OEIL","kind":"document","date":"2026-02-14","text":"Amendments tabled in committee PE784.274","url":"https://www.europarl.europa.eu/doceo/document/CJ40-AM-784274_EN.html","detected":"2026-11-22"},{"key":"doc|2025/0359(COD)|EP|PE784.275|Amendments tabled in committee","dossier":"ai-omnibus","source":"OEIL","kind":"document","date":"2026-02-14","text":"Amendments tabled in committee PE784.275","url":"https://www.europarl.europa.eu/doceo/document/CJ40-AM-784275_EN.html","detected":"2026-11-22"},{"key":"doc|2025/0359(COD)|EP|PE784.309|Amendments tabled in committee","dossier":"ai-omnibus","source":"OEIL","kind":"document","date":"2026-02-14","text":"Amendments tabled in committee PE784.309","url":"https://www.europarl.europa.eu/doceo/document/CJ40-AM-784309_EN.html","detected":"2026-11-22"},{"key":"doc|2025/0359(COD)|EP|PE784.179|Committee opinion","dossier":"ai-omnibus","source":"OEIL","kind":"document","date":"2026-02-26","text":"Committee opinion JURI PE784.179","url":"https://www.europarl.europa.eu/doceo/document/JURI-AD-784179_EN.html","detected":"2026-11-22"},{"key":"doc|2025/0359(COD)|EP|PE784.261|Committee opinion","dossier":"ai-omnibus","source":"OEIL","kind":"document","date":"2026-03-06","text":"Committee opinion CULT PE784.261","url":"https://www.europarl.europa.eu/doceo/document/CULT-AD-784261_EN.html","detected":"2026-11-22"},{"key":"doc|2025/0359(COD)|EP|PE785.326|Specific opinion","dossier":"ai-omnibus","source":"OEIL","kind":"document","date":"2026-03-18","text":"Specific opinion TRAN PE785.326","url":"https://www.europarl.europa.eu/doceo/document/TRAN-AL-785326_EN.html","detected":"2026-11-22"},{"key":"doc|2025/0359(COD)|EP|A10-0073/2026|Committee report tabled for plenary, 1st reading/single reading","dossier":"ai-omnibus","source":"OEIL","kind":"document","date":"2026-03-19","text":"Committee report tabled for plenary, 1st reading/single reading A10-0073/2026","url":"https://www.europarl.europa.eu/doceo/document/A-10-2026-0073_EN.html","detected":"2026-11-22"},{"key":"doc|2025/0359(COD)|EP|T10-0098/2026|Text adopted by Parliament, partial vote at 1st reading/single reading","dossier":"ai-omnibus","source":"OEIL","kind":"document","date":"2026-03-26","text":"Text adopted by Parliament, partial vote at 1st reading/single reading T10-0098/2026","url":"https://www.europarl.europa.eu/doceo/document/TA-10-2026-0098_EN.html","detected":"2026-11-22"},{"key":"doc|2025/0359(COD)|EP|PE789.081|Text agreed during interinstitutional negotiations","dossier":"ai-omnibus","source":"OEIL","kind":"document","date":"2026-05-13","text":"Text agreed during interinstitutional negotiations PE789.081","url":"https://www.europarl.europa.eu/RegData/commissions/imco/inag/2026/05-13/CJ40_AG(2026)789081_EN.pdf","detected":"2026-11-22"},{"key":"doc|2025/0359(COD)|EP|T10-0198/2026|Text adopted by Parliament, 1st reading/single reading","dossier":"ai-omnibus","source":"OEIL","kind":"document","date":"2026-06-16","text":"Text adopted by Parliament, 1st reading/single reading T10-0198/2026","url":"https://www.europarl.europa.eu/doceo/document/TA-10-2026-0198_EN.html","detected":"2026-11-22"},{"key":"doc|2025/0359(COD)|CSL|GEDA/A/(2026)003414|Coreper letter confirming interinstitutional agreement","dossier":"ai-omnibus","source":"OEIL","kind":"document","date":"2026-05-13","text":"Coreper letter confirming interinstitutional agreement GEDA/A/(2026)003414","url":"https://www.europarl.europa.eu/RegData/commissions/imco/lcag/2026/05-13/CJ40_LA(2026)003414_EN.pdf","detected":"2026-11-22"},{"key":"doc|2025/0359(COD)|CSL|00030/2026/LEX|Draft final act","dossier":"ai-omnibus","source":"OEIL","kind":"document","date":"2026-07-03","text":"Draft final act 00030/2026/LEX","url":"https://www.consilium.europa.eu/EN/documents/public-register/public-register-search/?DocumentNumber=30%2F26\u0026DocumentTypes=LEGISLATIVE+ACTS+AND+OTHER+INSTRUMENTS","detected":"2026-11-22"},{"key":"doc|2025/0359(COD)|EC|COM(2025)0836|Legislative proposal","dossier":"ai-omnibus","source":"OEIL","kind":"document","date":"2025-11-19","text":"Legislative proposal COM(2025)0836","url":"https://www.europarl.europa.eu/RegData/docs_autres_institutions/commission_europeenne/com/2025/0836/COM_COM(2025)0836_EN.pdf","detected":"2026-11-22"},{"key":"doc|2025/0359(COD)|EC|SP(2026)09-01|Commission response to text adopted in plenary","dossier":"ai-omnibus","source":"OEIL","kind":"document","date":"2026-09-01","text":"Commission response to text adopted in plenary SP(2026)09-01","url":"https://data.europarl.europa.eu/distribution/doc/SP-2026-09-01-TA-10-2026-0198_en.pdf","detected":"2026-11-22"},{"key":"doc|2025/0359(COD)|NP|COM(2025)0836|Contribution","dossier":"ai-omnibus","source":"OEIL","kind":"document","date":"2026-02-13","text":"Contribution CZ_SENATE COM(2025)0836","url":"https://connectfolx.europarl.europa.eu/connefof/app/exp/COM(2025)0836","detected":"2026-11-22"},{"key":"doc|2025/0359(COD)|OTHER|CON/2026/0010 OJ OJ C 15.04.2026|ECB","dossier":"ai-omnibus","source":"OEIL","kind":"document","date":"2026-03-13","text":"ECB European Central Bank: opinion, guideline, report CON/2026/0010 OJ OJ C 15.04.2026","url":"https://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=CELEX:52026AB0010:EN:NOT","detected":"2026-11-22"},{"key":"doc|2025/0359(COD)|OTHER|CES3929/2025|EESC","dossier":"ai-omnibus","source":"OEIL","kind":"document","date":"2026-03-18","text":"EESC Economic and Social Committee: opinion, report CES3929/2025","url":"https://dmsearch.eesc.europa.eu/search/public?k=(documenttype:AC)(documentnumber:3929)(documentyear:2025)(documentlanguage:EN)","detected":"2026-11-22"},{"key":"doc|2025/0359(COD)|OTHER|CDR4240/2025|CofR","dossier":"ai-omnibus","source":"OEIL","kind":"document","date":"2026-05-07","text":"CofR Committee of the Regions: opinion CDR4240/2025","url":"https://dmsearch.cor.europa.eu/search/public?k=(documenttype:AC)(documentnumber:4240)(documentyear:2025)(documentlanguage:EN)","detected":"2026-11-22"},{"key":"doc|2026/0011(COD)|EP|PE796.192|Committee opinion","dossier":"csa2","source":"OEIL","kind":"document","date":"2026-11-13","text":"Committee opinion IMCO PE796.192","url":"https://www.europarl.europa.eu/doceo/document/IMCO-AD-796192_EN.html","detected":"2026-11-20"},{"key":"act|32026R2562","dossier":"ets","source":"EUR-Lex","kind":"implementing","date":"2026-11-19","text":"Commission Implementing Regulation (EU) 2026/2562 of 19 November 2026 amending Implementing Regulation (EU) 2023/2297 as regards the list of neighbouring container transhipment ports","url":"https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32026R2562","detected":"2026-11-20"},{"key":"stk|draghi-report|nzia","dossier":"nzia","source":"Stakeholder","kind":"stakeholder","date":"2024-09-09","text":"马里奥·德拉吉: 发布《欧洲竞争力的未来》报告，呼吁以产业政策支持电池等清洁技术制造、降低能源价格、简化监管","url":"https://commission.europa.eu/topics/eu-competitiveness/draghi-report_en","detected":"2026-11-20"},{"key":"stk|draghi-report|iaa","dossier":"iaa","source":"Stakeholder","kind":"stakeholder","date":"2024-09-09","text":"马里奥·德拉吉: 发布《欧洲竞争力的未来》报告，呼吁以产业政策支持电池等清洁技术制造、降低能源价格、简化监管","url":"https://commission.europa.eu/topics/eu-competitiveness/draghi-report_en","detected":"2026-11-20"},{"key":"stk|draghi-report|batteries","dossier":"batteries","source":"Stakeholder","kind":"stakeholder","date":"2024-09-09","text":"马里奥·德拉吉: 发布《欧洲竞争力的未来》报告，呼吁以产业政策支持电池等清洁技术制造、降低能源价格、简化监管","url":"https://commission.europa.eu/topics/eu-competitiveness/draghi-report_en","detected":"2026-11-20"},{"key":"stk|draghi-report|emd-reg","dossier":"emd-reg","source":"Stakeholder","kind":"stakeholder","date":"2024-09-09","text":"马里奥·德拉吉: 发布《欧洲竞争力的未来》报告，呼吁以产业政策支持电池等清洁技术制造、降低能源价格、简化监管","url":"https://commission.europa.eu/topics/eu-competitiveness/draghi-report_en","detected":"2026-11-20"},{"key":"stk|kristersson-pause|ai-act","dossier":"ai-act","source":"Stakeholder","kind":"stakeholder","date":"2025-06-01","text":"乌尔夫·克里斯特松: 成为首位公开支持暂停实施 AI 法的欧盟国家首脑，理由是共同标准尚未就绪","url":"https://www.biometricupdate.com/202506/should-the-eu-put-a-pause-on-rolling-out-the-ai-act","detected":"2026-11-20"},{"key":"stk|schildt-letter|ai-act","dossier":"ai-act","source":"Stakeholder","kind":"stakeholder","date":"2025-06-30","text":"约翰内斯·希尔特: 起草第二封公开信（Sifted 刊发），称 AI 法是“仓促的定时炸弹”，要求暂停实施并制定可行的实施计划","url":"https://sifted.eu/articles/ai-act-news-startups-vcs-europe-pause-letter","detected":"2026-11-20"},{"key":"stk|ai-champions-letter|ai-act","dossier":"ai-act","source":"Stakeholder","kind":"stakeholder","date":"2025-07-03","text":"欧洲 AI 冠军倡议: 约 50 家成员企业致信冯德莱恩，要求对 AI 法关键义务“停止时钟”两年，直到标准和实施指南就绪","url":"https://www.theregister.com/2025/07/04/eu_businesses_push_for_freedom","detected":"2026-11-20"},{"key":"stk|ai-champions-letter|ai-omnibus","dossier":"ai-omnibus","source":"Stakeholder","kind":"stakeholder","date":"2025-07-03","text":"欧洲 AI 冠军倡议: 约 50 家成员企业致信冯德莱恩，要求对 AI 法关键义务“停止时钟”两年，直到标准和实施指南就绪","url":"https://www.theregister.com/2025/07/04/eu_businesses_push_for_freedom","detected":"2026-11-20"},{"key":"stk|de-it-letter-2035|co2-revision-2035","dossier":"co2-revision-2035","source":"Stakeholder","kind":"stakeholder","date":"2025-10-07","text":"德国政府, 意大利政府: 德国和意大利联名致函，要求 2035 年后高效内燃机仍可销售","url":"https://www.euinsider.eu/news/eu-2035-engine-ban-parliament-vote-2026","detected":"2026-11-20"},{"key":"stk|acea-vda-2035|co2-revision-2035","dossier":"co2-revision-2035","source":"Stakeholder","kind":"stakeholder","date":"2025-12-16","text":"欧洲汽车制造商协会, 德国汽车工业协会: 对欧委会 2035 年修订提案表示不满：不支持用低碳钢、可再生燃料抵扣剩余 10% 的附加条件","url":"https://www.euinsider.eu/news/eu-2035-engine-ban-parliament-vote-2026","detected":"2026-11-20"},{"key":"stk|ms10-afir|afir","dossier":"afir","source":"Stakeholder","kind":"stakeholder","date":"2025-12-01","text":"十国联盟（AFIR）: 十个成员国要求在完成 AFIR 目标上获得更多灵活性","url":"https://www.clecat.org/en/news/newsletters/call-for-evidence-on-the-upcoming-review-of-the-al","detected":"2026-11-20"},{"key":"stk|virkkunen-inverters|csa2","dossier":"csa2","source":"Stakeholder","kind":"stakeholder","date":"2026-01-20","text":"汉娜·维尔库宁: 发布网络安全法 2.0 提案时表示，依赖极少数光伏逆变器供应商“可能构成重大安全风险”","url":"https://www.pv-magazine.com/2026/01/20/eu-to-ban-chinese-inverters-commission-proposal-in-cybersecurity-mulls-high-risk-vendors-list/","detected":"2026-11-20"},{"key":"stk|eurobat-sejourne|iaa","dossier":"iaa","source":"Stakeholder","kind":"stakeholder","date":"2026-02-25","text":"欧洲汽车与工业电池制造商协会: IAA 提案发布前致函欧委会执行副主席塞茹尔内（Séjourné），提出电池行业诉求","url":"https://www.eurobat.org/wp-content/uploads/2026/03/2026.02.25-EUROBAT-letter-to-Mr-Stephane-Sejourne-IAA-Final-1.pdf","detected":"2026-11-20"},{"key":"stk|ese-iaa|iaa","dossier":"iaa","source":"Stakeholder","kind":"stakeholder","date":"2026-03-05","text":"欧洲储能协会: IAA 提案发布次日发表声明：欢迎提案，但警告储能电池原产地要求和储能系统 \u003e1MWh 须用欧盟制造 BMS 等条款可能拖慢部署，要求重大修改","url":"https://energystorageeurope.eu/wp-content/uploads/2026/04/2026.03.05-Press-Release_Energy-Storage-Europe_Industrial-Accelerator-Act.pdf","detected":"2026-11-20"},{"key":"stk|spe-iaa|iaa","dossier":"iaa","source":"Stakeholder","kind":"stakeholder","date":"2026-03-05","text":"欧洲光伏产业协会: 欢迎 IAA，称其开启了欧洲光伏制造的“新时代”","url":"https://www.solarpowereurope.org/press-releases/industrial-accelerator-act-marks-new-era-for-solar-manufacturing-in-europe","detected":"2026-11-20"},{"key":"stk|eurobat-annex2|iaa","dossier":"iaa","source":"Stakeholder","kind":"stakeholder","date":"2026-03-15","text":"欧洲汽车与工业电池制造商协会: 要求紧急澄清 IAA 附件二：储能电池公共采购的原产地要求似乎排除了欧盟生产的铅基和镍基电池系统","url":"https://www.eurobat.org/resource/industrial-accelerator-act-annex-ii-excludes-critical-eu-produced-lead-based-and-nickel-based-battery-systems-from-public-procurement/","detected":"2026-11-20"},{"key":"stk|eurelectric-afir|afir","dossier":"afir","source":"Stakeholder","kind":"stakeholder","date":"2026-03-15","text":"欧洲电力行业联合会: 发布 AFIR 审查立场文件：《完善而非推倒重来》","url":"https://www.eurelectric.org/wp-content/uploads/2026/03/Eurelectric-AFIR-position-paper-FINAL.pdf","detected":"2026-11-20"},{"key":"stk|upholding-afir|afir","dossier":"afir","source":"Stakeholder","kind":"stakeholder","date":"2026-03-15","text":"欧洲电动出行协会: 联名信《维护 AFIR》：反对在审查中降低目标，要求加强资金支持和去风险工具","url":"https://www.emobilityeurope.org/wp-content/uploads/2026/03/Joint-letter-Upholding-AFIR-Strengthening-funding-and-derisking-to-ensure-delivery_final.pdf","detected":"2026-11-20"},{"key":"stk|esmc-funding|csa2","dossier":"csa2","source":"Stakeholder","kind":"stakeholder","date":"2026-04-23","text":"欧洲光伏制造商理事会: 欢迎欧委会决定：使用高风险供应商逆变器的光伏项目不得获得欧盟资金（与欧盟电网相连的项目须在 2027-04-15 前逐步替换）","url":"https://www.pv-magazine.com/2026/04/23/eu-moves-to-restrict-funding-for-projects-using-inverters-from-high-risk-suppliers/","detected":"2026-11-20"},{"key":"stk|ecnl-omnibus|ai-omnibus","dossier":"ai-omnibus","source":"Stakeholder","kind":"stakeholder","date":"2026-06-01","text":"欧洲非营利法律中心: 发布分析报告，称 AI 简化条例是“在保障措施生效前就开倒车”","url":"https://ecnl.org/sites/default/files/2026-06/AI-Omnibus-analysis%20June%202026.pdf","detected":"2026-11-20"},{"key":"stk|wwf-ets|ets-2026","dossier":"ets-2026","source":"Stakeholder","kind":"stakeholder","date":"2026-07-17","text":"世界自然基金会欧洲政策办公室, 卡米耶·莫里: 回应 ETS 修订提案：决策者不应只听要求削弱 ETS 的行业游说，WWF 主张 2036 年前维持现行减排因子；环保组织估计提案将多允许约 20 亿吨 CO2 排放","url":"https://www.wwf.eu/?21171691%2Fmedia-advisory-commission-proposal-ets-review-july-2026=","detected":"2026-11-20"},{"key":"stk|acea-iaa-study|iaa","dossier":"iaa","source":"Stakeholder","kind":"stakeholder","date":"2026-09-29","text":"欧洲汽车制造商协会: 发布委托研究：即使欧洲电芯产能到 2032 年增至 306 GWh，仍无法满足 IAA“欧洲制造”需求，约 300 万辆车可能因此拿不到补贴","url":"https://www.electrive.com/2026/09/29/industrial-accelerator-act-industry-may-fail-to-meet-battery-demand-in-eu/","detected":"2026-11-20"},{"key":"stk|seeg-pv|csa2","dossier":"csa2","source":"Stakeholder","kind":"stakeholder","date":"2026-10-08","text":"欧委会智能能源专家组, 欧洲光伏产业协会, 欧洲电力行业联合会, 欧洲光伏制造商理事会: 欧委会智能能源专家组发布光伏网络安全建议：依据网络安全法 2.0 的标准，限制来自存在重大网络安全风险的第三国供应商的组件和软件，并延伸到户用市场；将光伏逆变器列为 CRA II 类重要产品（须第三方合格评定）；加强对大型电站逆变器通信的管控。报告未点名具体国家或企业","url":"https://www.pv-magazine.com/2026/10/08/eu-expert-group-urges-curbs-on-high-risk-solar-suppliers/","detected":"2026-11-20"},{"key":"stk|seeg-pv|cra","dossier":"cra","source":"Stakeholder","kind":"stakeholder","date":"2026-10-08","text":"欧委会智能能源专家组, 欧洲光伏产业协会, 欧洲电力行业联合会, 欧洲光伏制造商理事会: 欧委会智能能源专家组发布光伏网络安全建议：依据网络安全法 2.0 的标准，限制来自存在重大网络安全风险的第三国供应商的组件和软件，并延伸到户用市场；将光伏逆变器列为 CRA II 类重要产品（须第三方合格评定）；加强对大型电站逆变器通信的管控。报告未点名具体国家或企业","url":"https://www.pv-magazine.com/2026/10/08/eu-expert-group-urges-curbs-on-high-risk-solar-suppliers/","detected":"2026-11-20"},{"key":"stk|seeg-pv|nis2","dossier":"nis2","source":"Stakeholder","kind":"stakeholder","date":"2026-10-08","text":"欧委会智能能源专家组, 欧洲光伏产业协会, 欧洲电力行业联合会, 欧洲光伏制造商理事会: 欧委会智能能源专家组发布光伏网络安全建议：依据网络安全法 2.0 的标准，限制来自存在重大网络安全风险的第三国供应商的组件和软件，并延伸到户用市场；将光伏逆变器列为 CRA II 类重要产品（须第三方合格评定）；加强对大型电站逆变器通信的管控。报告未点名具体国家或企业","url":"https://www.pv-magazine.com/2026/10/08/eu-expert-group-urges-curbs-on-high-risk-solar-suppliers/","detected":"2026-11-20"},{"key":"stk|fr-de-auto-deal|co2-revision-2035","dossier":"co2-revision-2035","source":"Stakeholder","kind":"stakeholder","date":"2026-10-16","text":"弗里德里希·默茨, 埃马纽埃尔·马克龙, 德国政府, 法国政府: 在欧盟峰会期间达成法德汽车政策协议：2035 年减排 90% 但无需抵扣剩余 10%；插混车核算更宽松，效用系数 2030 年前不修订；购车补贴和公共采购仅限欧洲制造车辆，电池和关键零部件欧洲制造比例逐步提高（据报道电芯要求为 2028–29 年 10%、2030–31 年 20%、2032 年起 70%，各来源说法不一）","url":"https://www.aa.com.tr/en/europe/germany-france-agree-on-reform-of-european-automotive-policy/4090327","detected":"2026-11-20"},{"key":"stk|fr-de-auto-deal|iaa","dossier":"iaa","source":"Stakeholder","kind":"stakeholder","date":"2026-10-16","text":"弗里德里希·默茨, 埃马纽埃尔·马克龙, 德国政府, 法国政府: 在欧盟峰会期间达成法德汽车政策协议：2035 年减排 90% 但无需抵扣剩余 10%；插混车核算更宽松，效用系数 2030 年前不修订；购车补贴和公共采购仅限欧洲制造车辆，电池和关键零部件欧洲制造比例逐步提高（据报道电芯要求为 2028–29 年 10%、2030–31 年 20%、2032 年起 70%，各来源说法不一）","url":"https://www.aa.com.tr/en/europe/germany-france-agree-on-reform-of-european-automotive-policy/4090327","detected":"2026-11-20"},{"key":"stk|ep-875|co2-revision-2035","dossier":"co2-revision-2035","source":"Stakeholder","kind":"stakeholder","date":"2026-10-20","text":"EPP、S\u0026D、Renew 三大党团: 据《明镜周刊》报道，EPP、S\u0026D、Renew 三大党团就 2035 年较 2021 年减排 87.5% 达成一致","url":"https://www.electrive.com/2026/10/20/eu-parliament-mulls-watered-down-co%E2%82%82-reductions-for-cars-in-auto-package-debate/","detected":"2026-11-20"},{"key":"stk|te-fr-de|iaa","dossier":"iaa","source":"Stakeholder","kind":"stakeholder","date":"2026-11-18","text":"欧洲运输与环境联合会: 发布分析：法德汽车协议将使欧洲近 90% 规划中的电池产能面临风险，电池要求远低于现状（目前欧盟销售的电动车中已有超过 50% 电芯在欧洲制造）","url":"https://cleantechnica.com/2026/11/18/almost-90-of-europes-battery-production-at-risk-from-franco-german-car-deal","detected":"2026-11-20"},{"key":"stk|te-fr-de|co2-revision-2035","dossier":"co2-revision-2035","source":"Stakeholder","kind":"stakeholder","date":"2026-11-18","text":"欧洲运输与环境联合会: 发布分析：法德汽车协议将使欧洲近 90% 规划中的电池产能面临风险，电池要求远低于现状（目前欧盟销售的电动车中已有超过 50% 电芯在欧洲制造）","url":"https://cleantechnica.com/2026/11/18/almost-90-of-europes-battery-production-at-risk-from-franco-german-car-deal","detected":"2026-11-20"},{"key":"stk|recharge-black-mass|black-mass","dossier":"black-mass","source":"Stakeholder","kind":"stakeholder","date":"2026-07-15","text":"欧洲先进充电电池与锂电池协会: 发布行业指南《堵住黑粉漏洞，建设欧盟电池回收产业》，要求在循环经济法中统一黑粉定义与技术规格，防止黑粉以非危险废物等名义流出欧盟","url":"https://rechargebatteries.org/wp-content/uploads/2026/08/Closing-Black-Mass-Loopholes-Industry-guidance-July-2026.pdf","detected":"2026-11-20"},{"key":"stk|recharge-black-mass|cea","dossier":"cea","source":"Stakeholder","kind":"stakeholder","date":"2026-07-15","text":"欧洲先进充电电池与锂电池协会: 发布行业指南《堵住黑粉漏洞，建设欧盟电池回收产业》，要求在循环经济法中统一黑粉定义与技术规格，防止黑粉以非危险废物等名义流出欧盟","url":"https://rechargebatteries.org/wp-content/uploads/2026/08/Closing-Black-Mass-Loopholes-Industry-guidance-July-2026.pdf","detected":"2026-11-20"},{"key":"stk|recharge-black-mass|wsr","dossier":"wsr","source":"Stakeholder","kind":"stakeholder","date":"2026-07-15","text":"欧洲先进充电电池与锂电池协会: 发布行业指南《堵住黑粉漏洞，建设欧盟电池回收产业》，要求在循环经济法中统一黑粉定义与技术规格，防止黑粉以非危险废物等名义流出欧盟","url":"https://rechargebatteries.org/wp-content/uploads/2026/08/Closing-Black-Mass-Loopholes-Industry-guidance-July-2026.pdf","detected":"2026-11-20"}],"runs":[{"date":"2026-11-24T22:56:24Z","newItems":5,"baseline":false},{"date":"2026-11-23T23:38:32Z","newItems":1,"baseline":false},{"date":"2026-11-22T22:44:47Z","newItems":57,"baseline":false},{"date":"2026-11-21T22:47:29Z","newItems":0,"baseline":false},{"date":"2026-11-20T22:49:29Z","newItems":1,"baseline":false},{"date":"2026-11-20T18:51:12Z","newItems":0,"baseline":false},{"date":"2026-11-20T17:40:59Z","newItems":0,"baseline":false},{"date":"2026-11-20T16:45:36Z","newItems":0,"baseline":false},{"date":"2026-11-20T16:35:17Z","newItems":0,"baseline":false},{"date":"2026-11-20T15:39:27Z","newItems":0,"baseline":false},{"date":"2026-11-20T15:38:49Z","newItems":0,"baseline":false},{"date":"2026-11-20T14:12:03Z","newItems":1,"baseline":false},{"date":"2026-11-20T13:58:11Z","newItems":33,"baseline":false},{"date":"2026-11-19T22:45:51Z","newItems":0,"baseline":false},{"date":"2026-11-19T17:19:08Z","newItems":0,"baseline":false},{"date":"2026-11-19T17:12:40Z","newItems":0,"baseline":false},{"date":"2026-11-19T17:03:17","newItems":0,"baseline":false},{"date":"2026-11-20T00:34:21","newItems":0,"baseline":false},{"date":"2026-11-20T00:34:05","newItems":0,"baseline":true}]};
+window.CHANGES = {"changes":[{"key":"hys|19852","dossier":"ets","source":"HaveYourSay","kind":"initiative","date":"2026-11-24","text":"New initiative: Amendment to the Monitoring and Reporting Regulation","url":"https://ec.europa.eu/info/law/better-regulation/have-your-say/initiatives/19852_en","detected":"2026-11-24"},{"key":"hysstage|19852|PLANNING_WORKFLOW","dossier":"ets","source":"HaveYourSay","kind":"stage","date":"2026-11-19","text":"Amendment to the Monitoring and Reporting Regulation -\u003e stage PLANNING_WORKFLOW","url":"https://ec.europa.eu/info/law/better-regulation/have-your-say/initiatives/19852_en","detected":"2026-11-24"},{"key":"hyspub|19852|INIT_PLANNED","dossier":"ets","source":"HaveYourSay","kind":"publication","date":"2026-11-24","text":"Amendment to the Monitoring and Reporting Regulation: INIT_PLANNED published","url":"https://ec.europa.eu/info/law/better-regulation/have-your-say/initiatives/19852_en","detected":"2026-11-24"},{"key":"hysstage|19595|ISC_WORKFLOW","dossier":"nis2","source":"HaveYourSay","kind":"stage","date":"2026-11-24","text":"Common incident reporting templates under the NIS2 Directive -\u003e stage ISC_WORKFLOW","url":"https://ec.europa.eu/info/law/better-regulation/have-your-say/initiatives/19595_en","detected":"2026-11-24"},{"key":"hyspub|19595|REG_IMPL_DRAFT","dossier":"nis2","source":"HaveYourSay","kind":"publication","date":"2026-11-24","text":"Common incident reporting templates under the NIS2 Directive: REG_IMPL_DRAFT published","url":"https://ec.europa.eu/info/law/better-regulation/have-your-say/initiatives/19595_en","detected":"2026-11-24"},{"key":"status|2025/0420(COD)|Awaiting Parliament\u0027s position in 1st reading","dossier":"co2-revision-2035","source":"OEIL","kind":"status","date":"2026-11-23","text":"Procedure status: Awaiting Parliament\u0027s position in 1st reading","url":"https://oeil.europarl.europa.eu/oeil/en/procedure-file?reference=2025/0420(COD)","detected":"2026-11-23"},{"key":"ev|2025/0419(COD)|2025-12-17|Legislative proposal published","dossier":"cbam-downstream","source":"OEIL","kind":"event","date":"2025-12-17","text":"Legislative proposal published","url":"https://oeil.europarl.europa.eu/oeil/en/procedure-file?reference=2025/0419(COD)","detected":"2026-11-22"},{"key":"ev|2025/0419(COD)|2026-02-12|Committee referral announced in Parliament, 1st reading","dossier":"cbam-downstream","source":"OEIL","kind":"event","date":"2026-02-12","text":"Committee referral announced in Parliament, 1st reading","url":"https://oeil.europarl.europa.eu/oeil/en/procedure-file?reference=2025/0419(COD)","detected":"2026-11-22"},{"key":"ev|2025/0419(COD)|2026-07-06|Vote in committee, 1st reading","dossier":"cbam-downstream","source":"OEIL","kind":"event","date":"2026-07-06","text":"Vote in committee, 1st reading","url":"https://oeil.europarl.europa.eu/oeil/en/procedure-file?reference=2025/0419(COD)","detected":"2026-11-22"},{"key":"ev|2025/0419(COD)|2026-07-09|Committee report tabled for plenary, 1st reading","dossier":"cbam-downstream","source":"OEIL","kind":"event","date":"2026-07-09","text":"Committee report tabled for plenary, 1st reading","url":"https://oeil.europarl.europa.eu/oeil/en/procedure-file?reference=2025/0419(COD)","detected":"2026-11-22"},{"key":"ev|2025/0419(COD)|2026-09-14|Debate in Parliament","dossier":"cbam-downstream","source":"OEIL","kind":"event","date":"2026-09-14","text":"Debate in Parliament","url":"https://oeil.europarl.europa.eu/oeil/en/procedure-file?reference=2025/0419(COD)","detected":"2026-11-22"},{"key":"ev|2025/0419(COD)|2026-09-15|Decision by Parliament, 1st reading","dossier":"cbam-downstream","source":"OEIL","kind":"event","date":"2026-09-15","text":"Decision by Parliament, 1st reading","url":"https://oeil.europarl.europa.eu/oeil/en/procedure-file?reference=2025/0419(COD)","detected":"2026-11-22"},{"key":"ev|2025/0419(COD)|2026-09-15|Results of vote in Parliament","dossier":"cbam-downstream","source":"OEIL","kind":"event","date":"2026-09-15","text":"Results of vote in Parliament","url":"https://oeil.europarl.europa.eu/oeil/en/procedure-file?reference=2025/0419(COD)","detected":"2026-11-22"},{"key":"ev|2025/0419(COD)|2026-09-15|Matter referred back to the committee responsible for interinstitutional negotiations","dossier":"cbam-downstream","source":"OEIL","kind":"event","date":"2026-09-15","text":"Matter referred back to the committee responsible for interinstitutional negotiations","url":"https://oeil.europarl.europa.eu/oeil/en/procedure-file?reference=2025/0419(COD)","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EP|PE731.563|Committee draft report","dossier":"ai-act","source":"OEIL","kind":"document","date":"2022-04-20","text":"Committee draft report PE731.563","url":"https://www.europarl.europa.eu/doceo/document/CJ40-PR-731563_EN.html","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EP|PE699.056|Committee opinion","dossier":"ai-act","source":"OEIL","kind":"document","date":"2022-04-22","text":"Committee opinion ENVI PE699.056","url":"https://www.europarl.europa.eu/doceo/document/ENVI-AD-699056_EN.html","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EP|PE732.802|Amendments tabled in committee","dossier":"ai-act","source":"OEIL","kind":"document","date":"2022-06-10","text":"Amendments tabled in committee PE732.802","url":"https://www.europarl.europa.eu/doceo/document/CJ40-AM-732802_EN.html","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EP|PE732.836|Amendments tabled in committee","dossier":"ai-act","source":"OEIL","kind":"document","date":"2022-06-10","text":"Amendments tabled in committee PE732.836","url":"https://www.europarl.europa.eu/doceo/document/CJ40-AM-732836_EN.html","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EP|PE732.837|Amendments tabled in committee","dossier":"ai-act","source":"OEIL","kind":"document","date":"2022-06-10","text":"Amendments tabled in committee PE732.837","url":"https://www.europarl.europa.eu/doceo/document/CJ40-AM-732837_EN.html","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EP|PE732.838|Amendments tabled in committee","dossier":"ai-act","source":"OEIL","kind":"document","date":"2022-06-10","text":"Amendments tabled in committee PE732.838","url":"https://www.europarl.europa.eu/doceo/document/CJ40-AM-732838_EN.html","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EP|PE732.839|Amendments tabled in committee","dossier":"ai-act","source":"OEIL","kind":"document","date":"2022-06-10","text":"Amendments tabled in committee PE732.839","url":"https://www.europarl.europa.eu/doceo/document/CJ40-AM-732839_EN.html","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EP|PE732.840|Amendments tabled in committee","dossier":"ai-act","source":"OEIL","kind":"document","date":"2022-06-10","text":"Amendments tabled in committee PE732.840","url":"https://www.europarl.europa.eu/doceo/document/CJ40-AM-732840_EN.html","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EP|PE732.841|Amendments tabled in committee","dossier":"ai-act","source":"OEIL","kind":"document","date":"2022-06-10","text":"Amendments tabled in committee PE732.841","url":"https://www.europarl.europa.eu/doceo/document/CJ40-AM-732841_EN.html","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EP|PE732.843|Amendments tabled in committee","dossier":"ai-act","source":"OEIL","kind":"document","date":"2022-06-10","text":"Amendments tabled in committee PE732.843","url":"https://www.europarl.europa.eu/doceo/document/CJ40-AM-732843_EN.html","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EP|PE732.844|Amendments tabled in committee","dossier":"ai-act","source":"OEIL","kind":"document","date":"2022-06-10","text":"Amendments tabled in committee PE732.844","url":"https://www.europarl.europa.eu/doceo/document/CJ40-AM-732844_EN.html","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EP|PE719.801|Committee opinion","dossier":"ai-act","source":"OEIL","kind":"document","date":"2022-06-14","text":"Committee opinion ITRE PE719.801","url":"https://www.europarl.europa.eu/doceo/document/ITRE-AD-719801_EN.html","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EP|PE719.637|Committee opinion","dossier":"ai-act","source":"OEIL","kind":"document","date":"2022-06-16","text":"Committee opinion CULT PE719.637","url":"https://www.europarl.europa.eu/doceo/document/CULT-AD-719637_EN.html","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EP|PE730.085|Committee opinion","dossier":"ai-act","source":"OEIL","kind":"document","date":"2022-07-12","text":"Committee opinion TRAN PE730.085","url":"https://www.europarl.europa.eu/doceo/document/TRAN-AD-730085_EN.html","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EP|PE719.827|Committee opinion","dossier":"ai-act","source":"OEIL","kind":"document","date":"2022-09-12","text":"Committee opinion JURI PE719.827","url":"https://www.europarl.europa.eu/doceo/document/JURI-AD-719827_EN.html","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EP|A9-0188/2023|Committee report tabled for plenary, 1st reading/single reading","dossier":"ai-act","source":"OEIL","kind":"document","date":"2023-05-22","text":"Committee report tabled for plenary, 1st reading/single reading A9-0188/2023","url":"https://www.europarl.europa.eu/doceo/document/A-9-2023-0188_EN.html","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EP|T9-0236/2023|Text adopted by Parliament, partial vote at 1st reading/single reading","dossier":"ai-act","source":"OEIL","kind":"document","date":"2023-06-14","text":"Text adopted by Parliament, partial vote at 1st reading/single reading T9-0236/2023","url":"https://www.europarl.europa.eu/doceo/document/TA-9-2023-0236_EN.html","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EP|PE758.862|Text agreed during interinstitutional negotiations","dossier":"ai-act","source":"OEIL","kind":"document","date":"2024-02-02","text":"Text agreed during interinstitutional negotiations PE758.862","url":"https://www.europarl.europa.eu/RegData/commissions/libe/inag/2024/02-02/CJ40_AG(2024)758862_EN.docx","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EP|T9-0138/2024|Text adopted by Parliament, 1st reading/single reading","dossier":"ai-act","source":"OEIL","kind":"document","date":"2024-03-13","text":"Text adopted by Parliament, 1st reading/single reading T9-0138/2024","url":"https://www.europarl.europa.eu/doceo/document/TA-9-2024-0138_EN.html","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|CSL|GEDA/A/(2024)000753|Coreper letter confirming interinstitutional agreement","dossier":"ai-act","source":"OEIL","kind":"document","date":"2024-02-02","text":"Coreper letter confirming interinstitutional agreement GEDA/A/(2024)000753","url":"https://www.europarl.europa.eu/RegData/commissions/libe/lcag/2024/02-02/CJ40_LA(2024)000753_EN.pdf","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|CSL|00024/2024/LEX|Draft final act","dossier":"ai-act","source":"OEIL","kind":"document","date":"2024-06-13","text":"Draft final act 00024/2024/LEX","url":"https://www.consilium.europa.eu/EN/documents/public-register/public-register-search/?DocumentNumber=24%2F24\u0026DocumentTypes=LEGISLATIVE+ACTS+AND+OTHER+INSTRUMENTS","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EC|COM(2021)0206|Legislative proposal","dossier":"ai-act","source":"OEIL","kind":"document","date":"2021-04-21","text":"Legislative proposal COM(2021)0206","url":"http://www.europarl.europa.eu/RegData/docs_autres_institutions/commission_europeenne/com/2021/0206/COM_COM(2021)0206_EN.pdf","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EC|SEC(2021)0167|Document attached to the procedure","dossier":"ai-act","source":"OEIL","kind":"document","date":"2021-04-22","text":"Document attached to the procedure SEC(2021)0167","url":"https://eur-lex.europa.eu/smartapi/cgi/sga_doc?smartapi!celexplus!prod!DocNumber\u0026lg=EN\u0026type_doc=SECfinal\u0026an_doc=2021\u0026nu_doc=0167","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EC|SWD(2021)0084|Document attached to the procedure","dossier":"ai-act","source":"OEIL","kind":"document","date":"2021-04-22","text":"Document attached to the procedure SWD(2021)0084","url":"","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EC|SWD(2021)0085|Document attached to the procedure","dossier":"ai-act","source":"OEIL","kind":"document","date":"2021-04-22","text":"Document attached to the procedure SWD(2021)0085","url":"https://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=SWD:2021:0085:FIN:EN:PDF","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|EC|SP(2024)350|Commission response to text adopted in plenary","dossier":"ai-act","source":"OEIL","kind":"document","date":"2024-07-22","text":"Commission response to text adopted in plenary SP(2024)350","url":"https://data.europarl.europa.eu/distribution/doc/SP-2024-350-TA-9-2023-0236_en.docx","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|NP|COM(2021)0206|Contribution","dossier":"ai-act","source":"OEIL","kind":"document","date":"2021-06-11","text":"Contribution CZ_CHAMBER COM(2021)0206","url":"https://connectfolx.europarl.europa.eu/connefof/app/exp/COM(2021)0206","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|OTHER|CES2482/2021|EESC","dossier":"ai-act","source":"OEIL","kind":"document","date":"2021-09-22","text":"EESC Economic and Social Committee: opinion, report CES2482/2021","url":"https://dmsearch.eesc.europa.eu/search/public?k=(documenttype:AC)(documentnumber:2482)(documentyear:2021)(documentlanguage:EN)","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|OTHER|CDR2682/2021|CofR","dossier":"ai-act","source":"OEIL","kind":"document","date":"2021-12-02","text":"CofR Committee of the Regions: opinion CDR2682/2021","url":"https://dmsearch.cor.europa.eu/search/public?k=(documenttype:AC)(documentnumber:2682)(documentyear:2021)(documentlanguage:EN)","detected":"2026-11-22"},{"key":"doc|2021/0106(COD)|OTHER|CON/2021/0040 OJ C 115 29.12.2021, p. 0005|ECB","dossier":"ai-act","source":"OEIL","kind":"document","date":"2021-12-29","text":"ECB European Central Bank: opinion, guideline, report CON/2021/0040 OJ C 115 29.12.2021, p. 0005","url":"https://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=CELEX:52021AB0040:EN:NOT","detected":"2026-11-22"},{"key":"doc|2025/0359(COD)|EP|PE782.530|Committee draft report","dossier":"ai-omnibus","source":"OEIL","kind":"document","date":"2026-02-05","text":"Committee draft report PE782.530","url":"https://www.europarl.europa.eu/doceo/document/CJ40-PR-782530_EN.html","detected":"2026-11-22"},{"key":"doc|2025/0359(COD)|EP|PE784.274|Amendments tabled in committee","dossier":"ai-omnibus","source":"OEIL","kind":"document","date":"2026-02-14","text":"Amendments tabled in committee PE784.274","url":"https://www.europarl.europa.eu/doceo/document/CJ40-AM-784274_EN.html","detected":"2026-11-22"},{"key":"doc|2025/0359(COD)|EP|PE784.275|Amendments tabled in committee","dossier":"ai-omnibus","source":"OEIL","kind":"document","date":"2026-02-14","text":"Amendments tabled in committee PE784.275","url":"https://www.europarl.europa.eu/doceo/document/CJ40-AM-784275_EN.html","detected":"2026-11-22"},{"key":"doc|2025/0359(COD)|EP|PE784.309|Amendments tabled in committee","dossier":"ai-omnibus","source":"OEIL","kind":"document","date":"2026-02-14","text":"Amendments tabled in committee PE784.309","url":"https://www.europarl.europa.eu/doceo/document/CJ40-AM-784309_EN.html","detected":"2026-11-22"},{"key":"doc|2025/0359(COD)|EP|PE784.179|Committee opinion","dossier":"ai-omnibus","source":"OEIL","kind":"document","date":"2026-02-26","text":"Committee opinion JURI PE784.179","url":"https://www.europarl.europa.eu/doceo/document/JURI-AD-784179_EN.html","detected":"2026-11-22"},{"key":"doc|2025/0359(COD)|EP|PE784.261|Committee opinion","dossier":"ai-omnibus","source":"OEIL","kind":"document","date":"2026-03-06","text":"Committee opinion CULT PE784.261","url":"https://www.europarl.europa.eu/doceo/document/CULT-AD-784261_EN.html","detected":"2026-11-22"},{"key":"doc|2025/0359(COD)|EP|PE785.326|Specific opinion","dossier":"ai-omnibus","source":"OEIL","kind":"document","date":"2026-03-18","text":"Specific opinion TRAN PE785.326","url":"https://www.europarl.europa.eu/doceo/document/TRAN-AL-785326_EN.html","detected":"2026-11-22"},{"key":"doc|2025/0359(COD)|EP|A10-0073/2026|Committee report tabled for plenary, 1st reading/single reading","dossier":"ai-omnibus","source":"OEIL","kind":"document","date":"2026-03-19","text":"Committee report tabled for plenary, 1st reading/single reading A10-0073/2026","url":"https://www.europarl.europa.eu/doceo/document/A-10-2026-0073_EN.html","detected":"2026-11-22"},{"key":"doc|2025/0359(COD)|EP|T10-0098/2026|Text adopted by Parliament, partial vote at 1st reading/single reading","dossier":"ai-omnibus","source":"OEIL","kind":"document","date":"2026-03-26","text":"Text adopted by Parliament, partial vote at 1st reading/single reading T10-0098/2026","url":"https://www.europarl.europa.eu/doceo/document/TA-10-2026-0098_EN.html","detected":"2026-11-22"},{"key":"doc|2025/0359(COD)|EP|PE789.081|Text agreed during interinstitutional negotiations","dossier":"ai-omnibus","source":"OEIL","kind":"document","date":"2026-05-13","text":"Text agreed during interinstitutional negotiations PE789.081","url":"https://www.europarl.europa.eu/RegData/commissions/imco/inag/2026/05-13/CJ40_AG(2026)789081_EN.pdf","detected":"2026-11-22"},{"key":"doc|2025/0359(COD)|EP|T10-0198/2026|Text adopted by Parliament, 1st reading/single reading","dossier":"ai-omnibus","source":"OEIL","kind":"document","date":"2026-06-16","text":"Text adopted by Parliament, 1st reading/single reading T10-0198/2026","url":"https://www.europarl.europa.eu/doceo/document/TA-10-2026-0198_EN.html","detected":"2026-11-22"},{"key":"doc|2025/0359(COD)|CSL|GEDA/A/(2026)003414|Coreper letter confirming interinstitutional agreement","dossier":"ai-omnibus","source":"OEIL","kind":"document","date":"2026-05-13","text":"Coreper letter confirming interinstitutional agreement GEDA/A/(2026)003414","url":"https://www.europarl.europa.eu/RegData/commissions/imco/lcag/2026/05-13/CJ40_LA(2026)003414_EN.pdf","detected":"2026-11-22"},{"key":"doc|2025/0359(COD)|CSL|00030/2026/LEX|Draft final act","dossier":"ai-omnibus","source":"OEIL","kind":"document","date":"2026-07-03","text":"Draft final act 00030/2026/LEX","url":"https://www.consilium.europa.eu/EN/documents/public-register/public-register-search/?DocumentNumber=30%2F26\u0026DocumentTypes=LEGISLATIVE+ACTS+AND+OTHER+INSTRUMENTS","detected":"2026-11-22"},{"key":"doc|2025/0359(COD)|EC|COM(2025)0836|Legislative proposal","dossier":"ai-omnibus","source":"OEIL","kind":"document","date":"2025-11-19","text":"Legislative proposal COM(2025)0836","url":"https://www.europarl.europa.eu/RegData/docs_autres_institutions/commission_europeenne/com/2025/0836/COM_COM(2025)0836_EN.pdf","detected":"2026-11-22"},{"key":"doc|2025/0359(COD)|EC|SP(2026)09-01|Commission response to text adopted in plenary","dossier":"ai-omnibus","source":"OEIL","kind":"document","date":"2026-09-01","text":"Commission response to text adopted in plenary SP(2026)09-01","url":"https://data.europarl.europa.eu/distribution/doc/SP-2026-09-01-TA-10-2026-0198_en.pdf","detected":"2026-11-22"},{"key":"doc|2025/0359(COD)|NP|COM(2025)0836|Contribution","dossier":"ai-omnibus","source":"OEIL","kind":"document","date":"2026-02-13","text":"Contribution CZ_SENATE COM(2025)0836","url":"https://connectfolx.europarl.europa.eu/connefof/app/exp/COM(2025)0836","detected":"2026-11-22"},{"key":"doc|2025/0359(COD)|OTHER|CON/2026/0010 OJ OJ C 15.04.2026|ECB","dossier":"ai-omnibus","source":"OEIL","kind":"document","date":"2026-03-13","text":"ECB European Central Bank: opinion, guideline, report CON/2026/0010 OJ OJ C 15.04.2026","url":"https://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=CELEX:52026AB0010:EN:NOT","detected":"2026-11-22"},{"key":"doc|2025/0359(COD)|OTHER|CES3929/2025|EESC","dossier":"ai-omnibus","source":"OEIL","kind":"document","date":"2026-03-18","text":"EESC Economic and Social Committee: opinion, report CES3929/2025","url":"https://dmsearch.eesc.europa.eu/search/public?k=(documenttype:AC)(documentnumber:3929)(documentyear:2025)(documentlanguage:EN)","detected":"2026-11-22"},{"key":"doc|2025/0359(COD)|OTHER|CDR4240/2025|CofR","dossier":"ai-omnibus","source":"OEIL","kind":"document","date":"2026-05-07","text":"CofR Committee of the Regions: opinion CDR4240/2025","url":"https://dmsearch.cor.europa.eu/search/public?k=(documenttype:AC)(documentnumber:4240)(documentyear:2025)(documentlanguage:EN)","detected":"2026-11-22"},{"key":"doc|2026/0011(COD)|EP|PE796.192|Committee opinion","dossier":"csa2","source":"OEIL","kind":"document","date":"2026-11-13","text":"Committee opinion IMCO PE796.192","url":"https://www.europarl.europa.eu/doceo/document/IMCO-AD-796192_EN.html","detected":"2026-11-20"},{"key":"act|32026R2562","dossier":"ets","source":"EUR-Lex","kind":"implementing","date":"2026-11-19","text":"Commission Implementing Regulation (EU) 2026/2562 of 19 November 2026 amending Implementing Regulation (EU) 2023/2297 as regards the list of neighbouring container transhipment ports","url":"https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32026R2562","detected":"2026-11-20"},{"key":"stk|draghi-report|nzia","dossier":"nzia","source":"Stakeholder","kind":"stakeholder","date":"2024-09-09","text":"马里奥·德拉吉: 发布《欧洲竞争力的未来》报告，呼吁以产业政策支持电池等清洁技术制造、降低能源价格、简化监管","url":"https://commission.europa.eu/topics/eu-competitiveness/draghi-report_en","detected":"2026-11-20"},{"key":"stk|draghi-report|iaa","dossier":"iaa","source":"Stakeholder","kind":"stakeholder","date":"2024-09-09","text":"马里奥·德拉吉: 发布《欧洲竞争力的未来》报告，呼吁以产业政策支持电池等清洁技术制造、降低能源价格、简化监管","url":"https://commission.europa.eu/topics/eu-competitiveness/draghi-report_en","detected":"2026-11-20"},{"key":"stk|draghi-report|batteries","dossier":"batteries","source":"Stakeholder","kind":"stakeholder","date":"2024-09-09","text":"马里奥·德拉吉: 发布《欧洲竞争力的未来》报告，呼吁以产业政策支持电池等清洁技术制造、降低能源价格、简化监管","url":"https://commission.europa.eu/topics/eu-competitiveness/draghi-report_en","detected":"2026-11-20"},{"key":"stk|draghi-report|emd-reg","dossier":"emd-reg","source":"Stakeholder","kind":"stakeholder","date":"2024-09-09","text":"马里奥·德拉吉: 发布《欧洲竞争力的未来》报告，呼吁以产业政策支持电池等清洁技术制造、降低能源价格、简化监管","url":"https://commission.europa.eu/topics/eu-competitiveness/draghi-report_en","detected":"2026-11-20"},{"key":"stk|kristersson-pause|ai-act","dossier":"ai-act","source":"Stakeholder","kind":"stakeholder","date":"2025-06-01","text":"乌尔夫·克里斯特松: 成为首位公开支持暂停实施 AI 法的欧盟国家首脑，理由是共同标准尚未就绪","url":"https://www.biometricupdate.com/202506/should-the-eu-put-a-pause-on-rolling-out-the-ai-act","detected":"2026-11-20"},{"key":"stk|schildt-letter|ai-act","dossier":"ai-act","source":"Stakeholder","kind":"stakeholder","date":"2025-06-30","text":"约翰内斯·希尔特: 起草第二封公开信（Sifted 刊发），称 AI 法是“仓促的定时炸弹”，要求暂停实施并制定可行的实施计划","url":"https://sifted.eu/articles/ai-act-news-startups-vcs-europe-pause-letter","detected":"2026-11-20"},{"key":"stk|ai-champions-letter|ai-act","dossier":"ai-act","source":"Stakeholder","kind":"stakeholder","date":"2025-07-03","text":"欧洲 AI 冠军倡议: 约 50 家成员企业致信冯德莱恩，要求对 AI 法关键义务“停止时钟”两年，直到标准和实施指南就绪","url":"https://www.theregister.com/2025/07/04/eu_businesses_push_for_freedom","detected":"2026-11-20"},{"key":"stk|ai-champions-letter|ai-omnibus","dossier":"ai-omnibus","source":"Stakeholder","kind":"stakeholder","date":"2025-07-03","text":"欧洲 AI 冠军倡议: 约 50 家成员企业致信冯德莱恩，要求对 AI 法关键义务“停止时钟”两年，直到标准和实施指南就绪","url":"https://www.theregister.com/2025/07/04/eu_businesses_push_for_freedom","detected":"2026-11-20"},{"key":"stk|de-it-letter-2035|co2-revision-2035","dossier":"co2-revision-2035","source":"Stakeholder","kind":"stakeholder","date":"2025-10-07","text":"德国政府, 意大利政府: 德国和意大利联名致函，要求 2035 年后高效内燃机仍可销售","url":"https://www.euinsider.eu/news/eu-2035-engine-ban-parliament-vote-2026","detected":"2026-11-20"},{"key":"stk|acea-vda-2035|co2-revision-2035","dossier":"co2-revision-2035","source":"Stakeholder","kind":"stakeholder","date":"2025-12-16","text":"欧洲汽车制造商协会, 德国汽车工业协会: 对欧委会 2035 年修订提案表示不满：不支持用低碳钢、可再生燃料抵扣剩余 10% 的附加条件","url":"https://www.euinsider.eu/news/eu-2035-engine-ban-parliament-vote-2026","detected":"2026-11-20"},{"key":"stk|ms10-afir|afir","dossier":"afir","source":"Stakeholder","kind":"stakeholder","date":"2025-12-01","text":"十国联盟（AFIR）: 十个成员国要求在完成 AFIR 目标上获得更多灵活性","url":"https://www.clecat.org/en/news/newsletters/call-for-evidence-on-the-upcoming-review-of-the-al","detected":"2026-11-20"},{"key":"stk|virkkunen-inverters|csa2","dossier":"csa2","source":"Stakeholder","kind":"stakeholder","date":"2026-01-20","text":"汉娜·维尔库宁: 发布网络安全法 2.0 提案时表示，依赖极少数光伏逆变器供应商“可能构成重大安全风险”","url":"https://www.pv-magazine.com/2026/01/20/eu-to-ban-chinese-inverters-commission-proposal-in-cybersecurity-mulls-high-risk-vendors-list/","detected":"2026-11-20"},{"key":"stk|eurobat-sejourne|iaa","dossier":"iaa","source":"Stakeholder","kind":"stakeholder","date":"2026-02-25","text":"欧洲汽车与工业电池制造商协会: IAA 提案发布前致函欧委会执行副主席塞茹尔内（Séjourné），提出电池行业诉求","url":"https://www.eurobat.org/wp-content/uploads/2026/03/2026.02.25-EUROBAT-letter-to-Mr-Stephane-Sejourne-IAA-Final-1.pdf","detected":"2026-11-20"},{"key":"stk|ese-iaa|iaa","dossier":"iaa","source":"Stakeholder","kind":"stakeholder","date":"2026-03-05","text":"欧洲储能协会: IAA 提案发布次日发表声明：欢迎提案，但警告储能电池原产地要求和储能系统 \u003e1MWh 须用欧盟制造 BMS 等条款可能拖慢部署，要求重大修改","url":"https://energystorageeurope.eu/wp-content/uploads/2026/04/2026.03.05-Press-Release_Energy-Storage-Europe_Industrial-Accelerator-Act.pdf","detected":"2026-11-20"},{"key":"stk|spe-iaa|iaa","dossier":"iaa","source":"Stakeholder","kind":"stakeholder","date":"2026-03-05","text":"欧洲光伏产业协会: 欢迎 IAA，称其开启了欧洲光伏制造的“新时代”","url":"https://www.solarpowereurope.org/press-releases/industrial-accelerator-act-marks-new-era-for-solar-manufacturing-in-europe","detected":"2026-11-20"},{"key":"stk|eurobat-annex2|iaa","dossier":"iaa","source":"Stakeholder","kind":"stakeholder","date":"2026-03-15","text":"欧洲汽车与工业电池制造商协会: 要求紧急澄清 IAA 附件二：储能电池公共采购的原产地要求似乎排除了欧盟生产的铅基和镍基电池系统","url":"https://www.eurobat.org/resource/industrial-accelerator-act-annex-ii-excludes-critical-eu-produced-lead-based-and-nickel-based-battery-systems-from-public-procurement/","detected":"2026-11-20"},{"key":"stk|eurelectric-afir|afir","dossier":"afir","source":"Stakeholder","kind":"stakeholder","date":"2026-03-15","text":"欧洲电力行业联合会: 发布 AFIR 审查立场文件：《完善而非推倒重来》","url":"https://www.eurelectric.org/wp-content/uploads/2026/03/Eurelectric-AFIR-position-paper-FINAL.pdf","detected":"2026-11-20"},{"key":"stk|upholding-afir|afir","dossier":"afir","source":"Stakeholder","kind":"stakeholder","date":"2026-03-15","text":"欧洲电动出行协会: 联名信《维护 AFIR》：反对在审查中降低目标，要求加强资金支持和去风险工具","url":"https://www.emobilityeurope.org/wp-content/uploads/2026/03/Joint-letter-Upholding-AFIR-Strengthening-funding-and-derisking-to-ensure-delivery_final.pdf","detected":"2026-11-20"},{"key":"stk|esmc-funding|csa2","dossier":"csa2","source":"Stakeholder","kind":"stakeholder","date":"2026-04-23","text":"欧洲光伏制造商理事会: 欢迎欧委会决定：使用高风险供应商逆变器的光伏项目不得获得欧盟资金（与欧盟电网相连的项目须在 2027-04-15 前逐步替换）","url":"https://www.pv-magazine.com/2026/04/23/eu-moves-to-restrict-funding-for-projects-using-inverters-from-high-risk-suppliers/","detected":"2026-11-20"},{"key":"stk|ecnl-omnibus|ai-omnibus","dossier":"ai-omnibus","source":"Stakeholder","kind":"stakeholder","date":"2026-06-01","text":"欧洲非营利法律中心: 发布分析报告，称 AI 简化条例是“在保障措施生效前就开倒车”","url":"https://ecnl.org/sites/default/files/2026-06/AI-Omnibus-analysis%20June%202026.pdf","detected":"2026-11-20"},{"key":"stk|wwf-ets|ets-2026","dossier":"ets-2026","source":"Stakeholder","kind":"stakeholder","date":"2026-07-17","text":"世界自然基金会欧洲政策办公室, 卡米耶·莫里: 回应 ETS 修订提案：决策者不应只听要求削弱 ETS 的行业游说，WWF 主张 2036 年前维持现行减排因子；环保组织估计提案将多允许约 20 亿吨 CO2 排放","url":"https://www.wwf.eu/?21171691%2Fmedia-advisory-commission-proposal-ets-review-july-2026=","detected":"2026-11-20"},{"key":"stk|acea-iaa-study|iaa","dossier":"iaa","source":"Stakeholder","kind":"stakeholder","date":"2026-09-29","text":"欧洲汽车制造商协会: 发布委托研究：即使欧洲电芯产能到 2032 年增至 306 GWh，仍无法满足 IAA“欧洲制造”需求，约 300 万辆车可能因此拿不到补贴","url":"https://www.electrive.com/2026/09/29/industrial-accelerator-act-industry-may-fail-to-meet-battery-demand-in-eu/","detected":"2026-11-20"},{"key":"stk|seeg-pv|csa2","dossier":"csa2","source":"Stakeholder","kind":"stakeholder","date":"2026-10-08","text":"欧委会智能能源专家组, 欧洲光伏产业协会, 欧洲电力行业联合会, 欧洲光伏制造商理事会: 欧委会智能能源专家组发布光伏网络安全建议：依据网络安全法 2.0 的标准，限制来自存在重大网络安全风险的第三国供应商的组件和软件，并延伸到户用市场；将光伏逆变器列为 CRA II 类重要产品（须第三方合格评定）；加强对大型电站逆变器通信的管控。报告未点名具体国家或企业","url":"https://www.pv-magazine.com/2026/10/08/eu-expert-group-urges-curbs-on-high-risk-solar-suppliers/","detected":"2026-11-20"},{"key":"stk|seeg-pv|cra","dossier":"cra","source":"Stakeholder","kind":"stakeholder","date":"2026-10-08","text":"欧委会智能能源专家组, 欧洲光伏产业协会, 欧洲电力行业联合会, 欧洲光伏制造商理事会: 欧委会智能能源专家组发布光伏网络安全建议：依据网络安全法 2.0 的标准，限制来自存在重大网络安全风险的第三国供应商的组件和软件，并延伸到户用市场；将光伏逆变器列为 CRA II 类重要产品（须第三方合格评定）；加强对大型电站逆变器通信的管控。报告未点名具体国家或企业","url":"https://www.pv-magazine.com/2026/10/08/eu-expert-group-urges-curbs-on-high-risk-solar-suppliers/","detected":"2026-11-20"},{"key":"stk|seeg-pv|nis2","dossier":"nis2","source":"Stakeholder","kind":"stakeholder","date":"2026-10-08","text":"欧委会智能能源专家组, 欧洲光伏产业协会, 欧洲电力行业联合会, 欧洲光伏制造商理事会: 欧委会智能能源专家组发布光伏网络安全建议：依据网络安全法 2.0 的标准，限制来自存在重大网络安全风险的第三国供应商的组件和软件，并延伸到户用市场；将光伏逆变器列为 CRA II 类重要产品（须第三方合格评定）；加强对大型电站逆变器通信的管控。报告未点名具体国家或企业","url":"https://www.pv-magazine.com/2026/10/08/eu-expert-group-urges-curbs-on-high-risk-solar-suppliers/","detected":"2026-11-20"},{"key":"stk|fr-de-auto-deal|co2-revision-2035","dossier":"co2-revision-2035","source":"Stakeholder","kind":"stakeholder","date":"2026-10-16","text":"弗里德里希·默茨, 埃马纽埃尔·马克龙, 德国政府, 法国政府: 在欧盟峰会期间达成法德汽车政策协议：2035 年减排 90% 但无需抵扣剩余 10%；插混车核算更宽松，效用系数 2030 年前不修订；购车补贴和公共采购仅限欧洲制造车辆，电池和关键零部件欧洲制造比例逐步提高（据报道电芯要求为 2028–29 年 10%、2030–31 年 20%、2032 年起 70%，各来源说法不一）","url":"https://www.aa.com.tr/en/europe/germany-france-agree-on-reform-of-european-automotive-policy/4090327","detected":"2026-11-20"},{"key":"stk|fr-de-auto-deal|iaa","dossier":"iaa","source":"Stakeholder","kind":"stakeholder","date":"2026-10-16","text":"弗里德里希·默茨, 埃马纽埃尔·马克龙, 德国政府, 法国政府: 在欧盟峰会期间达成法德汽车政策协议：2035 年减排 90% 但无需抵扣剩余 10%；插混车核算更宽松，效用系数 2030 年前不修订；购车补贴和公共采购仅限欧洲制造车辆，电池和关键零部件欧洲制造比例逐步提高（据报道电芯要求为 2028–29 年 10%、2030–31 年 20%、2032 年起 70%，各来源说法不一）","url":"https://www.aa.com.tr/en/europe/germany-france-agree-on-reform-of-european-automotive-policy/4090327","detected":"2026-11-20"},{"key":"stk|ep-875|co2-revision-2035","dossier":"co2-revision-2035","source":"Stakeholder","kind":"stakeholder","date":"2026-10-20","text":"EPP、S\u0026D、Renew 三大党团: 据《明镜周刊》报道，EPP、S\u0026D、Renew 三大党团就 2035 年较 2021 年减排 87.5% 达成一致","url":"https://www.electrive.com/2026/10/20/eu-parliament-mulls-watered-down-co%E2%82%82-reductions-for-cars-in-auto-package-debate/","detected":"2026-11-20"},{"key":"stk|te-fr-de|iaa","dossier":"iaa","source":"Stakeholder","kind":"stakeholder","date":"2026-11-18","text":"欧洲运输与环境联合会: 发布分析：法德汽车协议将使欧洲近 90% 规划中的电池产能面临风险，电池要求远低于现状（目前欧盟销售的电动车中已有超过 50% 电芯在欧洲制造）","url":"https://cleantechnica.com/2026/11/18/almost-90-of-europes-battery-production-at-risk-from-franco-german-car-deal","detected":"2026-11-20"},{"key":"stk|te-fr-de|co2-revision-2035","dossier":"co2-revision-2035","source":"Stakeholder","kind":"stakeholder","date":"2026-11-18","text":"欧洲运输与环境联合会: 发布分析：法德汽车协议将使欧洲近 90% 规划中的电池产能面临风险，电池要求远低于现状（目前欧盟销售的电动车中已有超过 50% 电芯在欧洲制造）","url":"https://cleantechnica.com/2026/11/18/almost-90-of-europes-battery-production-at-risk-from-franco-german-car-deal","detected":"2026-11-20"},{"key":"stk|recharge-black-mass|black-mass","dossier":"black-mass","source":"Stakeholder","kind":"stakeholder","date":"2026-07-15","text":"欧洲先进充电电池与锂电池协会: 发布行业指南《堵住黑粉漏洞，建设欧盟电池回收产业》，要求在循环经济法中统一黑粉定义与技术规格，防止黑粉以非危险废物等名义流出欧盟","url":"https://rechargebatteries.org/wp-content/uploads/2026/08/Closing-Black-Mass-Loopholes-Industry-guidance-July-2026.pdf","detected":"2026-11-20"},{"key":"stk|recharge-black-mass|cea","dossier":"cea","source":"Stakeholder","kind":"stakeholder","date":"2026-07-15","text":"欧洲先进充电电池与锂电池协会: 发布行业指南《堵住黑粉漏洞，建设欧盟电池回收产业》，要求在循环经济法中统一黑粉定义与技术规格，防止黑粉以非危险废物等名义流出欧盟","url":"https://rechargebatteries.org/wp-content/uploads/2026/08/Closing-Black-Mass-Loopholes-Industry-guidance-July-2026.pdf","detected":"2026-11-20"},{"key":"stk|recharge-black-mass|wsr","dossier":"wsr","source":"Stakeholder","kind":"stakeholder","date":"2026-07-15","text":"欧洲先进充电电池与锂电池协会: 发布行业指南《堵住黑粉漏洞，建设欧盟电池回收产业》，要求在循环经济法中统一黑粉定义与技术规格，防止黑粉以非危险废物等名义流出欧盟","url":"https://rechargebatteries.org/wp-content/uploads/2026/08/Closing-Black-Mass-Loopholes-Industry-guidance-July-2026.pdf","detected":"2026-11-20"}],"runs":[{"date":"2026-11-25T02:03:43Z","newItems":0,"baseline":false},{"date":"2026-11-24T22:56:24Z","newItems":5,"baseline":false},{"date":"2026-11-23T23:38:32Z","newItems":1,"baseline":false},{"date":"2026-11-22T22:44:47Z","newItems":57,"baseline":false},{"date":"2026-11-21T22:47:29Z","newItems":0,"baseline":false},{"date":"2026-11-20T22:49:29Z","newItems":1,"baseline":false},{"date":"2026-11-20T18:51:12Z","newItems":0,"baseline":false},{"date":"2026-11-20T17:40:59Z","newItems":0,"baseline":false},{"date":"2026-11-20T16:45:36Z","newItems":0,"baseline":false},{"date":"2026-11-20T16:35:17Z","newItems":0,"baseline":false},{"date":"2026-11-20T15:39:27Z","newItems":0,"baseline":false},{"date":"2026-11-20T15:38:49Z","newItems":0,"baseline":false},{"date":"2026-11-20T14:12:03Z","newItems":1,"baseline":false},{"date":"2026-11-20T13:58:11Z","newItems":33,"baseline":false},{"date":"2026-11-19T22:45:51Z","newItems":0,"baseline":false},{"date":"2026-11-19T17:19:08Z","newItems":0,"baseline":false},{"date":"2026-11-19T17:12:40Z","newItems":0,"baseline":false},{"date":"2026-11-19T17:03:17","newItems":0,"baseline":false},{"date":"2026-11-20T00:34:21","newItems":0,"baseline":false},{"date":"2026-11-20T00:34:05","newItems":0,"baseline":true}]};
 
 </script>
 <script>
@@ -6580,6 +7486,587 @@ window.IMPACTS = {
    "support": [],
    "actions": []
   }
+ },
+ "uk-zev": {
+  "chain": "ZEV 比例逐年提高 → 车企必须多卖纯电车或购买额度 → 纯电车和动力电池需求被托底，额度在车企之间流动",
+  "auto": {
+   "level": "high",
+   "levelNote": "在英国注册新车的车企直接承担年度配额义务",
+   "segments": [
+    "整车出口",
+    "英国销售"
+   ],
+   "compliance": [
+    "每年零排放车占新注册量须达标：乘用车 2026 年 33%，2030 年 80%；未达标按 £12,000/辆缴纳合规款",
+    "可通过储蓄、借用、CO2 转换和交易履约；须按要求向主管部门报告注册数据"
+   ],
+   "access": [
+    "纯电车型多的中国品牌合规压力小，还可出售富余额度",
+    "以燃油车和混动为主的车企须购买额度或接受罚款，可能压低燃油车在英供应"
+   ],
+   "support": [
+    "额度交易为纯电车企带来额外收入，有利于在英定价"
+   ],
+   "actions": [
+    "测算每年可出售的额度和价格区间，与传统车企洽谈额度交易",
+    "跟踪 2026 年审查结论，评估 2027 年后目标是否调整"
+   ]
+  },
+  "storage": {
+   "level": "none",
+   "levelNote": "对储能企业无直接影响",
+   "segments": [],
+   "compliance": [],
+   "access": [],
+   "support": [],
+   "actions": []
+  },
+  "upstream": {
+   "level": "low",
+   "levelNote": "间接影响：英国电动车产量和电池需求的政策基础",
+   "segments": [
+    "正负极材料",
+    "锂盐"
+   ],
+   "compliance": [],
+   "access": [
+    "配额托底英国电池需求，但英国本土电池产能有限，材料需求更多体现为对整车和电池进口"
+   ],
+   "support": [],
+   "actions": [
+    "关注英国电池工厂（如在建超级工厂）的材料本地采购需求"
+   ]
+  }
+ },
+ "uk-ecg": {
+  "chain": "补贴按生产碳排放分档 → 车企要求电池供应商提供电芯生产地和用电数据 → 低碳电芯和低碳组装地获得价格优势",
+  "auto": {
+   "level": "high",
+   "levelNote": "直接决定 £37,000 以下纯电车型能否享受最高 £3,750 补贴",
+   "segments": [
+    "整车出口",
+    "英国销售"
+   ],
+   "compliance": [
+    "逐款车型向 OZEV 申请资格，提交型式认证、质保、电池衰减和生产碳排放证据（英文）",
+    "生产商须持有经核实的 SBTi 目标或 TPI 评估 4 级以上"
+   ],
+   "access": [
+    "整车组装地或电芯生产地碳排放超阈值的车型无法获得补贴，在同价位竞争中处于劣势"
+   ],
+   "support": [
+    "满足条件的车型可获 £1,500–£3,750 补贴，直接降低消费者购车成本"
+   ],
+   "actions": [
+    "逐款评估车型的补贴资格和档位，必要时调整供货基地",
+    "尽早申请 SBTi 核实或提升 TPI 评级"
+   ]
+  },
+  "storage": {
+   "level": "none",
+   "levelNote": "对储能企业无直接影响",
+   "segments": [],
+   "compliance": [],
+   "access": [],
+   "support": [],
+   "actions": []
+  },
+  "upstream": {
+   "level": "low",
+   "levelNote": "间接影响：补贴看的是电芯生产地，材料环节的碳排放目前不在门槛内",
+   "segments": [
+    "正负极材料"
+   ],
+   "compliance": [],
+   "access": [],
+   "support": [
+    "电芯企业转向低碳生产地时，可能带动材料就近配套"
+   ],
+   "actions": [
+    "关注客户电芯产能向低碳地区转移的计划"
+   ]
+  }
+ },
+ "uk-roo": {
+  "chain": "原产地规则收紧 → 整车厂要求电池包和电芯具备英欧原产资格 → 亚洲进口电芯配套的车辆面临 10% 关税，本地电池产能需求上升",
+  "auto": {
+   "level": "high",
+   "levelNote": "在英国或欧盟生产、并在英欧之间销售的电动车直接受影响",
+   "segments": [
+    "在欧整车生产",
+    "英国销售",
+    "供应链采购"
+   ],
+   "compliance": [
+    "2027 年起按最终规则核算每款车型的原产资格，向进口方出具原产地声明"
+   ],
+   "access": [
+    "电池非原产的车型在英欧之间失去零关税，须缴纳 10% 关税"
+   ],
+   "support": [
+    "在英国或欧盟本地采购电池的车型可继续零关税"
+   ],
+   "actions": [
+    "2026 年底前完成在产车型的原产资格测算",
+    "与电池供应商确认 2027 年后的本地化供货方案"
+   ]
+  },
+  "storage": {
+   "level": "low",
+   "levelNote": "规则针对车辆及车用动力电池，储能电池不在这几个特定规则范围内",
+   "segments": [
+    "储能系统集成"
+   ],
+   "compliance": [],
+   "access": [
+    "固定式储能电池适用一般原产地规则，影响有限（待核实）"
+   ],
+   "support": [],
+   "actions": []
+  },
+  "upstream": {
+   "level": "medium",
+   "levelNote": "电池原产资格的计算会追溯到正极活性材料等关键部件",
+   "segments": [
+    "正极材料",
+    "电芯部件"
+   ],
+   "compliance": [
+    "向英欧电池厂供货时可能需要提供材料原产和价值数据"
+   ],
+   "access": [
+    "英欧本地材料更有利于客户的电池满足原产规则"
+   ],
+   "support": [
+    "在英欧本地设立材料产能可获得订单优势"
+   ],
+   "actions": [
+    "了解客户按最终规则核算原产资格所需的数据"
+   ]
+  }
+ },
+ "uk-cbam": {
+  "chain": "进口铝材、钢材按隐含排放征税 → 在英加工企业采购成本上升 → 低碳或欧盟来源的材料更有竞争力",
+  "auto": {
+   "level": "low",
+   "levelNote": "整车和零部件不在范围内，在英工厂进口钢铝原料时受影响",
+   "segments": [
+    "在英整车生产",
+    "供应链采购"
+   ],
+   "compliance": [],
+   "access": [
+    "在英工厂进口钢铝原料成本上升"
+   ],
+   "support": [],
+   "actions": [
+    "核对在英工厂进口原料的 CBAM 范围"
+   ]
+  },
+  "storage": {
+   "level": "low",
+   "levelNote": "储能产品不在范围内，进口钢结构、铝材时受影响",
+   "segments": [
+    "储能系统集成"
+   ],
+   "compliance": [],
+   "access": [
+    "集装箱式储能所用钢结构如单独进口可能在范围内（待核实）"
+   ],
+   "support": [],
+   "actions": []
+  },
+  "upstream": {
+   "level": "high",
+   "levelNote": "出口英国的铝、钢产品直接受影响",
+   "segments": [
+    "铝箔/铝材",
+    "钢材",
+    "对英出口"
+   ],
+   "compliance": [
+    "向英国进口商提供按英国规则计算的隐含排放数据，必要时经核查",
+    "海外设施须按 HMRC 指南监测排放"
+   ],
+   "access": [
+    "无法提供实际排放数据时按默认值计税，价格竞争力下降",
+    "欧盟产品将获豁免，中国产品相对劣势扩大"
+   ],
+   "support": [],
+   "actions": [
+    "按 HMRC 指南建立出口英国产品的排放监测",
+    "与英国客户约定排放数据和成本分摊"
+   ]
+  }
+ },
+ "uk-ets-link": {
+  "chain": "英欧碳市场挂钩 → 英国碳价向欧盟看齐、双方互免 CBAM → 英国产钢铝等进入欧盟免缴 CBAM，英国对欧生产基地价值上升",
+  "auto": {
+   "level": "low",
+   "levelNote": "整车生产不在碳市场覆盖范围，影响体现为电价和钢铝成本",
+   "segments": [
+    "在英整车生产"
+   ],
+   "compliance": [],
+   "access": [],
+   "support": [
+    "英国产钢铝零部件出口欧盟时免缴欧盟 CBAM"
+   ],
+   "actions": []
+  },
+  "storage": {
+   "level": "low",
+   "levelNote": "间接影响：碳价影响英国电价和储能套利空间",
+   "segments": [
+    "储能运营"
+   ],
+   "compliance": [],
+   "access": [],
+   "support": [
+    "碳价上升通常拉大峰谷价差，利好储能收益（间接）"
+   ],
+   "actions": []
+  },
+  "upstream": {
+   "level": "medium",
+   "levelNote": "英国产铝、钢等出口欧盟将免缴欧盟 CBAM",
+   "segments": [
+    "铝材",
+    "钢材",
+    "在英设厂"
+   ],
+   "compliance": [],
+   "access": [
+    "在英国生产的 CBAM 商品进入欧盟更具成本优势，从中国直接出口欧盟则无此豁免"
+   ],
+   "support": [
+    "在英国设立铝、钢等加工产能可同时覆盖英欧市场"
+   ],
+   "actions": [
+    "评估英国作为对欧材料加工基地的可行性"
+   ]
+  }
+ },
+ "uk-batteries": {
+  "chain": "大不列颠旧规则与北爱尔兰欧盟规则并存 → 电池企业维持两套合规 → 全英统一制度出台后向欧盟新电池法看齐",
+  "auto": {
+   "level": "medium",
+   "levelNote": "车企作为动力电池投放主体时承担生产者责任",
+   "segments": [
+    "整车出口",
+    "英国销售"
+   ],
+   "compliance": [
+    "在英销售电动车时，须为车内动力电池履行生产者登记和回收义务（视进口安排而定）",
+    "在北爱尔兰销售时须满足欧盟新电池法要求"
+   ],
+   "access": [],
+   "support": [],
+   "actions": [
+    "确认英国进口商或授权方承担电池生产者责任的安排"
+   ]
+  },
+  "storage": {
+   "level": "high",
+   "levelNote": "储能电池属于工业电池，直接受管",
+   "segments": [
+    "储能系统集成",
+    "户用/工商业储能",
+    "对英出口"
+   ],
+   "compliance": [
+    "大不列颠：作为工业电池生产者登记，承担回收义务",
+    "北爱尔兰：满足欧盟新电池法对固定式储能的安全、性能和护照要求"
+   ],
+   "access": [
+    "全英统一制度可能引入欧盟式的固定式储能安全和性能要求"
+   ],
+   "support": [],
+   "actions": [
+    "跟踪全英统一制度咨询，评估对储能产品的新增要求"
+   ]
+  },
+  "upstream": {
+   "level": "low",
+   "levelNote": "间接影响：未来若引入再生料和尽调要求，将延伸至材料端",
+   "segments": [
+    "回收",
+    "正负极材料"
+   ],
+   "compliance": [],
+   "access": [],
+   "support": [],
+   "actions": [
+    "关注全英统一制度是否包括再生料最低含量和尽调要求"
+   ]
+  }
+ },
+ "uk-dpr": {
+  "chain": "英国研究产品护照 → 若与欧盟互通，企业一套数据覆盖两地 → 若另起格式，产业链须准备两套数据",
+  "auto": {
+   "level": "low",
+   "levelNote": "可能涉及车辆及电池的产品信息传递",
+   "segments": [
+    "整车出口"
+   ],
+   "compliance": [],
+   "access": [],
+   "support": [],
+   "actions": [
+    "跟踪政府回应"
+   ]
+  },
+  "storage": {
+   "level": "medium",
+   "levelNote": "储能电池同样需要电池护照，英国是否另设格式影响数据投入",
+   "segments": [
+    "储能系统集成"
+   ],
+   "compliance": [],
+   "access": [
+    "若英国另设格式，可能需要额外数据系统"
+   ],
+   "support": [],
+   "actions": [
+    "跟踪政府回应"
+   ]
+  },
+  "upstream": {
+   "level": "low",
+   "levelNote": "护照数据最终会追溯到材料来源和碳足迹",
+   "segments": [
+    "正负极材料"
+   ],
+   "compliance": [],
+   "access": [],
+   "support": [],
+   "actions": []
+  }
+ },
+ "uk-product-reg": {
+  "chain": "英国继续认可 CE 并获得跟进欧盟规则的授权 → 欧盟合规文件可用于大不列颠 → 降低英欧两地的重复认证成本",
+  "auto": {
+   "level": "low",
+   "levelNote": "整车适用型式认证体系，本法主要影响零部件和充电设备",
+   "segments": [
+    "零部件",
+    "充电设备"
+   ],
+   "compliance": [],
+   "access": [],
+   "support": [
+    "零部件和充电设备的 CE 文件可用于大不列颠（视领域而定）"
+   ],
+   "actions": []
+  },
+  "storage": {
+   "level": "medium",
+   "levelNote": "储能系统涉及电气安全、电磁兼容等产品规则",
+   "segments": [
+    "储能系统集成",
+    "户用/工商业储能"
+   ],
+   "compliance": [
+    "确认储能产品所涉领域（低电压、电磁兼容、无线电等）在大不列颠的标志要求"
+   ],
+   "access": [],
+   "support": [
+    "CE 继续认可，可沿用欧盟认证"
+   ],
+   "actions": [
+    "对照政府按领域列出的现行做法逐项确认"
+   ]
+  },
+  "upstream": {
+   "level": "none",
+   "levelNote": "对材料企业无直接影响",
+   "segments": [],
+   "compliance": [],
+   "access": [],
+   "support": [],
+   "actions": []
+  }
+ },
+ "uk-minerals": {
+  "chain": "英国推动本土加工和回收、限制单一来源 → 政府支持项目倾向多元化采购 → 中国材料企业在英合作或设厂的方式需要调整",
+  "auto": {
+   "level": "low",
+   "levelNote": "间接影响电池原材料来源",
+   "segments": [
+    "供应链采购"
+   ],
+   "compliance": [],
+   "access": [],
+   "support": [],
+   "actions": []
+  },
+  "storage": {
+   "level": "low",
+   "levelNote": "间接影响电池原材料来源",
+   "segments": [
+    "材料采购"
+   ],
+   "compliance": [],
+   "access": [],
+   "support": [],
+   "actions": []
+  },
+  "upstream": {
+   "level": "high",
+   "levelNote": "直接关系锂、镍、钴、石墨等材料的英国市场与投资环境",
+   "segments": [
+    "锂盐",
+    "正负极材料",
+    "回收",
+    "在英设厂"
+   ],
+   "compliance": [],
+   "access": [
+    "单一国家供应不超过 60% 的目标意味着来自中国的材料份额可能受到政策引导限制"
+   ],
+   "support": [
+    "在英国设立加工或回收产能可申请关键矿产基金、DRIVE35 和电价补贴"
+   ],
+   "actions": [
+    "评估在英加工或回收项目的政策支持",
+    "关注政府支持项目中的供应来源要求"
+   ]
+  }
+ },
+ "uk-drive35": {
+  "chain": "政府资助零排放汽车和电池制造 → 降低在英设厂成本 → 配合原产地规则吸引电池和材料本地化",
+  "auto": {
+   "level": "medium",
+   "levelNote": "在英整车和零部件投资可申请资助",
+   "segments": [
+    "在英整车生产",
+    "零部件"
+   ],
+   "compliance": [],
+   "access": [],
+   "support": [
+    "零排放车型和关键零部件产线可申请资助"
+   ],
+   "actions": [
+    "评估在英生产项目的资助可能性"
+   ]
+  },
+  "storage": {
+   "level": "low",
+   "levelNote": "主要面向汽车领域，储能项目一般不在范围内",
+   "segments": [],
+   "compliance": [],
+   "access": [],
+   "support": [],
+   "actions": []
+  },
+  "upstream": {
+   "level": "medium",
+   "levelNote": "材料和关键矿产项目同样在资助范围内",
+   "segments": [
+    "锂盐",
+    "正负极材料",
+    "在英设厂"
+   ],
+   "compliance": [],
+   "access": [],
+   "support": [
+    "康沃尔锂项目已获资助"
+   ],
+   "actions": [
+    "评估在英材料项目申请 DRIVE35 的条件"
+   ]
+  }
+ },
+ "uk-esa": {
+  "chain": "英国对智能户用储能、充电桩设统一网络安全和电网要求 → 系统集成商和充电桩企业须做英国专项认证 → 合规能力成为进入英国户用市场的门槛",
+  "auto": {
+   "level": "low",
+   "levelNote": "主要涉及家用充电桩，车企如销售自有品牌充电桩则受影响",
+   "segments": [
+    "充电设备"
+   ],
+   "compliance": [
+    "自有品牌家用充电桩须满足智能充电和网络安全要求"
+   ],
+   "access": [],
+   "support": [],
+   "actions": []
+  },
+  "storage": {
+   "level": "high",
+   "levelNote": "户用和小型工商业储能直接受管",
+   "segments": [
+    "户用/工商业储能",
+    "储能系统集成",
+    "对英出口"
+   ],
+   "compliance": [
+    "以智能功能销售的储能须满足智能功能、网络安全（含远程控制安全）和电网稳定性要求",
+    "保存并提供合规证明"
+   ],
+   "access": [
+    "不满足要求的智能储能产品将不能在英销售"
+   ],
+   "support": [
+    "统一规则有利于户用储能参与需求响应和灵活性市场"
+   ],
+   "actions": [
+    "对照草案要求评估产品的网络安全和远程控制设计",
+    "跟踪最终条例的实施日期"
+   ]
+  },
+  "upstream": {
+   "level": "none",
+   "levelNote": "对材料企业无直接影响",
+   "segments": [],
+   "compliance": [],
+   "access": [],
+   "support": [],
+   "actions": []
+  }
+ },
+ "uk-ldes": {
+  "chain": "收益托底降低长时储能投资风险 → 长时技术项目落地加速 → 储能技术路线分化",
+  "auto": {
+   "level": "none",
+   "levelNote": "对车企无直接影响",
+   "segments": [],
+   "compliance": [],
+   "access": [],
+   "support": [],
+   "actions": []
+  },
+  "storage": {
+   "level": "medium",
+   "levelNote": "影响英国储能市场技术路线和项目收益",
+   "segments": [
+    "储能系统集成",
+    "大型储能"
+   ],
+   "compliance": [],
+   "access": [
+    "资格标准对放电时长有要求，常规锂电项目一般不在范围内（待核实）"
+   ],
+   "support": [
+    "符合条件的长时储能项目获得长期收益保障"
+   ],
+   "actions": [
+    "评估长时储能产品是否满足资格标准",
+    "关注下一申请窗口"
+   ]
+  },
+  "upstream": {
+   "level": "low",
+   "levelNote": "间接影响：可能带动钒等长时储能材料需求",
+   "segments": [
+    "其他材料"
+   ],
+   "compliance": [],
+   "access": [],
+   "support": [],
+   "actions": []
+  }
  }
 };
 
@@ -7385,7 +8872,8 @@ window.CURATED_EN = {
   "renewable": "Renewables & efficiency",
   "transport": "Transport & charging",
   "carbon": "Carbon pricing & trade",
-  "digital": "Cybersecurity & AI"
+  "digital": "Cybersecurity & AI",
+  "uk": "United Kingdom"
  },
  "batteries": {
   "name": "Batteries and Waste Batteries Regulation",
@@ -9937,6 +11425,585 @@ window.CURATED_EN = {
    "Regulation (EU) 2026/1744 enters into force",
    "New deadline for national AI regulatory sandboxes"
   ]
+ },
+ "uk-zev": {
+  "name": "UK Zero Emission Vehicle (ZEV) Mandate",
+  "short": "UK ZEV mandate",
+  "tags": [
+   "Zero-emission vehicles",
+   "Manufacturer quotas",
+   "2030 ICE phase-out",
+   "Credit trading"
+  ],
+  "summary": "The UK ZEV mandate requires each manufacturer to make a set share of its new UK car and van registrations zero-emission each year: cars 22% in 2024 rising to 80% in 2030 and 100% in 2035; vans 10% in 2024, 70% in 2030 and 100% in 2035. Manufacturers can comply through CO2 conversion, borrowing (repaid by 2030 at 3.5% compound interest), banking (up to three years), car–van transfers and trading; shortfalls cost £12,000 per car and £15,000 per van. In April 2025 the government confirmed that new pure-ICE cars end in 2030, with hybrids and plug-in hybrids allowed until 2035.",
+  "impact": [
+   "Unlike the EU's fleet-average CO2 targets, the UK sets a zero-emission sales share and lets manufacturers trade credits",
+   "Manufacturers with high BEV sales (including most Chinese brands) generate surplus credits they can sell to legacy carmakers",
+   "The 2026 review may change annual targets and flexibilities; the outcome is expected by early 2027 and will drive credit prices",
+   "Pay-per-mile taxation of EVs (eVED) from April 2028 may dampen some consumer demand"
+  ],
+  "bi": {
+   "levelNote": "Indirect: the ZEV share sets the growth of UK traction-battery demand",
+   "segments": [
+    "Traction-battery supply",
+    "Exports to the UK"
+   ],
+   "compliance": [
+    "Battery makers have no ZEV quota of their own; the obligation sits with carmakers registering new vehicles in the UK"
+   ],
+   "access": [
+    "UK BEV demand is underpinned by the mandate: 80% of new cars must be zero-emission in 2030"
+   ],
+   "support": [
+    "Rising quotas give demand certainty to battery makers building in the UK or supplying UK carmakers"
+   ],
+   "actions": [
+    "Track the 2026 review conclusions (expected early 2027) and update UK traction-battery demand forecasts"
+   ]
+  },
+  "milestones": [
+   "VETS Order applies (cars 22%, vans 10%)",
+   "ZEV mandate review consultation closes",
+   "Pay-per-mile EV taxation (eVED) starts (related tax measure)",
+   "Cars 80% and vans 70% zero-emission; end of new pure-ICE car sales",
+   "100% zero-emission cars and vans"
+  ],
+  "tracking": {
+   "source": "GOV.UK",
+   "items": [
+    "Government changes: new pure-ICE cars end in 2030, hybrids/PHEVs allowed until 2035; borrowing and conversion flexibilities widened, compliance payments lowered",
+    "ZEV mandate review consultation published: annual targets, effectiveness of flexibilities, alternatives, and the definition of the 2030 phase-out",
+    "Review consultation closes",
+    "Government committed to completing the VETS review by early 2027 (date not fixed)"
+   ],
+   "outlook": "The review may change post-2027 targets and flexibilities; watch credit prices and any further easing"
+  },
+  "act": {
+   "ref": "SI 2023/1394 (VETS Order)",
+   "statusNote": "In force since 1 Jan 2024; flexibilities widened in early 2026; review consultation 14 Aug–23 Oct 2026, review to finish by early 2027",
+   "basis": "Vehicle Emissions Trading Schemes Order, made jointly by the UK, Scottish and Welsh governments and Northern Ireland"
+  }
+ },
+ "uk-ecg": {
+  "name": "UK Electric Car Grant",
+  "short": "UK car grant",
+  "tags": [
+   "Purchase grant",
+   "Manufacturing emissions",
+   "Cell production location",
+   "Science-based targets"
+  ],
+  "summary": "A grant for new battery-electric cars priced at £37,000 or less, banded by the carbon emissions of production: £3,750 for the highest band and £1,500 for the second. Manufacturers must apply for each model: technically it must be an M1 car with zero tailpipe emissions, at least 100 miles WLTP range, and an 8-year/100,000-mile battery warranty with replacement below 70% capacity; environmentally the manufacturer must hold a verified science-based target (SBTi) or a TPI auto-sector score of Level 4 or higher, and emissions at the vehicle-assembly and battery-cell production locations must be below set thresholds. All evidence must be in English.",
+  "impact": [
+   "Eligibility is tied to emissions at assembly and cell-production sites; sites on coal-heavy grids will struggle to reach the top band",
+   "The 2026 application form adds evidence on cell production location, so battery suppliers must provide data",
+   "The grant directly affects competitiveness of models under £37,000 and is a key variable in Chinese brands' UK pricing"
+  ],
+  "bi": {
+   "levelNote": "Emissions at the cell production site are one of the eligibility conditions",
+   "segments": [
+    "Cell/module manufacturing",
+    "Traction-battery supply",
+    "Exports to the UK"
+   ],
+   "compliance": [
+    "Carmakers must evidence cell production location and its emissions; battery makers need to supply plant location and power-mix data"
+   ],
+   "access": [
+    "Cells made on high-carbon grids may leave the vehicle ineligible or in the lower band, affecting battery orders"
+   ],
+   "support": [
+    "Cells made with green power or on low-carbon grids (including Europe and the UK) become more attractive to carmakers"
+   ],
+   "actions": [
+    "Prepare grid-carbon intensity and green-power evidence for each plant and share it with customers' UK models",
+    "Assess supplying UK models from low-carbon sites"
+   ]
+  },
+  "milestones": [
+   "Eligibility application form published; scheme starts",
+   "Price cap of £42,000 for variants",
+   "Application form adds evidence on cell production location"
+  ],
+  "act": {
+   "ref": "Electric Car Grant (OZEV)",
+   "statusNote": "Launched July 2025; £42,000 cap for variants from 29 Aug 2025; form updated Mar–Apr 2026 to require cell-production-location evidence; grant levels and criteria may change without notice",
+   "basis": "Office for Zero Emission Vehicles grant scheme; technical checks by the VCA"
+  }
+ },
+ "uk-roo": {
+  "name": "UK–EU rules of origin for EVs and batteries (tightening in 2027)",
+  "short": "UK–EU EV rules of origin",
+  "tags": [
+   "Rules of origin",
+   "Zero tariffs",
+   "Battery packs",
+   "Cells"
+  ],
+  "summary": "Under the UK–EU Trade and Cooperation Agreement, EVs and traction batteries trade tariff-free only if they meet the rules of origin. In December 2023 both sides extended the looser transitional rules to the end of 2026: EVs may contain up to 60% non-originating materials (ex-works); battery packs may be assembled from non-originating cells or modules, or contain up to 70% non-originating materials; cells and modules need a change of tariff heading or up to 70% non-originating materials. From 1 January 2027 the final rules in Annex 3 apply, with much higher local-content requirements for vehicles and batteries; the decision states there will be no further postponement and no changes before 2032.",
+  "impact": [
+   "From 2027, UK-built EVs using imported Asian cells or packs exported to the EU (and EU-built EVs exported to the UK) may lose tariff-free access and pay the 10% car tariff",
+   "Exact final thresholds are in TCA Annex 3 (commonly understood as about 45% maximum non-originating content for vehicles plus an originating battery; to be verified)",
+   "Cell and pack production in the UK or EU becomes much more valuable"
+  ],
+  "bi": {
+   "levelNote": "Battery origin decides whether the vehicle trades tariff-free between the UK and EU",
+   "segments": [
+    "Cell/module manufacturing",
+    "Pack assembly",
+    "EU plants",
+    "Exports to the UK"
+   ],
+   "compliance": [
+    "Provide customers with material-origin, cost-structure and processing data for origin declarations",
+    "From 2027 calculate pack and cell origin under the final rules"
+   ],
+   "access": [
+    "Cells and packs imported from China will rarely meet the final rules, so vehicles using them face tariffs between the UK and EU",
+    "Local battery capacity in the UK and EU becomes key for carmakers to keep zero tariffs"
+   ],
+   "support": [
+    "Companies with cell and pack plants in the UK or EU gain a clear advantage"
+   ],
+   "actions": [
+    "Check origin product by product under the Annex 3 final rules",
+    "Assess timelines for UK or EU cell and pack capacity"
+   ]
+  },
+  "milestones": [
+   "Partnership Council extends transitional rules to end-2026",
+   "Transitional rules of origin expire",
+   "Final Annex 3 rules apply to EVs and batteries",
+   "No changes to EV and battery rules of origin before this date"
+  ],
+  "act": {
+   "ref": "TCA Partnership Council Decision No 1/2023",
+   "statusNote": "Transitional rules expire 31 Dec 2026; final Annex 3 rules apply from 1 Jan 2027; no amendments before 2032 (except HS updates)",
+   "basis": "UK–EU Trade and Cooperation Agreement, Article 68 and Annexes 3 and 5"
+  }
+ },
+ "uk-cbam": {
+  "name": "UK Carbon Border Adjustment Mechanism (UK CBAM)",
+  "short": "UK CBAM",
+  "tags": [
+   "Carbon border tax",
+   "Aluminium",
+   "Iron & steel",
+   "Importers"
+  ],
+  "summary": "From 1 January 2027 the UK taxes the embodied emissions of specific imported goods in five sectors: aluminium, cement, fertiliser, hydrogen, and iron and steel (glass and ceramics are not included). Importers must keep records from 2027, and registration opens on 1 January 2028. HMRC has published guidance for overseas installations on monitoring emissions, on obtaining emissions intensity, and a commodity-code list of goods in scope. Once the UK–EU ETS link is fully operational, both sides will exempt each other from their CBAMs; the UK has published draft legislation exempting EU, EEA and Swiss-origin goods.",
+  "impact": [
+   "Chinese aluminium (including foil) and steel products exported to the UK need embodied-emissions data, or default values apply",
+   "UK CBAM starts close to the EU CBAM's definitive phase (2026), but rules, default values and reporting systems are separate",
+   "EU goods will be exempt, widening the cost gap between Chinese and EU products"
+  ],
+  "bi": {
+   "levelNote": "Batteries are not in scope; impact is limited to imported aluminium foil, steel casings and similar inputs",
+   "segments": [
+    "Material sourcing",
+    "UK plants"
+   ],
+   "compliance": [
+    "UK battery plants importing aluminium foil or steel directly are importers: keep emissions records and register once above the threshold (threshold to be verified)"
+   ],
+   "access": [
+    "Higher cost of imported inputs"
+   ],
+   "support": [],
+   "actions": [
+    "List CBAM commodity codes among inputs imported by UK plants"
+   ]
+  },
+  "milestones": [
+   "UK CBAM starts; importers keep records",
+   "CBAM registration opens"
+  ],
+  "tracking": {
+   "source": "GOV.UK / HMRC",
+   "items": [
+    "HMRC publishes commodity-code lists of goods in scope (aluminium, cement, fertiliser, hydrogen, iron and steel)",
+    "CBAM (Emissions and Verification) Regulations 2026 and interest appointed-day order published",
+    "Guidance for overseas installations monitoring emissions of CBAM goods exported to the UK",
+    "Confirmed: records from 1 Jan 2027, registration opens 1 Jan 2028",
+    "Draft legislation exempting EU, EEA and Swiss-origin goods from CBAM"
+   ],
+   "outlook": "Watch default values, verification requirements for actual emissions and the first return and payment dates"
+  },
+  "act": {
+   "ref": "UK CBAM (HMRC)",
+   "statusNote": "Applies from 1 Jan 2027 with record-keeping; registration opens 1 Jan 2028; CBAM (Emissions and Verification) Regulations 2026 published Sep 2026; draft exemption for EU, EEA and Swiss goods published 23 Nov 2026",
+   "basis": "Tax legislation administered by HMRC"
+  }
+ },
+ "uk-ets-link": {
+  "name": "UK–EU ETS linking agreement",
+  "short": "UK–EU ETS link",
+  "tags": [
+   "Carbon market",
+   "Carbon price",
+   "CBAM exemption",
+   "Dynamic alignment"
+  ],
+  "summary": "The UK and EU have agreed to link the UK ETS and EU ETS, aiming for the link to operate from 1 January 2028, when allowances from either scheme can be used for compliance in both, including surrender for 2027 emissions. The two systems remain separate; the UK dynamically aligns with the EU ETS legislation listed in the annex (with UK adaptations) and gains decision-shaping rights. Once the link is fully operational both sides will exempt each other from their CBAMs (subject to EU legislative procedures); the UK government estimates this exempts about £6.5 billion of UK exports from the EU CBAM.",
+  "impact": [
+   "UK goods exported to the EU will be exempt from the EU CBAM, making the UK more attractive as a production base for the EU",
+   "UK carbon prices will converge with EU prices, which may raise energy costs for UK production",
+   "The EU ETS is being revised; outcomes will extend to the UK through the joint committee"
+  ],
+  "bi": {
+   "levelNote": "Battery manufacturing is usually outside ETS coverage; the main effects are on power prices and exports to the EU",
+   "segments": [
+    "UK plants",
+    "Exports to the EU"
+   ],
+   "compliance": [],
+   "access": [
+    "When UK plants export to the EU, CBAM goods such as UK-made aluminium and steel used in the product are exempt from the EU CBAM"
+   ],
+   "support": [
+    "A common carbon price narrows carbon-cost differences between UK and EU plants"
+   ],
+   "actions": [
+    "Compare power prices and carbon costs for UK versus EU plants"
+   ]
+  },
+  "milestones": [
+   "UK–EU summit commits to pursue ETS linking",
+   "UK government publishes the linking agreement explainer",
+   "Target: UK–EU ETS link operational, allowances mutually recognised"
+  ],
+  "act": {
+   "ref": "UK–EU ETS linking agreement",
+   "statusNote": "Agreed November 2026; explainer published ahead of the legal text; legal text and ratification pending; target start 1 Jan 2028",
+   "basis": "TCA carbon-pricing cooperation; Common Understanding of the May 2025 UK–EU summit"
+  }
+ },
+ "uk-batteries": {
+  "name": "UK batteries rules (Great Britain regime and reform)",
+  "short": "UK batteries rules",
+  "tags": [
+   "Batteries",
+   "Producer responsibility",
+   "Northern Ireland",
+   "EU alignment"
+  ],
+  "summary": "The UK currently runs two regimes: Great Britain still applies the 2008 Placing on the Market Regulations (cadmium, mercury and lead limits, capacity labelling, removability) and the 2009 Waste Batteries Regulations (producer registration, take-back); Northern Ireland has applied the EU Batteries Regulation 2023/1542 directly since 18 February 2024 under the Windsor Framework, and the Batteries (Placing on the Market) (Northern Ireland) Regulations 2026 disapply the old rules there and set up penalties and enforcement. The UK government says it will consult on a UK-wide regime consistent with the EU Batteries Regulation.",
+  "impact": [
+   "Batteries sold in Great Britain do not yet need EU-style passports or carbon-footprint declarations, but producer registration and take-back apply",
+   "Batteries placed on the Northern Ireland market must meet the EU Batteries Regulation, including labelling from 18 Aug 2026 and the passport from 18 Feb 2027",
+   "The UK plans to align with the EU Regulation, so compliance systems built to EU standards will likely carry over"
+  ],
+  "bi": {
+   "levelNote": "Directly regulates batteries sold in the UK",
+   "segments": [
+    "Cell/module manufacturing",
+    "Storage integration",
+    "Exports to the UK",
+    "Recycling"
+   ],
+   "compliance": [
+    "Great Britain: register as a battery producer and meet take-back duties for industrial, automotive or portable batteries; meet substance limits and labelling",
+    "Northern Ireland: meet all EU Batteries Regulation duties (CE, labelling, passport, due diligence)"
+   ],
+   "access": [
+    "Supplying both GB and NI means meeting two rulebooks",
+    "A future UK-wide regime may add EU-style carbon footprint, passport and due-diligence requirements"
+   ],
+   "support": [
+    "Alignment with the EU Regulation would cut duplicate UK/EU compliance costs"
+   ],
+   "actions": [
+    "Confirm UK producer registration and take-back arrangements",
+    "Track publication and content of the UK-wide regime consultation"
+   ]
+  },
+  "milestones": [
+   "EU Batteries Regulation applies directly in Northern Ireland",
+   "Northern Ireland: EU labelling requirements apply",
+   "Northern Ireland: battery passport applies"
+  ],
+  "tracking": {
+   "source": "GOV.UK",
+   "items": [
+    "Government publishes the UK Battery Strategy",
+    "Guidance on the EU Batteries Regulation in Northern Ireland published; consultation on a UK-wide regime promised for autumn",
+    "Batteries (Placing on the Market) (Northern Ireland) Regulations 2026 in force: 2008 rules disapplied in NI, penalties and enforcement for the EU Regulation"
+   ],
+   "outlook": "The UK-wide batteries consultation was due in autumn 2026; watch whether it adds carbon footprint, passport and due-diligence requirements and what transition it allows"
+  },
+  "act": {
+   "ref": "SI 2008/2164 · SI 2009/890",
+   "statusNote": "Great Britain still applies rules based on the 2006 EU Batteries Directive; Northern Ireland has applied the EU Batteries Regulation since 18 Feb 2024; the government said it would consult in autumn 2026 on a UK-wide regime aligned with the EU Regulation (not published as of 25 Nov 2026)",
+   "basis": "Batteries and Accumulators (Placing on the Market) Regulations 2008; Waste Batteries and Accumulators Regulations 2009; Windsor Framework for Northern Ireland"
+  }
+ },
+ "uk-dpr": {
+  "name": "UK digital product record (product passport) policy",
+  "short": "UK digital product record",
+  "tags": [
+   "Digital product passport",
+   "Traceability",
+   "Northern Ireland"
+  ],
+  "summary": "The UK government gathered evidence on 'digital product records' (similar to the EU Digital Product Passport, including the battery passport) to decide whether to set up a UK scheme for passing product and sustainability information along supply chains and supporting market surveillance. It asked about impacts on businesses already selling into the EU and Northern Ireland and what UK policy should consider. The EU Digital Product Passport will apply in Northern Ireland under the Windsor Framework.",
+  "impact": [
+   "Whether the UK builds its own passport and whether it interoperates with the EU format decides whether companies need two data sets",
+   "Still at call-for-evidence stage; no obligations yet"
+  ],
+  "bi": {
+   "levelNote": "Interoperability with the EU battery passport drives data-system investment",
+   "segments": [
+    "Cell/module manufacturing",
+    "Exports to the UK"
+   ],
+   "compliance": [],
+   "access": [
+    "A separate UK format may need an extra data system"
+   ],
+   "support": [
+    "If the UK recognises the EU passport, EU compliance data can be reused"
+   ],
+   "actions": [
+    "Track the government response and push for interoperability with the EU format"
+   ]
+  },
+  "milestones": [
+   "Call for evidence opens",
+   "Call for evidence closes"
+  ],
+  "act": {
+   "ref": "Call for evidence: digital product records",
+   "statusNote": "Open 27 Jul–21 Sep 2026; no legislative proposal yet",
+   "basis": "UK product regulation policy; the EU Digital Product Passport applies in Northern Ireland under the Windsor Framework"
+  }
+ },
+ "uk-product-reg": {
+  "name": "UK Product Regulation and Metrology Act and UKCA/CE marking",
+  "short": "UK Product Regulation Act",
+  "tags": [
+   "UKCA",
+   "CE recognition",
+   "Product safety",
+   "Online marketplaces"
+  ],
+  "summary": "The Product Regulation and Metrology Act 2025 lets the UK government make and update product rules by regulations, including keeping pace with corresponding EU rules and setting duties for supply-chain actors such as online marketplaces. On marking, for the Great Britain market the UK continues to recognise CE marking in most product areas under the Product Safety and Metrology (Amendment) Regulations 2024, alongside or instead of UKCA, and allows 'Fast-Track UKCA' for products meeting EU requirements. Northern Ireland continues to follow EU product rules.",
+  "impact": [
+   "Most products CE-marked under EU rules can enter Great Britain without re-certification",
+   "The Act lets the UK follow EU product rules (such as the Batteries Regulation or ecodesign) quickly, or diverge",
+   "Duties on online marketplaces and fulfilment providers may tighten, affecting cross-border e-commerce"
+  ],
+  "bi": {
+   "levelNote": "Sets the certification route for batteries and storage products entering the UK",
+   "segments": [
+    "Exports to the UK",
+    "Storage integration"
+   ],
+   "compliance": [
+    "Check whether CE remains recognised for the product area; where UKCA is needed, use UK designated standards or Fast-Track UKCA"
+   ],
+   "access": [
+    "Continued CE recognition lowers the barrier to Great Britain"
+   ],
+   "support": [
+    "One set of EU compliance files can serve both markets"
+   ],
+   "actions": [
+    "Check the government's sector-by-sector UKCA/CE list for each product"
+   ]
+  },
+  "milestones": [
+   "Product Regulation and Metrology Act receives Royal Assent"
+  ],
+  "act": {
+   "ref": "Product Regulation and Metrology Act 2025 (c. 20)",
+   "statusNote": "Royal Assent 21 Jul 2025; regulations follow in stages; continued CE recognition in Great Britain under the Product Safety and Metrology (Amendment) Regulations 2024",
+   "basis": "Act of the UK Parliament"
+  }
+ },
+ "uk-minerals": {
+  "name": "UK Critical Minerals Strategy (Vision 2035)",
+  "short": "UK minerals strategy",
+  "tags": [
+   "Critical minerals",
+   "Lithium",
+   "Recycling",
+   "Supply diversification"
+  ],
+  "summary": "The UK's ten-year critical minerals strategy focuses on midstream processing and recycling. Targets for 2035: domestic production (extraction, processing, refining) meets at least 10% of annual demand, including at least 50,000 tonnes of lithium (LCE); recycling meets 20% of demand; and no single country supplies more than 60% of demand in aggregate. Support includes a critical minerals fund of up to £50 million, DRIVE35 funding, faster permitting and electricity cost relief.",
+  "impact": [
+   "The 'no more than 60% from one country' diversification goal mainly targets dependence on China and may shape procurement in government-backed projects",
+   "UK lithium projects (such as in Cornwall) receive public funding and may become a European lithium source",
+   "The recycling target creates opportunities for battery recyclers"
+  ],
+  "bi": {
+   "levelNote": "Affects raw-material sourcing and policy support for UK battery plants",
+   "segments": [
+    "Material sourcing",
+    "Recycling",
+    "UK plants"
+   ],
+   "compliance": [],
+   "access": [
+    "Government-backed projects may favour supply diversification"
+   ],
+   "support": [
+    "UK recycling and materials projects can apply to the minerals fund and DRIVE35"
+   ],
+   "actions": [
+    "Watch the minerals fund details due in 2026"
+   ]
+  },
+  "milestones": [
+   "Critical Minerals Strategy published",
+   "Targets: 10% domestic production, 20% recycling, no country above 60%"
+  ],
+  "tracking": {
+   "source": "GOV.UK",
+   "items": [
+    "Geothermal Engineering Limited to invest about £43 million in a Cornwall lithium extraction facility, with an offer in principle of nearly £10 million from DRIVE35"
+   ],
+   "outlook": "Watch the minerals fund details and UK agreements with resource-rich countries"
+  },
+  "act": {
+   "ref": "Vision 2035: Critical Minerals Strategy",
+   "statusNote": "Published 22 Nov 2025; technical annex updated 23 Jan 2026; up to £50 million critical minerals fund",
+   "basis": "UK government policy paper (not legislation)"
+  }
+ },
+ "uk-drive35": {
+  "name": "UK Industrial Strategy and DRIVE35 vehicle-electrification funding",
+  "short": "UK DRIVE35",
+  "tags": [
+   "Industrial strategy",
+   "Battery manufacturing",
+   "Investment grants",
+   "Automotive supply chain"
+  ],
+  "summary": "DRIVE35 is the vehicle-electrification funding programme under the UK's Modern Industrial Strategy: £2.5 billion to 2035 for zero-emission vehicle manufacturing, battery manufacturing, supply-chain investment and R&D, aiming for UK vehicle output above 1.3 million by 2035 and supporting battery manufacturing capacity. Funds are granted through the Advanced Propulsion Centre (APC) and Innovate UK.",
+  "impact": [
+   "Investments in UK ZEV supply-chain projects such as batteries, e-drives and materials can apply for DRIVE35 grants",
+   "Several awards landed in 2026, including next-generation vehicle projects and the Cornwall lithium project",
+   "Together with the ZEV mandate, the car grant and rules of origin, it forms the UK's package to attract local battery capacity"
+  ],
+  "bi": {
+   "levelNote": "UK battery or material capacity can apply for grants",
+   "segments": [
+    "UK plants",
+    "Cell/module manufacturing",
+    "R&D"
+   ],
+   "compliance": [],
+   "access": [],
+   "support": [
+    "Battery manufacturing capacity is an explicit DRIVE35 priority"
+   ],
+   "actions": [
+    "With rules of origin tightening in 2027, assess UK battery projects and apply to DRIVE35"
+   ]
+  },
+  "milestones": [
+   "DRIVE35 summary business case published",
+   "Target: UK vehicle output above 1.3 million"
+  ],
+  "tracking": {
+   "source": "GOV.UK",
+   "items": [
+    "Government announces £130 million for next-generation vehicle projects, securing over 1,800 jobs",
+    "DRIVE35 offers nearly £10 million in principle to the Cornwall lithium extraction project"
+   ],
+   "outlook": "Watch future funding rounds and conditions for foreign-owned projects"
+  },
+  "act": {
+   "ref": "DRIVE35 (Industrial Strategy, Advanced Manufacturing Sector Plan)",
+   "statusNote": "£2.5 billion to 2035 (a £2 billion core programme for FY2025/26–2029/30 plus £500 million R&D), delivered by APC and Innovate UK",
+   "basis": "UK Modern Industrial Strategy (2025) and Advanced Manufacturing Sector Plan"
+  }
+ },
+ "uk-esa": {
+  "name": "UK Energy Smart Appliances Regulations (SSES phase 1)",
+  "short": "UK smart appliances rules",
+  "tags": [
+   "Home storage",
+   "Chargers",
+   "Cybersecurity",
+   "Demand response"
+  ],
+  "summary": "Phase 1 regulations of the UK Smart Secure Electricity Systems (SSES) programme cover domestic EV smart charge points, electric heating appliances, and domestic and small non-domestic battery energy storage systems (BESS), setting minimum requirements for smart functionality, cybersecurity and grid stability. They absorb and amend the Electric Vehicles (Smart Charge Points) Regulations 2021 and set a smart mandate for electric heating; for storage, the draft applies requirements to home batteries sold with smart functionality without yet mandating smart capability for all, and grid-scale storage is out of scope.",
+  "impact": [
+   "Smart home batteries and chargers sold in the UK must meet UK cybersecurity, smart functionality and grid-stability requirements",
+   "Implementation dates await the final regulations; for electric heating, 31 Oct 2028 or two years after the regulations are made",
+   "The government may later mandate smart capability for home batteries"
+  ],
+  "bi": {
+   "levelNote": "Home storage systems are directly regulated; cell makers are affected through system customers",
+   "segments": [
+    "Storage integration",
+    "Residential/C&I storage"
+   ],
+   "compliance": [
+    "Home batteries sold with smart functionality must meet UK smart, cybersecurity and grid-stability requirements"
+   ],
+   "access": [],
+   "support": [],
+   "actions": [
+    "Track storage implementation dates in the final regulations"
+   ]
+  },
+  "milestones": [
+   "Consultation on draft regulations closes",
+   "Earliest date for electric heating smart requirements (or two years after making)"
+  ],
+  "tracking": {
+   "source": "GOV.UK / DESNZ",
+   "items": [
+    "Draft Energy Smart Appliances Regulations and impact assessment published for consultation",
+    "Interim response: electric heating implementation moved to 31 Oct 2028 or two years after the regulations are made, whichever is later"
+   ],
+   "outlook": "Watch when the final regulations are laid and the dates for storage and chargers"
+  },
+  "act": {
+   "ref": "Energy Smart Appliances Regulations (draft)",
+   "statusNote": "Draft consulted 1 Dec 2025–5 Feb 2026; interim response 17 Sep 2026 moved electric heating to 31 Oct 2028 or two years after making; needs parliamentary approval",
+   "basis": "Energy Act 2023, sections 239 and 244"
+  }
+ },
+ "uk-ldes": {
+  "name": "UK Long Duration Electricity Storage cap and floor scheme",
+  "short": "UK LDES scheme",
+  "tags": [
+   "Long-duration storage",
+   "Revenue floor",
+   "Grid"
+  ],
+  "summary": "The UK has set up a cap-and-floor revenue scheme for long-duration electricity storage (LDES), delivered by Ofgem: if project revenue falls below the floor, consumers top it up; revenue above the cap is returned to consumers, lowering investment risk. In March 2025 the government and Ofgem published a Technical Decision Document setting application windows, eligibility criteria (including minimum duration) and capacity needs.",
+  "impact": [
+   "The scheme targets long-duration technologies; typical 2–4 hour lithium-ion storage generally does not meet the criteria (exact duration requirement to be verified)",
+   "Gives flow batteries, compressed air and pumped hydro predictable revenue"
+  ],
+  "bi": {
+   "levelNote": "Mainly benefits long-duration technologies; limited for standard lithium-ion storage",
+   "segments": [
+    "Storage integration"
+   ],
+   "compliance": [],
+   "access": [
+    "Eligibility requires a minimum duration; short-duration lithium projects are generally out of scope (to be verified)"
+   ],
+   "support": [
+    "Long-duration lithium or other electrochemical projects may qualify"
+   ],
+   "actions": [
+    "Watch future windows and eligibility rules"
+   ]
+  },
+  "milestones": [
+   "Government and Ofgem publish the Technical Decision Document"
+  ],
+  "act": {
+   "ref": "LDES cap and floor (Ofgem)",
+   "statusNote": "Decided October 2024; Technical Decision Document 11 Mar 2025; first window opened spring 2025; project assessment results to be verified",
+   "basis": "Decision of DESNZ, delivered by Ofgem"
+  }
  }
 };
 
@@ -12707,6 +14774,511 @@ window.IMPACTS_EN = {
    "actions": [],
    "segments": []
   }
+ },
+ "uk-zev": {
+  "chain": "Rising ZEV shares → carmakers must sell more BEVs or buy credits → BEV and battery demand is underpinned and credits change hands between carmakers",
+  "auto": {
+   "levelNote": "Manufacturers registering new vehicles in the UK carry annual quota obligations",
+   "segments": [
+    "Vehicle exports",
+    "UK sales"
+   ],
+   "compliance": [
+    "Zero-emission share of new registrations must meet the target each year: cars 33% in 2026, 80% in 2030; shortfalls cost £12,000 per car",
+    "Comply via banking, borrowing, CO2 conversion and trading; report registration data as required"
+   ],
+   "access": [
+    "Chinese brands with BEV-heavy line-ups face little pressure and can sell surplus credits",
+    "Carmakers relying on ICE and hybrids must buy credits or pay, which may reduce ICE supply in the UK"
+   ],
+   "support": [
+    "Credit trading gives BEV makers extra revenue and pricing room in the UK"
+   ],
+   "actions": [
+    "Estimate annual saleable credits and price range; negotiate credit sales with legacy carmakers",
+    "Track the 2026 review for any change to post-2027 targets"
+   ]
+  },
+  "upstream": {
+   "levelNote": "Indirect: the policy basis for UK EV output and battery demand",
+   "segments": [
+    "Cathode/anode materials",
+    "Lithium salts"
+   ],
+   "compliance": [],
+   "access": [
+    "The mandate underpins UK battery demand, but local cell capacity is limited, so material demand largely shows up as imported vehicles and batteries"
+   ],
+   "support": [],
+   "actions": [
+    "Watch local material sourcing needs of UK battery plants"
+   ]
+  }
+ },
+ "uk-ecg": {
+  "chain": "Grant banded by production emissions → carmakers ask battery suppliers for cell-site and power data → low-carbon cells and assembly sites gain a price edge",
+  "auto": {
+   "levelNote": "Decides whether BEV models under £37,000 get up to £3,750",
+   "segments": [
+    "Vehicle exports",
+    "UK sales"
+   ],
+   "compliance": [
+    "Apply to OZEV model by model with type-approval, warranty, degradation and production-emissions evidence (in English)",
+    "The manufacturer needs a verified SBTi target or TPI Level 4+"
+   ],
+   "access": [
+    "Models whose assembly or cell site exceeds the thresholds get no grant and lose out in their price segment"
+   ],
+   "support": [
+    "Eligible models get £1,500–£3,750, directly cutting the buyer's cost"
+   ],
+   "actions": [
+    "Assess eligibility and band for each model; adjust sourcing sites where needed",
+    "Seek SBTi validation or a higher TPI score early"
+   ]
+  },
+  "upstream": {
+   "levelNote": "Indirect: the grant looks at the cell production site; material-stage emissions are not in the thresholds yet",
+   "segments": [
+    "Cathode/anode materials"
+   ],
+   "compliance": [],
+   "access": [],
+   "support": [
+    "If cell makers shift to low-carbon sites, local material supply may follow"
+   ],
+   "actions": [
+    "Watch customers' plans to move cell capacity to low-carbon locations"
+   ]
+  }
+ },
+ "uk-roo": {
+  "chain": "Stricter rules of origin → carmakers need UK/EU-originating packs and cells → vehicles with imported Asian cells face a 10% tariff and demand for local battery capacity rises",
+  "auto": {
+   "levelNote": "EVs built in the UK or EU and sold across the Channel are directly affected",
+   "segments": [
+    "EU vehicle production",
+    "UK sales",
+    "Supply-chain sourcing"
+   ],
+   "compliance": [
+    "From 2027 check each model's origin under the final rules and issue origin statements to importers"
+   ],
+   "access": [
+    "Models with non-originating batteries lose zero tariffs between the UK and EU and pay 10%"
+   ],
+   "support": [
+    "Models with locally sourced batteries keep zero tariffs"
+   ],
+   "actions": [
+    "Finish origin calculations for current models before end-2026",
+    "Agree post-2027 localised supply with battery suppliers"
+   ]
+  },
+  "storage": {
+   "levelNote": "The rules target vehicles and traction batteries; stationary storage batteries fall outside these specific rules",
+   "segments": [
+    "Storage integration"
+   ],
+   "compliance": [],
+   "access": [
+    "Stationary batteries follow general rules of origin; limited impact (to be verified)"
+   ],
+   "support": [],
+   "actions": []
+  },
+  "upstream": {
+   "levelNote": "Battery origin calculations reach back to key components such as cathode active materials",
+   "segments": [
+    "Cathode materials",
+    "Cell components"
+   ],
+   "compliance": [
+    "Supplying UK/EU battery plants may require material-origin and value data"
+   ],
+   "access": [
+    "Local UK/EU materials help customers' batteries qualify as originating"
+   ],
+   "support": [
+    "Local material capacity in the UK or EU can win orders"
+   ],
+   "actions": [
+    "Understand what data customers need for origin calculations under the final rules"
+   ]
+  }
+ },
+ "uk-cbam": {
+  "chain": "Imported aluminium and steel taxed on embodied emissions → higher input costs for UK processors → low-carbon or EU-sourced materials become more competitive",
+  "auto": {
+   "levelNote": "Vehicles and parts are out of scope; UK plants importing steel and aluminium are affected",
+   "segments": [
+    "UK vehicle production",
+    "Supply-chain sourcing"
+   ],
+   "compliance": [],
+   "access": [
+    "Higher cost of imported steel and aluminium for UK plants"
+   ],
+   "support": [],
+   "actions": [
+    "Check CBAM scope of inputs imported by UK plants"
+   ]
+  },
+  "storage": {
+   "levelNote": "Storage products are out of scope; imported steel structures or aluminium are affected",
+   "segments": [
+    "Storage integration"
+   ],
+   "compliance": [],
+   "access": [
+    "Steel structures for containerised storage may be in scope if imported separately (to be verified)"
+   ],
+   "support": [],
+   "actions": []
+  },
+  "upstream": {
+   "levelNote": "Aluminium and steel products exported to the UK are directly affected",
+   "segments": [
+    "Aluminium foil/products",
+    "Steel",
+    "Exports to the UK"
+   ],
+   "compliance": [
+    "Provide UK importers with embodied-emissions data calculated under UK rules, verified where required",
+    "Overseas installations must monitor emissions per HMRC guidance"
+   ],
+   "access": [
+    "Without actual data, default values apply and price competitiveness falls",
+    "EU goods will be exempt, widening the relative disadvantage"
+   ],
+   "support": [],
+   "actions": [
+    "Set up emissions monitoring for UK-bound products per HMRC guidance",
+    "Agree emissions data and cost sharing with UK customers"
+   ]
+  }
+ },
+ "uk-ets-link": {
+  "chain": "UK–EU ETS link → UK carbon price aligns with the EU and both sides exempt each other from CBAM → UK steel and aluminium enter the EU CBAM-free, raising the UK's value as an EU-facing base",
+  "auto": {
+   "levelNote": "Vehicle assembly is outside ETS coverage; effects show up in power and steel/aluminium costs",
+   "segments": [
+    "UK vehicle production"
+   ],
+   "compliance": [],
+   "access": [],
+   "support": [
+    "UK-made steel and aluminium parts exported to the EU are exempt from the EU CBAM"
+   ],
+   "actions": []
+  },
+  "storage": {
+   "levelNote": "Indirect: carbon prices affect UK power prices and arbitrage",
+   "segments": [
+    "Storage operation"
+   ],
+   "compliance": [],
+   "access": [],
+   "support": [
+    "Higher carbon prices usually widen peak/off-peak spreads, helping storage revenue (indirect)"
+   ],
+   "actions": []
+  },
+  "upstream": {
+   "levelNote": "UK aluminium and steel exported to the EU will be exempt from the EU CBAM",
+   "segments": [
+    "Aluminium",
+    "Steel",
+    "UK plants"
+   ],
+   "compliance": [],
+   "access": [
+    "CBAM goods made in the UK gain a cost edge in the EU; direct exports from China get no such exemption"
+   ],
+   "support": [
+    "UK aluminium or steel processing can serve both UK and EU markets"
+   ],
+   "actions": [
+    "Assess the UK as an EU-facing materials processing base"
+   ]
+  }
+ },
+ "uk-batteries": {
+  "chain": "Old GB rules and EU rules in NI coexist → battery makers run two compliance tracks → a UK-wide regime would align with the EU Regulation",
+  "auto": {
+   "levelNote": "Carmakers carry producer responsibility when they place traction batteries on the market",
+   "segments": [
+    "Vehicle exports",
+    "UK sales"
+   ],
+   "compliance": [
+    "When selling EVs in the UK, meet producer registration and take-back duties for the traction battery (depending on import set-up)",
+    "Sales in Northern Ireland must meet the EU Batteries Regulation"
+   ],
+   "access": [],
+   "support": [],
+   "actions": [
+    "Confirm which UK importer or representative carries battery producer responsibility"
+   ]
+  },
+  "storage": {
+   "levelNote": "Storage batteries are industrial batteries and directly regulated",
+   "segments": [
+    "Storage integration",
+    "Residential/C&I storage",
+    "Exports to the UK"
+   ],
+   "compliance": [
+    "Great Britain: register as an industrial battery producer and meet take-back duties",
+    "Northern Ireland: meet EU safety, performance and passport requirements for stationary storage"
+   ],
+   "access": [
+    "A UK-wide regime may add EU-style safety and performance requirements for stationary storage"
+   ],
+   "support": [],
+   "actions": [
+    "Track the UK-wide consultation and assess new requirements for storage products"
+   ]
+  },
+  "upstream": {
+   "levelNote": "Indirect: recycled-content and due-diligence rules, if introduced, would reach materials",
+   "segments": [
+    "Recycling",
+    "Cathode/anode materials"
+   ],
+   "compliance": [],
+   "access": [],
+   "support": [],
+   "actions": [
+    "Watch whether the UK-wide regime includes minimum recycled content and due diligence"
+   ]
+  }
+ },
+ "uk-dpr": {
+  "chain": "UK explores a product passport → interoperable with the EU means one data set for both → a separate format means two data sets along the chain",
+  "auto": {
+   "levelNote": "May cover product information for vehicles and batteries",
+   "segments": [
+    "Vehicle exports"
+   ],
+   "compliance": [],
+   "access": [],
+   "support": [],
+   "actions": [
+    "Track the government response"
+   ]
+  },
+  "storage": {
+   "levelNote": "Storage batteries also need passports; a separate UK format would add data work",
+   "segments": [
+    "Storage integration"
+   ],
+   "compliance": [],
+   "access": [
+    "A separate UK format may need an extra data system"
+   ],
+   "support": [],
+   "actions": [
+    "Track the government response"
+   ]
+  },
+  "upstream": {
+   "levelNote": "Passport data ultimately traces material origin and carbon footprint",
+   "segments": [
+    "Cathode/anode materials"
+   ],
+   "compliance": [],
+   "access": [],
+   "support": [],
+   "actions": []
+  }
+ },
+ "uk-product-reg": {
+  "chain": "UK keeps recognising CE and can follow EU rules → EU compliance files work in Great Britain → less duplicate certification",
+  "auto": {
+   "levelNote": "Vehicles use type approval; the Act mainly affects parts and charging equipment",
+   "segments": [
+    "Parts",
+    "Charging equipment"
+   ],
+   "compliance": [],
+   "access": [],
+   "support": [
+    "CE files for parts and chargers can be used in Great Britain (depending on area)"
+   ],
+   "actions": []
+  },
+  "storage": {
+   "levelNote": "Storage systems fall under product rules such as electrical safety and EMC",
+   "segments": [
+    "Storage integration",
+    "Residential/C&I storage"
+   ],
+   "compliance": [
+    "Check marking requirements in Great Britain for each area (low voltage, EMC, radio, etc.)"
+   ],
+   "access": [],
+   "support": [
+    "CE remains recognised, so EU certification can be reused"
+   ],
+   "actions": [
+    "Check the government's sector-by-sector list item by item"
+   ]
+  }
+ },
+ "uk-minerals": {
+  "chain": "UK pushes domestic processing and recycling and limits single-source supply → backed projects favour diversified sourcing → Chinese material companies may need different partnership or investment models",
+  "auto": {
+   "levelNote": "Indirect effect on battery raw-material sourcing",
+   "segments": [
+    "Supply-chain sourcing"
+   ],
+   "compliance": [],
+   "access": [],
+   "support": [],
+   "actions": []
+  },
+  "storage": {
+   "levelNote": "Indirect effect on battery raw-material sourcing",
+   "segments": [
+    "Material sourcing"
+   ],
+   "compliance": [],
+   "access": [],
+   "support": [],
+   "actions": []
+  },
+  "upstream": {
+   "levelNote": "Directly shapes the UK market and investment climate for lithium, nickel, cobalt and graphite",
+   "segments": [
+    "Lithium salts",
+    "Cathode/anode materials",
+    "Recycling",
+    "UK plants"
+   ],
+   "compliance": [],
+   "access": [
+    "The 60% single-country cap implies policy pressure on the share of Chinese supply"
+   ],
+   "support": [
+    "UK processing or recycling capacity can apply to the minerals fund, DRIVE35 and power-cost relief"
+   ],
+   "actions": [
+    "Assess policy support for UK processing or recycling projects",
+    "Watch sourcing requirements in government-backed projects"
+   ]
+  }
+ },
+ "uk-drive35": {
+  "chain": "Public funding for ZEV and battery manufacturing → lower cost of building in the UK → with rules of origin, attracts local battery and material capacity",
+  "auto": {
+   "levelNote": "UK vehicle and component investments can apply for grants",
+   "segments": [
+    "UK vehicle production",
+    "Components"
+   ],
+   "compliance": [],
+   "access": [],
+   "support": [
+    "ZEV models and key component lines can apply"
+   ],
+   "actions": [
+    "Assess funding for UK production projects"
+   ]
+  },
+  "storage": {
+   "levelNote": "Focused on automotive; storage projects are generally out of scope",
+   "segments": [],
+   "compliance": [],
+   "access": [],
+   "support": [],
+   "actions": []
+  },
+  "upstream": {
+   "levelNote": "Materials and critical-mineral projects are also eligible",
+   "segments": [
+    "Lithium salts",
+    "Cathode/anode materials",
+    "UK plants"
+   ],
+   "compliance": [],
+   "access": [],
+   "support": [
+    "The Cornwall lithium project has been funded"
+   ],
+   "actions": [
+    "Assess DRIVE35 conditions for UK materials projects"
+   ]
+  }
+ },
+ "uk-esa": {
+  "chain": "UK sets common cybersecurity and grid rules for smart home batteries and chargers → integrators and charger makers need UK-specific compliance → compliance becomes a barrier to the UK residential market",
+  "auto": {
+   "levelNote": "Mainly home chargers; affects carmakers selling own-brand chargers",
+   "segments": [
+    "Charging equipment"
+   ],
+   "compliance": [
+    "Own-brand home chargers must meet smart-charging and cybersecurity requirements"
+   ],
+   "access": [],
+   "support": [],
+   "actions": []
+  },
+  "storage": {
+   "levelNote": "Home and small C&I storage are directly regulated",
+   "segments": [
+    "Residential/C&I storage",
+    "Storage integration",
+    "Exports to the UK"
+   ],
+   "compliance": [
+    "Storage sold with smart functionality must meet smart, cybersecurity (including remote-control security) and grid-stability requirements",
+    "Keep and provide evidence of compliance"
+   ],
+   "access": [
+    "Non-compliant smart storage products cannot be sold in the UK"
+   ],
+   "support": [
+    "Common rules help home storage join demand-response and flexibility markets"
+   ],
+   "actions": [
+    "Assess product cybersecurity and remote-control design against the draft",
+    "Track implementation dates in the final regulations"
+   ]
+  }
+ },
+ "uk-ldes": {
+  "chain": "Revenue floor lowers LDES investment risk → long-duration projects accelerate → storage technology paths diverge",
+  "storage": {
+   "levelNote": "Shapes UK storage technology mix and project revenue",
+   "segments": [
+    "Storage integration",
+    "Utility-scale storage"
+   ],
+   "compliance": [],
+   "access": [
+    "Eligibility requires a minimum duration; standard lithium projects are generally out of scope (to be verified)"
+   ],
+   "support": [
+    "Qualifying LDES projects get long-term revenue certainty"
+   ],
+   "actions": [
+    "Check whether long-duration products meet the criteria",
+    "Watch the next application window"
+   ]
+  },
+  "upstream": {
+   "levelNote": "Indirect: may lift demand for long-duration storage materials such as vanadium",
+   "segments": [
+    "Other materials"
+   ],
+   "compliance": [],
+   "access": [],
+   "support": [],
+   "actions": []
+  }
  }
 };
 
@@ -13412,6 +15984,15 @@ window.EN_UI = {
 "CLP 分类（适应技术进步）": "CLP classification (ATP)",
 "贸易救济措施": "Trade defence measure",
 "规划中的立法": "Planned legislation",
+"英国政府/议会": "UK government/Parliament",
+"英国议会法令/税收立法": "UK Act / tax legislation",
+"英国条例（SI）": "UK regulations (SI)",
+"英欧协定安排": "UK–EU agreement",
+"英国政府计划/补贴": "UK government scheme/grant",
+"英国政策文件": "UK policy paper",
+"英国政府咨询/证据征集": "UK consultation/call for evidence",
+"英国法规信息": "UK law details",
+"英国法规，不经过欧盟立法程序；状态和时间线根据 GOV.UK、legislation.gov.uk 等英国官方来源人工跟踪。": "A UK law outside the EU legislative process; status and timeline are tracked manually from official UK sources such as GOV.UK and legislation.gov.uk.",
 "尚未提出立法提案": "Not yet proposed",
 "无 OEIL 数据": "No OEIL data",
 "已进入实施": "In application",
@@ -13766,7 +16347,8 @@ const LANES = {
   impl:{zh:Z("实施节点"), color:"var(--c-impl)"},
   secondary:{zh:Z("二级立法/草案"), color:"var(--c-sec)"},
   other:{zh:Z("咨询机构/成员国议会"), color:"var(--c-other)"},
-  stake:{zh:Z("利益相关方"), color:"var(--c-stake)"}
+  stake:{zh:Z("利益相关方"), color:"var(--c-stake)"},
+  uk:{zh:Z("英国政府/议会"), color:"var(--uk)"}
 };
 const ACTTYPE = {REG_DEL:Z("授权条例"),DEC_DEL:Z("授权决定"),DIR_DEL:Z("授权指令"),REG_IMPL:Z("实施条例"),DEC_IMPL:Z("实施决定"),DIR_IMPL:Z("实施指令"),PROP_REG:Z("条例提案"),PROP_DIR:Z("指令提案"),PROP_DEC:Z("决定提案"),REG:Z("委员会条例"),DEC:Z("委员会决定"),DIR:Z("指令"),COMMUNICATION:Z("通讯"),COM:Z("通讯"),RECOMMENDATION:Z("建议"),REC:Z("建议"),GUIDELINES:Z("指南"),STAFF_WORKING_DOCUMENT:Z("工作文件"),REPORT:Z("报告"),OTHER:Z("其他")};
 const PUBTYPE = t => {
@@ -13969,7 +16551,7 @@ function computeStages(d){
 }
 
 /* ---------- state & routing ---------- */
-let state = { view:"overview", id:null, cat:store.get("cat","all"), st:store.get("st","all"), q:"", showAll:false, lanes: store.get("lanes3", Object.keys(LANES)), role: store.get("role","battery"), mkt: store.get("mkt","eu"), rel: store.get("rel", true) };
+let state = { view:"overview", id:null, cat:store.get("cat","all"), st:store.get("st","all"), q:"", showAll:false, lanes: store.get("lanes4", Object.keys(LANES)), role: store.get("role","battery"), mkt: store.get("mkt","eu"), rel: store.get("rel", true) };
 if(!ROLEZH[state.role]) state.role="battery";
 if(state.mkt!=="eu" && !MK.countries.some(c=>c.id===state.mkt)) state.mkt="eu";
 function hashParams(){ const p=[]; if(state.role!=="battery") p.push("r="+state.role); if(state.mkt!=="eu") p.push("m="+state.mkt); return p.length?"?"+p.join("&"):""; }
@@ -14059,7 +16641,7 @@ function render(){
 
 function catDot(cat){ return `<span class="cat" style="background:var(--${CATS[cat]?CATS[cat].color:"carbon"})"></span>`; }
 const ACTSTATUS = {adopted:Z("已通过"), draft:Z("草案/待通过"), planned:Z("规划中")};
-const ACTKINDZH = {delegated:Z("授权法案"), implementing:Z("实施法案"), guideline:Z("欧委会指南"), decision:Z("欧委会决定"), restriction:Z("REACH 限制"), clp:Z("CLP 分类（适应技术进步）"), trade:Z("贸易救济措施"), planned:Z("规划中的立法")};
+const ACTKINDZH = {delegated:Z("授权法案"), implementing:Z("实施法案"), guideline:Z("欧委会指南"), decision:Z("欧委会决定"), restriction:Z("REACH 限制"), clp:Z("CLP 分类（适应技术进步）"), trade:Z("贸易救济措施"), planned:Z("规划中的立法"), "uk-act":Z("英国议会法令/税收立法"), "uk-si":Z("英国条例（SI）"), "uk-trade":Z("英欧协定安排"), "uk-scheme":Z("英国政府计划/补贴"), "uk-policy":Z("英国政策文件"), "uk-consult":Z("英国政府咨询/证据征集")};
 function actStatusZh(d){ return d.act ? (ACTSTATUS[d.act.status]||d.act.status) : Z("尚未提出立法提案"); }
 function statusPill(d){
   if(!d.o && !d.oeil) return `<span class="pill ${d.completed?"done":"live"}">${esc(actStatusZh(d))}</span>`;
@@ -14295,7 +16877,7 @@ function bindDossiers(){
   if(ic) ic.addEventListener("click",e=>{ const b=e.target.closest("[data-role]"); if(!b) return; state.role=b.dataset.role; store.set("role",state.role); try{ history.replaceState(null,"",curHash()); }catch(_){} const y=window.scrollY; render(); window.scrollTo(0,y); });
   const sa = document.getElementById("showAll"); if(sa) sa.addEventListener("change",()=>{state.showAll=sa.checked; render();});
   document.querySelectorAll("[data-lane]").forEach(cb=>cb.addEventListener("change",()=>{
-    state.lanes = [...document.querySelectorAll("[data-lane]")].filter(x=>x.checked).map(x=>x.dataset.lane); store.set("lanes3",state.lanes); render();
+    state.lanes = [...document.querySelectorAll("[data-lane]")].filter(x=>x.checked).map(x=>x.dataset.lane); store.set("lanes4",state.lanes); render();
   }));
 }
 
@@ -14432,12 +17014,13 @@ function vActInfo(d){
   const a = d.act || {kind:"planned", status:"planned"};
   const par = d.parent && BYID[d.parent];
   const row = (k,v) => v ? `<div class="relrow"><span class="muted" style="display:inline-block;min-width:84px">${k}</span>${v}</div>` : "";
-  return `<div class="card"><div class="hd"><h3>${d.secondary?Z("二级法案信息"):Z("立法进展")}</h3><span class="muted" style="font-size:12px">${Z("当前：")}${esc(actStatusZh(d))}</span></div><div class="bd">
+  return `<div class="card"><div class="hd"><h3>${d.secondary?Z("二级法案信息"):d.jurisdiction==="uk"?Z("英国法规信息"):Z("立法进展")}</h3><span class="muted" style="font-size:12px">${Z("当前：")}${esc(actStatusZh(d))}</span></div><div class="bd">
     ${row(Z("类型"), esc(ACTKINDZH[a.kind]||a.kind||""))}
     ${row(Z("法律依据"), par ? `<a data-go="${par.id}" href="javascript:void 0">${esc(par.nameZh)}</a>${a.basis?` · ${esc(a.basis)}`:""}` : (a.basis?esc(a.basis):""))}
     ${row(Z("编号"), a.ref ? (a.url?`<a class="mono" href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.ref)}</a>`:`<span class="mono">${esc(a.ref)}</span>`) : "")}
     ${row(Z("状态"), esc(actStatusZh(d)) + (a.statusNote?` · ${esc(a.statusNote)}`:""))}
-    ${!d.oeil && !d.secondary ? `<div class="sub" style="margin-top:8px">${Z("尚未提出立法提案，暂无欧洲议会程序编号；欧委会意见征求与提案进展通过 Have Your Say 自动跟踪，提出后填入程序编号即可自动抓取立法进程。")}</div>` : ""}
+    ${d.jurisdiction==="uk" ? `<div class="sub" style="margin-top:8px">${Z("英国法规，不经过欧盟立法程序；状态和时间线根据 GOV.UK、legislation.gov.uk 等英国官方来源人工跟踪。")}</div>` : ""}
+    ${!d.oeil && !d.secondary && d.jurisdiction!=="uk" ? `<div class="sub" style="margin-top:8px">${Z("尚未提出立法提案，暂无欧洲议会程序编号；欧委会意见征求与提案进展通过 Have Your Say 自动跟踪，提出后填入程序编号即可自动抓取立法进程。")}</div>` : ""}
     ${d.secondary ? `<div class="sub" style="margin-top:8px">${Z("二级法案不经过普通立法程序，没有欧洲议会程序编号；草案意见征求和通过情况通过 Have Your Say 与 EUR-Lex 自动跟踪（见下方“二级立法”）。")}</div>` : ""}
   </div></div>`;
 }
